@@ -1,0 +1,17 @@
+{
+  "name": "dav-ui-components",
+  "version": "0.0.1",
+  "description": "A collection of UI components used in our web projects",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}
