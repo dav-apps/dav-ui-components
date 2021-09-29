@@ -10,7 +10,7 @@ export class Toggle extends LitElement {
 	static styles = [toggleStyles]
 
 	@state()
-	inputClasses = {
+	private inputClasses = {
 		checked: false
 	}
 
