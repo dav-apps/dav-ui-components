@@ -22,7 +22,7 @@ export class Dialog extends LitElement {
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) isLoading: boolean = false
-	@property({ type: Number }) minWidth: number = 600
+	@property({ type: Number }) maxWidth: number = 600
 
 	private overlayClick() {
 		if (!this.isLoading) {
@@ -53,7 +53,7 @@ export class Dialog extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
-		this.contentStyles.maxWidth = `${this.minWidth}px`
+		this.contentStyles.maxWidth = `${this.maxWidth}px`
 
 		return html`
 			${getGlobalStyleHtml()}
