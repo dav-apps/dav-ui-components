@@ -1,4 +1,7 @@
 import { html } from "lit"
+import { en, de } from './locale'
+
+var locale: string = "en"
 
 export function getGlobalStyleHtml() {
 	return html`
@@ -8,4 +11,16 @@ export function getGlobalStyleHtml() {
 		<!-- Office UI Fabric Core -->
 		<link href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" rel="stylesheet" />
 	`
+}
+
+export function setLocale(lang: string) {
+	locale = lang
+}
+
+export function getLocale() {
+	if (locale.startsWith("de")) {
+		return de
+	} else {
+		return en
+	}
 }
