@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { getGlobalStyleHtml } from '../utils'
+import { ButtonType } from '../types'
+import { getGlobalStyleHtml, convertStringToButtonType } from '../utils'
 
 export const dialogTagName = "dav-dialog"
 
@@ -22,6 +23,10 @@ export class Dialog extends LitElement {
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) isLoading: boolean = false
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToButtonType(value)
+	}) primaryButtonType: ButtonType = ButtonType.accent
 	@property({ type: Number }) maxWidth: number = 600
 
 	private overlayClick() {
@@ -45,6 +50,36 @@ export class Dialog extends LitElement {
 					style="width: 16px; height: 16px; margin: 8px 14px 0px 0px;"
 					indeterminate="true">
 				</fluent-progress-ring>
+			`
+		} else {
+			return html``
+		}
+	}
+
+	getDefaultButton() {
+		if (this.defaultButtonText.length > 0) {
+			return html`
+				<dav-button
+					?disabled=${this.isLoading}
+					@click=${this.defaultButtonClick}>
+					${this.defaultButtonText}
+				</dav-button>
+			`
+		} else {
+			return html``
+		}
+	}
+
+	getPrimaryButton() {
+		if (this.primaryButtonText.length > 0) {
+			return html`
+				<dav-button
+					style="margin-left: 10px"
+					type=${this.primaryButtonType}
+					?disabled=${this.isLoading}
+					@click=${this.primaryButtonClick}>
+					${this.primaryButtonText}
+				</dav-button>
 			`
 		} else {
 			return html``
@@ -84,19 +119,9 @@ export class Dialog extends LitElement {
 
 						${this.getProgressRing()}
 
-						<fluent-button
-							?disabled=${this.isLoading}
-							@click=${this.defaultButtonClick}>
-							${this.defaultButtonText}
-						</fluent-button>
+						${this.getDefaultButton()}
 
-						<fluent-button
-							style="margin-left: 10px"
-							appearance="accent"
-							?disabled=${this.isLoading}
-							@click=${this.primaryButtonClick}>
-							${this.primaryButtonText}
-						</fluent-button>
+						${this.getPrimaryButton()}
 					</div>
 				</div>
 			</div>
