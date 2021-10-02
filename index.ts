@@ -4,6 +4,7 @@ import { setLocale } from './src/utils'
 import { DropdownOption } from './src/types'
 
 // Components
+import { Button, buttonTagName } from './src/button/button'
 import { Dialog, dialogTagName } from './src/dialog/dialog'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar'
@@ -11,6 +12,7 @@ import { Toggle, toggleTagName } from './src/toggle/toggle'
 
 declare global {
 	interface HTMLElementTagNameMap {
+		[buttonTagName]: Button,
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
 		[messageBarTagName]: MessageBar,
@@ -21,6 +23,7 @@ declare global {
 export {
 	setLocale,
 	DropdownOption,
+	Button,
 	Dialog,
 	Dropdown,
 	MessageBar,
