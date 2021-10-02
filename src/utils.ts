@@ -1,5 +1,6 @@
 import { html } from "lit"
 import { en, de } from './locale'
+import { ButtonType } from "./types"
 
 var locale: string = "en"
 
@@ -22,5 +23,16 @@ export function getLocale() {
 		return de
 	} else {
 		return en
+	}
+}
+
+export function convertStringToButtonType(type: string) {
+	switch (type) {
+		case "accent":
+			return ButtonType.accent
+		case "danger":
+			return ButtonType.danger
+		default:
+			return ButtonType.default
 	}
 }

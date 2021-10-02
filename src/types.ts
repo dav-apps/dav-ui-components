@@ -1,7 +1,7 @@
 export enum ButtonType {
-	default,
-	accent,
-	danger
+	default = "default",
+	accent = "accent",
+	danger = "danger"
 }
 
 export interface DropdownOption {
