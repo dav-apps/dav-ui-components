@@ -3,7 +3,7 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { dropdownStyles } from './dropdown.styles'
 import { getGlobalStyleHtml, getLocale } from '../utils'
-import { DropdownOption } from '../types'
+import { DropdownOption, DropdownOptionType } from '../types'
 
 export const dropdownTagName = "dav-dropdown"
 
@@ -68,14 +68,22 @@ export class Dropdown extends LitElement {
 	}
 
 	getDropdownOption(option: DropdownOption) {
-		return html`
-			<button
-				class="dropdown-option"
-				key=${option.key}
-				@click=${this.dropdownOptionClick}>
-				${option.value}
-			</button>
-		`
+		if (option.type == DropdownOptionType.divider) {
+			return html`
+				<div class="dropdown-divider-container">
+					<hr class="dropdown-divider">
+				</div>
+			`
+		} else {
+			return html`
+				<button
+					class="dropdown-option"
+					key=${option.key}
+					@click=${this.dropdownOptionClick}>
+					${option.value}
+				</button>
+			`
+		}
 	}
 
 	render() {
@@ -83,6 +91,8 @@ export class Dropdown extends LitElement {
 		this.dropdownButtonStyles.width = `${this.width}px`
 		this.dropdownContentStyles.width = `${this.width}px`
 		this.dropdownContentStyles.display = this.showItems ? "block" : "none"
+
+		this.updateDropdownButtonText()
 
 		return html`
 			${getGlobalStyleHtml()}

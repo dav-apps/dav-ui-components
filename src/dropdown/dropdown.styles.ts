@@ -51,4 +51,13 @@ export const dropdownStyles = css`
 	.dropdown-option:focus, .dropdown-option:hover {
 		background-color: #e9e9e9;
 	}
+
+	.dropdown-divider-container {
+		background-color: white;
+		padding: 0.5rem;
+	}
+
+	.dropdown-divider {
+		margin: 0;
+	}
 `
