@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { dropdownStyles } from './dropdown.styles'
 import { getGlobalStyleHtml, getLocale } from '../utils'
@@ -12,6 +13,10 @@ export class Dropdown extends LitElement {
 	static styles = [dropdownStyles]
 
 	@state() locale = getLocale().dropdown
+	@state() dropdownButtonClasses = {
+		"dropdown-button": true,
+		disabled: false
+	}
 	@state()
 	private dropdownButtonStyles = {
 		width: "160px"
@@ -27,6 +32,7 @@ export class Dropdown extends LitElement {
 	@property({ type: Array }) options: DropdownOption[] = []
 	@property() selectedKey: string = ""
 	@property({ type: Number }) width: number = 160
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -44,7 +50,9 @@ export class Dropdown extends LitElement {
 	}
 
 	dropdownButtonClick() {
-		this.showItems = !this.showItems
+		if (!this.disabled) {
+			this.showItems = !this.showItems
+		}
 	}
 
 	dropdownOptionClick(event: PointerEvent) {
@@ -88,6 +96,7 @@ export class Dropdown extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
+		this.dropdownButtonClasses.disabled = this.disabled
 		this.dropdownButtonStyles.width = `${this.width}px`
 		this.dropdownContentStyles.width = `${this.width}px`
 		this.dropdownContentStyles.display = this.showItems ? "block" : "none"
@@ -99,8 +108,9 @@ export class Dropdown extends LitElement {
 
 			<div class="dropdown">
 				<button
-					class="dropdown-button"
+					class=${classMap(this.dropdownButtonClasses)}
 					style=${styleMap(this.dropdownButtonStyles)}
+					?aria-disabled=${this.disabled}
 					@click=${this.dropdownButtonClick}>
 
 					<span>${this.buttonText}</span>

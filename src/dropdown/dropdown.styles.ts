@@ -16,6 +16,12 @@ export const dropdownStyles = css`
 		font-size: 14px;
 	}
 
+	.dropdown-button.disabled {
+		cursor: not-allowed;
+		background-color: #edededb3;
+		border: none;
+	}
+
 	.dropdown-button span {
 		text-align: left;
 		height: 21px;
