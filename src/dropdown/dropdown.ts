@@ -29,6 +29,7 @@ export class Dropdown extends LitElement {
 
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
+	@property() label: string = ""
 	@property({ type: Array }) options: DropdownOption[] = []
 	@property() selectedKey: string = ""
 	@property({ type: Number }) width: number = 160
@@ -75,6 +76,20 @@ export class Dropdown extends LitElement {
 		else this.buttonText = this.locale.defaultDropdownButtonText
 	}
 
+	getLabel() {
+		if (this.label.length == 0) {
+			return html``
+		}
+
+		return html`
+			<label
+				class="dropdown-label"
+				for="dropdown-button">
+				${this.label}
+			</label>
+		`
+	}
+
 	getDropdownOption(option: DropdownOption) {
 		if (option.type == DropdownOptionType.divider) {
 			return html`
@@ -107,9 +122,12 @@ export class Dropdown extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div class="dropdown">
+				${this.getLabel()}
+
 				<button
 					class=${classMap(this.dropdownButtonClasses)}
 					style=${styleMap(this.dropdownButtonStyles)}
+					name="dropdown-button"
 					?aria-disabled=${this.disabled}
 					@click=${this.dropdownButtonClick}>
 

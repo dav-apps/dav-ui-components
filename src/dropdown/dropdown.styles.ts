@@ -34,6 +34,12 @@ export const dropdownStyles = css`
 		font-size: 12px;
 	}
 
+	.dropdown-label {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		margin-bottom: 0.2rem;
+		font-size: 14px;
+	}
+
 	.dropdown-content {
 		display: none;
 		position: absolute;
