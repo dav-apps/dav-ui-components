@@ -34,7 +34,7 @@ export class MessageBar extends LitElement {
 
 			<div
 				class="alert alert-${this.type}"
-				style="display: flex; align-items: center; font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+				style="display: flex; align-items: center; margin-bottom: 0px; font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
 				role="alert">
 
 				${this.getIcon()}
