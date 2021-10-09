@@ -35,6 +35,7 @@ export class Dialog extends LitElement {
 	@property() title: string = ""
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
+	@property({ type: Boolean }) isVisible: boolean = false
 	@property({ type: Boolean }) isLoading: boolean = false
 	@property({
 		type: String,
@@ -112,6 +113,7 @@ export class Dialog extends LitElement {
 	render() {
 		// Update the UI based on the properties
 		this.contentStyles.maxWidth = `${this.maxWidth}px`
+		this.containerStyles.display = this.isVisible ? "flex" : "none"
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 
 		return html`
