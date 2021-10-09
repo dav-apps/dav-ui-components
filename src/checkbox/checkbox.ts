@@ -11,8 +11,13 @@ export class Checkbox extends LitElement {
 	static styles = [checkboxStyles]
 
 	@state()
-	private checkboxIndicatorClasses = {
-		checked: false
+	private checkboxClasses = {
+		checked: false,
+		disabled: false
+	}
+	@state()
+	private checkboxLabelClasses = {
+		disabled: false
 	}
 	@state()
 	private checkmarkSvgPathStyles = {
@@ -21,6 +26,7 @@ export class Checkbox extends LitElement {
 
 	@property() label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
+	@property({ type: Boolean }) disabled: boolean = false
 
 	checkboxClick() {
 		this.toggleCheckbox()
@@ -34,20 +40,28 @@ export class Checkbox extends LitElement {
 	}
 
 	toggleCheckbox() {
-		this.checked = !this.checked
+		if (!this.disabled) {
+			this.checked = !this.checked
+			this.dispatchEvent(new CustomEvent("change", {
+				detail: { checked: this.checked }
+			}))
+		}
 	}
 
 	render() {
-		this.checkboxIndicatorClasses.checked = this.checked
+		this.checkboxClasses.checked = this.checked
+		this.checkboxClasses.disabled = this.disabled
+		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkmarkSvgPathStyles.display = this.checked ? "unset" : "none"
 
 		return html`
 			<div
 				id="checkbox"
-				class=${classMap(this.checkboxIndicatorClasses)}
+				class=${classMap(this.checkboxClasses)}
 				tabindex="0"
 				role="checkbox"
 				?aria-checked=${this.checked}
+				?aria-disabled=${this.disabled}
 				aria-labelledby="checkbox-label"
 				@click=${this.checkboxClick}
 				@keydown=${this.checkboxKeydown}>
@@ -64,6 +78,7 @@ export class Checkbox extends LitElement {
 
 			<label
 				id="checkbox-label"
+				class=${classMap(this.checkboxLabelClasses)}
 				@click=${this.checkboxClick}>
 				${this.label}
 			</label>

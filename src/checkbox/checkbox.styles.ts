@@ -11,9 +11,15 @@ export const checkboxStyles = css`
 		display: inherit;
 		border: 1px solid #949494;
 		border-radius: 20%;
+		cursor: pointer;
 	}
 
-	#checkbox:focus {
+	#checkbox.disabled {
+		border: 1px solid #94949480;
+		cursor: not-allowed;
+	}
+
+	#checkbox:not(.disabled):focus {
 		outline: 2px solid #878787;
 		outline-offset: 2px;
 	}
@@ -23,10 +29,20 @@ export const checkboxStyles = css`
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 14px;
 		padding-left: 10px;
+		color: #212529;
+	}
+
+	#checkbox-label.disabled {
+		cursor: not-allowed;
+		color: #21252980;
 	}
 
 	svg {
-		stroke: #2b2b2b;
+		fill: #2b2b2b;
 		stroke-width: 0px;
+	}
+
+	#checkbox.disabled > svg {
+		fill: #2b2b2b80;
 	}
 `
