@@ -18,7 +18,7 @@ export class Dialog extends LitElement {
 		bottom: "0",
 		left: "0",
 		right: "0",
-		zIndex: "3"
+		zIndex: "100"
 	}
 	@state()
 	private contentStyles = {
@@ -26,7 +26,6 @@ export class Dialog extends LitElement {
 		padding: "2ex",
 		borderRadius: "5pt",
 		backgroundColor: "white",
-		zIndex: "4",
 		minWidth: "280px",
 		maxWidth: "600px"
 	}
