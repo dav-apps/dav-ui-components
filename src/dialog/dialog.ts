@@ -3,11 +3,13 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { ButtonType } from '../types'
 import { getGlobalStyleHtml, convertStringToButtonType } from '../utils'
+import { dialogStyles } from './dialog.styles'
 
 export const dialogTagName = "dav-dialog"
 
 @customElement(dialogTagName)
 export class Dialog extends LitElement {
+	static styles = [dialogStyles]
 	@state()
 	private containerStyles = {
 		display: "flex",
@@ -31,7 +33,7 @@ export class Dialog extends LitElement {
 	}
 	@state() private dualScreenLayout: boolean = false
 
-	@property() title: string = ""
+	@property() header: string = ""
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) isVisible: boolean = false
@@ -120,7 +122,7 @@ export class Dialog extends LitElement {
 
 			<div style=${styleMap(this.containerStyles)}>
 				<div
-					style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color: #3b3b3b67;"
+					id="overlay"
 					@click=${this.overlayClick}>
 				</div>
 
@@ -129,8 +131,8 @@ export class Dialog extends LitElement {
 					style=${styleMap(this.contentStyles)}
 					role="dialog">
 
-					<h4 style="margin-bottom: 20px; font-weight: 100; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-						${this.title}
+					<h4 id="header">
+						${this.header}
 					</h4>
 
 					<slot></slot>
