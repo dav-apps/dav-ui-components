@@ -9,6 +9,7 @@ import { Checkbox, checkboxTagName } from './src/checkbox/checkbox'
 import { Dialog, dialogTagName } from './src/dialog/dialog'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar'
+import { Panel, panelTagName } from './src/panel/panel'
 import { Toggle, toggleTagName } from './src/toggle/toggle'
 
 declare global {
@@ -18,6 +19,7 @@ declare global {
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
 		[messageBarTagName]: MessageBar,
+		[panelTagName]: Panel,
 		[toggleTagName]: Toggle,
 	}
 }
@@ -31,5 +33,6 @@ export {
 	Dialog,
 	Dropdown,
 	MessageBar,
+	Panel,
 	Toggle
 }

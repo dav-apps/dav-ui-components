@@ -1,0 +1,42 @@
+import { css } from "@lit/reactive-element"
+
+export const panelStyles = css`
+	#container {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+	}
+
+	#overlay {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: #3b3b3b67;
+	}
+
+	#content {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 340px;
+		background-color: white;
+		overflow-y: auto;
+	}
+
+	#header {
+		font-size: 23px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-weight: 100;
+		margin: 50px 32px 20px 32px;
+	}
+
+	#slot-container {
+		margin: 0px 32px;
+	}
+`
