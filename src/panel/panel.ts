@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import { query } from 'lit/decorators/query.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { getGlobalStyleHtml } from '../utils'
 import { panelStyles } from './panel.styles'
+import { slideIn, slideOut } from './panel.animations'
 
 export const panelTagName = "dav-panel"
 
@@ -12,11 +14,34 @@ export class Panel extends LitElement {
 
 	@state()
 	private containerStyles = {
-		display: "block"
+		display: "none"
 	}
 
 	@property() header: string = ""
 	@property({ type: Boolean }) isVisible: boolean = false
+
+	@query("#overlay") overlay: HTMLDivElement
+	@query("#content") content: HTMLDivElement
+
+	updated(changedProperties: Map<string, any>) {
+		if (changedProperties.has("isVisible") && changedProperties.get("isVisible") != null) {
+			let newIsVisible = !changedProperties.get("isVisible") as boolean
+			let animation: Animation
+
+			if (newIsVisible) {
+				// Play slide in animation
+				animation = slideIn(this.content, this.overlay)
+			} else {
+				// Play slide out animation
+				animation = slideOut(this.content, this.overlay)
+			}
+
+			animation.onfinish = () => {
+				this.containerStyles.display = newIsVisible ? "block" : "none"
+				this.requestUpdate()
+			}
+		}
+	}
 
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
@@ -24,7 +49,9 @@ export class Panel extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
-		this.containerStyles.display = this.isVisible ? "block" : "none"
+		if (this.isVisible) {
+			this.containerStyles.display = "block"
+		}
 
 		return html`
 			${getGlobalStyleHtml()}
@@ -40,7 +67,7 @@ export class Panel extends LitElement {
 
 				<div
 					id="content"
-					class="shadow-lg ms-motion-slideLeftIn">
+					class="shadow-lg">
 
 					<p id="header">
 						${this.header}
