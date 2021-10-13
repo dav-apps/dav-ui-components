@@ -129,7 +129,10 @@ export class Dialog extends LitElement {
 				<div
 					class="shadow ms-motion-slideUpIn"
 					style=${styleMap(this.contentStyles)}
-					role="dialog">
+					role="dialog"
+					aria-modal="true"
+					aria-live="assertive"
+					aria-labelledby="header">
 
 					<h4 id="header">
 						${this.header}
