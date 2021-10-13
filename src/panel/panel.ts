@@ -47,6 +47,10 @@ export class Panel extends LitElement {
 		this.dispatchEvent(new CustomEvent("dismiss"))
 	}
 
+	private closeButtonClick() {
+		this.dispatchEvent(new CustomEvent("dismiss"))
+	}
+
 	render() {
 		// Update the UI based on the properties
 		if (this.isVisible) {
@@ -68,6 +72,12 @@ export class Panel extends LitElement {
 				<div
 					id="content"
 					class="shadow-lg">
+
+					<button
+						id="close-button"
+						@click=${this.closeButtonClick}>
+						<i class="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
+					</button>
 
 					<p id="header">
 						${this.header}

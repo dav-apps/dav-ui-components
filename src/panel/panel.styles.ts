@@ -36,6 +36,16 @@ export const panelStyles = css`
 		margin: 50px 32px 20px 32px;
 	}
 
+	#close-button {
+		float: right;
+		width: 32px;
+		height: 32px;
+		margin: 8px;
+		background-color: transparent;
+		border: none;
+		border-radius: 4px;
+	}
+
 	#slot-container {
 		margin: 0px 32px;
 	}
