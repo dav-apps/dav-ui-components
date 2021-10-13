@@ -37,17 +37,18 @@ export class Dropdown extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-
-		document.onclick = (event: PointerEvent) => {
-			if (event.target != this) {
-				this.showItems = false
-			}
-		}
+		document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		document.onclick = null
+		document.removeEventListener("click", this.documentClick)
+	}
+
+	documentClick = (event: MouseEvent) => {
+		if (event.target != this) {
+			this.showItems = false
+		}
 	}
 
 	dropdownButtonClick() {
