@@ -2,9 +2,9 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { dropdownStyles } from './dropdown.styles'
-import { getGlobalStyleHtml, getLocale } from '../utils'
-import { DropdownOption, DropdownOptionType } from '../types'
+import { dropdownStyles } from './dropdown.styles.js'
+import { getGlobalStyleHtml, getLocale } from '../utils.js'
+import { DropdownOption, DropdownOptionType } from '../types.js'
 
 export const dropdownTagName = "dav-dropdown"
 

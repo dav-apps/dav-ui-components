@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { getGlobalStyleHtml } from '../utils'
+import { getGlobalStyleHtml } from '../utils.js'
 
 export const messageBarTagName = "dav-message-bar"
 

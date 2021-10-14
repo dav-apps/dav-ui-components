@@ -1,6 +1,6 @@
-import { html } from "lit"
-import { en, de } from './locale'
-import { ButtonType } from "./types"
+import { html } from 'lit'
+import { en, de } from './locale.js'
+import { ButtonType } from './types.js'
 
 var locale: string = "en"
 

@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { ButtonType } from '../types'
-import { convertStringToButtonType } from '../utils'
-import { buttonStyles } from './button.styles'
+import { ButtonType } from '../types.js'
+import { convertStringToButtonType } from '../utils.js'
+import { buttonStyles } from './button.styles.js'
 
 export const buttonTagName = "dav-button"
 

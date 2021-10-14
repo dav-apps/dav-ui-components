@@ -2,9 +2,9 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { getGlobalStyleHtml } from '../utils'
-import { panelStyles } from './panel.styles'
-import { slideIn, slideOut } from './panel.animations'
+import { getGlobalStyleHtml } from '../utils.js'
+import { panelStyles } from './panel.styles.js'
+import { slideIn, slideOut } from './panel.animations.js'
 
 export const panelTagName = "dav-panel"
 

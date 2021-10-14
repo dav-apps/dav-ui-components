@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { checkboxStyles } from './checkbox.styles'
+import { checkboxStyles } from './checkbox.styles.js'
 
 export const checkboxTagName = "dav-checkbox"
 

@@ -1,16 +1,16 @@
 import '@fluentui/web-components'
 
-import { setLocale } from './src/utils'
-import { DropdownOption, DropdownOptionType } from './src/types'
+import { setLocale } from './src/utils.js'
+import { DropdownOption, DropdownOptionType } from './src/types.js'
 
 // Components
-import { Button, buttonTagName } from './src/button/button'
-import { Checkbox, checkboxTagName } from './src/checkbox/checkbox'
-import { Dialog, dialogTagName } from './src/dialog/dialog'
-import { Dropdown, dropdownTagName } from './src/dropdown/dropdown'
-import { MessageBar, messageBarTagName } from './src/message-bar/message-bar'
-import { Panel, panelTagName } from './src/panel/panel'
-import { Toggle, toggleTagName } from './src/toggle/toggle'
+import { Button, buttonTagName } from './src/button/button.js'
+import { Checkbox, checkboxTagName } from './src/checkbox/checkbox.js'
+import { Dialog, dialogTagName } from './src/dialog/dialog.js'
+import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
+import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
+import { Panel, panelTagName } from './src/panel/panel.js'
+import { Toggle, toggleTagName } from './src/toggle/toggle.js'
 
 declare global {
 	interface HTMLElementTagNameMap {

@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { toggleStyles } from './toggle.styles'
+import { toggleStyles } from './toggle.styles.js'
 
 export const toggleTagName = "dav-toggle"
 

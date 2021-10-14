@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { ButtonType } from '../types'
-import { getGlobalStyleHtml, convertStringToButtonType } from '../utils'
-import { dialogStyles } from './dialog.styles'
+import { ButtonType } from '../types.js'
+import { getGlobalStyleHtml, convertStringToButtonType } from '../utils.js'
+import { dialogStyles } from './dialog.styles.js'
 
 export const dialogTagName = "dav-dialog"
 
