@@ -43,7 +43,6 @@ export class Dialog extends LitElement {
 		converter: (value: string) => convertStringToButtonType(value)
 	}) primaryButtonType: ButtonType = ButtonType.accent
 	@property({ type: Number }) maxWidth: number = 600
-	@property({ type: Boolean }) showOnRightScreen: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
