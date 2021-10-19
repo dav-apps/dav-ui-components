@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import { en, de } from './locale.js'
-import { ButtonType } from './types.js'
+import { Theme, ButtonType } from './types.js'
 
 var locale: string = "en"
 
@@ -34,5 +34,14 @@ export function convertStringToButtonType(type: string) {
 			return ButtonType.danger
 		default:
 			return ButtonType.default
+	}
+}
+
+export function convertStringToTheme(theme: string) {
+	switch (theme) {
+		case "dark":
+			return Theme.dark
+		default:
+			return Theme.light
 	}
 }

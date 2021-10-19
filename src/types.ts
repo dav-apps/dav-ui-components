@@ -4,6 +4,11 @@ export interface DropdownOption {
 	type: DropdownOptionType
 }
 
+export enum Theme {
+	light = "light",
+	dark = "dark"
+}
+
 export enum ButtonType {
 	default = "default",
 	accent = "accent",
