@@ -26,6 +26,15 @@ export function getLocale() {
 	}
 }
 
+export function convertStringToTheme(theme: string) {
+	switch (theme) {
+		case "dark":
+			return Theme.dark
+		default:
+			return Theme.light
+	}
+}
+
 export function convertStringToButtonType(type: string) {
 	switch (type) {
 		case "accent":
@@ -34,14 +43,5 @@ export function convertStringToButtonType(type: string) {
 			return ButtonType.danger
 		default:
 			return ButtonType.default
-	}
-}
-
-export function convertStringToTheme(theme: string) {
-	switch (theme) {
-		case "dark":
-			return Theme.dark
-		default:
-			return Theme.light
 	}
 }

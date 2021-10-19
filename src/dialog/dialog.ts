@@ -1,8 +1,14 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { ButtonType } from '../types.js'
-import { getGlobalStyleHtml, convertStringToButtonType } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	convertStringToTheme,
+	convertStringToButtonType
+} from '../utils.js'
+import { Theme } from '../types.js'
 import { dialogStyles } from './dialog.styles.js'
 
 export const dialogTagName = "dav-dialog"
@@ -10,6 +16,18 @@ export const dialogTagName = "dav-dialog"
 @customElement(dialogTagName)
 export class Dialog extends LitElement {
 	static styles = [dialogStyles]
+
+	@state()
+	private dialogClasses = {
+		shadow: true,
+		"ms-motion-slideUpIn": true,
+		darkTheme: false
+	}
+	@state()
+	private headerClasses = {
+		darkTheme: false
+	}
+
 	@state()
 	private containerStyles = {
 		display: "flex",
@@ -23,12 +41,7 @@ export class Dialog extends LitElement {
 		zIndex: "100"
 	}
 	@state()
-	private contentStyles = {
-		margin: "2ex",
-		padding: "2ex",
-		borderRadius: "5pt",
-		backgroundColor: "white",
-		minWidth: "280px",
+	private dialogStyles = {
 		maxWidth: "600px"
 	}
 	@state() private dualScreenLayout: boolean = false
@@ -43,6 +56,10 @@ export class Dialog extends LitElement {
 		converter: (value: string) => convertStringToButtonType(value)
 	}) primaryButtonType: ButtonType = ButtonType.accent
 	@property({ type: Number }) maxWidth: number = 600
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToTheme(value)
+	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -112,9 +129,12 @@ export class Dialog extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
-		this.contentStyles.maxWidth = `${this.maxWidth}px`
 		this.containerStyles.display = this.isVisible ? "flex" : "none"
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
+		this.dialogStyles.maxWidth = `${this.maxWidth}px`
+
+		this.dialogClasses.darkTheme = this.theme == Theme.dark
+		this.headerClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
 			${getGlobalStyleHtml()}
@@ -126,14 +146,17 @@ export class Dialog extends LitElement {
 				</div>
 
 				<div
-					class="shadow ms-motion-slideUpIn"
-					style=${styleMap(this.contentStyles)}
+					id="dialog"
+					class=${classMap(this.dialogClasses)}
+					style=${styleMap(this.dialogStyles)}
 					role="dialog"
 					aria-modal="true"
 					aria-live="assertive"
 					aria-labelledby="header">
 
-					<h4 id="header">
+					<h4
+						id="header"
+						class=${classMap(this.headerClasses)}>
 						${this.header}
 					</h4>
 
