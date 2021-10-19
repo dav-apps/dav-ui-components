@@ -15,6 +15,10 @@ export class Toggle extends LitElement {
 	private inputClasses = {
 		checked: false
 	}
+	@state()
+	private sliderClasses = {
+		darkTheme: false
+	}
 
 	@property({ type: Boolean }) checked: boolean = false
 	@property({
@@ -35,15 +39,19 @@ export class Toggle extends LitElement {
 	render() {
 		// Update the UI based on the properties
 		this.inputClasses.checked = this.checked
+		this.sliderClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
-			<label class="switch">
+			<label id="switch">
 				<input
 					class=${classMap(this.inputClasses)}
 					type="checkbox"
 					?checked=${this.checked}
 					@click=${this.checkboxClicked}>
-				<span class="slider"></span>
+				<span
+					id="slider"
+					class=${classMap(this.sliderClasses)}>
+				</span>
 			</label>
 		`
 	}

@@ -1,20 +1,20 @@
 import { css } from "@lit/reactive-element"
 
 export const toggleStyles = css`
-	.switch {
+	#switch {
 		position: relative;
 		display: inline-block;
 		width: 40px;
 		height: 20px;
 	}
 
-	.switch input { 
+	#switch input { 
 		opacity: 0;
 		width: 0;
 		height: 0;
 	}
 
-	.slider {
+	#slider {
 		position: absolute;
 		cursor: pointer;
 		top: 0;
@@ -27,7 +27,11 @@ export const toggleStyles = css`
 		border-radius: 34px;
 	}
 
-	.slider:before {
+	#slider.darkTheme {
+		background-color: #545e66;
+	}
+
+	#slider:before {
 		position: absolute;
 		content: "";
 		height: 11px;
@@ -40,15 +44,15 @@ export const toggleStyles = css`
 		border-radius: 50%;
 	}
 
-	input.checked + .slider {
+	input.checked + #slider {
 		background-color: #0078d4;
 	}
 
-	input:focus + .slider {
+	input:focus + #slider {
 		box-shadow: 0 0 1px #0078d4;
 	}
 
-	input.checked + .slider:before {
+	input.checked + #slider:before {
 		-webkit-transform: translateX(19px);
 		-ms-transform: translateX(19px);
 		transform: translateX(19px);
