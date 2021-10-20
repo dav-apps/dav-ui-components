@@ -29,11 +29,19 @@ export const panelStyles = css`
 		overflow-y: auto;
 	}
 
+	#content.darkTheme {
+		background-color: #1c2938;
+	}
+
 	#header {
 		font-size: 23px;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-weight: 100;
 		margin: 50px 32px 20px 32px;
+	}
+
+	#header.darkTheme {
+		color: #f3f3f3;
 	}
 
 	#close-button {

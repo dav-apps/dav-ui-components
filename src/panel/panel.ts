@@ -1,8 +1,10 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
+import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { getGlobalStyleHtml } from '../utils.js'
+import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import { Theme } from '../types.js'
 import { panelStyles } from './panel.styles.js'
 import { slideIn, slideOut } from './panel.animations.js'
 
@@ -12,15 +14,27 @@ export const panelTagName = "dav-panel"
 export class Panel extends LitElement {
 	static styles = [panelStyles]
 
+	@query("#overlay") overlay: HTMLDivElement
+	@query("#content") content: HTMLDivElement
+
+	@state() private contentClasses = {
+		"shadow-lg": true,
+		darkTheme: false
+	}
+	@state() private headerClasses = {
+		darkTheme: false
+	}
+
 	@state() private containerStyles = {
 		display: "none"
 	}
 
 	@property() header: string = ""
 	@property({ type: Boolean }) isVisible: boolean = false
-
-	@query("#overlay") overlay: HTMLDivElement
-	@query("#content") content: HTMLDivElement
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToTheme(value)
+	}) theme: Theme = Theme.light
 
 	updated(changedProperties: Map<string, any>) {
 		if (changedProperties.has("isVisible") && changedProperties.get("isVisible") != null) {
@@ -52,6 +66,9 @@ export class Panel extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
+		this.contentClasses.darkTheme = this.theme == Theme.dark
+		this.headerClasses.darkTheme = this.theme == Theme.dark
+
 		if (this.isVisible) {
 			this.containerStyles.display = "block"
 		}
@@ -70,7 +87,7 @@ export class Panel extends LitElement {
 
 				<div
 					id="content"
-					class="shadow-lg">
+					class=${classMap(this.contentClasses)}>
 
 					<button
 						id="close-button"
@@ -78,7 +95,8 @@ export class Panel extends LitElement {
 						<i class="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
 					</button>
 
-					<p id="header">
+					<p id="header"
+						class=${classMap(this.headerClasses)}>
 						${this.header}
 					</p>
 
