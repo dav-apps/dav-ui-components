@@ -1,12 +1,12 @@
 import { css } from "@lit/reactive-element"
 
 export const dropdownStyles = css`
-	.dropdown {
+	#dropdown {
 		position: relative;
 		display: inline-block;
 	}
 
-	.dropdown-button {
+	#dropdown-button {
 		display: flex;
 		background-color: white;
 		border: 1px solid #a6a6a6;
@@ -16,22 +16,35 @@ export const dropdownStyles = css`
 		font-size: 14px;
 	}
 
-	.dropdown-button.disabled {
+	#dropdown-button.darkTheme {
+		background-color: #2e3b46;
+		border-color: #787878;
+	}
+
+	#dropdown-button.disabled {
 		cursor: not-allowed;
 		background-color: #edededb3;
 		border: none;
 	}
 
-	.dropdown-button span {
+	#dropdown-button span {
 		text-align: left;
 		height: 21px;
 		line-height: 21px;
 		overflow: hidden;
 	}
 
-	.dropdown-button i {
+	#dropdown-button.darkTheme span {
+		color: white;
+	}
+
+	#dropdown-button i {
 		padding-top: 1px;
 		font-size: 12px;
+	}
+
+	#dropdown-button.darkTheme i {
+		color: white;
 	}
 
 	.dropdown-label {
@@ -40,7 +53,7 @@ export const dropdownStyles = css`
 		font-size: 14px;
 	}
 
-	.dropdown-content {
+	#dropdown-content {
 		display: none;
 		position: absolute;
 		overflow: auto;
@@ -48,6 +61,7 @@ export const dropdownStyles = css`
 		z-index: 1;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 14px;
+		border-radius: 4px;
 	}
 
 	.dropdown-option {
@@ -60,16 +74,32 @@ export const dropdownStyles = css`
 		background-color: white;
 	}
 
+	.dropdown-option.darkTheme {
+		color: white;
+		background-color: #2e3b46;
+	}
+
 	.dropdown-option:focus, .dropdown-option:hover {
 		background-color: #e9e9e9;
 	}
 
-	.dropdown-divider-container {
-		background-color: white;
-		padding: 0.5rem;
+	.dropdown-option.darkTheme:focus, .dropdown-option.darkTheme:hover {
+		background-color: #26313a;
 	}
 
 	.dropdown-divider {
+		background-color: white;
+		border: none;
+		margin: 0;
+		padding: 0.5rem;
+	}
+
+	.dropdown-divider.darkTheme {
+		color: white;
+		background-color: #2e3b46;
+	}
+
+	.dropdown-divider hr {
 		margin: 0;
 	}
 `

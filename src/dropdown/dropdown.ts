@@ -3,8 +3,8 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { dropdownStyles } from './dropdown.styles.js'
-import { getGlobalStyleHtml, getLocale } from '../utils.js'
-import { DropdownOption, DropdownOptionType } from '../types.js'
+import { getGlobalStyleHtml, getLocale, convertStringToTheme } from '../utils.js'
+import { DropdownOption, Theme, DropdownOptionType } from '../types.js'
 
 export const dropdownTagName = "dav-dropdown"
 
@@ -13,10 +13,20 @@ export class Dropdown extends LitElement {
 	static styles = [dropdownStyles]
 
 	@state() locale = getLocale().dropdown
+
 	@state() dropdownButtonClasses = {
-		"dropdown-button": true,
-		disabled: false
+		disabled: false,
+		darkTheme: false
 	}
+	@state() dropdownOptionClasses = {
+		"dropdown-option": true,
+		darkTheme: false
+	}
+	@state() dropdownDividerClasses = {
+		"dropdown-divider": true,
+		darkTheme: false
+	}
+
 	@state()
 	private dropdownButtonStyles = {
 		width: "160px"
@@ -34,6 +44,10 @@ export class Dropdown extends LitElement {
 	@property() selectedKey: string = ""
 	@property({ type: Number }) width: number = 160
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToTheme(value)
+	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -94,14 +108,14 @@ export class Dropdown extends LitElement {
 	getDropdownOption(option: DropdownOption) {
 		if (option.type == DropdownOptionType.divider) {
 			return html`
-				<div class="dropdown-divider-container">
-					<hr class="dropdown-divider">
+				<div class=${classMap(this.dropdownDividerClasses)}>
+					<hr>
 				</div>
 			`
 		} else {
 			return html`
 				<button
-					class="dropdown-option"
+					class=${classMap(this.dropdownOptionClasses)}
 					key=${option.key}
 					@click=${this.dropdownOptionClick}>
 					${option.value}
@@ -113,6 +127,10 @@ export class Dropdown extends LitElement {
 	render() {
 		// Update the UI based on the properties
 		this.dropdownButtonClasses.disabled = this.disabled
+		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
+		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
+		this.dropdownDividerClasses.darkTheme = this.theme == Theme.dark
+
 		this.dropdownButtonStyles.width = `${this.width}px`
 		this.dropdownContentStyles.width = `${this.width}px`
 		this.dropdownContentStyles.display = this.showItems ? "block" : "none"
@@ -122,10 +140,11 @@ export class Dropdown extends LitElement {
 		return html`
 			${getGlobalStyleHtml()}
 
-			<div class="dropdown">
+			<div id="dropdown">
 				${this.getLabel()}
 
 				<button
+					id="dropdown-button"
 					class=${classMap(this.dropdownButtonClasses)}
 					style=${styleMap(this.dropdownButtonStyles)}
 					name="dropdown-button"
@@ -138,7 +157,8 @@ export class Dropdown extends LitElement {
 				</button>
 
 				<div
-					class="dropdown-content ms-motion-slideDownIn"
+					id="dropdown-content"
+					class="ms-motion-slideDownIn"
 					style=${styleMap(this.dropdownContentStyles)}>
 
 					${this.options.map((option) => this.getDropdownOption(option))}
