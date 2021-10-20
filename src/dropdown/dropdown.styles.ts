@@ -47,10 +47,14 @@ export const dropdownStyles = css`
 		color: white;
 	}
 
-	.dropdown-label {
+	#dropdown-label {
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		margin-bottom: 0.2rem;
 		font-size: 14px;
+	}
+
+	#dropdown-label.darkTheme {
+		color: white;
 	}
 
 	#dropdown-content {

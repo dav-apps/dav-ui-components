@@ -14,6 +14,9 @@ export class Dropdown extends LitElement {
 
 	@state() locale = getLocale().dropdown
 
+	@state() dropdownLabelClasses = {
+		darkTheme: false
+	}
 	@state() dropdownButtonClasses = {
 		disabled: false,
 		darkTheme: false
@@ -98,7 +101,8 @@ export class Dropdown extends LitElement {
 
 		return html`
 			<label
-				class="dropdown-label"
+				id="dropdown-label"
+				class=${classMap(this.dropdownLabelClasses)}
 				for="dropdown-button">
 				${this.label}
 			</label>
@@ -126,6 +130,7 @@ export class Dropdown extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
+		this.dropdownLabelClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownButtonClasses.disabled = this.disabled
 		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
