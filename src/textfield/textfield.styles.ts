@@ -41,4 +41,12 @@ export const textfieldStyles = css`
 	#textfield-input:focus {
 		outline: 1px solid #878787;
 	}
+
+	#textfield-error-message {
+		max-width: 200px;
+		margin: 0px 0px 0px 4px;
+		color: #A80000;
+		font-size: 12.5px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
 `
