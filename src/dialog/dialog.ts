@@ -17,19 +17,16 @@ export const dialogTagName = "dav-dialog"
 export class Dialog extends LitElement {
 	static styles = [dialogStyles]
 
-	@state()
-	private dialogClasses = {
+	@state() private dialogClasses = {
 		shadow: true,
 		"ms-motion-slideUpIn": true,
 		darkTheme: false
 	}
-	@state()
-	private headerClasses = {
+	@state() private headerClasses = {
 		darkTheme: false
 	}
 
-	@state()
-	private containerStyles = {
+	@state() private containerStyles = {
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
@@ -40,8 +37,7 @@ export class Dialog extends LitElement {
 		right: "0",
 		zIndex: "100"
 	}
-	@state()
-	private dialogStyles = {
+	@state() private dialogStyles = {
 		maxWidth: "600px"
 	}
 	@state() private dualScreenLayout: boolean = false

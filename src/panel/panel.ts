@@ -12,8 +12,7 @@ export const panelTagName = "dav-panel"
 export class Panel extends LitElement {
 	static styles = [panelStyles]
 
-	@state()
-	private containerStyles = {
+	@state() private containerStyles = {
 		display: "none"
 	}
 

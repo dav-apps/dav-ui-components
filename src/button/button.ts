@@ -11,8 +11,7 @@ export const buttonTagName = "dav-button"
 export class Button extends LitElement {
 	static styles = [buttonStyles]
 
-	@state()
-	private buttonClasses = {
+	@state() private buttonClasses = {
 		accent: false,
 		danger: false,
 		disabled: false

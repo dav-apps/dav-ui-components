@@ -12,30 +12,28 @@ export const dropdownTagName = "dav-dropdown"
 export class Dropdown extends LitElement {
 	static styles = [dropdownStyles]
 
-	@state() locale = getLocale().dropdown
+	@state() private locale = getLocale().dropdown
 
-	@state() dropdownLabelClasses = {
+	@state() private dropdownLabelClasses = {
 		darkTheme: false
 	}
-	@state() dropdownButtonClasses = {
+	@state() private dropdownButtonClasses = {
 		disabled: false,
 		darkTheme: false
 	}
-	@state() dropdownOptionClasses = {
+	@state() private dropdownOptionClasses = {
 		"dropdown-option": true,
 		darkTheme: false
 	}
-	@state() dropdownDividerClasses = {
+	@state() private dropdownDividerClasses = {
 		"dropdown-divider": true,
 		darkTheme: false
 	}
 
-	@state()
-	private dropdownButtonStyles = {
+	@state() private dropdownButtonStyles = {
 		width: "160px"
 	}
-	@state()
-	private dropdownContentStyles = {
+	@state() private dropdownContentStyles = {
 		width: "160px",
 		display: "none"
 	}

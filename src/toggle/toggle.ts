@@ -11,12 +11,10 @@ export const toggleTagName = "dav-toggle"
 export class Toggle extends LitElement {
 	static styles = [toggleStyles]
 
-	@state()
-	private inputClasses = {
+	@state() private inputClasses = {
 		checked: false
 	}
-	@state()
-	private sliderClasses = {
+	@state() private sliderClasses = {
 		darkTheme: false
 	}
 
