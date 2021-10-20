@@ -6,6 +6,11 @@ export const textfieldStyles = css`
 		font-size: 14px;
 		margin: 0 0 4px;
 		cursor: pointer;
+		color: #212529;
+	}
+
+	#textfield-label.darkTheme {
+		color: #f3f3f3;
 	}
 
 	#textfield-input {
@@ -20,7 +25,16 @@ export const textfieldStyles = css`
 		border-radius: 4px;
 	}
 
+	#textfield-input.darkTheme {
+		color: white;
+		border: 1px solid #b5b5b5;
+	}
+
+	#textfield-input.darkTheme::placeholder {
+		color: #919090;
+	}
+
 	#textfield-input:focus {
-		outline: 1px solid #787878;
+		outline: 1px solid #878787;
 	}
 `
