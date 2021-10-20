@@ -27,6 +27,10 @@ export const dropdownStyles = css`
 		border: none;
 	}
 
+	#dropdown-button.disabled.darkTheme {
+		background-color: #2e3b46b3;
+	}
+
 	#dropdown-button span {
 		text-align: left;
 		height: 21px;
