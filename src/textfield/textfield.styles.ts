@@ -30,6 +30,10 @@ export const textfieldStyles = css`
 		border: 1px solid #b5b5b5;
 	}
 
+	#textfield-input.darkTheme::-ms-reveal {
+		filter: invert(100%);
+	}
+
 	#textfield-input.darkTheme::placeholder {
 		color: #919090;
 	}
