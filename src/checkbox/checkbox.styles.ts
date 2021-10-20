@@ -32,17 +32,33 @@ export const checkboxStyles = css`
 		color: #212529;
 	}
 
+	#checkbox-label.darkTheme {
+		color: #f3f3f3;
+	}
+
 	#checkbox-label.disabled {
 		cursor: not-allowed;
 		color: #21252980;
 	}
 
-	svg {
+	#checkbox-label.disabled.darkTheme {
+		color: #f3f3f380;
+	}
+
+	#checkmark {
 		fill: #2b2b2b;
 		stroke-width: 0px;
 	}
 
-	#checkbox.disabled > svg {
+	#checkmark.darkTheme {
+		fill: #f3f3f3;
+	}
+
+	#checkbox.disabled > #checkmark {
 		fill: #2b2b2b80;
+	}
+
+	#checkbox.disabled > #checkmark.darkTheme {
+		fill: #f3f3f380;
 	}
 `
