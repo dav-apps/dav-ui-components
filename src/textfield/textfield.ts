@@ -24,7 +24,7 @@ export class Textfield extends LitElement {
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
-	@property() type: string = ""
+	@property() type: string = "text"
 	@property() autocomplete: string = "on"
 	@property() errorMessage: string = ""
 	@property({
@@ -44,8 +44,23 @@ export class Textfield extends LitElement {
 		}
 	}
 
+	getLabel() {
+		if (this.label != null && this.label.length > 0) {
+			return html`
+				<label
+					id="textfield-label"
+					class=${classMap(this.textfieldLabelClasses)}
+					for="textfield-input">
+					${this.label}
+				</label>
+			`
+		}
+
+		return html``
+	}
+
 	getErrorMessage() {
-		if (this.errorMessage.length > 0) {
+		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
 				<p id="textfield-error-message"
 					class="ms-motion-slideDownIn">
@@ -65,12 +80,7 @@ export class Textfield extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div>
-				<label
-					id="textfield-label"
-					class=${classMap(this.textfieldLabelClasses)}
-					for="textfield-input">
-					${this.label}
-				</label>
+				${this.getLabel()}
 
 				<input
 					id="textfield-input"

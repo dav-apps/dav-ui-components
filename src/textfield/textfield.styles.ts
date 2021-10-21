@@ -16,7 +16,7 @@ export const textfieldStyles = css`
 	#textfield-input {
 		margin: 2px 0px;
 		padding: 0px 9px;
-		width: 92%;
+		width: 100%;
 		height: 28px;
 		background: transparent;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
