@@ -1,15 +1,29 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
+import { classMap } from 'lit/directives/class-map.js'
+import { textareaStyles } from './textarea.styles.js'
+import { Theme } from '../types.js'
+import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
 
 export const textareaTagName = "dav-textarea"
 
 @customElement(textareaTagName)
 export class Textarea extends LitElement {
+	static styles = [textareaStyles]
+
 	@query("#textarea") textarea: HTMLTextAreaElement
+
+	@state() private textareaClasses = {
+		darkTheme: false
+	}
 
 	@property() value: string = ""
 	@property() placeholder: string = ""
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToTheme(value)
+	}) theme: Theme = Theme.light
 
 	input() {
 		this.dispatchEvent(new CustomEvent("change", {
@@ -18,10 +32,13 @@ export class Textarea extends LitElement {
 	}
 
 	render() {
+		this.textareaClasses.darkTheme = this.theme == Theme.dark
+
 		return html`
-			<div>
+			<div id="textarea-container">
 				<textarea
 					id="textarea"
+					class=${classMap(this.textareaClasses)}
 					name="textarea"
 					.value=${this.value}
 					placeholder=${this.placeholder}
