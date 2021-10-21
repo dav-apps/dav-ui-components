@@ -16,6 +16,9 @@ export class Textarea extends LitElement {
 
 	@query("#textarea") textarea: HTMLTextAreaElement
 
+	@state() private textareaLabelClasses = {
+		darkTheme: false
+	}
 	@state() private textareaClasses = {
 		darkTheme: false
 	}
@@ -25,6 +28,7 @@ export class Textarea extends LitElement {
 	}
 
 	@property() value: string = ""
+	@property() label: string = ""
 	@property() placeholder: string = ""
 	@property() resize: string = ""
 	@property() errorMessage: string = ""
@@ -47,6 +51,21 @@ export class Textarea extends LitElement {
 		}))
 	}
 
+	getLabel() {
+		if (this.label != null && this.label.length > 0) {
+			return html`
+				<label
+					id="textarea-label"
+					class=${classMap(this.textareaLabelClasses)}
+					for="textarea">
+					${this.label}
+				</label>
+			`
+		}
+
+		return html``
+	}
+
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
@@ -61,6 +80,7 @@ export class Textarea extends LitElement {
 	}
 
 	render() {
+		this.textareaLabelClasses.darkTheme = this.theme == Theme.dark
 		this.textareaClasses.darkTheme = this.theme == Theme.dark
 		this.textareaStyles.resize = this.resize
 
@@ -68,6 +88,8 @@ export class Textarea extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div id="textarea-container">
+				${this.getLabel()}
+
 				<textarea
 					id="textarea"
 					style=${styleMap(this.textareaStyles)}

@@ -7,6 +7,18 @@ export const textareaStyles = css`
 		align-items: flex-start;
 	}
 
+	#textarea-label {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size: 14px;
+		margin: 0 0 4px;
+		cursor: pointer;
+		color: #212529;
+	}
+
+	#textarea-label.darkTheme {
+		color: #f3f3f3;
+	}
+
 	#textarea {
 		padding: 6px 9px;
 		width: 100%;
