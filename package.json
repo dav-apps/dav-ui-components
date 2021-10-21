@@ -12,6 +12,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@fluentui/web-components": "^1.6.1",
+		"autosize": "^5.0.1",
 		"lit": "^2.0.2"
 	},
 	"devDependencies": {
