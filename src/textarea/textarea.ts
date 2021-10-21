@@ -27,6 +27,7 @@ export class Textarea extends LitElement {
 	@property() value: string = ""
 	@property() placeholder: string = ""
 	@property() resize: string = ""
+	@property() errorMessage: string = ""
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToTheme(value)
@@ -41,11 +42,22 @@ export class Textarea extends LitElement {
 	}
 
 	input() {
-		autosize(this.textarea)
-
 		this.dispatchEvent(new CustomEvent("change", {
 			detail: { value: this.textarea.value }
 		}))
+	}
+
+	getErrorMessage() {
+		if (this.errorMessage != null && this.errorMessage.length > 0) {
+			return html`
+				<p id="textarea-error-message"
+					class="ms-motion-slideDownIn">
+					${this.errorMessage}
+				</p>
+			`
+		}
+
+		return html``
 	}
 
 	render() {
@@ -53,6 +65,8 @@ export class Textarea extends LitElement {
 		this.textareaStyles.resize = this.resize
 
 		return html`
+			${getGlobalStyleHtml()}
+
 			<div id="textarea-container">
 				<textarea
 					id="textarea"
@@ -63,6 +77,8 @@ export class Textarea extends LitElement {
 					placeholder=${this.placeholder}
 					@input=${this.input}>
 				</textarea>
+
+				${this.getErrorMessage()}
 			</div>
 		`
 	}
