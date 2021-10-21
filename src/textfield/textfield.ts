@@ -26,6 +26,8 @@ export class Textfield extends LitElement {
 	@property() placeholder: string = ""
 	@property() type: string = "text"
 	@property() autocomplete: string = "on"
+	@property({ type: Number }) min: number = 0
+	@property({ type: Number }) max: number = 100
 	@property() errorMessage: string = ""
 	@property({
 		type: String,
@@ -90,6 +92,8 @@ export class Textfield extends LitElement {
 					type=${this.type}
 					placeholder=${this.placeholder}
 					autocomplete=${this.autocomplete}
+					min=${this.min}
+					max=${this.max}
 					@input=${this.input}
 					@keydown=${this.keydown}>
 
