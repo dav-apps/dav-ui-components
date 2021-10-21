@@ -10,6 +10,7 @@ import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
+import { Textarea, textareaTagName } from './src/textarea/textarea.js'
 import { Textfield, textfieldTagName } from './src/textfield/textfield.js'
 import { Toggle, toggleTagName } from './src/toggle/toggle.js'
 
@@ -21,6 +22,7 @@ declare global {
 		[dropdownTagName]: Dropdown,
 		[messageBarTagName]: MessageBar,
 		[panelTagName]: Panel,
+		[textareaTagName]: Textarea,
 		[textfieldTagName]: Textfield,
 		[toggleTagName]: Toggle,
 	}
@@ -36,6 +38,7 @@ export {
 	Dropdown,
 	MessageBar,
 	Panel,
+	Textarea,
 	Textfield,
 	Toggle
 }
