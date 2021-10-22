@@ -15,15 +15,18 @@ export class Textfield extends LitElement {
 	@query("#textfield-input") textfieldInput: HTMLInputElement
 
 	@state() private textfieldLabelClasses = {
+		disabled: false,
 		darkTheme: false
 	}
 	@state() private textfieldInputClasses = {
+		disabled: false,
 		darkTheme: false
 	}
 
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
+	@property({ type: Boolean }) disabled: boolean = false
 	@property() type: string = "text"
 	@property() autocomplete: string = "on"
 	@property({ type: Number }) min: number = 0
@@ -75,7 +78,9 @@ export class Textfield extends LitElement {
 	}
 
 	render() {
+		this.textfieldLabelClasses.disabled = this.disabled
 		this.textfieldLabelClasses.darkTheme = this.theme == Theme.dark
+		this.textfieldInputClasses.disabled = this.disabled
 		this.textfieldInputClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
@@ -89,6 +94,8 @@ export class Textfield extends LitElement {
 					class=${classMap(this.textfieldInputClasses)}
 					name="textfield-input"
 					.value=${this.value}
+					?aria-disabled=${this.disabled}
+					?readonly=${this.disabled}
 					type=${this.type}
 					placeholder=${this.placeholder}
 					autocomplete=${this.autocomplete}

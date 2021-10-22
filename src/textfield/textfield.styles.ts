@@ -13,6 +13,15 @@ export const textfieldStyles = css`
 		color: #f3f3f3;
 	}
 
+	#textfield-label.disabled {
+		cursor: not-allowed;
+		color: #212529b3;
+	}
+
+	#textfield-label.disabled.darkTheme {
+		color: #f3f3f3b3;
+	}
+
 	#textfield-input {
 		margin: 2px 0px;
 		padding: 0px 9px;
@@ -30,12 +39,31 @@ export const textfieldStyles = css`
 		border: 1px solid #b5b5b5;
 	}
 
+	#textfield-input.disabled {
+		cursor: not-allowed;
+		border: 1px solid #c3c3c3;
+		color: #8d8d8d;
+	}
+
+	#textfield-input.disabled.darkTheme {
+		border: 1px solid #707070;
+		color: #c5c5c5;
+	}
+
 	#textfield-input.darkTheme::-ms-reveal {
 		filter: invert(100%);
 	}
 
 	#textfield-input.darkTheme::placeholder {
 		color: #919090;
+	}
+
+	#textfield-input.disabled::placeholder {
+		color: #d6d6d6;
+	}
+
+	#textfield-input.disabled.darkTheme::placeholder {
+		color: #767676;
 	}
 
 	#textfield-input:focus {
