@@ -29,6 +29,7 @@ export class Textfield extends LitElement {
 	@property({ type: Boolean }) disabled: boolean = false
 	@property() type: string = "text"
 	@property() autocomplete: string = "on"
+	@property({ type: Boolean }) autofocus: boolean = false
 	@property({ type: Number }) min: number = 0
 	@property({ type: Number }) max: number = 100
 	@property() errorMessage: string = ""
@@ -96,6 +97,7 @@ export class Textfield extends LitElement {
 					.value=${this.value}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
+					?autofocus=${this.autofocus}
 					type=${this.type}
 					placeholder=${this.placeholder}
 					autocomplete=${this.autocomplete}
