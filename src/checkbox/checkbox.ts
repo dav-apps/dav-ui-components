@@ -21,7 +21,8 @@ export class Checkbox extends LitElement {
 	}
 	@state() private checkboxLabelClasses = {
 		disabled: false,
-		darkTheme: false
+		darkTheme: false,
+		empty: false
 	}
 
 	@state() private checkmarkPathStyles = {
@@ -62,6 +63,7 @@ export class Checkbox extends LitElement {
 		this.checkmarkClasses.darkTheme = this.theme == Theme.dark
 		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkboxLabelClasses.darkTheme = this.theme == Theme.dark
+		this.checkboxLabelClasses.empty = this.label.length == 0
 
 		this.checkmarkPathStyles.display = this.checked ? "unset" : "none"
 

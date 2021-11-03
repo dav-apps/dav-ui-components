@@ -32,6 +32,10 @@ export const checkboxStyles = css`
 		color: #212529;
 	}
 
+	#checkbox-label.empty {
+		padding: 0;
+	}
+
 	#checkbox-label.darkTheme {
 		color: #f3f3f3;
 	}
