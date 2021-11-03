@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { checkboxStyles } from './checkbox.styles.js'
 import { Theme } from '../types.js'
-import { convertStringToTheme } from '../utils.js'
+import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
 
 export const checkboxTagName = "dav-checkbox"
 
@@ -22,7 +22,8 @@ export class Checkbox extends LitElement {
 	@state() private checkboxLabelClasses = {
 		disabled: false,
 		darkTheme: false,
-		empty: false
+		empty: false,
+		"visually-hidden": false
 	}
 
 	@state() private checkmarkPathStyles = {
@@ -32,6 +33,7 @@ export class Checkbox extends LitElement {
 	@property() label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({ type: Boolean }) labelHidden: boolean = false
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToTheme(value)
@@ -64,10 +66,13 @@ export class Checkbox extends LitElement {
 		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkboxLabelClasses.darkTheme = this.theme == Theme.dark
 		this.checkboxLabelClasses.empty = this.label.length == 0
+		this.checkboxLabelClasses['visually-hidden'] = this.labelHidden
 
 		this.checkmarkPathStyles.display = this.checked ? "unset" : "none"
 
 		return html`
+			${getGlobalStyleHtml()}
+
 			<div
 				id="checkbox"
 				class=${classMap(this.checkboxClasses)}
