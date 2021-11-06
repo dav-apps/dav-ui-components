@@ -12,8 +12,9 @@ export class ContextMenu extends LitElement {
 	static styles = [contextMenuStyles]
 
 	@state() private containerClasses = {
+		"ms-Fabric": true,
 		"ms-motion-slideDownIn": true,
-		"shadow-sm": true,
+		"ms-depth-16": true,
 		visible: false
 	}
 

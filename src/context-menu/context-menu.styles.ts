@@ -6,6 +6,8 @@ export const contextMenuStyles = css`
 		position: absolute;
 		background-color: #FFFFFF;
 		border-radius: 4px;
+		font-size: 16px;
+		padding: 4px;
 	}
 
 	#container.visible {
