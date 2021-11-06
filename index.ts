@@ -6,6 +6,8 @@ import { DropdownOption, DropdownOptionType } from './src/types.js'
 // Components
 import { Button, buttonTagName } from './src/button/button.js'
 import { Checkbox, checkboxTagName } from './src/checkbox/checkbox.js'
+import { ContextMenu, contextMenuTagName } from './src/context-menu/context-menu.js'
+import { ContextMenuItem, contextMenuItemTagName } from './src/context-menu-item/context-menu-item.js'
 import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
@@ -18,6 +20,8 @@ declare global {
 	interface HTMLElementTagNameMap {
 		[buttonTagName]: Button,
 		[checkboxTagName]: Checkbox,
+		[contextMenuTagName]: ContextMenu,
+		[contextMenuItemTagName]: ContextMenuItem,
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
 		[messageBarTagName]: MessageBar,
@@ -34,6 +38,8 @@ export {
 	DropdownOptionType,
 	Button,
 	Checkbox,
+	ContextMenu,
+	ContextMenuItem,
 	Dialog,
 	Dropdown,
 	MessageBar,
