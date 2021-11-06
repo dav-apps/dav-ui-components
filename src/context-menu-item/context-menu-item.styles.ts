@@ -14,8 +14,17 @@ export const contextMenuItemStyles = css`
 		transition: 0.1s;
 	}
 
-	button:hover, button:hover {
+	button:focus, button:hover {
 		background-color: #e9e9e9;
+	}
+
+	button.darkTheme {
+		color: white;
+		background-color: #2e3b46;
+	}
+
+	button.darkTheme:focus, button.darkTheme:hover {
+		background-color: #26313a;
 	}
 
 	i {

@@ -13,4 +13,9 @@ export const contextMenuStyles = css`
 	#container.visible {
 		display: inline-block;
 	}
+
+	#container.darkTheme {
+		color: white;
+		background-color: #2e3b46;
+	}
 `

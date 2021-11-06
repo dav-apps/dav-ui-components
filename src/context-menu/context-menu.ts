@@ -2,7 +2,8 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { getGlobalStyleHtml } from '../utils.js'
+import { Theme } from '../types.js'
+import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
 import { contextMenuStyles } from './context-menu.styles.js'
 
 export const contextMenuTagName = "dav-context-menu"
@@ -15,7 +16,8 @@ export class ContextMenu extends LitElement {
 		"ms-Fabric": true,
 		"ms-motion-slideDownIn": true,
 		"ms-depth-16": true,
-		visible: false
+		visible: false,
+		darkTheme: false
 	}
 
 	@state() private containerStyles = {
@@ -26,6 +28,10 @@ export class ContextMenu extends LitElement {
 	@property({ type: Boolean }) isVisible: boolean = false
 	@property({ type: Number }) posX: number = 0
 	@property({ type: Number }) posY: number = 0
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToTheme(value)
+	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -45,6 +51,7 @@ export class ContextMenu extends LitElement {
 
 	render() {
 		this.containerClasses.visible = this.isVisible
+		this.containerClasses.darkTheme = this.theme == Theme.dark
 
 		this.containerStyles.top = `${this.posX}px`
 		this.containerStyles.left = `${this.posY}px`
