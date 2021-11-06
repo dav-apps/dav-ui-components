@@ -7,6 +7,7 @@ import { DropdownOption, DropdownOptionType } from './src/types.js'
 import { Button, buttonTagName } from './src/button/button.js'
 import { Checkbox, checkboxTagName } from './src/checkbox/checkbox.js'
 import { ContextMenu, contextMenuTagName } from './src/context-menu/context-menu.js'
+import { ContextMenuDivider, contextMenuDividerTagName } from './src/context-menu-divider/context-menu-divider.js'
 import { ContextMenuItem, contextMenuItemTagName } from './src/context-menu-item/context-menu-item.js'
 import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
@@ -21,6 +22,7 @@ declare global {
 		[buttonTagName]: Button,
 		[checkboxTagName]: Checkbox,
 		[contextMenuTagName]: ContextMenu,
+		[contextMenuDividerTagName]: ContextMenuDivider,
 		[contextMenuItemTagName]: ContextMenuItem,
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
@@ -39,6 +41,7 @@ export {
 	Button,
 	Checkbox,
 	ContextMenu,
+	ContextMenuDivider,
 	ContextMenuItem,
 	Dialog,
 	Dropdown,

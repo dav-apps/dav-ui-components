@@ -35,8 +35,8 @@ export function convertStringToTheme(theme: string) {
 	}
 }
 
-export function convertStringToButtonType(type: string) {
-	switch (type) {
+export function convertStringToButtonType(value: string) {
+	switch (value) {
 		case "accent":
 			return ButtonType.accent
 		case "danger":
