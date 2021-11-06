@@ -9,7 +9,7 @@ export const contextMenuItemTagName = "dav-context-menu-item"
 export class ContextMenuItem extends LitElement {
 	static styles = [contextMenuItemStyles]
 
-	@property() text: string = ""
+	@property() value: string = ""
 	@property() icon: string = "SingleColumn"
 
 	render() {
@@ -18,7 +18,7 @@ export class ContextMenuItem extends LitElement {
 
 			<button dir="ltr">
 				<i class="ms-Icon ms-Icon--${this.icon}" aria-hidden="true"></i>
-				<span>${this.text}</span>
+				<span>${this.value}</span>
 			</button>
 		`
 	}

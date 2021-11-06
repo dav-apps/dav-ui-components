@@ -7,6 +7,7 @@ export const contextMenuItemStyles = css`
 		width: 100%;
 		height: 37px;
 		border: none;
+		border-radius: 4px;
 		background-color: transparent;
 		color: black;
 		padding: 4px 10px;
