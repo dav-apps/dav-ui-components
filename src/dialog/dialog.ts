@@ -5,7 +5,8 @@ import { styleMap } from 'lit/directives/style-map.js'
 import { ButtonType } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	convertStringToTheme,
+	subscribeThemeChange,
+	unsubscribeThemeChange,
 	convertStringToButtonType
 } from '../utils.js'
 import { Theme } from '../types.js'
@@ -25,7 +26,6 @@ export class Dialog extends LitElement {
 	@state() private headerClasses = {
 		darkTheme: false
 	}
-
 	@state() private containerStyles = {
 		display: "flex",
 		justifyContent: "center",
@@ -40,6 +40,8 @@ export class Dialog extends LitElement {
 	@state() private dialogStyles = {
 		maxWidth: "600px"
 	}
+
+	@state() private theme: Theme = Theme.light
 	@state() private dualScreenLayout: boolean = false
 
 	@property() header: string = ""
@@ -52,19 +54,23 @@ export class Dialog extends LitElement {
 		converter: (value: string) => convertStringToButtonType(value)
 	}) primaryButtonType: ButtonType = ButtonType.accent
 	@property({ type: Number }) maxWidth: number = 600
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
 
 		if (window["getWindowSegments"]()) {
 			let screenSegments = window["getWindowSegments"]()
 			this.dualScreenLayout = screenSegments.length > 1 && screenSegments[0].width == screenSegments[1].width
 		}
 	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	private overlayClick() {
 		if (!this.isLoading) {

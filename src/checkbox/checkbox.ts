@@ -4,7 +4,11 @@ import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { checkboxStyles } from './checkbox.styles.js'
 import { Theme } from '../types.js'
-import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 
 export const checkboxTagName = "dav-checkbox"
 
@@ -25,19 +29,28 @@ export class Checkbox extends LitElement {
 		empty: false,
 		"visually-hidden": false
 	}
-
 	@state() private checkmarkPathStyles = {
 		display: "none"
 	}
+
+	@state() private theme: Theme = Theme.light
 
 	@property() label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Boolean }) labelHidden: boolean = false
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	checkboxClick() {
 		this.toggleCheckbox()

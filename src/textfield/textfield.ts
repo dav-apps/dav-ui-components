@@ -4,7 +4,11 @@ import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { textfieldStyles } from './textfield.styles.js'
 import { Theme } from '../types.js'
-import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 
 export const textfieldTagName = "dav-textfield"
 
@@ -23,6 +27,8 @@ export class Textfield extends LitElement {
 		darkTheme: false
 	}
 
+	@state() private theme: Theme = Theme.light
+
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
@@ -33,10 +39,18 @@ export class Textfield extends LitElement {
 	@property({ type: Number }) min: number = 0
 	@property({ type: Number }) max: number = 100
 	@property() errorMessage: string = ""
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	input() {
 		this.dispatchEvent(new CustomEvent("change", {

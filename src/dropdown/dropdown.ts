@@ -3,7 +3,12 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { dropdownStyles } from './dropdown.styles.js'
-import { getGlobalStyleHtml, getLocale, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	getLocale,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 import { DropdownOption, Theme, DropdownOptionType } from '../types.js'
 
 export const dropdownTagName = "dav-dropdown"
@@ -11,8 +16,6 @@ export const dropdownTagName = "dav-dropdown"
 @customElement(dropdownTagName)
 export class Dropdown extends LitElement {
 	static styles = [dropdownStyles]
-
-	@state() private locale = getLocale().dropdown
 
 	@state() private dropdownLabelClasses = {
 		darkTheme: false
@@ -29,7 +32,6 @@ export class Dropdown extends LitElement {
 		"dropdown-divider": true,
 		darkTheme: false
 	}
-
 	@state() private dropdownButtonStyles = {
 		width: "160px"
 	}
@@ -38,27 +40,30 @@ export class Dropdown extends LitElement {
 		display: "none"
 	}
 
+	@state() private locale = getLocale().dropdown
+	@state() private theme: Theme = Theme.light
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
+
 	@property() label: string = ""
 	@property({ type: Array }) options: DropdownOption[] = []
 	@property() selectedKey: string = ""
 	@property({ type: Number }) width: number = 160
 	@property({ type: Boolean }) disabled: boolean = false
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
 		document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
 		document.removeEventListener("click", this.documentClick)
 	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {

@@ -2,7 +2,11 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { Theme } from '../types.js'
-import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 import { contextMenuItemStyles } from './context-menu-item.styles.js'
 
 export const contextMenuItemTagName = "dav-context-menu-item"
@@ -15,12 +19,22 @@ export class ContextMenuItem extends LitElement {
 		darkTheme: false
 	}
 
+	@state() private theme: Theme = Theme.light
+
 	@property() value: string = ""
 	@property() icon: string = "SingleColumn"
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	render() {
 		this.buttonClasses.darkTheme = this.theme == Theme.dark

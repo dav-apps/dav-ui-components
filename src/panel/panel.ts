@@ -3,7 +3,11 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 import { Theme } from '../types.js'
 import { panelStyles } from './panel.styles.js'
 import { slideIn, slideOut } from './panel.animations.js'
@@ -24,17 +28,26 @@ export class Panel extends LitElement {
 	@state() private headerClasses = {
 		darkTheme: false
 	}
-
 	@state() private containerStyles = {
 		display: "none"
 	}
 
+	@state() private theme: Theme = Theme.light
+
 	@property() header: string = ""
 	@property({ type: Boolean }) isVisible: boolean = false
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	updated(changedProperties: Map<string, any>) {
 		if (changedProperties.has("isVisible") && changedProperties.get("isVisible") != null) {

@@ -6,7 +6,11 @@ import { classMap } from 'lit/directives/class-map.js'
 import autosize from 'autosize'
 import { textareaStyles } from './textarea.styles.js'
 import { Theme } from '../types.js'
-import { getGlobalStyleHtml, convertStringToTheme } from '../utils.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 
 export const textareaTagName = "dav-textarea"
 
@@ -22,28 +26,33 @@ export class Textarea extends LitElement {
 	@state() private textareaClasses = {
 		darkTheme: false
 	}
-
 	@state() private textareaStyles = {
 		resize: "auto"
 	}
+
+	@state() private theme: Theme = Theme.light
 
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
 	@property() resize: string = ""
 	@property() errorMessage: string = ""
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToTheme(value)
-	}) theme: Theme = Theme.light
 
 	connectedCallback() {
 		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
 
 		setTimeout(() => {
 			autosize(this.textarea)
 		}, 1)
 	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	input() {
 		this.dispatchEvent(new CustomEvent("change", {
