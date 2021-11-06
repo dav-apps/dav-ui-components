@@ -1,6 +1,6 @@
 import '@fluentui/web-components'
 
-import { setLocale } from './src/utils.js'
+import { setLocale, setTheme } from './src/utils.js'
 import { DropdownOption, DropdownOptionType } from './src/types.js'
 
 // Components
@@ -36,6 +36,7 @@ declare global {
 
 export {
 	setLocale,
+	setTheme,
 	DropdownOption,
 	DropdownOptionType,
 	Button,

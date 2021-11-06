@@ -3,6 +3,8 @@ import { en, de } from './locale.js'
 import { Theme, ButtonType } from './types.js'
 
 var locale: string = "en"
+var theme: Theme = Theme.light
+var themeChangeCallbacks: Function[] = []
 
 export function getGlobalStyleHtml() {
 	return html`
@@ -26,13 +28,23 @@ export function getLocale() {
 	}
 }
 
-export function convertStringToTheme(theme: string) {
-	switch (theme) {
-		case "dark":
-			return Theme.dark
-		default:
-			return Theme.light
+export function setTheme(darkTheme: boolean) {
+	theme = darkTheme ? Theme.dark : Theme.light
+
+	// Trigger all callbacks with the new theme
+	for (let callback of themeChangeCallbacks) {
+		callback(theme)
 	}
+}
+
+export function subscribeThemeChange(callback: Function) {
+	themeChangeCallbacks.push(callback)
+	callback(theme)
+}
+
+export function unsubscribeThemeChange(callback: Function) {
+	let i = themeChangeCallbacks.indexOf(callback)
+	if (i != -1) themeChangeCallbacks.splice(i, 1)
 }
 
 export function convertStringToButtonType(value: string) {
