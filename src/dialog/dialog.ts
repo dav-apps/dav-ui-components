@@ -59,8 +59,15 @@ export class Dialog extends LitElement {
 		super.connectedCallback()
 		subscribeThemeChange(this.themeChange)
 
-		if (window["getWindowSegments"]()) {
-			let screenSegments = window["getWindowSegments"]()
+		let screenSegments: any
+
+		if (window["getWindowSegments"]) {
+			screenSegments = window["getWindowSegments"]()
+		} else if (window.visualViewport["segments"]) {
+			screenSegments = window.visualViewport["segments"]
+		}
+
+		if (screenSegments != null) {
 			this.dualScreenLayout = screenSegments.length > 1 && screenSegments[0].width == screenSegments[1].width
 		}
 	}
