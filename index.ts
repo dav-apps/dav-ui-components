@@ -14,6 +14,7 @@ import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
 import { Sidenav, sidenavTagName } from './src/sidenav/sidenav.js'
+import { SidenavContainer, sidenavContainerTagName } from './src/sidenav-container/sidenav-container.js'
 import { SidenavItem, sidenavItemTagName } from './src/sidenav-item/sidenav-item.js'
 import { Textarea, textareaTagName } from './src/textarea/textarea.js'
 import { Textfield, textfieldTagName } from './src/textfield/textfield.js'
@@ -31,6 +32,7 @@ declare global {
 		[messageBarTagName]: MessageBar,
 		[panelTagName]: Panel,
 		[sidenavTagName]: Sidenav,
+		[sidenavContainerTagName]: SidenavContainer,
 		[sidenavItemTagName]: SidenavItem,
 		[textareaTagName]: Textarea,
 		[textfieldTagName]: Textfield,
@@ -53,6 +55,7 @@ export {
 	MessageBar,
 	Panel,
 	Sidenav,
+	SidenavContainer,
 	SidenavItem,
 	Textarea,
 	Textfield,
