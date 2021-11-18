@@ -3,8 +3,13 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { SidenavMode } from '../types.js'
-import { getGlobalStyleHtml, convertStringToSidenavMode } from '../utils.js'
+import { Theme, SidenavMode } from '../types.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange,
+	convertStringToSidenavMode
+} from '../utils.js'
 import { sidenavStyles } from './sidenav.styles.js'
 import { showOverlay, hideOverlay } from './sidenav.animations.js'
 
@@ -19,7 +24,8 @@ export class Sidenav extends LitElement {
 
 	@state() private containerClasses = {
 		shadow: true,
-		over: false
+		over: false,
+		darkTheme: false
 	}
 	@state() private overlayStyles = {
 		display: "none"
@@ -29,6 +35,7 @@ export class Sidenav extends LitElement {
 		left: "-300px"
 	}
 
+	@state() private theme: Theme = Theme.light
 	@state() private initialized: boolean = false
 
 	@property({ type: Boolean }) open: boolean = false
@@ -36,6 +43,18 @@ export class Sidenav extends LitElement {
 		type: String,
 		converter: (value: string) => convertStringToSidenavMode(value)
 	}) mode: SidenavMode = SidenavMode.side
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	updated(changedProperties: Map<string, any>) {
 		if (
@@ -64,6 +83,7 @@ export class Sidenav extends LitElement {
 
 	render() {
 		this.containerClasses.over = this.mode == SidenavMode.over
+		this.containerClasses.darkTheme = this.theme == Theme.dark
 		this.containerStyles.display = this.hidden ? "none" : "block"
 
 		if (this.container != null) {
