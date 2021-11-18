@@ -30,7 +30,7 @@ export class ContextMenu extends LitElement {
 
 	@state() private theme: Theme = Theme.light
 
-	@property({ type: Boolean }) isVisible: boolean = false
+	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Number }) posX: number = 0
 	@property({ type: Number }) posY: number = 0
 
@@ -50,12 +50,12 @@ export class ContextMenu extends LitElement {
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {
-			this.isVisible = false
+			this.visible = false
 		}
 	}
 
 	render() {
-		this.containerClasses.visible = this.isVisible
+		this.containerClasses.visible = this.visible
 		this.containerClasses.darkTheme = this.theme == Theme.dark
 
 		this.containerStyles.top = `${this.posX}px`

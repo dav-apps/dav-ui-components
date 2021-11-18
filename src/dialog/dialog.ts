@@ -47,8 +47,8 @@ export class Dialog extends LitElement {
 	@property() header: string = ""
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
-	@property({ type: Boolean }) isVisible: boolean = false
-	@property({ type: Boolean }) isLoading: boolean = false
+	@property({ type: Boolean }) visible: boolean = false
+	@property({ type: Boolean }) loading: boolean = false
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonType(value)
@@ -80,7 +80,7 @@ export class Dialog extends LitElement {
 	themeChange = (theme: Theme) => this.theme = theme
 
 	private overlayClick() {
-		if (!this.isLoading) {
+		if (!this.loading) {
 			this.dispatchEvent(new CustomEvent("dismiss"))
 		}
 	}
@@ -94,7 +94,7 @@ export class Dialog extends LitElement {
 	}
 
 	getProgressRing() {
-		if (this.isLoading) {
+		if (this.loading) {
 			return html`
 				<fluent-progress-ring
 					style="width: 16px; height: 16px; margin: 8px 14px 0px 0px;"
@@ -110,7 +110,7 @@ export class Dialog extends LitElement {
 		if (this.defaultButtonText.length > 0) {
 			return html`
 				<dav-button
-					?disabled=${this.isLoading}
+					?disabled=${this.loading}
 					@click=${this.defaultButtonClick}>
 					${this.defaultButtonText}
 				</dav-button>
@@ -126,7 +126,7 @@ export class Dialog extends LitElement {
 				<dav-button
 					style="margin-left: 10px"
 					type=${this.primaryButtonType}
-					?disabled=${this.isLoading}
+					?disabled=${this.loading}
 					@click=${this.primaryButtonClick}>
 					${this.primaryButtonText}
 				</dav-button>
@@ -138,7 +138,7 @@ export class Dialog extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
-		this.containerStyles.display = this.isVisible ? "flex" : "none"
+		this.containerStyles.display = this.visible ? "flex" : "none"
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
 

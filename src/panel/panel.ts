@@ -35,7 +35,7 @@ export class Panel extends LitElement {
 	@state() private theme: Theme = Theme.light
 
 	@property() header: string = ""
-	@property({ type: Boolean }) isVisible: boolean = false
+	@property({ type: Boolean }) visible: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -50,8 +50,8 @@ export class Panel extends LitElement {
 	themeChange = (theme: Theme) => this.theme = theme
 
 	updated(changedProperties: Map<string, any>) {
-		if (changedProperties.has("isVisible") && changedProperties.get("isVisible") != null) {
-			let newIsVisible = !changedProperties.get("isVisible") as boolean
+		if (changedProperties.has("visible") && changedProperties.get("visible") != null) {
+			let newIsVisible = !changedProperties.get("visible") as boolean
 			let animation: Animation
 
 			if (newIsVisible) {
@@ -82,7 +82,7 @@ export class Panel extends LitElement {
 		this.contentClasses.darkTheme = this.theme == Theme.dark
 		this.headerClasses.darkTheme = this.theme == Theme.dark
 
-		if (this.isVisible) {
+		if (this.visible) {
 			this.containerStyles.display = "block"
 		}
 
