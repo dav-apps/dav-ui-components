@@ -4,6 +4,7 @@ export const sidenavItemStyles = css`
 	button {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		width: 100%;
 		height: 37px;
 		border: none;
@@ -11,7 +12,7 @@ export const sidenavItemStyles = css`
 		background-color: transparent;
 		color: black;
 		padding: 4px 14px;
-		margin: 3px 0px;
+		margin: 5px 0px;
 		transition: 0.1s;
 	}
 

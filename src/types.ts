@@ -19,3 +19,8 @@ export enum DropdownOptionType {
 	option,
 	divider
 }
+
+export enum SidenavMode {
+	side = "side",
+	over = "over"
+}

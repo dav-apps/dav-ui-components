@@ -1,6 +1,6 @@
 import { html } from 'lit'
 import { en, de } from './locale.js'
-import { Theme, ButtonType } from './types.js'
+import { Theme, ButtonType, SidenavMode } from './types.js'
 
 var locale: string = "en"
 var theme: Theme = Theme.light
@@ -47,7 +47,7 @@ export function unsubscribeThemeChange(callback: Function) {
 	if (i != -1) themeChangeCallbacks.splice(i, 1)
 }
 
-export function convertStringToButtonType(value: string) {
+export function convertStringToButtonType(value: string): ButtonType {
 	switch (value) {
 		case "accent":
 			return ButtonType.accent
@@ -55,5 +55,14 @@ export function convertStringToButtonType(value: string) {
 			return ButtonType.danger
 		default:
 			return ButtonType.default
+	}
+}
+
+export function convertStringToSidenavMode(value: string): SidenavMode {
+	switch (value) {
+		case "over":
+			return SidenavMode.over
+		default:
+			return SidenavMode.side
 	}
 }
