@@ -1,6 +1,11 @@
 import { html } from 'lit'
 import { en, de } from './locale.js'
-import { Theme, ButtonType, SidenavMode } from './types.js'
+import {
+	Theme,
+	ButtonType,
+	SidenavMode,
+	HeaderSize
+} from './types.js'
 
 var locale: string = "en"
 var theme: Theme = Theme.light
@@ -64,5 +69,16 @@ export function convertStringToSidenavMode(value: string): SidenavMode {
 			return SidenavMode.over
 		default:
 			return SidenavMode.side
+	}
+}
+
+export function convertStringToHeaderSize(value: string): HeaderSize {
+	switch (value) {
+		case "big":
+			return HeaderSize.big
+		case "small":
+			return HeaderSize.small
+		default:
+			return HeaderSize.normal
 	}
 }

@@ -24,3 +24,9 @@ export enum SidenavMode {
 	side = "side",
 	over = "over"
 }
+
+export enum HeaderSize {
+	big = "big",
+	normal = "normal",
+	small = "small"
+}

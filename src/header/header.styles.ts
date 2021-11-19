@@ -4,7 +4,6 @@ export const headerStyles = css`
 	#header {
 		display: flex;
 		justify-content: center;
-		align-items: center;
 	}
 
 	#header.darkTheme {
