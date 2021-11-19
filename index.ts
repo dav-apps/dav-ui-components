@@ -11,6 +11,7 @@ import { ContextMenuDivider, contextMenuDividerTagName } from './src/context-men
 import { ContextMenuItem, contextMenuItemTagName } from './src/context-menu-item/context-menu-item.js'
 import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
+import { Header, headerTagName } from './src/header/header.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
 import { Sidenav, sidenavTagName } from './src/sidenav/sidenav.js'
@@ -29,6 +30,7 @@ declare global {
 		[contextMenuItemTagName]: ContextMenuItem,
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
+		[headerTagName]: Header,
 		[messageBarTagName]: MessageBar,
 		[panelTagName]: Panel,
 		[sidenavTagName]: Sidenav,
@@ -52,6 +54,7 @@ export {
 	ContextMenuItem,
 	Dialog,
 	Dropdown,
+	Header,
 	MessageBar,
 	Panel,
 	Sidenav,
