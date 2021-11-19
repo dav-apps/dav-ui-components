@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
+import { styleMap } from 'lit/directives/style-map.js'
 import { Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
@@ -15,6 +16,10 @@ export const sidenavItemTagName = "dav-sidenav-item"
 export class SidenavItem extends LitElement {
 	static styles = [sidenavItemStyles]
 
+	@state() private spanStyles = {
+		marginLeft: "0px"
+	}
+
 	@state() private buttonClasses = {
 		darkTheme: false
 	}
@@ -23,6 +28,7 @@ export class SidenavItem extends LitElement {
 
 	@property() value: string = ""
 	@property() icon: string = ""
+	@property({ type: Boolean }) indent: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -49,12 +55,18 @@ export class SidenavItem extends LitElement {
 	render() {
 		this.buttonClasses.darkTheme = this.theme == Theme.dark
 
+		if (this.icon.length == 0 && this.indent) {
+			this.spanStyles.marginLeft = "12px"
+		} else {
+			this.spanStyles.marginLeft = "0px"
+		}
+
 		return html`
 			${getGlobalStyleHtml()}
 
 			<button class=${classMap(this.buttonClasses)} dir="ltr" role="link">
 				${this.getIcon()}
-				<span>${this.value}</span>
+				<span style=${styleMap(this.spanStyles)}>${this.value}</span>
 			</button>
 		`
 	}
