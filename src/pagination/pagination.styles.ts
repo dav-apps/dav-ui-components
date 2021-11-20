@@ -21,7 +21,7 @@ export const paginationStyles = css`
 		transition: 0.2s;
 	}
 
-	.pagination-button:not(.selected):hover {
+	.pagination-button:not(.selected, .disabled):hover, .pagination-button:not(.selected, .disabled):active {
 		background-color: #efefef;
 		border-color: #efefef;
 	}
@@ -32,9 +32,13 @@ export const paginationStyles = css`
 		border-color: #1c2938;
 	}
 
-	.pagination-button.darkTheme:not(.selected):hover {
+	.pagination-button.darkTheme:not(.selected, .disabled):hover, .pagination-button.darkTheme:not(.selected, .disabled):active {
 		background-color: #232e3c;
 		border-color: #232e3c;
+	}
+
+	.pagination-button.disabled {
+		cursor: not-allowed;
 	}
 
 	.selected {

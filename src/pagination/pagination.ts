@@ -17,10 +17,12 @@ export class Pagination extends LitElement {
 
 	@state() private backButtonClasses = {
 		"pagination-button": true,
+		disabled: false,
 		darkTheme: false
 	}
 	@state() private forwardButtonClasses = {
 		"pagination-button": true,
+		disabled: false,
 		darkTheme: false
 	}
 
@@ -66,33 +68,39 @@ export class Pagination extends LitElement {
 	}
 
 	getBackButton() {
-		this.backButtonClasses.darkTheme = this.theme == Theme.dark
+		if (this.pages <= 0) return
+		let disabled = this.currentPage == 1
 
-		if (this.pages > 1) {
-			return html`
-				<button
-					id="back-button"
-					class=${classMap(this.backButtonClasses)}
-					@click=${this.backButtonClick}>
-					<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
-				</button>
-			`
-		}
+		this.backButtonClasses.darkTheme = this.theme == Theme.dark
+		this.backButtonClasses.disabled = disabled
+
+		return html`
+			<button
+				id="back-button"
+				class=${classMap(this.backButtonClasses)}
+				?aria-disabled=${disabled}
+				@click=${this.backButtonClick}>
+				<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
+			</button>
+		`
 	}
 
 	getForwardButton() {
-		this.forwardButtonClasses.darkTheme = this.theme == Theme.dark
+		if (this.pages <= 0) return
+		let disabled = this.currentPage == this.pages
 
-		if (this.pages > 1) {
-			return html`
-				<button
-					id="forward-button"
-					class=${classMap(this.forwardButtonClasses)}
-					@click=${this.forwardButtonClick}>
-					<i class="ms-Icon ms-Icon--Forward" aria-hidden="true"></i>
-				</button>
-			`
-		}
+		this.forwardButtonClasses.darkTheme = this.theme == Theme.dark
+		this.forwardButtonClasses.disabled = disabled
+
+		return html`
+			<button
+				id="forward-button"
+				class=${classMap(this.forwardButtonClasses)}
+				?aria-disabled=${disabled}
+				@click=${this.forwardButtonClick}>
+				<i class="ms-Icon ms-Icon--Forward" aria-hidden="true"></i>
+			</button>
+		`
 	}
 
 	getPageButton(index: number) {
