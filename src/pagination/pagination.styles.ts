@@ -44,4 +44,16 @@ export const paginationStyles = css`
 	.selected.darkTheme {
 		background-color: #3d4753;
 	}
+
+	.button-placeholder {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 38px;
+		margin: 0px 1px;
+	}
+
+	.button-placeholder.darkTheme {
+		color: white;
+	}
 `

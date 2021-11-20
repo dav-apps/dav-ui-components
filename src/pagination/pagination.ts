@@ -25,6 +25,8 @@ export class Pagination extends LitElement {
 	}
 
 	@state() private theme: Theme = Theme.light
+	@state() private reducedStart: boolean = false
+	@state() private reducedEnd: boolean = false
 
 	@property({ type: Number }) pages: number = 1
 	@property({ type: Number }) currentPage: number = 1
@@ -111,17 +113,50 @@ export class Pagination extends LitElement {
 		}
 	}
 
+	getButtonPlaceholder() {
+		let buttonPlaceholderClasses = {
+			"button-placeholder": true,
+			darkTheme: this.theme == Theme.dark
+		}
+
+		return html`
+			<div class=${classMap(buttonPlaceholderClasses)}>
+				<span>…</span>
+			</div>
+		`
+	}
+
 	getPageButtons() {
 		let buttons = []
+		let reducedStartAdded: boolean = false
+		let reducedEndAdded: boolean = false
 
 		for (let i = 0; i < this.pages; i++) {
-			buttons.push(this.getPageButton(i + 1))
+			let index = i + 1
+
+			// Check if the current index is within the reduced start or end
+			if (this.reducedStart && index <= this.currentPage - 2 && index != 1) {
+				if (!reducedStartAdded) {
+					reducedStartAdded = true
+					buttons.push(this.getButtonPlaceholder())
+				}
+			} else if (this.reducedEnd && index >= this.currentPage + 2 && index != this.pages) {
+				if (!reducedEndAdded) {
+					reducedEndAdded = true
+					buttons.push(this.getButtonPlaceholder())
+				}
+			} else {
+				buttons.push(this.getPageButton(index))
+			}
 		}
 
 		return buttons
 	}
 
 	render() {
+		this.reducedStart = this.pages >= 8 && this.currentPage >= 5
+		this.reducedEnd = this.pages >= 8 && this.currentPage <= (this.pages - 4)
+
 		return html`
 			${getGlobalStyleHtml()}
 
