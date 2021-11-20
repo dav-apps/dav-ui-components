@@ -1,43 +1,45 @@
-import { LitElement, html, css } from 'lit'
+import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
-import { getGlobalStyleHtml } from '../utils.js'
+import { classMap } from 'lit/directives/class-map.js'
+import { Theme } from '../types.js'
+import {
+	getGlobalStyleHtml,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
+import { paginationStyles } from './pagination.styles.js'
 
 export const paginationTagName = "dav-pagination"
 
 @customElement(paginationTagName)
 export class Pagination extends LitElement {
-	static styles = css`
-		#container {
-			display: flex;
-			justify-content: center;
-		}
+	static styles = [paginationStyles]
 
-		.pagination-button {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 38px;
-			height: 38px;
-			font-size: 16px;
-			padding: 0;
-			background-color: #f8f9fa;
-			border-radius: 0.5rem;
-			border: 1px solid #f8f9fa;
-			transition: 0.2s;
-		}
+	@state() private backButtonClasses = {
+		"pagination-button": true,
+		darkTheme: false
+	}
+	@state() private forwardButtonClasses = {
+		"pagination-button": true,
+		darkTheme: false
+	}
 
-		.pagination-button:not(.selected):hover {
-			background-color: #efefef;
-			border-color: #efefef;
-		}
-
-		.selected {
-			background-color: #d9d9d9;
-		}
-	`
+	@state() private theme: Theme = Theme.light
 
 	@property({ type: Number }) pages: number = 1
 	@property({ type: Number }) currentPage: number = 1
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	backButtonClick() {
 		if (this.currentPage > 1) {
@@ -62,11 +64,13 @@ export class Pagination extends LitElement {
 	}
 
 	getBackButton() {
+		this.backButtonClasses.darkTheme = this.theme == Theme.dark
+
 		if (this.pages > 1) {
 			return html`
 				<button
 					id="back-button"
-					class="pagination-button"
+					class=${classMap(this.backButtonClasses)}
 					@click=${this.backButtonClick}>
 					<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
 				</button>
@@ -75,11 +79,13 @@ export class Pagination extends LitElement {
 	}
 
 	getForwardButton() {
+		this.forwardButtonClasses.darkTheme = this.theme == Theme.dark
+
 		if (this.pages > 1) {
 			return html`
 				<button
 					id="forward-button"
-					class="pagination-button"
+					class=${classMap(this.forwardButtonClasses)}
 					@click=${this.forwardButtonClick}>
 					<i class="ms-Icon ms-Icon--Forward" aria-hidden="true"></i>
 				</button>
@@ -89,23 +95,19 @@ export class Pagination extends LitElement {
 
 	getPageButton(index: number) {
 		if (this.pages > 1) {
-			if (index == this.currentPage) {
-				return html`
-					<button
-						class="pagination-button selected"
-						@click=${() => this.pageButtonClick(index)}>
-						${index}
-					</button>
-				`
-			} else {
-				return html`
-					<button
-						class="pagination-button"
-						@click=${() => this.pageButtonClick(index)}>
-						${index}
-					</button>
-				`
+			let pageButtonClasses = {
+				"pagination-button": true,
+				selected: index == this.currentPage,
+				darkTheme: this.theme == Theme.dark
 			}
+
+			return html`
+				<button
+					class=${classMap(pageButtonClasses)}
+					@click=${() => this.pageButtonClick(index)}>
+					${index}
+				</button>
+			`
 		}
 	}
 
