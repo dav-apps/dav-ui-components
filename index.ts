@@ -13,6 +13,7 @@ import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { Header, headerTagName } from './src/header/header.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
+import { Pagination, paginationTagName } from './src/pagination/pagination.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
 import { Sidenav, sidenavTagName } from './src/sidenav/sidenav.js'
 import { SidenavContainer, sidenavContainerTagName } from './src/sidenav-container/sidenav-container.js'
@@ -32,6 +33,7 @@ declare global {
 		[dropdownTagName]: Dropdown,
 		[headerTagName]: Header,
 		[messageBarTagName]: MessageBar,
+		[paginationTagName]: Pagination,
 		[panelTagName]: Panel,
 		[sidenavTagName]: Sidenav,
 		[sidenavContainerTagName]: SidenavContainer,
@@ -56,6 +58,7 @@ export {
 	Dropdown,
 	Header,
 	MessageBar,
+	Pagination,
 	Panel,
 	Sidenav,
 	SidenavContainer,
