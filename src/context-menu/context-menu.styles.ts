@@ -4,7 +4,7 @@ export const contextMenuStyles = css`
 	#container {
 		display: none;
 		position: absolute;
-		background-color: #FFFFFF;
+		background-color: var(--light-theme-color-tertiary, var(--default-light-theme-color-tertiary));
 		border-radius: 4px;
 		font-size: 16px;
 		padding: 4px;
@@ -16,6 +16,6 @@ export const contextMenuStyles = css`
 
 	#container.darkTheme {
 		color: white;
-		background-color: #2e3b46;
+		background-color: var(--dark-theme-color-tertiary, var(--default-dark-theme-color-tertiary));
 	}
 `

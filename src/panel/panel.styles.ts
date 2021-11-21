@@ -25,12 +25,12 @@ export const panelStyles = css`
 		bottom: 0;
 		right: 0;
 		width: 340px;
-		background-color: white;
+		background-color: var(--light-theme-color-secondary, var(--default-light-theme-color-secondary));
 		overflow-y: auto;
 	}
 
 	#content.darkTheme {
-		background-color: #1c2938;
+		background-color: var(--dark-theme-color-secondary, var(--default-dark-theme-color-secondary));
 	}
 
 	#header {

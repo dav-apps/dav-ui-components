@@ -5,13 +5,13 @@ export const sidenavStyles = css`
 		width: min-content;
 		height: 100%;
 		padding: 10px 6px;
-		background-color: white;
+		background-color: var(--light-theme-color-secondary, var(--default-light-theme-color-secondary));
 		transition: 0.2s;
 		overflow-y: auto;
 	}
 
 	#container.darkTheme {
-		background-color: #1c2938;
+		background-color: var(--dark-theme-color-secondary, var(--default-dark-theme-color-secondary));
 	}
 
 	#container.over {
@@ -24,6 +24,6 @@ export const sidenavStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: #3b3b3b67;
+		background-color: var(--overlay-color, var(--default-overlay-color));
 	}
 `

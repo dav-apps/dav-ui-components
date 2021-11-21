@@ -16,7 +16,7 @@ export const sidenavItemStyles = css`
 	}
 
 	button:focus, button:hover {
-		background-color: #e9e9e9;
+		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
 	}
 
 	button.darkTheme {
@@ -24,7 +24,7 @@ export const sidenavItemStyles = css`
 	}
 
 	button.darkTheme:focus, button.darkTheme:hover {
-		background-color: #26313a;
+		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
 	}
 
 	i {

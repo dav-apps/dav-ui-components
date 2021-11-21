@@ -31,13 +31,13 @@ export const headerStyles = css`
 		height: 35px;
 	}
 
-	.icon-button:hover {
-		background-color: #f8f9fa;
-		border-color: #f8f9fa;
+	.icon-button:hover, .icon-button:active {
+		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
+		border-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
 	}
 
-	.icon-button.darkTheme:hover {
-		background-color: #232e3c;
-		border-color: #232e3c;
+	.icon-button.darkTheme:hover, .icon-button.darkTheme:active {
+		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
+		border-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
 	}
 `

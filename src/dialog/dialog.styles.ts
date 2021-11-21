@@ -7,11 +7,11 @@ export const dialogStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: #3b3b3b67;
+		background-color: var(--overlay-color, var(--default-overlay-color));
 	}
 
 	#dialog {
-		background-color: white;
+		background-color: var(--light-theme-color-tertiary, var(--default-light-theme-color-tertiary));
 		margin: 2ex;
 		padding: 2ex;
 		border-radius: 5pt;
@@ -19,7 +19,7 @@ export const dialogStyles = css`
 	}
 
 	#dialog.darkTheme {
-		background-color: #2e3b46;
+		background-color: var(--dark-theme-color-tertiary, var(--default-dark-theme-color-tertiary));
 	}
 
 	#header {

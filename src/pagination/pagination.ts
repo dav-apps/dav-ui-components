@@ -7,13 +7,14 @@ import {
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { paginationStyles } from './pagination.styles.js'
 
 export const paginationTagName = "dav-pagination"
 
 @customElement(paginationTagName)
 export class Pagination extends LitElement {
-	static styles = [paginationStyles]
+	static styles = [globalStyles, paginationStyles]
 
 	@state() private backButtonClasses = {
 		"pagination-button": true,
