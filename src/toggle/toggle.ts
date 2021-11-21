@@ -1,15 +1,16 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { toggleStyles } from './toggle.styles.js'
 import { Theme } from '../types.js'
 import { subscribeThemeChange, unsubscribeThemeChange } from '../utils.js'
+import { globalStyles } from '../styles.js'
+import { toggleStyles } from './toggle.styles.js'
 
 export const toggleTagName = "dav-toggle"
 
 @customElement(toggleTagName)
 export class Toggle extends LitElement {
-	static styles = [toggleStyles]
+	static styles = [globalStyles, toggleStyles]
 
 	@state() private inputClasses = {
 		checked: false

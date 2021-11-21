@@ -7,13 +7,14 @@ import {
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { contextMenuItemStyles } from './context-menu-item.styles.js'
 
 export const contextMenuItemTagName = "dav-context-menu-item"
 
 @customElement(contextMenuItemTagName)
 export class ContextMenuItem extends LitElement {
-	static styles = [contextMenuItemStyles]
+	static styles = [globalStyles, contextMenuItemStyles]
 
 	@state() private buttonClasses = {
 		darkTheme: false

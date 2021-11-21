@@ -8,13 +8,14 @@ import {
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
-import { sidenavItemStyles } from './sidenav-item-styles.js'
+import { globalStyles } from '../styles.js'
+import { sidenavItemStyles } from './sidenav-item.styles.js'
 
 export const sidenavItemTagName = "dav-sidenav-item"
 
 @customElement(sidenavItemTagName)
 export class SidenavItem extends LitElement {
-	static styles = [sidenavItemStyles]
+	static styles = [globalStyles, sidenavItemStyles]
 
 	@state() private spanStyles = {
 		marginLeft: "0px"

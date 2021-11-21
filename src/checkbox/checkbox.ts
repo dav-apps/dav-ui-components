@@ -9,12 +9,13 @@ import {
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 
 export const checkboxTagName = "dav-checkbox"
 
 @customElement(checkboxTagName)
 export class Checkbox extends LitElement {
-	static styles = [checkboxStyles]
+	static styles = [globalStyles, checkboxStyles]
 
 	@state() private checkboxClasses = {
 		checked: false,

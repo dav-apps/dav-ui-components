@@ -1,16 +1,14 @@
 import { LitElement, html, css } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { getGlobalStyleHtml } from '../utils.js'
+import { globalStyles } from '../styles.js'
+import { messageBarStyles } from './message-bar.styles.js'
 
 export const messageBarTagName = "dav-message-bar"
 
 @customElement(messageBarTagName)
 export class MessageBar extends LitElement {
-	static styles = css`
-		i {
-			font-size: 16px
-		}
-	`
+	static styles = [globalStyles, messageBarStyles]
 
 	@property() type: string = "danger"
 

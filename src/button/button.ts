@@ -3,13 +3,14 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { ButtonType } from '../types.js'
 import { convertStringToButtonType } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { buttonStyles } from './button.styles.js'
 
 export const buttonTagName = "dav-button"
 
 @customElement(buttonTagName)
 export class Button extends LitElement {
-	static styles = [buttonStyles]
+	static styles = [globalStyles, buttonStyles]
 
 	@state() private buttonClasses = {
 		accent: false,

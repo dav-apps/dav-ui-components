@@ -9,13 +9,14 @@ import {
 	unsubscribeThemeChange,
 	convertStringToHeaderSize
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { headerStyles } from './header.styles.js'
 
 export const headerTagName = "dav-header"
 
 @customElement(headerTagName)
 export class Header extends LitElement {
-	static styles = [headerStyles]
+	static styles = [globalStyles, headerStyles]
 
 	@state() private headerClasses = {
 		"mt-3 mb-2 fw-light text-center": true,

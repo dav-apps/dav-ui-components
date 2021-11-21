@@ -2,19 +2,20 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { textfieldStyles } from './textfield.styles.js'
 import { Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
+import { textfieldStyles } from './textfield.styles.js'
 
 export const textfieldTagName = "dav-textfield"
 
 @customElement(textfieldTagName)
 export class Textfield extends LitElement {
-	static styles = [textfieldStyles]
+	static styles = [globalStyles, textfieldStyles]
 
 	@query("#textfield-input") textfieldInput: HTMLInputElement
 

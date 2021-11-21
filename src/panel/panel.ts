@@ -9,6 +9,7 @@ import {
 	unsubscribeThemeChange
 } from '../utils.js'
 import { Theme } from '../types.js'
+import { globalStyles } from '../styles.js'
 import { panelStyles } from './panel.styles.js'
 import { slideIn, slideOut } from './panel.animations.js'
 
@@ -16,7 +17,7 @@ export const panelTagName = "dav-panel"
 
 @customElement(panelTagName)
 export class Panel extends LitElement {
-	static styles = [panelStyles]
+	static styles = [globalStyles, panelStyles]
 
 	@query("#overlay") overlay: HTMLDivElement
 	@query("#content") content: HTMLDivElement

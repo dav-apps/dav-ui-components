@@ -10,6 +10,7 @@ import {
 	unsubscribeThemeChange,
 	convertStringToSidenavMode
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { sidenavStyles } from './sidenav.styles.js'
 import { showOverlay, hideOverlay } from './sidenav.animations.js'
 
@@ -17,7 +18,7 @@ export const sidenavTagName = "dav-sidenav"
 
 @customElement(sidenavTagName)
 export class Sidenav extends LitElement {
-	static styles = [sidenavStyles]
+	static styles = [globalStyles, sidenavStyles]
 
 	@query("#overlay") overlay: HTMLDivElement
 	@query("#container") container: HTMLDivElement

@@ -2,7 +2,6 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { dropdownStyles } from './dropdown.styles.js'
 import {
 	getGlobalStyleHtml,
 	getLocale,
@@ -10,12 +9,14 @@ import {
 	unsubscribeThemeChange
 } from '../utils.js'
 import { DropdownOption, Theme, DropdownOptionType } from '../types.js'
+import { globalStyles } from '../styles.js'
+import { dropdownStyles } from './dropdown.styles.js'
 
 export const dropdownTagName = "dav-dropdown"
 
 @customElement(dropdownTagName)
 export class Dropdown extends LitElement {
-	static styles = [dropdownStyles]
+	static styles = [globalStyles, dropdownStyles]
 
 	@state() private dropdownLabelClasses = {
 		darkTheme: false

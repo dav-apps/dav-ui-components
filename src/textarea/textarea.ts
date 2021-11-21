@@ -4,19 +4,20 @@ import { query } from 'lit/decorators/query.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { classMap } from 'lit/directives/class-map.js'
 import autosize from 'autosize'
-import { textareaStyles } from './textarea.styles.js'
 import { Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
+import { textareaStyles } from './textarea.styles.js'
 
 export const textareaTagName = "dav-textarea"
 
 @customElement(textareaTagName)
 export class Textarea extends LitElement {
-	static styles = [textareaStyles]
+	static styles = [globalStyles, textareaStyles]
 
 	@query("#textarea") textarea: HTMLTextAreaElement
 

@@ -8,13 +8,14 @@ import {
 	subscribeThemeChange,
 	unsubscribeThemeChange
 } from '../utils.js'
+import { globalStyles } from '../styles.js'
 import { contextMenuStyles } from './context-menu.styles.js'
 
 export const contextMenuTagName = "dav-context-menu"
 
 @customElement(contextMenuTagName)
 export class ContextMenu extends LitElement {
-	static styles = [contextMenuStyles]
+	static styles = [globalStyles, contextMenuStyles]
 
 	@state() private containerClasses = {
 		"ms-Fabric": true,

@@ -10,13 +10,14 @@ import {
 	convertStringToButtonType
 } from '../utils.js'
 import { Theme } from '../types.js'
+import { globalStyles } from '../styles.js'
 import { dialogStyles } from './dialog.styles.js'
 
 export const dialogTagName = "dav-dialog"
 
 @customElement(dialogTagName)
 export class Dialog extends LitElement {
-	static styles = [dialogStyles]
+	static styles = [globalStyles, dialogStyles]
 
 	@state() private dialogClasses = {
 		shadow: true,
