@@ -14,4 +14,22 @@ export const globalStyles = css`
 		--default-dark-theme-scrollbar-color: #303644;
 		--default-overlay-color: #3b3b3b67;
 	}
+
+	.modern-vertical-scrollbar::-webkit-scrollbar {
+		background-color: var(--light-theme-color-primary, var(--default-light-theme-color-primary));
+		width: 5px;
+	}
+
+	.modern-vertical-scrollbar.darkTheme::-webkit-scrollbar {
+		background-color: var(--dark-theme-color-primary, var(--default-dark-theme-color-primary));
+	}
+
+	.modern-vertical-scrollbar::-webkit-scrollbar-thumb {
+		background-color: var(--light-theme-scrollbar-color, var(--default-light-theme-scrollbar-color));
+		border-radius: 10px;
+	}
+
+	.modern-vertical-scrollbar.darkTheme::-webkit-scrollbar-thumb {
+		background-color: var(--dark-theme-scrollbar-color, var(--default-dark-theme-scrollbar-color));
+	}
 `

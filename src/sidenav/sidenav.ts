@@ -24,6 +24,7 @@ export class Sidenav extends LitElement {
 	@query("#container") container: HTMLDivElement
 
 	@state() private containerClasses = {
+		"modern-vertical-scrollbar": true,
 		shadow: true,
 		over: false,
 		darkTheme: false

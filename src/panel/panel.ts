@@ -23,7 +23,7 @@ export class Panel extends LitElement {
 	@query("#content") content: HTMLDivElement
 
 	@state() private contentClasses = {
-		"shadow-lg": true,
+		"shadow-lg modern-vertical-scrollbar": true,
 		darkTheme: false
 	}
 	@state() private headerClasses = {
