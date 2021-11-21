@@ -7,6 +7,7 @@ export const sidenavStyles = css`
 		padding: 10px 6px;
 		background-color: white;
 		transition: 0.2s;
+		overflow-y: auto;
 	}
 
 	#container.darkTheme {
