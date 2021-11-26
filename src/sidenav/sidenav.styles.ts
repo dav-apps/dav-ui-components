@@ -2,7 +2,7 @@ import { css } from "@lit/reactive-element"
 
 export const sidenavStyles = css`
 	#container {
-		width: min-content;
+		width: max-content;
 		height: 100%;
 		padding: 10px 6px;
 		background-color: var(--light-theme-color-secondary, var(--default-light-theme-color-secondary));
