@@ -19,7 +19,7 @@ export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
 	@state() private headerClasses = {
-		"mt-3 mb-2 fw-light text-center": true,
+		"my-0 fw-light text-center": true,
 		darkTheme: false
 	}
 	@state() private backButtonClasses = {
