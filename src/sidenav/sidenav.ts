@@ -96,7 +96,7 @@ export class Sidenav extends LitElement {
 			} else {
 				if (this.initialized) {
 					// Hide the container
-					this.containerStyles.left = `-${this.container.clientWidth}px`
+					this.containerStyles.left = `-${this.container.offsetWidth}px`
 				} else {
 					this.initialized = true
 				}
