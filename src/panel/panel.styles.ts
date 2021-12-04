@@ -54,6 +54,10 @@ export const panelStyles = css`
 		border-radius: 4px;
 	}
 
+	#close-button.darkTheme {
+		color: white;
+	}
+
 	#slot-container {
 		margin: 0px 32px;
 	}

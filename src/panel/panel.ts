@@ -26,6 +26,9 @@ export class Panel extends LitElement {
 		"shadow-lg modern-vertical-scrollbar": true,
 		darkTheme: false
 	}
+	@state() private closeButtonClasses = {
+		darkTheme: false
+	}
 	@state() private headerClasses = {
 		darkTheme: false
 	}
@@ -81,6 +84,7 @@ export class Panel extends LitElement {
 	render() {
 		// Update the UI based on the properties
 		this.contentClasses.darkTheme = this.theme == Theme.dark
+		this.closeButtonClasses.darkTheme = this.theme == Theme.dark
 		this.headerClasses.darkTheme = this.theme == Theme.dark
 
 		if (this.visible) {
@@ -105,6 +109,7 @@ export class Panel extends LitElement {
 
 					<button
 						id="close-button"
+						class=${classMap(this.closeButtonClasses)}
 						@click=${this.closeButtonClick}>
 						<i class="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
 					</button>
