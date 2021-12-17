@@ -15,6 +15,7 @@ import { Header, headerTagName } from './src/header/header.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { Pagination, paginationTagName } from './src/pagination/pagination.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
+import { ProgressRing, progressRingTagName } from './src/progress-ring/progress-ring.js'
 import { Sidenav, sidenavTagName } from './src/sidenav/sidenav.js'
 import { SidenavContainer, sidenavContainerTagName } from './src/sidenav-container/sidenav-container.js'
 import { SidenavItem, sidenavItemTagName } from './src/sidenav-item/sidenav-item.js'
@@ -35,6 +36,7 @@ declare global {
 		[messageBarTagName]: MessageBar,
 		[paginationTagName]: Pagination,
 		[panelTagName]: Panel,
+		[progressRingTagName]: ProgressRing,
 		[sidenavTagName]: Sidenav,
 		[sidenavContainerTagName]: SidenavContainer,
 		[sidenavItemTagName]: SidenavItem,
@@ -60,6 +62,7 @@ export {
 	MessageBar,
 	Pagination,
 	Panel,
+	ProgressRing,
 	Sidenav,
 	SidenavContainer,
 	SidenavItem,
