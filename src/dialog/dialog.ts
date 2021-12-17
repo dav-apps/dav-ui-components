@@ -97,10 +97,10 @@ export class Dialog extends LitElement {
 	getProgressRing() {
 		if (this.loading) {
 			return html`
-				<fluent-progress-ring
+				<dav-progress-ring
 					style="width: 16px; height: 16px; margin: 8px 14px 0px 0px;"
 					indeterminate="true">
-				</fluent-progress-ring>
+				</dav-progress-ring>
 			`
 		} else {
 			return html``

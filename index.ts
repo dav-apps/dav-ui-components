@@ -1,5 +1,3 @@
-import '@fluentui/web-components'
-
 import { setLocale, setTheme } from './src/utils.js'
 import { DropdownOption, DropdownOptionType } from './src/types.js'
 
