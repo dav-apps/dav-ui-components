@@ -1,6 +1,10 @@
 import { css } from "@lit/reactive-element"
 
 export const buttonStyles = css`
+	:host {
+		display: inline-block;
+	}
+
 	button {
 		display: flex;
 		align-items: center;
