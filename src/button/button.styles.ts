@@ -2,6 +2,8 @@ import { css } from "@lit/reactive-element"
 
 export const buttonStyles = css`
 	button {
+		display: flex;
+		align-items: center;
 		height: 32px;
 		padding: 0px 10px;
 		font-size: 14px;
