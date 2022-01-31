@@ -56,8 +56,10 @@ export class Textarea extends LitElement {
 	themeChange = (theme: Theme) => this.theme = theme
 
 	input() {
+		this.value = this.textarea.value
+
 		this.dispatchEvent(new CustomEvent("change", {
-			detail: { value: this.textarea.value }
+			detail: { value: this.value }
 		}))
 	}
 

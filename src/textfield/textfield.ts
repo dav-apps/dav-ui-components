@@ -54,8 +54,10 @@ export class Textfield extends LitElement {
 	themeChange = (theme: Theme) => this.theme = theme
 
 	input() {
+		this.value = this.textfieldInput.value
+
 		this.dispatchEvent(new CustomEvent("change", {
-			detail: { value: this.textfieldInput.value }
+			detail: { value: this.value }
 		}))
 	}
 
