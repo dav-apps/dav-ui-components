@@ -22,9 +22,11 @@ export class Textarea extends LitElement {
 	@query("#textarea") textarea: HTMLTextAreaElement
 
 	@state() private textareaLabelClasses = {
+		disabled: false,
 		darkTheme: false
 	}
 	@state() private textareaClasses = {
+		disabled: false,
 		darkTheme: false
 	}
 	@state() private textareaStyles = {
@@ -36,6 +38,7 @@ export class Textarea extends LitElement {
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
+	@property({ type: Boolean }) disabled: boolean = false
 	@property() resize: string = ""
 	@property() errorMessage: string = ""
 
@@ -92,7 +95,9 @@ export class Textarea extends LitElement {
 	}
 
 	render() {
+		this.textareaLabelClasses.disabled = this.disabled
 		this.textareaLabelClasses.darkTheme = this.theme == Theme.dark
+		this.textareaClasses.disabled = this.disabled
 		this.textareaClasses.darkTheme = this.theme == Theme.dark
 		this.textareaStyles.resize = this.resize
 
@@ -108,6 +113,8 @@ export class Textarea extends LitElement {
 					class=${classMap(this.textareaClasses)}
 					name="textarea"
 					.value=${this.value}
+					?aria-disabled=${this.disabled}
+					?readonly=${this.disabled}
 					placeholder=${this.placeholder}
 					@input=${this.input}>
 				</textarea>

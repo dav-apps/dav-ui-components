@@ -19,6 +19,15 @@ export const textareaStyles = css`
 		color: #f3f3f3;
 	}
 
+	#textarea-label.disabled {
+		cursor: not-allowed;
+		color: #212529b3;
+	}
+
+	#textarea-label.disabled.darkTheme {
+		color: #f3f3f3b3;
+	}
+
 	#textarea {
 		padding: 6px 9px;
 		width: 100%;
@@ -32,6 +41,33 @@ export const textareaStyles = css`
 	#textarea.darkTheme {
 		color: white;
 		border: 1px solid #b5b5b5;
+	}
+
+	#textarea.disabled {
+		cursor: not-allowed;
+		border: 1px solid #c3c3c3;
+		color: #8d8d8d;
+	}
+
+	#textarea.disabled.darkTheme {
+		border: 1px solid #707070;
+		color: #c5c5c5;
+	}
+
+	#textarea.darkTheme::-ms-reveal {
+		filter: invert(100%);
+	}
+
+	#textarea.darkTheme::placeholder {
+		color: #919090;
+	}
+
+	#textarea.disabled::placeholder {
+		color: #d6d6d6;
+	}
+
+	#textarea.disabled.darkTheme::placeholder {
+		color: #767676;
 	}
 
 	#textarea:focus {
