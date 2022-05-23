@@ -1,8 +1,12 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { ButtonType } from '../types.js'
-import { convertStringToButtonType } from '../utils.js'
+import { Theme, ButtonType } from '../types.js'
+import {
+	convertStringToButtonType,
+	subscribeThemeChange,
+	unsubscribeThemeChange
+} from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { buttonStyles } from './button.styles.js'
 
@@ -15,14 +19,29 @@ export class Button extends LitElement {
 	@state() private buttonClasses = {
 		accent: false,
 		danger: false,
-		disabled: false
+		disabled: false,
+		darkTheme: false
 	}
+
+	@state() private theme: Theme = Theme.light
 
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonType(value)
 	}) type: ButtonType = ButtonType.default
 	@property({ type: Boolean }) disabled: boolean = false
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeThemeChange(this.themeChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeThemeChange(this.themeChange)
+	}
+
+	themeChange = (theme: Theme) => this.theme = theme
 
 	buttonClick(event: PointerEvent) {
 		if (this.disabled) {
@@ -46,6 +65,7 @@ export class Button extends LitElement {
 		}
 
 		this.buttonClasses.disabled = this.disabled
+		this.buttonClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
 			<button
