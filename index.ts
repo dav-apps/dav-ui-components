@@ -17,6 +17,8 @@ import { ProgressRing, progressRingTagName } from './src/progress-ring/progress-
 import { Sidenav, sidenavTagName } from './src/sidenav/sidenav.js'
 import { SidenavContainer, sidenavContainerTagName } from './src/sidenav-container/sidenav-container.js'
 import { SidenavItem, sidenavItemTagName } from './src/sidenav-item/sidenav-item.js'
+import { TabBar, tabBarTagName } from './src/tab-bar/tab-bar.js'
+import { TabBarItem, tabBarItemTagName } from './src/tab-bar-item/tab-bar-item.js'
 import { Textarea, textareaTagName } from './src/textarea/textarea.js'
 import { Textfield, textfieldTagName } from './src/textfield/textfield.js'
 import { Toggle, toggleTagName } from './src/toggle/toggle.js'
@@ -38,6 +40,8 @@ declare global {
 		[sidenavTagName]: Sidenav,
 		[sidenavContainerTagName]: SidenavContainer,
 		[sidenavItemTagName]: SidenavItem,
+		[tabBarTagName]: TabBar,
+		[tabBarItemTagName]: TabBarItem,
 		[textareaTagName]: Textarea,
 		[textfieldTagName]: Textfield,
 		[toggleTagName]: Toggle,
@@ -64,6 +68,8 @@ export {
 	Sidenav,
 	SidenavContainer,
 	SidenavItem,
+	TabBar,
+	TabBarItem,
 	Textarea,
 	Textfield,
 	Toggle
