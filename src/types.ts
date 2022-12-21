@@ -4,6 +4,17 @@ export interface DropdownOption {
 	type: DropdownOptionType
 }
 
+export interface Settings {
+	locale: Locale
+	theme: Theme
+}
+
+export interface Locale {
+	dropdown: {
+		defaultDropdownButtonText: string
+	}
+}
+
 export enum Theme {
 	light = "light",
 	dark = "dark"

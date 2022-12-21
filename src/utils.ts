@@ -4,12 +4,16 @@ import {
 	Theme,
 	ButtonType,
 	SidenavMode,
-	HeaderSize
+	HeaderSize,
+	Settings
 } from './types.js'
 
-var locale: string = "en"
-var theme: Theme = Theme.light
-var themeChangeCallbacks: Function[] = []
+var settingsChangeCallbacks: Function[] = []
+
+var settings: Settings = {
+	locale: en,
+	theme: Theme.light
+}
 
 export function getGlobalStyleHtml() {
 	return html`
@@ -21,37 +25,44 @@ export function getGlobalStyleHtml() {
 	`
 }
 
-export function setLocale(lang: string) {
-	locale = lang
+//#region Settings functions
+export function subscribeSettingsChange(callback: Function) {
+	settingsChangeCallbacks.push(callback)
 }
 
-export function getLocale() {
-	if (locale.startsWith("de")) {
-		return de
-	} else {
-		return en
+export function unsubscribeSettingsChange(callback: Function) {
+	let i = settingsChangeCallbacks.indexOf(callback)
+	if (i != -1) settingsChangeCallbacks.splice(i, 1)
+}
+
+function triggerSettingsChangedCallbacks() {
+	for (let callback of settingsChangeCallbacks) {
+		callback(settings)
 	}
+}
+
+export function getSettings(): Settings {
+	return settings
+}
+
+export function setLocale(lang: string) {
+	let locale = en
+
+	if (lang.startsWith("de")) {
+		locale = de
+	}
+
+	settings.locale = locale
+	triggerSettingsChangedCallbacks()
 }
 
 export function setTheme(darkTheme: boolean) {
-	theme = darkTheme ? Theme.dark : Theme.light
-
-	// Trigger all callbacks with the new theme
-	for (let callback of themeChangeCallbacks) {
-		callback(theme)
-	}
+	settings.theme = darkTheme ? Theme.dark : Theme.light
+	triggerSettingsChangedCallbacks()
 }
+//#endregion
 
-export function subscribeThemeChange(callback: Function) {
-	themeChangeCallbacks.push(callback)
-	callback(theme)
-}
-
-export function unsubscribeThemeChange(callback: Function) {
-	let i = themeChangeCallbacks.indexOf(callback)
-	if (i != -1) themeChangeCallbacks.splice(i, 1)
-}
-
+//#region Enum converter functions
 export function convertStringToButtonType(value: string): ButtonType {
 	switch (value) {
 		case "accent":
@@ -82,3 +93,4 @@ export function convertStringToHeaderSize(value: string): HeaderSize {
 			return HeaderSize.normal
 	}
 }
+//#endregion
