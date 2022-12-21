@@ -3,11 +3,12 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { Theme, SidenavMode } from '../types.js'
+import { Theme, SidenavMode, Settings } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings,
 	convertStringToSidenavMode
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
@@ -37,7 +38,7 @@ export class Sidenav extends LitElement {
 		left: "-300px"
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 	@state() private initialized: boolean = false
 
 	@property({ type: Boolean }) open: boolean = false
@@ -48,15 +49,15 @@ export class Sidenav extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	updated(changedProperties: Map<string, any>) {
 		if (

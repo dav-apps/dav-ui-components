@@ -2,11 +2,12 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { Theme } from '../types.js'
+import { Settings, Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { contextMenuStyles } from './context-menu.styles.js'
@@ -29,7 +30,7 @@ export class ContextMenu extends LitElement {
 		left: "0px"
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Number }) posX: number = 0
@@ -37,17 +38,17 @@ export class ContextMenu extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 		document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 		document.removeEventListener("click", this.documentClick)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {

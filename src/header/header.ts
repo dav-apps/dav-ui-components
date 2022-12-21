@@ -2,11 +2,12 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { Theme, HeaderSize } from '../types.js'
+import { Theme, HeaderSize, Settings } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings,
 	convertStringToHeaderSize
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
@@ -40,7 +41,7 @@ export class Header extends LitElement {
 		marginTop: "2px"
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property() header: string = ""
 	@property({ type: Boolean }) backButtonVisible: boolean = false
@@ -52,15 +53,15 @@ export class Header extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	backButtonClick() {
 		this.dispatchEvent(new CustomEvent("backButtonClick"))

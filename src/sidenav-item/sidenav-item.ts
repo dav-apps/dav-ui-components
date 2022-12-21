@@ -3,11 +3,12 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { Theme } from '../types.js'
+import { Settings, Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { sidenavItemStyles } from './sidenav-item.styles.js'
@@ -26,7 +27,7 @@ export class SidenavItem extends LitElement {
 		darkTheme: false
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 	@property() icon: string = ""
@@ -35,15 +36,15 @@ export class SidenavItem extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	getIcon() {
 		if (this.icon.length > 0) {

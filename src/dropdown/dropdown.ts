@@ -4,11 +4,11 @@ import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import {
 	getGlobalStyleHtml,
-	getLocale,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
-import { DropdownOption, Theme, DropdownOptionType } from '../types.js'
+import { DropdownOption, Theme, DropdownOptionType, Settings, Locale } from '../types.js'
 import { globalStyles } from '../styles.js'
 import { dropdownStyles } from './dropdown.styles.js'
 
@@ -41,8 +41,8 @@ export class Dropdown extends LitElement {
 		display: "none"
 	}
 
-	@state() private locale = getLocale().dropdown
-	@state() private theme: Theme = Theme.light
+	@state() private locale = getSettings().locale.dropdown
+	@state() private theme: Theme = getSettings().theme
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
@@ -54,17 +54,20 @@ export class Dropdown extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 		document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 		document.removeEventListener("click", this.documentClick)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		this.locale = settings.locale.dropdown
+	}
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {

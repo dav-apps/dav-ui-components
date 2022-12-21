@@ -4,11 +4,12 @@ import { query } from 'lit/decorators/query.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { classMap } from 'lit/directives/class-map.js'
 import autosize from 'autosize'
-import { Theme } from '../types.js'
+import { Settings, Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { textareaStyles } from './textarea.styles.js'
@@ -33,7 +34,7 @@ export class Textarea extends LitElement {
 		resize: "auto"
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 	@property() label: string = ""
@@ -44,7 +45,7 @@ export class Textarea extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 
 		setTimeout(() => {
 			autosize(this.textarea)
@@ -53,10 +54,10 @@ export class Textarea extends LitElement {
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	input() {
 		this.value = this.textarea.value

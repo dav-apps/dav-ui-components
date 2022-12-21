@@ -2,11 +2,12 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Theme } from '../types.js'
+import { Settings, Theme } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { textfieldStyles } from './textfield.styles.js'
@@ -28,7 +29,7 @@ export class Textfield extends LitElement {
 		darkTheme: false
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 	@property() label: string = ""
@@ -43,15 +44,15 @@ export class Textfield extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	input() {
 		this.value = this.textfieldInput.value

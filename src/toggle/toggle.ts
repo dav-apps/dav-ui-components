@@ -1,8 +1,12 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Theme } from '../types.js'
-import { subscribeThemeChange, unsubscribeThemeChange } from '../utils.js'
+import { Theme, Settings } from '../types.js'
+import {
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
+} from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { toggleStyles } from './toggle.styles.js'
 
@@ -18,21 +22,21 @@ export class Toggle extends LitElement {
 	@state() private sliderClasses = {
 		darkTheme: false
 	}
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property({ type: Boolean }) checked: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	private checkboxClicked(event: PointerEvent) {
 		event.preventDefault()

@@ -2,11 +2,12 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { ButtonType } from '../types.js'
+import { ButtonType, Settings } from '../types.js'
 import {
 	getGlobalStyleHtml,
-	subscribeThemeChange,
-	unsubscribeThemeChange,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings,
 	convertStringToButtonType
 } from '../utils.js'
 import { Theme } from '../types.js'
@@ -42,7 +43,7 @@ export class Dialog extends LitElement {
 		maxWidth: "600px"
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 	@state() private dualScreenLayout: boolean = false
 
 	@property() header: string = ""
@@ -58,7 +59,7 @@ export class Dialog extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 
 		let screenSegments: any
 
@@ -75,10 +76,10 @@ export class Dialog extends LitElement {
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	private overlayClick() {
 		if (!this.loading) {

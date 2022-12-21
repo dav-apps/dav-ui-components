@@ -1,11 +1,12 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Theme, ButtonType } from '../types.js'
+import { Theme, ButtonType, Settings } from '../types.js'
 import {
 	convertStringToButtonType,
-	subscribeThemeChange,
-	unsubscribeThemeChange
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
 } from '../utils.js'
 import { globalStyles } from '../styles.js'
 import { buttonStyles } from './button.styles.js'
@@ -23,7 +24,7 @@ export class Button extends LitElement {
 		darkTheme: false
 	}
 
-	@state() private theme: Theme = Theme.light
+	@state() private theme: Theme = getSettings().theme
 
 	@property({
 		type: String,
@@ -33,15 +34,15 @@ export class Button extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback()
-		subscribeThemeChange(this.themeChange)
+		subscribeSettingsChange(this.settingsChange)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
-		unsubscribeThemeChange(this.themeChange)
+		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	themeChange = (theme: Theme) => this.theme = theme
+	settingsChange = (settings: Settings) => this.theme = settings.theme
 
 	buttonClick(event: PointerEvent) {
 		if (this.disabled) {
