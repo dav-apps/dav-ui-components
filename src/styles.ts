@@ -13,6 +13,8 @@ export const globalStyles = css`
 		--default-dark-theme-hover-background-color: #26313a;
 		--default-dark-theme-scrollbar-color: #303644;
 		--default-overlay-color: #3b3b3b67;
+		--primary: #0d47a1;
+		--secondary: #F71735;
 	}
 
 	.modern-vertical-scrollbar::-webkit-scrollbar {
