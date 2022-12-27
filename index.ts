@@ -10,6 +10,7 @@ import { ContextMenuItem, contextMenuItemTagName } from './src/context-menu-item
 import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { Header, headerTagName } from './src/header/header.js'
+import { IconButton, iconButtonTagName } from './src/icon-button/icon-button.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { Pagination, paginationTagName } from './src/pagination/pagination.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
@@ -33,6 +34,7 @@ declare global {
 		[dialogTagName]: Dialog,
 		[dropdownTagName]: Dropdown,
 		[headerTagName]: Header,
+		[iconButtonTagName]: IconButton,
 		[messageBarTagName]: MessageBar,
 		[paginationTagName]: Pagination,
 		[panelTagName]: Panel,
@@ -61,6 +63,7 @@ export {
 	Dialog,
 	Dropdown,
 	Header,
+	IconButton,
 	MessageBar,
 	Pagination,
 	Panel,
