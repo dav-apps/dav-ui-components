@@ -10,9 +10,18 @@ export const iconButtonTagName = "dav-icon-button"
 export class IconButton extends LitElement {
 	static styles = [globalStyles, iconButtonStyles]
 
+	@state() private iconButtonClasses = {
+		selected: false
+	}
+
+	@property({ type: Boolean }) selected: boolean = false
+
 	render() {
+		this.iconButtonClasses.selected = this.selected
+
 		return html`
-			<button>
+			<button
+				class=${classMap(this.iconButtonClasses)}>
 				<slot></slot>
 			</button>
       `

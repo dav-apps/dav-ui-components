@@ -3,20 +3,38 @@ import { css } from "@lit/reactive-element"
 export const iconButtonStyles = css`
 	:host {
 		display: inline-block;
-	}
-
-	button {
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		height: 48px;
 		width: 48px;
 		font-size: 24px;
-		background-color: #F5F5F5;
-		color: #4b4c4e;
+	}
+
+	::slotted(*) {
+		position: relative;
+	}
+
+	/* Colors by MD3 Standard Icon button (https://m3.material.io/components/icon-buttons/specs#eca0451e-430b-41e1-bea3-a31cb7ccda76) */
+	/* Default (enabled, unselected) */
+	button {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: inherit;
+		height: inherit;
+		font-size: inherit;
+		color: var(--md-sys-color-on-surface-variant-light);
+		background-color: transparent;
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
 		transition: 200ms;
+	}
+
+	button:hover {
+		background-color: var(--md-sys-color-on-surface-variant-light-hover);
+	}
+
+	button.selected {
+		color: var(--md-sys-color-primary-light);
 	}
 `
