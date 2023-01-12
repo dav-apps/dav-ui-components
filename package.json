@@ -7,7 +7,9 @@
 	"type": "module",
 	"scripts": {
 		"prepare": "npm run build",
-		"build": "tsc"
+		"build": "tsc",
+		"docs": "pitsby build",
+		"docs:watch": "pitsby build --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
@@ -15,6 +17,7 @@
 		"lit": "^2.2.4"
 	},
 	"devDependencies": {
+		"@glorious/pitsby": "^1.33.0",
 		"tslib": "^2.4.0",
 		"typescript": "^4.6.4"
 	}
