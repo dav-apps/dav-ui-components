@@ -126,6 +126,8 @@ export const globalStyles = css`
 
 		/* light */
 		--md-sys-color-primary-light: #2b5bb4;
+		--md-sys-color-primary-light-hover: #2b5bb414;
+		--md-sys-color-primary-light-focus: #2b5bb41f;
 		--md-sys-color-on-primary-light: #ffffff;
 		--md-sys-color-primary-container-light: #d9e2ff;
 		--md-sys-color-on-primary-container-light: #001944;
@@ -148,6 +150,7 @@ export const globalStyles = css`
 		--md-sys-color-surface-variant-light: #e1e2ec;
 		--md-sys-color-on-surface-variant-light: #44464f;
 		--md-sys-color-on-surface-variant-light-hover: #44464f14;
+		--md-sys-color-on-surface-variant-light-focus: #44464f1f;
 		--md-sys-color-outline-light: #757780;
 		--md-sys-color-inverse-on-surface-light: #f2f0f4;
 		--md-sys-color-inverse-surface-light: #303034;
