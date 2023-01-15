@@ -9,6 +9,10 @@ module.exports = {
 		{ src: './src/doc.importmap.js', type: 'importmap', inline: true },
 		{ src: './dist/index.js', type: 'module' }
 	],
+	styles: [
+		'./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css',
+		'./node_modules/@fortawesome/fontawesome-free/css/all.min.css'
+	],
 	other: [
 		'./dist/index.js',
 		'./dist/src/locale.js',
@@ -107,7 +111,8 @@ module.exports = {
 		'./node_modules/lit-html/directives/style-map.js.map',
 		'./node_modules/lit-element/lit-element.js',
 		'./node_modules/lit-element/lit-element.js.map',
-		'./node_modules/autosize/dist/autosize.esm.js'
+		'./node_modules/autosize/dist/autosize.esm.js',
+		'./node_modules/@fortawesome/fontawesome-free/webfonts/'
 	],
 	outputDirectory: './docs'
 }

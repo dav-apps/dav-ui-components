@@ -8,11 +8,12 @@
 	"scripts": {
 		"prepare": "npm run build",
 		"build": "tsc",
-		"docs": "pitsby build",
-		"docs:watch": "pitsby build --watch"
+		"docs": "rm -rf docs; pitsby build",
+		"docs:watch": "rm -rf docs; pitsby build --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
+		"@fortawesome/fontawesome-free": "^6.2.1",
 		"autosize": "^5.0.1",
 		"lit": "^2.2.4"
 	},
