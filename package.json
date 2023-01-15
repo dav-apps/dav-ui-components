@@ -8,8 +8,8 @@
 	"scripts": {
 		"prepare": "npm run build",
 		"build": "tsc",
-		"docs": "rm -rf docs; pitsby build",
-		"docs:watch": "rm -rf docs; pitsby build --watch"
+		"docs": "npm run build; rm -rf docs; pitsby build",
+		"docs:watch": "npm run build; rm -rf docs; pitsby build --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
