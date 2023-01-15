@@ -9,7 +9,7 @@ module.exports = {
 	],
 	examples: [
 		{
-			title: 'Default Button',
+			title: 'Default IconButton',
 			controller: function (element) {
 				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
 
