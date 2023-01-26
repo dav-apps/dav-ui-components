@@ -13,6 +13,7 @@ import { Header, headerTagName } from './src/header/header.js'
 import { IconButton, iconButtonTagName } from './src/icon-button/icon-button.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { NavigationBar, navigationBarTagName } from './src/navigation-bar/navigation-bar.js'
+import { NavigationBarItem, navigationBarItemTagName } from './src/navigation-bar-item/navigation-bar-item.js'
 import { Pagination, paginationTagName } from './src/pagination/pagination.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
 import { ProgressRing, progressRingTagName } from './src/progress-ring/progress-ring.js'
@@ -38,6 +39,7 @@ declare global {
 		[iconButtonTagName]: IconButton,
 		[messageBarTagName]: MessageBar,
 		[navigationBarTagName]: NavigationBar,
+		[navigationBarItemTagName]: NavigationBarItem,
 		[paginationTagName]: Pagination,
 		[panelTagName]: Panel,
 		[progressRingTagName]: ProgressRing,
@@ -68,6 +70,7 @@ export {
 	IconButton,
 	MessageBar,
 	NavigationBar,
+	NavigationBarItem,
 	Pagination,
 	Panel,
 	ProgressRing,
