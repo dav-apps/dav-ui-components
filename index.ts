@@ -12,6 +12,7 @@ import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { Header, headerTagName } from './src/header/header.js'
 import { IconButton, iconButtonTagName } from './src/icon-button/icon-button.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
+import { NavigationBar, navigationBarTagName } from './src/navigation-bar/navigation-bar.js'
 import { Pagination, paginationTagName } from './src/pagination/pagination.js'
 import { Panel, panelTagName } from './src/panel/panel.js'
 import { ProgressRing, progressRingTagName } from './src/progress-ring/progress-ring.js'
@@ -36,6 +37,7 @@ declare global {
 		[headerTagName]: Header,
 		[iconButtonTagName]: IconButton,
 		[messageBarTagName]: MessageBar,
+		[navigationBarTagName]: NavigationBar,
 		[paginationTagName]: Pagination,
 		[panelTagName]: Panel,
 		[progressRingTagName]: ProgressRing,
@@ -65,6 +67,7 @@ export {
 	Header,
 	IconButton,
 	MessageBar,
+	NavigationBar,
 	Pagination,
 	Panel,
 	ProgressRing,
