@@ -12,15 +12,15 @@ export const navigationBarTagName = "dav-navigation-bar"
 
 @customElement(navigationBarTagName)
 export class NavigationBar extends LitElement {
-   static styles = [globalStyles, navigationBarStyles]
+	static styles = [globalStyles, navigationBarStyles]
 
-   render() {
-      return html`
+	render() {
+		return html`
          ${getGlobalStyleHtml()}
 
          <div id="container">
             <slot></slot>
          </div>
       `
-   }
+	}
 }
