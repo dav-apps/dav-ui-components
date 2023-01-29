@@ -26,14 +26,14 @@ export class NavigationBarItem extends LitElement {
 		this.itemClasses.active = this.active
 
 		return html`
-			<div class=${classMap(this.itemClasses)}>
+			<button class=${classMap(this.itemClasses)}>
 				<div class="icon-container">
 					<slot name="icon"></slot>
 				</div>
 				<div class="label-container">
 					<slot name="label"></slot>
 				</div>
-			</div>
+			</button>
       `
 	}
 }
