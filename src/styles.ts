@@ -33,6 +33,7 @@ export const globalStyles = css`
 		--md-ref-palette-primary60-rgb: 100, 142, 235;		/* #648eeb */
 		--md-ref-palette-primary70-rgb: 133, 170, 255;		/* #85aaff */
 		--md-ref-palette-primary80-rgb: 176, 198, 255;		/* #b0c6ff */
+		--md-ref-palette-primary85-rgb: 196, 212, 255;		/* #c4d4ff */
 		--md-ref-palette-primary90-rgb: 217, 226, 255;		/* #d9e2ff */
 		--md-ref-palette-primary95-rgb: 237, 240, 255;		/* #edf0ff */
 		--md-ref-palette-primary98-rgb: 250, 248, 255;		/* #faf8ff */
@@ -49,6 +50,7 @@ export const globalStyles = css`
 		--md-ref-palette-secondary60-rgb: 255, 84, 78;		/* #ff544e */
 		--md-ref-palette-secondary70-rgb: 255, 137, 128;	/* #ff8980 */
 		--md-ref-palette-secondary80-rgb: 255, 179, 172;	/* #ffb3ac */
+		--md-ref-palette-secondary85-rgb: 255, 199, 193;	/* #ffc7c1 */
 		--md-ref-palette-secondary90-rgb: 255, 218, 214;	/* #ffdad6 */
 		--md-ref-palette-secondary95-rgb: 255, 237, 235;	/* #ffedeb */
 		--md-ref-palette-secondary98-rgb: 255, 248, 247;	/* #fff8f7 */

@@ -8,20 +8,36 @@ export const buttonStyles = css`
 	button {
 		display: flex;
 		align-items: center;
-		height: 32px;
-		padding: 0px 10px;
+		height: 40px;
+		padding: 0px 24px;
 		font-size: 14px;
-		font-family: "Segoe UI";
+		font-family: "Roboto Medium";
+		font-weight: 500;
 		border: none;
-		border-radius: 4px;
-		background-color: #ededed;
-		color: black;
+		border-radius: 20px;
+		background-color: var(--md-sys-color-primary-light);
+		color: var(--md-sys-color-on-primary-light);
 		cursor: pointer;
 		transition: 200ms;
 	}
 
+	button.tonal {
+		background-color: var(--md-sys-color-primary-container-light);
+		color: var(--md-sys-color-on-primary-container-light);
+	}
+
+	button.secondary {
+		background-color: var(--md-sys-color-secondary-light);
+		color: var(--md-sys-color-on-secondary-light);
+	}
+
+	button.tonal.secondary {
+		background-color: var(--md-sys-color-secondary-container-light);
+		color: var(--md-sys-color-on-secondary-container-light);
+	}
+
 	button.darkTheme {
-		background-color: #22313e;
+		background-color: var(--md-sys-color-secondary-container-dark);
 		color: white;
 	}
 
@@ -36,8 +52,36 @@ export const buttonStyles = css`
 		background-color: #2e3b46;
 	}
 
-	button:not(.disabled):hover, button:not(.disabled):active {
-		background-color: #e5e5e5;
+	button:not(.disabled):hover {
+		background-color: rgb(var(--md-ref-palette-primary35-rgb));
+	}
+
+	button.tonal:not(.disabled):hover {
+		background-color: rgb(var(--md-ref-palette-primary85-rgb));
+	}
+
+	button.secondary:not(.disabled):hover {
+		background-color: rgb(var(--md-ref-palette-secondary35-rgb));
+	}
+
+	button.tonal.secondary:not(.disabled):hover {
+		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
+	}
+
+	button:not(.disabled):active, button:not(.disabled):focus {
+		background-color: rgb(var(--md-ref-palette-primary30-rgb));
+	}
+
+	button.tonal:not(.disabled):active, button.tonal:not(.disabled):focus {
+		background-color: rgb(var(--md-ref-palette-primary80-rgb));
+	}
+
+	button.secondary:not(.disabled):active, button.secondary:not(.disabled):focus {
+		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
+	}
+
+	button.tonal.secondary:not(.disabled):active, button.tonal.secondary:not(.disabled):focus {
+		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
 	}
 
 	button.darkTheme:not(.disabled):hover, button.darkTheme:not(.disabled):active {

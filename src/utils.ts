@@ -3,6 +3,7 @@ import { en, de } from './locale.js'
 import {
 	Theme,
 	ButtonType,
+	ButtonColor,
 	SidenavMode,
 	HeaderSize,
 	Settings
@@ -71,6 +72,17 @@ export function convertStringToButtonType(value: string): ButtonType {
 			return ButtonType.danger
 		default:
 			return ButtonType.default
+	}
+}
+
+export function convertStringToButtonColor(value: string): ButtonColor {
+	switch (value) {
+		case "secondary":
+			return ButtonColor.secondary
+		case "error":
+			return ButtonColor.error
+		default:
+			return ButtonColor.primary
 	}
 }
 

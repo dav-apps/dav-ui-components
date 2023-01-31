@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Theme, ButtonType, Settings } from '../types.js'
+import { Theme, Settings, ButtonColor } from '../types.js'
 import {
-	convertStringToButtonType,
+	convertStringToButtonColor,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -18,8 +18,10 @@ export class Button extends LitElement {
 	static styles = [globalStyles, buttonStyles]
 
 	@state() private buttonClasses = {
-		accent: false,
-		danger: false,
+		primary: false,
+		secondary: false,
+		error: false,
+		tonal: false,
 		disabled: false,
 		darkTheme: false
 	}
@@ -28,8 +30,9 @@ export class Button extends LitElement {
 
 	@property({
 		type: String,
-		converter: (value: string) => convertStringToButtonType(value)
-	}) type: ButtonType = ButtonType.default
+		converter: (value: string) => convertStringToButtonColor(value)
+	}) color: ButtonColor = ButtonColor.primary
+	@property({ type: Boolean }) tonal: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
@@ -51,20 +54,24 @@ export class Button extends LitElement {
 	}
 
 	render() {
-		switch (this.type) {
-			case ButtonType.accent:
-				this.buttonClasses.accent = true
-				this.buttonClasses.danger = false
+		switch (this.color) {
+			case ButtonColor.secondary:
+				this.buttonClasses.primary = false
+				this.buttonClasses.secondary = true
+				this.buttonClasses.error = false
 				break
-			case ButtonType.danger:
-				this.buttonClasses.accent = false
-				this.buttonClasses.danger = true
+			case ButtonColor.error:
+				this.buttonClasses.primary = false
+				this.buttonClasses.secondary = false
+				this.buttonClasses.error = true
 				break
 			default:
-				this.buttonClasses.accent = false
-				this.buttonClasses.danger = false
+				this.buttonClasses.primary = true
+				this.buttonClasses.secondary = false
+				this.buttonClasses.error = false
 		}
 
+		this.buttonClasses.tonal = this.tonal
 		this.buttonClasses.disabled = this.disabled
 		this.buttonClasses.darkTheme = this.theme == Theme.dark
 

@@ -26,6 +26,12 @@ export enum ButtonType {
 	danger = "danger"
 }
 
+export enum ButtonColor {
+	primary = "primary",
+	secondary = "secondary",
+	error = "error"
+}
+
 export enum DropdownOptionType {
 	option,
 	divider
