@@ -16,45 +16,78 @@ export const toggleStyles = css`
 
 	#slider {
 		position: absolute;
+		display: flex;
 		cursor: pointer;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: #ccc;
-		-webkit-transition: .4s;
-		transition: .4s;
+		background-color: var(--md-sys-color-surface-light);
+		border: 1px solid var(--md-sys-color-outline-light);
 		border-radius: 34px;
+		transition: 200ms;
 	}
 
 	#slider.darkTheme {
 		background-color: #545e66;
 	}
 
+	#slider:hover, input:focus + #slider {
+		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+	}
+
 	#slider:before {
-		position: absolute;
+		display: block;
 		content: "";
-		height: 11px;
-		width: 11px;
-		left: 5px;
-		top: 4.5px;
+		height: 12px;
+		width: 12px;
+		align-self: center;
+		margin-left: 4px;
 		background-color: white;
-		-webkit-transition: .4s;
-		transition: .4s;
-		border-radius: 50%;
+		transition: 200ms;
+		border-radius: 10px;
 	}
 
-	input.checked + #slider {
-		background-color: #0078d4;
+	#switch:hover #slider:before {
+		height: 14px;
+		width: 14px;
+		margin-left: 3px;
 	}
 
-	input:focus + #slider {
-		box-shadow: 0 0 1px #0078d4;
+	input:focus + #slider:before {
+		height: 14px;
+		width: 14px;
+		margin-left: 3px;
 	}
 
-	input.checked + #slider:before {
-		-webkit-transform: translateX(19px);
-		-ms-transform: translateX(19px);
-		transform: translateX(19px);
+	#switch:active #slider:before {
+		height: 14px;
+		width: 17px;
+	}
+
+	#switch.checked:active #slider:before {
+		margin-left: -0.5px;
+	}
+
+	#switch.checked:hover #slider {
+		background-color: rgb(var(--md-ref-palette-primary35-rgb));
+	}
+
+	#switch.checked input:focus + #slider {
+		background-color: rgb(var(--md-ref-palette-primary35-rgb));
+	}
+
+	#switch.checked #slider {
+		background-color: var(--md-sys-color-primary-light);
+		border: 1px solid var(--md-sys-color-primary-light);
+	}
+
+	#switch #slider:before {
+		background-color: var(--md-sys-color-on-surface-variant-light);
+	}
+
+	#switch.checked #slider:before {
+		background-color: var(--md-sys-color-on-primary-light);
+		transform: translateX(18px);
 	}
 `

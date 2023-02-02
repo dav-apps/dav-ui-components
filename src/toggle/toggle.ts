@@ -54,9 +54,8 @@ export class Toggle extends LitElement {
 		this.sliderClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
-			<label id="switch">
+			<label id="switch" class=${classMap(this.inputClasses)}>
 				<input
-					class=${classMap(this.inputClasses)}
 					type="checkbox"
 					?checked=${this.checked}
 					@click=${this.checkboxClicked}>
