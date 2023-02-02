@@ -13,7 +13,7 @@ module.exports = {
 			controller: function (element) {
 				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
 
-				element.onclick = () => {
+				iconButton.onclick = () => {
 					iconButton.selected = !iconButton.selected
 				}
 			},
