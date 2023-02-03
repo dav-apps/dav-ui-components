@@ -4,6 +4,10 @@ module.exports = {
 		{
 			name: "url",
 			type: "String"
+		},
+		{
+			name: "target",
+			type: "String"
 		}
 	],
 	examples: [

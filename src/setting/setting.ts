@@ -9,10 +9,18 @@ export const settingTagName = "dav-setting"
 export class Setting extends LitElement {
 	static styles = [globalStyles, settingStyles]
 
+	@property() header: string = ""
+
 	render() {
 		return html`
-			<div>
-				
+			<div id="setting-container">
+				<p id="setting-header">
+					${this.header}
+				</p>
+
+				<div>
+					<slot></slot>
+				</div>
 			</div>
 		`
 	}
