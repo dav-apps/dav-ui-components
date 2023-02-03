@@ -11,6 +11,7 @@ import { Dialog, dialogTagName } from './src/dialog/dialog.js'
 import { Dropdown, dropdownTagName } from './src/dropdown/dropdown.js'
 import { Header, headerTagName } from './src/header/header.js'
 import { IconButton, iconButtonTagName } from './src/icon-button/icon-button.js'
+import { LinkButton, linkButtonTagName } from './src/link-button/link-button.js'
 import { MessageBar, messageBarTagName } from './src/message-bar/message-bar.js'
 import { NavigationBar, navigationBarTagName } from './src/navigation-bar/navigation-bar.js'
 import { NavigationBarItem, navigationBarItemTagName } from './src/navigation-bar-item/navigation-bar-item.js'
@@ -37,6 +38,7 @@ declare global {
 		[dropdownTagName]: Dropdown,
 		[headerTagName]: Header,
 		[iconButtonTagName]: IconButton,
+		[linkButtonTagName]: LinkButton,
 		[messageBarTagName]: MessageBar,
 		[navigationBarTagName]: NavigationBar,
 		[navigationBarItemTagName]: NavigationBarItem,
@@ -68,6 +70,7 @@ export {
 	Dropdown,
 	Header,
 	IconButton,
+	LinkButton,
 	MessageBar,
 	NavigationBar,
 	NavigationBarItem,
