@@ -52,6 +52,8 @@ module.exports = {
 		'./dist/src/panel/panel.styles.js',
 		'./dist/src/progress-ring/progress-ring.js',
 		'./dist/src/progress-ring/progress-ring.styles.js',
+		'./dist/src/setting/setting.js',
+		'./dist/src/setting/setting.styles.js',
 		'./dist/src/sidenav/sidenav.js',
 		'./dist/src/sidenav/sidenav.animations.js',
 		'./dist/src/sidenav/sidenav.styles.js',
