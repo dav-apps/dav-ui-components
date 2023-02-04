@@ -22,12 +22,20 @@ module.exports = {
 			template: `<dav-button color="secondary">Hello World</dav-button>`
 		},
 		{
+			title: "Error button",
+			template: `<dav-button color="error">Hello World</dav-button>`
+		},
+		{
 			title: "Primary tonal button",
 			template: `<dav-button tonal>Hello World</dav-button>`
 		},
 		{
 			title: "Secondary tonal button",
 			template: `<dav-button color="secondary" tonal>Hello World</dav-button>`
-		}
+		},
+		{
+			title: "Error tonal button",
+			template: `<dav-button color="error" tonal>Hello World</dav-button>`
+		},
 	]
 }

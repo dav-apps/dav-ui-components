@@ -115,6 +115,7 @@ export const globalStyles = css`
 		--md-ref-palette-error60-rgb: 255, 84, 73;		/* #ff5449 */
 		--md-ref-palette-error70-rgb: 255, 137, 125;		/* #ff897d */
 		--md-ref-palette-error80-rgb: 255, 180, 171;		/* #ffb4ab */
+		--md-ref-palette-error85-rgb: 255, 199, 193;		/* #ffc7c1 */
 		--md-ref-palette-error90-rgb: 255, 218, 214;		/* #ffdad6 */
 		--md-ref-palette-error95-rgb: 255, 237, 234;		/* #ffedea */
 		--md-ref-palette-error98-rgb: 255, 248, 247;		/* #fff8f7 */

@@ -36,6 +36,16 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-secondary-container-light);
 	}
 
+	button.error {
+		background-color: var(--md-sys-color-error-light);
+		color: var(--md-sys-color-on-error-light);
+	}
+
+	button.tonal.error {
+		background-color: var(--md-sys-color-error-container-light);
+		color: var(--md-sys-color-on-error-container-light);
+	}
+
 	button.darkTheme {
 		background-color: var(--md-sys-color-secondary-container-dark);
 		color: white;
@@ -52,65 +62,55 @@ export const buttonStyles = css`
 		background-color: #2e3b46;
 	}
 
-	button:not(.disabled):hover {
+	button:hover {
 		background-color: rgb(var(--md-ref-palette-primary35-rgb));
 	}
 
-	button.tonal:not(.disabled):hover {
+	button.tonal:hover {
 		background-color: rgb(var(--md-ref-palette-primary85-rgb));
 	}
 
-	button.secondary:not(.disabled):hover {
+	button.secondary:hover {
 		background-color: rgb(var(--md-ref-palette-secondary35-rgb));
 	}
 
-	button.tonal.secondary:not(.disabled):hover {
+	button.tonal.secondary:hover {
 		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
 	}
 
-	button:not(.disabled):active, button:not(.disabled):focus {
+	button.error:hover {
+		background-color: rgb(var(--md-ref-palette-error35-rgb));
+	}
+
+	button.tonal.error:hover {
+		background-color: rgb(var(--md-ref-palette-error85-rgb));
+	}
+
+	button:active, button:focus {
 		background-color: rgb(var(--md-ref-palette-primary30-rgb));
 	}
 
-	button.tonal:not(.disabled):active, button.tonal:not(.disabled):focus {
+	button.tonal:active, button.tonal:focus {
 		background-color: rgb(var(--md-ref-palette-primary80-rgb));
 	}
 
-	button.secondary:not(.disabled):active, button.secondary:not(.disabled):focus {
+	button.secondary:active, button.secondary:focus {
 		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
 	}
 
-	button.tonal.secondary:not(.disabled):active, button.tonal.secondary:not(.disabled):focus {
+	button.tonal.secondary:active, button.tonal.secondary:focus {
 		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
 	}
 
-	button.darkTheme:not(.disabled):hover, button.darkTheme:not(.disabled):active {
+	button.error:active, button.error:focus {
+		background-color: rgb(var(--md-ref-palette-error30-rgb));
+	}
+
+	button.tonal.error:active, button.tonal.error:focus {
+		background-color: rgb(var(--md-ref-palette-error80-rgb));
+	}
+
+	button.darkTheme:hover, button.darkTheme:active {
 		background-color: #1c2938;
-	}
-
-	button.accent {
-		color: white;
-		background-color: #0078d4;
-	}
-
-	button.accent.disabled {
-		background-color: #0078d4b3;
-	}
-
-	button.accent:not(.disabled):hover, button.accent:not(.disabled):active {
-		background-color: #006cbe;
-	}
-
-	button.danger {
-		color: white;
-		background-color: #dc3545;
-	}
-
-	button.danger.disabled {
-		background-color: #dc3545b3;
-	}
-
-	button.danger:not(.disabled):hover, button.danger:not(.disabled):active {
-		background-color: #c82333;
 	}
 `
