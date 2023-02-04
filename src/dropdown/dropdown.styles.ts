@@ -8,12 +8,21 @@ export const dropdownStyles = css`
 
 	#dropdown-button {
 		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		background-color: white;
-		border: 1px solid #a6a6a6;
-		border-radius: 4px;
+		border: 1px solid var(--md-sys-color-outline-light);
+		border-radius: 6px;
 		padding: 5px 10px;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: Roboto, sans-serif;
 		font-size: 14px;
+		background-color: var(--md-sys-color-surface-light);
+		transition: 200ms;
+	}
+
+	#dropdown-button:hover, #dropdown-button:focus {
+		border: 1px solid var(--md-sys-color-primary-light);
+		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
 	}
 
 	#dropdown-button.darkTheme {
@@ -32,10 +41,10 @@ export const dropdownStyles = css`
 	}
 
 	#dropdown-button span {
-		text-align: left;
 		height: 21px;
 		line-height: 21px;
 		overflow: hidden;
+		color: var(--md-sys-color-on-surface-light);
 	}
 
 	#dropdown-button.darkTheme span {
@@ -61,15 +70,31 @@ export const dropdownStyles = css`
 		color: white;
 	}
 
+	#chevron-svg-container {
+		display: flex;
+		width: 12px;
+		fill: var(--md-sys-color-on-surface-light);
+		transition: 200ms;
+	}
+
+	#dropdown-button:active #chevron-svg-container, #dropdown-button.active #chevron-svg-container {
+		transform: translateY(2px);
+	}
+
 	#dropdown-content {
 		display: none;
 		position: absolute;
 		overflow: auto;
 		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 		z-index: 1;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: Roboto, sans-serif;
 		font-size: 14px;
-		border-radius: 4px;
+		border-radius: 6px;
+		background-color: var(--md-sys-color-surface-light);
+	}
+
+	#dropdown-content.visible {
+		display: block;
 	}
 
 	.dropdown-option {
@@ -79,7 +104,13 @@ export const dropdownStyles = css`
 		border: none;
 		width: 100%;
 		text-align: left;
-		background-color: white;
+		background-color: var(--md-sys-color-surface-light);
+		color: var(--md-sys-color-on-surface-light);
+		border-radius: 6px;
+		margin: 4px;
+		width: -webkit-fill-available;
+		width: -moz-available;
+		transition: 200ms;
 	}
 
 	.dropdown-option.darkTheme {
@@ -87,8 +118,12 @@ export const dropdownStyles = css`
 		background-color: var(--dark-theme-color-tertiary, var(--default-dark-theme-color-tertiary));
 	}
 
-	.dropdown-option:focus, .dropdown-option:hover {
-		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
+	.dropdown-option:hover, .dropdown-option:focus {
+		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+	}
+
+	.dropdown-option.selected {
+		background-color: var(--md-sys-color-primary-light-hover);
 	}
 
 	.dropdown-option.darkTheme:focus, .dropdown-option.darkTheme:hover {

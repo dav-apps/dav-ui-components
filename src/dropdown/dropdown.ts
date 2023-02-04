@@ -9,6 +9,7 @@ import {
 	getSettings
 } from '../utils.js'
 import { DropdownOption, Theme, DropdownOptionType, Settings, Locale } from '../types.js'
+import { chevronDownSvg } from '../svg/chevron-down.js'
 import { globalStyles } from '../styles.js'
 import { dropdownStyles } from './dropdown.styles.js'
 
@@ -23,22 +24,27 @@ export class Dropdown extends LitElement {
 	}
 	@state() private dropdownButtonClasses = {
 		disabled: false,
+		active: false,
 		darkTheme: false
 	}
 	@state() private dropdownOptionClasses = {
 		"dropdown-option": true,
+		selected: false,
 		darkTheme: false
 	}
 	@state() private dropdownDividerClasses = {
 		"dropdown-divider": true,
 		darkTheme: false
 	}
+	@state() private dropdownContentClasses = {
+		"ms-motion-slideDownIn": true,
+		visible: false
+	}
 	@state() private dropdownButtonStyles = {
 		width: "160px"
 	}
 	@state() private dropdownContentStyles = {
-		width: "160px",
-		display: "none"
+		width: "160px"
 	}
 
 	@state() private locale = getSettings().locale.dropdown
@@ -116,7 +122,7 @@ export class Dropdown extends LitElement {
 		`
 	}
 
-	getDropdownOption(option: DropdownOption) {
+	getDropdownOption(option: DropdownOption, selected: boolean) {
 		if (option.type == DropdownOptionType.divider) {
 			return html`
 				<div class=${classMap(this.dropdownDividerClasses)}>
@@ -124,9 +130,12 @@ export class Dropdown extends LitElement {
 				</div>
 			`
 		} else {
+			let classes = structuredClone(this.dropdownOptionClasses)
+			classes.selected = selected
+
 			return html`
 				<button
-					class=${classMap(this.dropdownOptionClasses)}
+					class=${classMap(classes)}
 					key=${option.key}
 					@click=${this.dropdownOptionClick}>
 					${option.value}
@@ -139,13 +148,14 @@ export class Dropdown extends LitElement {
 		// Update the UI based on the properties
 		this.dropdownLabelClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownButtonClasses.disabled = this.disabled
+		this.dropdownButtonClasses.active = this.showItems
 		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownDividerClasses.darkTheme = this.theme == Theme.dark
+		this.dropdownContentClasses.visible = this.showItems
 
 		this.dropdownButtonStyles.width = `${this.width}px`
 		this.dropdownContentStyles.width = `${this.width}px`
-		this.dropdownContentStyles.display = this.showItems ? "block" : "none"
 
 		this.updateDropdownButtonText()
 
@@ -165,15 +175,17 @@ export class Dropdown extends LitElement {
 
 					<span>${this.buttonText}</span>
 
-					<i class="ms-Icon ms-Icon--ChevronDown ms-auto" aria-hidden="true"></i>
+					<div id="chevron-svg-container">
+						${chevronDownSvg}
+					</div>
 				</button>
 
 				<div
 					id="dropdown-content"
-					class="ms-motion-slideDownIn"
-					style=${styleMap(this.dropdownContentStyles)}>
-
-					${this.options.map((option) => this.getDropdownOption(option))}
+					class=${classMap(this.dropdownContentClasses)}
+					style=${styleMap(this.dropdownContentStyles)}
+				>
+					${this.options.map((option) => this.getDropdownOption(option, option.key == this.selectedKey))}
 				</div>
 			</div>
 		`
