@@ -2,13 +2,12 @@ import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
-import { ButtonType, Settings } from '../types.js'
+import { Settings } from '../types.js'
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings,
-	convertStringToButtonType
+	getSettings
 } from '../utils.js'
 import { Theme } from '../types.js'
 import { globalStyles } from '../styles.js'
@@ -51,10 +50,6 @@ export class Dialog extends LitElement {
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
-	@property({
-		type: String,
-		converter: (value: string) => convertStringToButtonType(value)
-	}) primaryButtonType: ButtonType = ButtonType.accent
 	@property({ type: Number }) maxWidth: number = 600
 
 	connectedCallback() {
@@ -127,7 +122,6 @@ export class Dialog extends LitElement {
 			return html`
 				<dav-button
 					style="margin-left: 10px"
-					type=${this.primaryButtonType}
 					?disabled=${this.loading}
 					@click=${this.primaryButtonClick}>
 					${this.primaryButtonText}
