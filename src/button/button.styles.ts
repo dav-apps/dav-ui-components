@@ -9,7 +9,7 @@ export const buttonStyles = css`
 		display: flex;
 		align-items: center;
 		height: 40px;
-		padding: 0px 24px;
+		padding: 0 24px;
 		font-size: 14px;
 		font-family: "Roboto Medium";
 		font-weight: 500;
@@ -19,6 +19,11 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-primary-light);
 		cursor: pointer;
 		transition: 200ms;
+	}
+
+	button.small {
+		height: 32px;
+		padding: 0 16px;
 	}
 
 	button.tonal {

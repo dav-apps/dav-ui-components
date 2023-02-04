@@ -1,9 +1,10 @@
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { Theme, Settings, ButtonColor } from '../types.js'
+import { Theme, Settings, ButtonColor, ButtonSize } from '../types.js'
 import {
 	convertStringToButtonColor,
+	convertStringToButtonSize,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -18,6 +19,7 @@ export class Button extends LitElement {
 	static styles = [globalStyles, buttonStyles]
 
 	@state() private buttonClasses = {
+		small: false,
 		primary: false,
 		secondary: false,
 		tertiary: false,
@@ -29,6 +31,10 @@ export class Button extends LitElement {
 
 	@state() private theme: Theme = getSettings().theme
 
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToButtonSize(value)
+	}) size: ButtonSize = ButtonSize.normal
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonColor(value)
@@ -55,6 +61,8 @@ export class Button extends LitElement {
 	}
 
 	render() {
+		this.buttonClasses.small = this.size == ButtonSize.small
+
 		switch (this.color) {
 			case ButtonColor.secondary:
 				this.buttonClasses.primary = false

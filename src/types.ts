@@ -27,6 +27,11 @@ export enum ButtonColor {
 	error = "error"
 }
 
+export enum ButtonSize {
+	normal = "normal",
+	small = "small"
+}
+
 export enum DropdownOptionType {
 	option,
 	divider
