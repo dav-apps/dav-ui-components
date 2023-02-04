@@ -67,6 +67,7 @@ export const globalStyles = css`
 		--md-ref-palette-tertiary60-rgb: 6, 157, 199;		/* #069dc7 */
 		--md-ref-palette-tertiary70-rgb: 64, 184, 227;		/* #40b8e3 */
 		--md-ref-palette-tertiary80-rgb: 101, 211, 255;		/* #65d3ff */
+		--md-ref-palette-tertiary85-rgb: 145, 221, 255;		/* #91ddff */
 		--md-ref-palette-tertiary90-rgb: 189, 233, 255;		/* #bde9ff */
 		--md-ref-palette-tertiary95-rgb: 224, 244, 255;		/* #e0f4ff */
 		--md-ref-palette-tertiary98-rgb: 244, 250, 255;		/* #f4faff */

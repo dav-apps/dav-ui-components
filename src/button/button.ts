@@ -20,6 +20,7 @@ export class Button extends LitElement {
 	@state() private buttonClasses = {
 		primary: false,
 		secondary: false,
+		tertiary: false,
 		error: false,
 		tonal: false,
 		disabled: false,
@@ -58,16 +59,25 @@ export class Button extends LitElement {
 			case ButtonColor.secondary:
 				this.buttonClasses.primary = false
 				this.buttonClasses.secondary = true
+				this.buttonClasses.tertiary = false
+				this.buttonClasses.error = false
+				break
+			case ButtonColor.tertiary:
+				this.buttonClasses.primary = false
+				this.buttonClasses.secondary = false
+				this.buttonClasses.tertiary = true
 				this.buttonClasses.error = false
 				break
 			case ButtonColor.error:
 				this.buttonClasses.primary = false
 				this.buttonClasses.secondary = false
+				this.buttonClasses.tertiary = false
 				this.buttonClasses.error = true
 				break
 			default:
 				this.buttonClasses.primary = true
 				this.buttonClasses.secondary = false
+				this.buttonClasses.tertiary = false
 				this.buttonClasses.error = false
 		}
 

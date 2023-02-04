@@ -2,7 +2,6 @@ import { html } from 'lit'
 import { en, de } from './locale.js'
 import {
 	Theme,
-	ButtonType,
 	ButtonColor,
 	SidenavMode,
 	HeaderSize,
@@ -64,21 +63,12 @@ export function setTheme(darkTheme: boolean) {
 //#endregion
 
 //#region Enum converter functions
-export function convertStringToButtonType(value: string): ButtonType {
-	switch (value) {
-		case "accent":
-			return ButtonType.accent
-		case "danger":
-			return ButtonType.danger
-		default:
-			return ButtonType.default
-	}
-}
-
 export function convertStringToButtonColor(value: string): ButtonColor {
 	switch (value) {
 		case "secondary":
 			return ButtonColor.secondary
+		case "tertiary":
+			return ButtonColor.tertiary
 		case "error":
 			return ButtonColor.error
 		default:

@@ -20,15 +20,10 @@ export enum Theme {
 	dark = "dark"
 }
 
-export enum ButtonType {
-	default = "default",
-	accent = "accent",
-	danger = "danger"
-}
-
 export enum ButtonColor {
 	primary = "primary",
 	secondary = "secondary",
+	tertiary = "tertiary",
 	error = "error"
 }
 

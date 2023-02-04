@@ -36,6 +36,16 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-secondary-container-light);
 	}
 
+	button.tertiary {
+		background-color: var(--md-sys-color-tertiary-light);
+		color: var(--md-sys-color-on-tertiary-light);
+	}
+
+	button.tonal.tertiary {
+		background-color: var(--md-sys-color-tertiary-container-light);
+		color: var(--md-sys-color-on-tertiary-container-light);
+	}
+
 	button.error {
 		background-color: var(--md-sys-color-error-light);
 		color: var(--md-sys-color-on-error-light);
@@ -78,6 +88,14 @@ export const buttonStyles = css`
 		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
 	}
 
+	button.tertiary:hover {
+		background-color: rgb(var(--md-ref-palette-tertiary35-rgb));
+	}
+
+	button.tonal.tertiary:hover {
+		background-color: rgb(var(--md-ref-palette-tertiary85-rgb));
+	}
+
 	button.error:hover {
 		background-color: rgb(var(--md-ref-palette-error35-rgb));
 	}
@@ -100,6 +118,14 @@ export const buttonStyles = css`
 
 	button.tonal.secondary:active, button.tonal.secondary:focus {
 		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
+	}
+
+	button.tertiary:active, button.tertiary:focus {
+		background-color: rgb(var(--md-ref-palette-tertiary30-rgb));
+	}
+
+	button.tonal.tertiary:active, button.tonal.tertiary:focus {
+		background-color: rgb(var(--md-ref-palette-tertiary80-rgb));
 	}
 
 	button.error:active, button.error:focus {
