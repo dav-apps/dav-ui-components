@@ -2,9 +2,14 @@ module.exports = {
 	name: 'Button',
 	properties: [
 		{
+			name: "size",
+			type: "String",
+			values: `"normal", "small"`
+		},
+		{
 			name: "color",
 			type: "String",
-			values: `"primary", "secondary"`
+			values: `"primary", "secondary", "tertiary", "error"`
 		},
 		{
 			name: "tonal",
@@ -14,36 +19,60 @@ module.exports = {
 	],
 	examples: [
 		{
-			title: 'Primary button',
-			template: `<dav-button>Hello World</dav-button>`
+			title: "Primary button",
+			template: `
+				<div style="display: flex; gap: 30px">
+					<dav-button>Hello World</dav-button>
+					<dav-button tonal>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; gap: 30px; margin-top: 30px">
+					<dav-button size="small">Hello World</dav-button>
+					<dav-button size="small" tonal>Hello World</dav-button>
+				</div>
+			`
 		},
 		{
 			title: "Secondary button",
-			template: `<dav-button color="secondary">Hello World</dav-button>`
-		},
-		{
-			title: "Tertiary button",
-			template: `<dav-button color="tertiary">Hello World</dav-button>`
-		},
-		{
-			title: "Error button",
-			template: `<dav-button color="error">Hello World</dav-button>`
-		},
-		{
-			title: "Primary tonal button",
-			template: `<dav-button tonal>Hello World</dav-button>`
-		},
-		{
-			title: "Secondary tonal button",
-			template: `<dav-button color="secondary" tonal>Hello World</dav-button>`
+			template: `
+				<div style="display: flex; gap: 30px">
+					<dav-button color="secondary">Hello World</dav-button>
+					<dav-button color="secondary" tonal>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; gap: 30px; margin-top: 30px">
+					<dav-button size="small" color="secondary">Hello World</dav-button>
+					<dav-button size="small" color="secondary" tonal>Hello World</dav-button>
+				</div>
+			`
 		},
 		{
 			title: "Tertiary tonal button",
-			template: `<dav-button color="tertiary" tonal>Hello World</dav-button>`
+			template: `
+				<div style="display: flex; gap: 30px">
+					<dav-button color="tertiary">Hello World</dav-button>
+					<dav-button color="tertiary" tonal>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; gap: 30px; margin-top: 30px">
+					<dav-button size="small" color="tertiary">Hello World</dav-button>
+					<dav-button size="small" color="tertiary" tonal>Hello World</dav-button>
+				</div>
+			`
 		},
 		{
-			title: "Error tonal button",
-			template: `<dav-button color="error" tonal>Hello World</dav-button>`
-		},
+			title: "Error button",
+			template: `
+				<div style="display: flex; gap: 30px">
+					<dav-button color="error">Hello World</dav-button>
+					<dav-button color="error" tonal>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; gap: 30px; margin-top: 30px">
+					<dav-button size="small" color="error">Hello World</dav-button>
+					<dav-button size="small" color="error" tonal>Hello World</dav-button>
+				</div>
+			`
+		}
 	]
 }
