@@ -71,6 +71,7 @@ module.exports = {
 		'./dist/src/textfield/textfield.styles.js',
 		'./dist/src/toggle/toggle.js',
 		'./dist/src/toggle/toggle.styles.js',
+		'./dist/src/svg/chevron-down.js',
 		'./node_modules/@lit/reactive-element/reactive-element.js',
 		'./node_modules/@lit/reactive-element/reactive-element.js.map',
 		'./node_modules/@lit/reactive-element/css-tag.js',
