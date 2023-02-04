@@ -61,6 +61,24 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-error-container-light);
 	}
 
+	button.outline {
+		background-color: var(--md-sys-color-surface-light);
+		color: var(--md-sys-color-primary-light);
+		border: 1px solid var(--md-sys-color-outline-light);
+	}
+
+	button.outline.secondary {
+		color: var(--md-sys-color-secondary-light);
+	}
+
+	button.outline.tertiary {
+		color: var(--md-sys-color-tertiary-light);
+	}
+
+	button.outline.error {
+		color: var(--md-sys-color-error-light);
+	}
+
 	button.darkTheme {
 		background-color: var(--md-sys-color-secondary-container-dark);
 		color: white;
@@ -109,6 +127,22 @@ export const buttonStyles = css`
 		background-color: rgb(var(--md-ref-palette-error85-rgb));
 	}
 
+	button.outline:hover {
+		background-color: var(--md-sys-color-primary-light-hover);
+	}
+
+	button.outline.secondary:hover {
+		background-color: var(--md-sys-color-secondary-light-hover);
+	}
+
+	button.outline.tertiary:hover {
+		background-color: var(--md-sys-color-tertiary-light-hover);
+	}
+
+	button.outline.error:hover {
+		background-color: var(--md-sys-color-error-light-hover);
+	}
+
 	button:active, button:focus {
 		background-color: rgb(var(--md-ref-palette-primary30-rgb));
 	}
@@ -139,6 +173,22 @@ export const buttonStyles = css`
 
 	button.tonal.error:active, button.tonal.error:focus {
 		background-color: rgb(var(--md-ref-palette-error80-rgb));
+	}
+
+	button.outline:active, button.outline:focus {
+		background-color: var(--md-sys-color-primary-light-focus);
+	}
+
+	button.outline.secondary:active, button.outline.secondary:focus {
+		background-color: var(--md-sys-color-secondary-light-focus);
+	}
+
+	button.outline.tertiary:active, button.outline.tertiary:focus {
+		background-color: var(--md-sys-color-tertiary-light-focus);
+	}
+
+	button.outline.error:active, button.outline.error:focus {
+		background-color: var(--md-sys-color-error-light-focus);
 	}
 
 	button.darkTheme:hover, button.darkTheme:active {
