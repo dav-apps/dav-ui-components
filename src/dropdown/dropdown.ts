@@ -37,7 +37,7 @@ export class Dropdown extends LitElement {
 		darkTheme: false
 	}
 	@state() private dropdownContentClasses = {
-		"ms-motion-slideDownIn": true,
+		"slide-down-in": false,
 		visible: false
 	}
 	@state() private dropdownButtonStyles = {
@@ -152,6 +152,7 @@ export class Dropdown extends LitElement {
 		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownDividerClasses.darkTheme = this.theme == Theme.dark
+		this.dropdownContentClasses['slide-down-in'] = this.showItems
 		this.dropdownContentClasses.visible = this.showItems
 
 		this.dropdownButtonStyles.width = `${this.width}px`

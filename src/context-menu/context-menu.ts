@@ -18,9 +18,7 @@ export class ContextMenu extends LitElement {
 	static styles = [globalStyles, contextMenuStyles]
 
 	@state() private containerClasses = {
-		"ms-Fabric": true,
-		"ms-motion-slideDownIn": true,
-		"ms-depth-16": true,
+		'slide-down-in': false,
 		visible: false,
 		darkTheme: false
 	}
@@ -56,6 +54,7 @@ export class ContextMenu extends LitElement {
 	}
 
 	render() {
+		this.containerClasses['slide-down-in'] = this.visible
 		this.containerClasses.visible = this.visible
 		this.containerClasses.darkTheme = this.theme == Theme.dark
 

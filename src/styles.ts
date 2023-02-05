@@ -216,4 +216,22 @@ export const globalStyles = css`
 	.modern-vertical-scrollbar.darkTheme::-webkit-scrollbar-thumb {
 		background-color: var(--dark-theme-scrollbar-color, var(--default-dark-theme-scrollbar-color));
 	}
+
+	.slide-down-in {
+		animation-duration: 100ms;
+		animation-name: animate-slide-down-in;
+		animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+	}
+
+	@keyframes animate-slide-down-in {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 `
