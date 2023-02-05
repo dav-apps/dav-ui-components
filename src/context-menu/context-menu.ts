@@ -58,8 +58,8 @@ export class ContextMenu extends LitElement {
 		this.containerClasses.visible = this.visible
 		this.containerClasses.darkTheme = this.theme == Theme.dark
 
-		this.containerStyles.top = `${this.posX}px`
-		this.containerStyles.left = `${this.posY}px`
+		this.containerStyles.top = `${this.posY}px`
+		this.containerStyles.left = `${this.posX}px`
 
 		return html`
 			<div
