@@ -4,7 +4,6 @@ import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import { Settings, Theme } from '../types.js'
 import {
-	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -64,8 +63,6 @@ export class ContextMenu extends LitElement {
 		this.containerStyles.left = `${this.posY}px`
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div
 				id="container"
 				class=${classMap(this.containerClasses)}

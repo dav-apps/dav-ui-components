@@ -3,7 +3,6 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { Settings, Theme } from '../types.js'
 import {
-	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -24,7 +23,6 @@ export class ContextMenuItem extends LitElement {
 	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
-	@property() icon: string = "SingleColumn"
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -42,11 +40,11 @@ export class ContextMenuItem extends LitElement {
 		this.buttonClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
-			${getGlobalStyleHtml()}
-
-			<button dir="ltr" class=${classMap(this.buttonClasses)}>
-				<i class="ms-Icon ms-Icon--${this.icon}" aria-hidden="true"></i>
-				<span>${this.value}</span>
+			<button class=${classMap(this.buttonClasses)}>
+				<div id="icon-container">
+					<slot name="icon"></slot>
+				</div>
+				<span id="label">${this.value}</span>
 			</button>
 		`
 	}

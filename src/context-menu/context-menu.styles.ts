@@ -4,10 +4,10 @@ export const contextMenuStyles = css`
 	#container {
 		display: none;
 		position: absolute;
-		background-color: var(--light-theme-color-tertiary, var(--default-light-theme-color-tertiary));
+		background-color: var(--md-sys-color-surface-light);
 		border-radius: 4px;
 		font-size: 16px;
-		padding: 4px;
+		box-shadow: 0 6.4px 14.4px 0 rgb(0 0 0 / 13%), 0 1.2px 3.6px 0 rgb(0 0 0 / 11%);
 	}
 
 	#container.visible {

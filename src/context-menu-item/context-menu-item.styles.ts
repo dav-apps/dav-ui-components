@@ -4,18 +4,26 @@ export const contextMenuItemStyles = css`
 	button {
 		display: flex;
 		align-items: center;
-		width: 100%;
-		height: 37px;
+		height: 28px;
 		border: none;
 		border-radius: 4px;
 		background-color: transparent;
-		color: black;
+		color: var(--md-sys-color-on-surface-light);
+		margin: 4px;
 		padding: 4px 10px;
-		transition: 0.1s;
+		width: -webkit-fill-available;
+		width: -moz-available;
+		transition: 200ms;
+		font-family: Roboto, sans-serif;
 	}
 
-	button:focus, button:hover {
-		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
+	button:hover, button:focus {
+		cursor: pointer;
+		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+	}
+
+	button:active {
+		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
 	}
 
 	button.darkTheme {
@@ -26,8 +34,12 @@ export const contextMenuItemStyles = css`
 		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
 	}
 
-	i {
+	#icon-container {
 		font-size: 16px;
-		margin-right: 10px;
+		width: 16px;
+	}
+
+	#label {
+		margin-left: 12px;
 	}
 `
