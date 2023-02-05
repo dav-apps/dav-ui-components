@@ -15,7 +15,7 @@ export const settingStyles = css`
 		color: var(--md-sys-color-on-surface-light);
 		font-family: Roboto;
 		border-radius: 6px;
-		box-shadow: rgb(var(--md-ref-palette-neutral-variant80-rgb)) 0px 0px 2px 0px;
+		box-shadow: var(--md-sys-color-shadow-light) 0px 0px 2px 0px;
 	}
 
 	#setting-header {

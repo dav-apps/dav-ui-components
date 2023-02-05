@@ -5,14 +5,14 @@ export const contextMenuItemStyles = css`
 		display: flex;
 		align-items: center;
 		height: 28px;
+		width: -webkit-fill-available;
+		width: -moz-available;
 		border: none;
 		border-radius: 4px;
 		background-color: transparent;
 		color: var(--md-sys-color-on-surface-light);
 		margin: 4px;
 		padding: 4px 10px;
-		width: -webkit-fill-available;
-		width: -moz-available;
 		transition: 200ms;
 		font-family: Roboto, sans-serif;
 	}

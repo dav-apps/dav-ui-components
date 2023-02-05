@@ -122,6 +122,10 @@ export const dropdownStyles = css`
 		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
 	}
 
+	.dropdown-option:active {
+		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
+	}
+
 	.dropdown-option.selected {
 		background-color: var(--md-sys-color-primary-light-hover);
 	}
