@@ -7,11 +7,11 @@ export const dialogStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--overlay-color, var(--default-overlay-color));
+		background-color: var(--md-sys-color-scrim-light);
 	}
 
 	#dialog {
-		background-color: var(--light-theme-color-tertiary, var(--default-light-theme-color-tertiary));
+		background-color: var(--md-sys-color-surface-light);
 		margin: 2ex;
 		padding: 2ex;
 		border-radius: 5pt;
@@ -25,10 +25,16 @@ export const dialogStyles = css`
 	#header {
 		margin-bottom: 20px;
 		font-weight: 100;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: Roboto, sans-serif;
+		color: var(--md-sys-color-on-surface-light);
 	}
 
 	#header.darkTheme {
 		color: white;
+	}
+
+	#content-container {
+		font-family: Roboto, sans-serif;
+		color: var(--md-sys-color-on-surface-variant-light);
 	}
 `

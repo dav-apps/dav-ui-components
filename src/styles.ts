@@ -164,7 +164,7 @@ export const globalStyles = css`
 		--md-sys-color-shadow-light: rgb(var(--black-rgb));
 		--md-sys-color-surface-tint-light: rgb(var(--md-ref-palette-primary40-rgb));
 		--md-sys-color-outline-variant-light: rgb(var(--md-ref-palette-neutral-variant80-rgb));
-		--md-sys-color-scrim-light: rgb(var(--black-rgb));
+		--md-sys-color-scrim-light: rgb(var(--black-rgb), 0.5);
 
 		/* dark */
 		--md-sys-color-primary-dark: rgb(var(--md-ref-palette-primary80-rgb));

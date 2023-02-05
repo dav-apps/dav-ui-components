@@ -107,14 +107,16 @@ export class Dialog extends LitElement {
 		if (this.defaultButtonText.length > 0) {
 			return html`
 				<dav-button
+					text
 					?disabled=${this.loading}
-					@click=${this.defaultButtonClick}>
+					@click=${this.defaultButtonClick}
+				>
 					${this.defaultButtonText}
 				</dav-button>
 			`
-		} else {
-			return html``
 		}
+
+		return html``
 	}
 
 	getPrimaryButton() {
@@ -122,14 +124,16 @@ export class Dialog extends LitElement {
 			return html`
 				<dav-button
 					style="margin-left: 10px"
+					text
 					?disabled=${this.loading}
-					@click=${this.primaryButtonClick}>
+					@click=${this.primaryButtonClick}
+				>
 					${this.primaryButtonText}
 				</dav-button>
 			`
-		} else {
-			return html``
 		}
+
+		return html``
 	}
 
 	render() {
@@ -165,7 +169,9 @@ export class Dialog extends LitElement {
 						${this.header}
 					</h4>
 
-					<slot></slot>
+					<div id="content-container">
+						<slot></slot>
+					</div>
 
 					<div
 						class="d-flex"
