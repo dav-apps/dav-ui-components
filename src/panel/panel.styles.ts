@@ -16,7 +16,7 @@ export const panelStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: #3b3b3b67;
+		background-color: var(--md-sys-color-scrim-light);
 	}
 
 	#content {

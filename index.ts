@@ -2,6 +2,7 @@ import { setLocale, setTheme } from './src/utils.js'
 import { DropdownOption, DropdownOptionType } from './src/types.js'
 
 // Components
+import { BottomSheet, bottomSheetTagName } from './src/bottom-sheet/bottom-sheet.js'
 import { Button, buttonTagName } from './src/button/button.js'
 import { Checkbox, checkboxTagName } from './src/checkbox/checkbox.js'
 import { ContextMenu, contextMenuTagName } from './src/context-menu/context-menu.js'
@@ -30,6 +31,7 @@ import { Toggle, toggleTagName } from './src/toggle/toggle.js'
 
 declare global {
 	interface HTMLElementTagNameMap {
+		[bottomSheetTagName]: BottomSheet,
 		[buttonTagName]: Button,
 		[checkboxTagName]: Checkbox,
 		[contextMenuTagName]: ContextMenu,
@@ -63,6 +65,7 @@ export {
 	setTheme,
 	DropdownOption,
 	DropdownOptionType,
+	BottomSheet,
 	Button,
 	Checkbox,
 	ContextMenu,
