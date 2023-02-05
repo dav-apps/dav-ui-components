@@ -26,6 +26,7 @@ export class Button extends LitElement {
 		error: false,
 		tonal: false,
 		outline: false,
+		text: false,
 		disabled: false,
 		darkTheme: false
 	}
@@ -42,6 +43,7 @@ export class Button extends LitElement {
 	}) color: ButtonColor = ButtonColor.primary
 	@property({ type: Boolean }) tonal: boolean = false
 	@property({ type: Boolean }) outline: boolean = false
+	@property({ type: Boolean }) text: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
@@ -93,6 +95,7 @@ export class Button extends LitElement {
 
 		this.buttonClasses.tonal = this.tonal
 		this.buttonClasses.outline = this.outline
+		this.buttonClasses.text = this.text
 		this.buttonClasses.disabled = this.disabled
 		this.buttonClasses.darkTheme = this.theme == Theme.dark
 

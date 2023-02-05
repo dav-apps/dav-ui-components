@@ -61,22 +61,26 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-error-container-light);
 	}
 
-	button.outline {
+	button.outline, button.text {
 		background-color: var(--md-sys-color-surface-light);
 		color: var(--md-sys-color-primary-light);
 		border: 1px solid var(--md-sys-color-outline-light);
 	}
 
-	button.outline.secondary {
+	button.outline.secondary, button.text.secondary {
 		color: var(--md-sys-color-secondary-light);
 	}
 
-	button.outline.tertiary {
+	button.outline.tertiary, button.text.tertiary {
 		color: var(--md-sys-color-tertiary-light);
 	}
 
-	button.outline.error {
+	button.outline.error, button.text.error {
 		color: var(--md-sys-color-error-light);
+	}
+
+	button.text {
+		border: none;
 	}
 
 	button.darkTheme {
@@ -127,19 +131,19 @@ export const buttonStyles = css`
 		background-color: rgb(var(--md-ref-palette-error85-rgb));
 	}
 
-	button.outline:hover {
+	button.outline:hover, button.text:hover {
 		background-color: var(--md-sys-color-primary-light-hover);
 	}
 
-	button.outline.secondary:hover {
+	button.outline.secondary:hover, button.text.secondary:hover {
 		background-color: var(--md-sys-color-secondary-light-hover);
 	}
 
-	button.outline.tertiary:hover {
+	button.outline.tertiary:hover, button.text.tertiary:hover {
 		background-color: var(--md-sys-color-tertiary-light-hover);
 	}
 
-	button.outline.error:hover {
+	button.outline.error:hover, button.text.error:hover {
 		background-color: var(--md-sys-color-error-light-hover);
 	}
 
@@ -175,19 +179,23 @@ export const buttonStyles = css`
 		background-color: rgb(var(--md-ref-palette-error80-rgb));
 	}
 
-	button.outline:active, button.outline:focus {
+	button.outline:active, button.outline:focus,
+	button.text:active, button.text:focus {
 		background-color: var(--md-sys-color-primary-light-focus);
 	}
 
-	button.outline.secondary:active, button.outline.secondary:focus {
+	button.outline.secondary:active, button.outline.secondary:focus,
+	button.text.secondary:active, button.text.secondary:focus {
 		background-color: var(--md-sys-color-secondary-light-focus);
 	}
 
-	button.outline.tertiary:active, button.outline.tertiary:focus {
+	button.outline.tertiary:active, button.outline.tertiary:focus,
+	button.text.tertiary:active, button.text.tertiary:focus {
 		background-color: var(--md-sys-color-tertiary-light-focus);
 	}
 
-	button.outline.error:active, button.outline.error:focus {
+	button.outline.error:active, button.outline.error:focus,
+	button.text.error:active, button.text.error:focus {
 		background-color: var(--md-sys-color-error-light-focus);
 	}
 
