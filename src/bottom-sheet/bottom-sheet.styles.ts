@@ -41,13 +41,22 @@ export const bottomSheetStyles = css`
 		grid-column: 3;
 	}
 
+	#handle {
+		width: 32px;
+		height: 4px;
+		background-color: rgb(var(--md-ref-palette-neutral10-rgb), 0.4);
+		margin: 10px auto;
+		border-radius: 2px;
+	}
+
 	#content {
 		grid-column: 2;
 		justify-self: stretch;
-		min-width: 300px;
-		max-width: 600px;
+		width: 100vw;
+		max-width: 640px;
 		height: 200px;
-		border-radius: 16px 16px 0 0;
-		background-color: white;
+		padding: 0 24px;
+		border-radius: 28px 28px 0 0;
+		background-color: var(--md-sys-color-surface-light);
 	}
 `

@@ -37,6 +37,8 @@ export class BottomSheet extends LitElement {
 					</div>
 
 					<div id="content">
+						<div id="handle"></div>
+
 						<slot></slot>
 					</div>
 
