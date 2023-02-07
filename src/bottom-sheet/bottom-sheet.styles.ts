@@ -24,7 +24,7 @@ export const bottomSheetStyles = css`
 		background-color: var(--md-sys-color-scrim-light);
 	}
 
-	#content-container {
+	#bottom-sheet-container {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
@@ -33,11 +33,11 @@ export const bottomSheetStyles = css`
 		background-color: transparent;
 	}
 
-	#content-left-overlay {
+	#bottom-sheet-left-overlay {
 		grid-column: 1;
 	}
 
-	#content-right-overlay {
+	#bottom-sheet-right-overlay {
 		grid-column: 3;
 	}
 
@@ -49,14 +49,19 @@ export const bottomSheetStyles = css`
 		border-radius: 2px;
 	}
 
-	#content {
+	#content-container {
 		grid-column: 2;
 		justify-self: stretch;
 		width: 100vw;
 		max-width: 640px;
 		height: 200px;
-		padding: 0 24px;
 		border-radius: 28px 28px 0 0;
 		background-color: var(--md-sys-color-surface-light);
+	}
+
+	#content {
+		width: 100%;
+		height: 100%;
+		padding: 0 24px;
 	}
 `

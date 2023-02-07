@@ -30,20 +30,22 @@ export class BottomSheet extends LitElement {
 					@click=${this.overlayClick}>
 				</div>
 
-				<div id="content-container">
+				<div id="bottom-sheet-container">
 					<div
-						id="content-left-overlay"
+						id="bottom-sheet-left-overlay"
 						@click=${this.overlayClick}>
 					</div>
 
-					<div id="content">
+					<div id="content-container">
 						<div id="handle"></div>
 
-						<slot></slot>
+						<div id="content">
+							<slot></slot>
+						</div>
 					</div>
 
 					<div
-						id="content-right-overlay"
+						id="bottom-sheet-right-overlay"
 						@click=${this.overlayClick}>
 					</div>
 				</div>
