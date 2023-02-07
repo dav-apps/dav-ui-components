@@ -2,17 +2,17 @@ import { css } from "@lit/reactive-element"
 
 export const bottomSheetStyles = css`
 	#container {
-		display: none;
 		position: fixed;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		z-index: 100;
+		width: 0;
 	}
 
 	#container.visible {
-		display: block;
+		width: unset;
 	}
 
 	#overlay {
@@ -21,7 +21,15 @@ export const bottomSheetStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
+		width: 0;
 		background-color: var(--md-sys-color-scrim-light);
+		opacity: 0;
+		transition: 200ms;
+	}
+
+	#container.visible > #overlay {
+		width: unset;
+		opacity: 1;
 	}
 
 	#bottom-sheet-container {
@@ -57,6 +65,7 @@ export const bottomSheetStyles = css`
 		height: 200px;
 		border-radius: 28px 28px 0 0;
 		background-color: var(--md-sys-color-surface-light);
+		transition: 200ms;
 	}
 
 	#content {

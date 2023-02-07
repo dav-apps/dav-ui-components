@@ -3,12 +3,12 @@ module.exports = {
 	examples: [
 		{
 			title: "Default BottomSheet",
-			controller: function (element) {
+			controller: function(element) {
 				let button = element.getElementsByTagName("dav-button")[0]
 				let bottomSheet = element.getElementsByTagName("dav-bottom-sheet")[0]
 
 				button.onclick = () => {
-					bottomSheet.visible = !bottomSheet.visible
+					bottomSheet.visible = true
 				}
 
 				bottomSheet.addEventListener("dismiss", () => {
