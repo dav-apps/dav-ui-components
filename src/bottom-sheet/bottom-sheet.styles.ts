@@ -39,6 +39,7 @@ export const bottomSheetStyles = css`
 		display: grid;
 		grid-template-columns: auto max-content auto;
 		background-color: transparent;
+		transition: 200ms;
 	}
 
 	#bottom-sheet-left-overlay {
@@ -65,7 +66,6 @@ export const bottomSheetStyles = css`
 		height: 200px;
 		border-radius: 28px 28px 0 0;
 		background-color: var(--md-sys-color-surface-light);
-		transition: 200ms;
 	}
 
 	#content {

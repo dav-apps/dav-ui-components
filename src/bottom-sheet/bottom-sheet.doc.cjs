@@ -20,7 +20,7 @@ module.exports = {
 					Open bottom sheet
 				</dav-button>
 
-				<dav-bottom-sheet>
+				<dav-bottom-sheet position="100">
 					<h1>Hello World</h1>
 				</dav-bottom-sheet>
 			`

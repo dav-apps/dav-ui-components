@@ -13,6 +13,7 @@ export class BottomSheet extends LitElement {
 	static styles = [globalStyles, bottomSheetStyles]
 
 	@query("#content-container") contentContainer: HTMLDivElement
+	@query("#bottom-sheet-container") bottomSheetContainer: HTMLDivElement
 
 	@state() private containerClasses = {
 		visible: false
@@ -22,6 +23,7 @@ export class BottomSheet extends LitElement {
 	}
 
 	@property({ type: Boolean }) visible: boolean = false
+	@property({ type: Number }) position: number = 0
 
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
@@ -30,10 +32,12 @@ export class BottomSheet extends LitElement {
 	render() {
 		this.containerClasses.visible = this.visible
 
-		if (this.visible) {
-			this.contentContainerStyles.transform = ""
-		} else if (this.contentContainer) {
-			this.contentContainerStyles.transform = `translateY(${this.contentContainer.clientHeight}px)`
+		if (this.bottomSheetContainer) {
+			if (this.visible && this.position >= 0) {
+				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight - this.position}px)`
+			} else {
+				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
+			}
 		} else {
 			this.contentContainerStyles.transform = "translateY(100%)"
 		}
@@ -45,16 +49,13 @@ export class BottomSheet extends LitElement {
 					@click=${this.overlayClick}>
 				</div>
 
-				<div id="bottom-sheet-container">
+				<div id="bottom-sheet-container" style=${styleMap(this.contentContainerStyles)}>
 					<div
 						id="bottom-sheet-left-overlay"
 						@click=${this.overlayClick}>
 					</div>
 
-					<div
-						id="content-container"
-						style=${styleMap(this.contentContainerStyles)}
-					>
+					<div id="content-container">
 						<div id="handle"></div>
 
 						<div id="content">
