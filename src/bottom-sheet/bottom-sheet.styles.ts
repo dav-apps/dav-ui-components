@@ -39,6 +39,9 @@ export const bottomSheetStyles = css`
 		display: grid;
 		grid-template-columns: auto max-content auto;
 		background-color: transparent;
+	}
+
+	#bottom-sheet-container.animate {
 		transition: 200ms;
 	}
 

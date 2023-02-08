@@ -7,7 +7,7 @@ module.exports = {
 				const touchStart = "touchstart"
 				const touchMove = "touchmove"
 				const touchEnd = "touchend"
-				
+
 				let touchStartY = 0
 				let touchDiffY = 0
 				let swipeStart = false
@@ -34,6 +34,7 @@ module.exports = {
 					if (event.type == touchStart) {
 						touchStartY = event.touches.item(0).screenY
 						swipeStart = true
+						bottomSheet.animatePosition = false
 					} else if (event.type == touchMove) {
 						touchDiffY = touchStartY - event.touches.item(0).screenY
 
@@ -47,6 +48,7 @@ module.exports = {
 						touchStartY = 0
 						touchDiffY = 0
 						startPosition = 0
+						bottomSheet.animatePosition = true
 					}
 				}
 			},

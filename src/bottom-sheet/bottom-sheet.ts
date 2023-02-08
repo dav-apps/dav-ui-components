@@ -18,12 +18,16 @@ export class BottomSheet extends LitElement {
 	@state() private containerClasses = {
 		visible: false
 	}
+	@state() private bottomSheetContainerClasses = {
+		animate: false
+	}
 	@state() private contentContainerStyles = {
 		transform: ""
 	}
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Number }) position: number = 0
+	@property({ type: Boolean }) animatePosition: boolean = true
 
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
@@ -31,6 +35,7 @@ export class BottomSheet extends LitElement {
 
 	render() {
 		this.containerClasses.visible = this.visible
+		this.bottomSheetContainerClasses.animate = this.animatePosition
 
 		if (this.bottomSheetContainer) {
 			if (this.visible) {
@@ -55,7 +60,11 @@ export class BottomSheet extends LitElement {
 					@click=${this.overlayClick}>
 				</div>
 
-				<div id="bottom-sheet-container" style=${styleMap(this.contentContainerStyles)}>
+				<div
+					id="bottom-sheet-container"
+					class=${classMap(this.bottomSheetContainerClasses)}
+					style=${styleMap(this.contentContainerStyles)}
+				>
 					<div
 						id="bottom-sheet-left-overlay"
 						@click=${this.overlayClick}>
