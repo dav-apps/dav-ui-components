@@ -33,7 +33,13 @@ export class BottomSheet extends LitElement {
 		this.containerClasses.visible = this.visible
 
 		if (this.bottomSheetContainer) {
-			if (this.visible && this.position >= 0) {
+			if (this.visible) {
+				if (this.position > this.bottomSheetContainer.clientHeight) {
+					this.position = this.bottomSheetContainer.clientHeight
+				} else if (this.position < 24) {
+					this.position = 24
+				}
+
 				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight - this.position}px)`
 			} else {
 				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
