@@ -13,11 +13,23 @@ module.exports = {
 				let swipeStart = false
 				let startPosition = 0
 
-				let button = element.getElementsByTagName("dav-button")[0]
-				let bottomSheet = element.getElementsByTagName("dav-bottom-sheet")[0]
+				let openButton = document.getElementById("open-button")
+				let openNonDismissableButton = document.getElementById("open-non-dismissable-button")
+				let closeButton = document.getElementById("close-button")
+				let bottomSheet = document.getElementsByTagName("dav-bottom-sheet")[0]
 
-				button.onclick = () => {
+				openButton.onclick = () => {
+					bottomSheet.dismissable = true
 					bottomSheet.visible = true
+				}
+
+				openNonDismissableButton.onclick = () => {
+					bottomSheet.dismissable = false
+					bottomSheet.visible = true
+				}
+
+				closeButton.onclick = () => {
+					bottomSheet.visible = false
 				}
 
 				bottomSheet.addEventListener("dismiss", () => {
@@ -53,12 +65,21 @@ module.exports = {
 				}
 			},
 			template: `
-				<dav-button>
+				<dav-button id="open-button">
 					Open bottom sheet
+				</dav-button>
+
+				<dav-button id="open-non-dismissable-button" style="margin-top: 24px">
+					Open non-dismissable bottom sheet
 				</dav-button>
 
 				<dav-bottom-sheet position="100">
 					<h1>Hello World</h1>
+					<dav-button
+						id="close-button"
+						style="margin-bottom: 24px"
+						size="small"
+					>Hide</dav-button>
 				</dav-bottom-sheet>
 			`
 		}
