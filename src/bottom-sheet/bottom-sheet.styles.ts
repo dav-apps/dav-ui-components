@@ -11,10 +11,6 @@ export const bottomSheetStyles = css`
 		width: 0;
 	}
 
-	#container.visible {
-		width: unset;
-	}
-
 	#overlay {
 		position: fixed;
 		top: 0;
@@ -23,13 +19,11 @@ export const bottomSheetStyles = css`
 		right: 0;
 		width: 0;
 		background-color: var(--md-sys-color-scrim-light);
-		opacity: 0;
 		transition: 200ms;
 	}
 
-	#container.visible > #overlay {
+	#overlay.visible {
 		width: unset;
-		opacity: 1;
 	}
 
 	#bottom-sheet-container {
@@ -66,7 +60,6 @@ export const bottomSheetStyles = css`
 		justify-self: stretch;
 		width: 100vw;
 		max-width: 640px;
-		height: 200px;
 		border-radius: 28px 28px 0 0;
 		background-color: var(--md-sys-color-surface-light);
 	}
