@@ -7,8 +7,8 @@ export const iconTextButtonStyles = css`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 48px;
-		padding: 10px 32px;
+		max-width: 72px;
+		padding: 10px 8px;
 		color: var(--md-sys-color-on-surface-variant-light);
 		background-color: transparent;
 		border: none;
@@ -31,7 +31,7 @@ export const iconTextButtonStyles = css`
 
 	#label {
 		font-family: Roboto, sans-serif;
-		font-size: 14px;
+		font-size: 12px;
 		margin-top: 10px;
 	}
 `

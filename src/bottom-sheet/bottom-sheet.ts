@@ -71,6 +71,16 @@ export class BottomSheet extends LitElement {
 						// Hide the overlay
 						this.overlayClasses.visible = false
 					}
+
+					if (this.position != minBottomSheetPosition && this.position != this.bottomSheetContainer.clientHeight) {
+						if (this.position < (this.bottomSheetContainer.clientHeight / 2)) {
+							// Snap to the bottom
+							this.position = minBottomSheetPosition
+						} else {
+							// Snap to the top
+							this.position = this.bottomSheetContainer.clientHeight
+						}
+					}
 				}
 			} else {
 				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
