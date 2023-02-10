@@ -33,11 +33,7 @@ export const iconButtonStyles = css`
 		background-color: var(--md-sys-color-on-surface-variant-light-hover);
 	}
 
-	button:focus {
-		background-color: var(--md-sys-color-on-surface-variant-light-focus);
-	}
-
-	button:active {
+	button:focus, button:active {
 		background-color: var(--md-sys-color-on-surface-variant-light-focus);
 	}
 

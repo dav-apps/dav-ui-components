@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
+import { customElement, property } from 'lit/decorators.js'
 import { globalStyles } from '../styles.js'
 import { iconTextButtonStyles } from './icon-text-button.styles.js'
 
@@ -9,9 +9,17 @@ export const iconTextButtonTagName = "dav-icon-text-button"
 export class IconTextButton extends LitElement {
 	static styles = [globalStyles, iconTextButtonStyles]
 
+	@property({ type: String }) label: string = ""
+
 	render() {
 		return html`
-			<h1>Hello World</h1>
+			<button>
+				<div id="icon-container">
+					<slot></slot>
+				</div>
+
+				<span id="label">${this.label}</span>
+			</button>
 		`
 	}
 }
