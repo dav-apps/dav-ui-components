@@ -32,10 +32,24 @@ export class BottomSheet extends LitElement {
 		transform: ""
 	}
 
+	private resizeObserverInitialized: boolean = false
+	private bottomSheetContainerHeight: number = -1
+
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) dismissable: boolean = true
 	@property({ type: Number }) position: number = 0
 	@property({ type: Boolean }) animatePosition: boolean = true
+
+	private bottomSheetContainerResize(entry: ResizeObserverEntry) {
+		if (this.bottomSheetContainerHeight < 0) {
+			this.bottomSheetContainerHeight = entry.contentRect.height
+		}
+
+		let heightDiff = entry.contentRect.height - this.bottomSheetContainerHeight
+
+		this.position += heightDiff
+		this.bottomSheetContainerHeight = entry.contentRect.height
+	}
 
 	private overlayClick() {
 		if (this.dismissable) {
@@ -46,6 +60,20 @@ export class BottomSheet extends LitElement {
 	}
 
 	render() {
+		if (!this.resizeObserverInitialized && this.bottomSheetContainer != null) {
+			const resizeObserver = new ResizeObserver((entries) => {
+				if (
+					entries.length == 0
+					|| entries[0].target != this.bottomSheetContainer
+				) return
+
+				this.bottomSheetContainerResize(entries[0])
+			})
+
+			resizeObserver.observe(this.bottomSheetContainer)
+			this.resizeObserverInitialized = true
+		}
+
 		this.containerClasses.visible = this.visible
 		this.overlayClasses.visible = this.visible
 		this.bottomSheetContainerClasses.animate = this.animatePosition
@@ -66,7 +94,7 @@ export class BottomSheet extends LitElement {
 					this.overlayStyles.opacity = (
 						(100 / (this.bottomSheetContainer.clientHeight - minBottomSheetPosition)) * (this.position - minBottomSheetPosition) / 100
 					).toPrecision(3).toString()
-					
+
 					if (this.position == minBottomSheetPosition) {
 						// Hide the overlay
 						this.overlayClasses.visible = false
