@@ -1,3 +1,5 @@
+export type BottomSheetPosition = "auto" | "top" | "bottom"
+
 export interface DropdownOption {
 	key: string
 	value: string

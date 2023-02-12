@@ -3,11 +3,13 @@ import { customElement, property, state } from 'lit/decorators.js'
 import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
+import { BottomSheetPosition } from '../types.js'
 import { globalStyles } from '../styles.js'
 import { bottomSheetStyles } from './bottom-sheet.styles.js'
 
 export const bottomSheetTagName = "dav-bottom-sheet"
 const minBottomSheetPosition = 24
+const snapTopWindowHeightFactor = 0.8
 
 @customElement(bottomSheetTagName)
 export class BottomSheet extends LitElement {
@@ -39,24 +41,39 @@ export class BottomSheet extends LitElement {
 	@property({ type: Boolean }) dismissable: boolean = true
 	@property({ type: Number }) position: number = 0
 
-	public snap() {
-		this.animatePosition = true
+	public snap(position: BottomSheetPosition = "auto") {
+		if (this.position > window.innerHeight * snapTopWindowHeightFactor) {
+			return
+		}
 
-		if (this.bottomSheetContainer.clientHeight < window.innerHeight) {
-			// Snap to the height of the container or to the bottom
-			if (
-				this.position > minBottomSheetPosition
-				&& this.position < this.bottomSheetContainer.clientHeight
-			) {
-				if (this.position < (this.bottomSheetContainer.clientHeight / 2)) {
-					// Snap to the bottom
-					this.position = minBottomSheetPosition
+		this.animatePosition = true
+		let newPosition: number = 0
+
+		if (position == "bottom") {
+			newPosition = minBottomSheetPosition
+		} else if (position == "top") {
+			if (this.bottomSheetContainer.clientHeight > window.innerHeight) {
+				newPosition = window.innerHeight * snapTopWindowHeightFactor
+			} else {
+				newPosition = this.bottomSheetContainer.clientHeight
+			}
+		} else if (position == "auto") {
+			if (this.bottomSheetContainer.clientHeight > window.innerHeight) {
+				if (this.position > window.innerHeight / 2) {
+					newPosition = window.innerHeight * snapTopWindowHeightFactor
 				} else {
-					// Snap to the top
-					this.position = this.bottomSheetContainer.clientHeight
+					newPosition = minBottomSheetPosition
+				}
+			} else {
+				if (this.position > this.bottomSheetContainer.clientHeight / 2) {
+					newPosition = this.bottomSheetContainer.clientHeight
+				} else {
+					newPosition = minBottomSheetPosition
 				}
 			}
 		}
+
+		this.position = newPosition
 
 		setTimeout(() => {
 			this.animatePosition = false
