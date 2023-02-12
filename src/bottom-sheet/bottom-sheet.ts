@@ -33,22 +33,70 @@ export class BottomSheet extends LitElement {
 	}
 
 	private resizeObserverInitialized: boolean = false
-	private bottomSheetContainerHeight: number = -1
+	private animatePosition: boolean = true
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) dismissable: boolean = true
 	@property({ type: Number }) position: number = 0
-	@property({ type: Boolean }) animatePosition: boolean = true
 
-	private bottomSheetContainerResize(entry: ResizeObserverEntry) {
-		if (this.bottomSheetContainerHeight < 0) {
-			this.bottomSheetContainerHeight = entry.contentRect.height
+	public snap() {
+		this.animatePosition = true
+
+		if (this.bottomSheetContainer.clientHeight < window.innerHeight) {
+			// Snap to the height of the container or to the bottom
+			if (
+				this.position > minBottomSheetPosition
+				&& this.position < this.bottomSheetContainer.clientHeight
+			) {
+				if (this.position < (this.bottomSheetContainer.clientHeight / 2)) {
+					// Snap to the bottom
+					this.position = minBottomSheetPosition
+				} else {
+					// Snap to the top
+					this.position = this.bottomSheetContainer.clientHeight
+				}
+			}
 		}
 
-		let heightDiff = entry.contentRect.height - this.bottomSheetContainerHeight
+		setTimeout(() => {
+			this.animatePosition = false
+		}, 200)
+	}
 
-		this.position += heightDiff
-		this.bottomSheetContainerHeight = entry.contentRect.height
+	private updateContentContainerTransform() {
+		if (this.bottomSheetContainer) {
+			if (this.visible) {
+				if (this.position > this.bottomSheetContainer.clientHeight) {
+					this.position = this.bottomSheetContainer.clientHeight
+				} else if (this.position < minBottomSheetPosition) {
+					this.position = minBottomSheetPosition
+				}
+
+				if (this.position == minBottomSheetPosition) {
+					this.dispatchEvent(new CustomEvent("snapBottom"))
+				} else if (this.position == this.bottomSheetContainer.clientHeight) {
+					this.dispatchEvent(new CustomEvent("snapTop"))
+				}
+
+				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight - this.position}px)`
+
+				if (!this.dismissable) {
+					// Calculate the opacity
+					this.overlayStyles.opacity = (
+						(100 / (this.bottomSheetContainer.clientHeight - minBottomSheetPosition)) * (this.position - minBottomSheetPosition) / 100
+					).toPrecision(3).toString()
+
+					if (this.position == minBottomSheetPosition) {
+						// Hide the overlay
+						this.overlayClasses.visible = false
+					}
+				}
+			} else {
+				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
+			}
+		} else {
+			this.contentContainerStyles.transform = "translateY(100%)"
+		}
 	}
 
 	private overlayClick() {
@@ -67,7 +115,8 @@ export class BottomSheet extends LitElement {
 					|| entries[0].target != this.bottomSheetContainer
 				) return
 
-				this.bottomSheetContainerResize(entries[0])
+				this.updateContentContainerTransform()
+				this.requestUpdate()
 			})
 
 			resizeObserver.observe(this.bottomSheetContainer)
@@ -79,43 +128,7 @@ export class BottomSheet extends LitElement {
 		this.bottomSheetContainerClasses.animate = this.animatePosition
 		this.overlayStyles.opacity = this.visible ? "1" : "0"
 
-		if (this.bottomSheetContainer) {
-			if (this.visible) {
-				if (this.position > this.bottomSheetContainer.clientHeight) {
-					this.position = this.bottomSheetContainer.clientHeight
-				} else if (this.position < minBottomSheetPosition) {
-					this.position = minBottomSheetPosition
-				}
-
-				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight - this.position}px)`
-
-				if (!this.dismissable) {
-					// Calculate the opacity
-					this.overlayStyles.opacity = (
-						(100 / (this.bottomSheetContainer.clientHeight - minBottomSheetPosition)) * (this.position - minBottomSheetPosition) / 100
-					).toPrecision(3).toString()
-
-					if (this.position == minBottomSheetPosition) {
-						// Hide the overlay
-						this.overlayClasses.visible = false
-					}
-
-					if (this.position != minBottomSheetPosition && this.position != this.bottomSheetContainer.clientHeight) {
-						if (this.position < (this.bottomSheetContainer.clientHeight / 2)) {
-							// Snap to the bottom
-							this.position = minBottomSheetPosition
-						} else {
-							// Snap to the top
-							this.position = this.bottomSheetContainer.clientHeight
-						}
-					}
-				}
-			} else {
-				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
-			}
-		} else {
-			this.contentContainerStyles.transform = "translateY(100%)"
-		}
+		this.updateContentContainerTransform()
 
 		return html`
 			<div id="container" class=${classMap(this.containerClasses)}>
