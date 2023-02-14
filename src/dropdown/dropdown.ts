@@ -8,8 +8,8 @@ import {
 	unsubscribeSettingsChange,
 	getSettings
 } from '../utils.js'
-import { DropdownOption, Theme, DropdownOptionType, Settings, Locale } from '../types.js'
-import { chevronDownSvg } from '../svg/chevron-down.js'
+import { DropdownOption, Theme, DropdownOptionType, Settings } from '../types.js'
+import { chevronDownLightSvg } from '../svg/chevron-down-light.js'
 import { globalStyles } from '../styles.js'
 import { dropdownStyles } from './dropdown.styles.js'
 
@@ -177,7 +177,7 @@ export class Dropdown extends LitElement {
 					<span>${this.buttonText}</span>
 
 					<div id="chevron-svg-container">
-						${chevronDownSvg}
+						${chevronDownLightSvg}
 					</div>
 				</button>
 
