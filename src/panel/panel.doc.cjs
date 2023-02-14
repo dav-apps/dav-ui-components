@@ -20,8 +20,7 @@ module.exports = {
 					Open panel
 				</dav-button>
 
-				<dav-panel>
-					<h1>Hello World</h1>
+				<dav-panel header="Hello World">
 				</dav-panel>
 			`
 		}

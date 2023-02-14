@@ -4,12 +4,12 @@ import { query } from 'lit/decorators/query.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { styleMap } from 'lit/directives/style-map.js'
 import {
-	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
 } from '../utils.js'
 import { Settings, Theme } from '../types.js'
+import { xmarkLightSvg } from '../svg/xmark-light.js'
 import { globalStyles } from '../styles.js'
 import { panelStyles } from './panel.styles.js'
 import { slideIn, slideOut } from './panel.animations.js'
@@ -93,12 +93,10 @@ export class Panel extends LitElement {
 		}
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div
 				id="container"
-				style=${styleMap(this.containerStyles)}>
-
+				style=${styleMap(this.containerStyles)}
+			>
 				<div
 					id="overlay"
 					@click=${this.overlayClick}>
@@ -106,19 +104,21 @@ export class Panel extends LitElement {
 
 				<div
 					id="content"
-					class=${classMap(this.contentClasses)}>
+					class=${classMap(this.contentClasses)}
+				>
+					<div id="header-container">
+						<h1 id="header" class=${classMap(this.headerClasses)}>
+							${this.header}
+						</h1>
 
-					<button
-						id="close-button"
-						class=${classMap(this.closeButtonClasses)}
-						@click=${this.closeButtonClick}>
-						<i class="ms-Icon ms-Icon--Cancel" aria-hidden="true"></i>
-					</button>
-
-					<p id="header"
-						class=${classMap(this.headerClasses)}>
-						${this.header}
-					</p>
+						<dav-icon-button
+							id="close-button"
+							class=${classMap(this.closeButtonClasses)}
+							@click=${this.closeButtonClick}
+						>
+							${xmarkLightSvg}
+						</dav-icon-button>
+					</div>
 
 					<div id="slot-container">
 						<slot></slot>

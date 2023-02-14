@@ -120,7 +120,7 @@ export class BottomSheet extends LitElement {
 		if (this.dismissable) {
 			this.dispatchEvent(new CustomEvent("dismiss"))
 		} else {
-			this.position = minBottomSheetPosition
+			this.snap("bottom")
 		}
 	}
 
