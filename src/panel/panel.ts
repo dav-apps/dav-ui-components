@@ -24,7 +24,7 @@ export class Panel extends LitElement {
 	@query("#content") content: HTMLDivElement
 
 	@state() private contentClasses = {
-		"shadow-lg modern-vertical-scrollbar": true,
+		"shadow-lg": true,
 		darkTheme: false
 	}
 	@state() private closeButtonClasses = {
@@ -120,7 +120,7 @@ export class Panel extends LitElement {
 						</dav-icon-button>
 					</div>
 
-					<div id="slot-container">
+					<div id="slot-container" class="modern-vertical-scrollbar">
 						<slot></slot>
 					</div>
 				</div>

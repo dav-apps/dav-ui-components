@@ -24,11 +24,11 @@ export const panelStyles = css`
 		top: 0;
 		bottom: 0;
 		right: 0;
-		padding: 24px;
+		display: flex;
+		flex-direction: column;
 		width: 340px;
 		background-color: var(--md-sys-color-surface-light);
 		border-radius: 28px 0 0 28px;
-		overflow-y: auto;
 	}
 
 	#content.darkTheme {
@@ -39,6 +39,7 @@ export const panelStyles = css`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		padding: 24px 24px 0 24px;
 		color: var(--md-sys-color-on-surface-light);
 	}
 
@@ -68,6 +69,7 @@ export const panelStyles = css`
 	}
 
 	#slot-container {
-		margin: 0px 32px;
+		margin: 12px 0 0 24px;
+		overflow-y: auto;
 	}
 `
