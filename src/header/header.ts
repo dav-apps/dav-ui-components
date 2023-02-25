@@ -29,7 +29,6 @@ export class Header extends LitElement {
 
 	@state() private theme: Theme = getSettings().theme
 
-	@property() header: string = ""
 	@property({ type: Boolean }) backButtonVisible: boolean = false
 	@property({ type: Boolean }) editButtonVisible: boolean = false
 	@property({
@@ -59,7 +58,7 @@ export class Header extends LitElement {
 	}
 
 	getBackButton() {
-		if (this.backButtonVisible && this.header.length > 0) {
+		if (this.backButtonVisible) {
 			return html`
 				<dav-icon-button id="back-button" @click=${this.backButtonClick}>
 					${arrowLeftLightSvg}
@@ -71,7 +70,7 @@ export class Header extends LitElement {
 	}
 
 	getEditButton() {
-		if (this.editButtonVisible && this.header.length > 0) {
+		if (this.editButtonVisible) {
 			return html`
 				<dav-icon-button id="edit-button" @click=${this.editButtonClick}>
 					${penLightSvg}
@@ -106,7 +105,7 @@ export class Header extends LitElement {
 					class=${classMap(this.headerClasses)}
 					style=${styleMap(this.headerStyles)}
 				>
-					${this.header}
+					<slot></slot>
 				</h1>
 
 				${this.getEditButton()}

@@ -10,6 +10,7 @@ export const headerStyles = css`
 	#header {
 		display: flex;
 		justify-content: center;
+		margin: 0;
 		font-family: Roboto, Arial, sans-serif;
 		font-weight: 400;
 	}
