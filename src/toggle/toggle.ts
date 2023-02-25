@@ -1,14 +1,14 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { Theme, Settings } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { Theme, Settings } from "../types.js"
 import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { toggleStyles } from './toggle.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { toggleStyles } from "./toggle.styles.js"
 
 export const toggleTagName = "dav-toggle"
 
@@ -36,16 +36,18 @@ export class Toggle extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	private checkboxClicked(event: PointerEvent) {
 		event.preventDefault()
 
-		this.dispatchEvent(new CustomEvent("change", {
-			detail: {
-				checked: this.checked
-			}
-		}))
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: {
+					checked: this.checked
+				}
+			})
+		)
 	}
 
 	render() {
@@ -58,11 +60,9 @@ export class Toggle extends LitElement {
 				<input
 					type="checkbox"
 					?checked=${this.checked}
-					@click=${this.checkboxClicked}>
-				<span
-					id="slider"
-					class=${classMap(this.sliderClasses)}>
-				</span>
+					@click=${this.checkboxClicked}
+				/>
+				<span id="slider" class=${classMap(this.sliderClasses)}> </span>
 			</label>
 		`
 	}

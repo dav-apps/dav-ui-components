@@ -3,7 +3,7 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Panel",
-			controller: function (element) {
+			controller: function(element) {
 				let button = element.getElementsByTagName("dav-button")[0]
 				let panel = element.getElementsByTagName("dav-panel")[0]
 

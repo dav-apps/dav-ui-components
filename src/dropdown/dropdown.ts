@@ -1,17 +1,22 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { DropdownOption, Theme, DropdownOptionType, Settings } from '../types.js'
-import { chevronDownLightSvg } from '../svg/chevron-down-light.js'
-import { globalStyles } from '../styles.js'
-import { dropdownStyles } from './dropdown.styles.js'
+} from "../utils.js"
+import {
+	DropdownOption,
+	Theme,
+	DropdownOptionType,
+	Settings
+} from "../types.js"
+import { chevronDownLightSvg } from "../svg/chevron-down-light.js"
+import { globalStyles } from "../styles.js"
+import { dropdownStyles } from "./dropdown.styles.js"
 
 export const dropdownTagName = "dav-dropdown"
 
@@ -90,11 +95,13 @@ export class Dropdown extends LitElement {
 	dropdownOptionClick(event: PointerEvent) {
 		let key = (event.target as Element).getAttribute("key")
 		if (key == null) return
-		
+
 		this.selectedKey = key
-		this.dispatchEvent(new CustomEvent("change", {
-			detail: { key }
-		}))
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: { key }
+			})
+		)
 
 		this.showItems = false
 		this.updateDropdownButtonText()
@@ -116,7 +123,8 @@ export class Dropdown extends LitElement {
 			<label
 				id="dropdown-label"
 				class=${classMap(this.dropdownLabelClasses)}
-				for="dropdown-button">
+				for="dropdown-button"
+			>
 				${this.label}
 			</label>
 		`
@@ -126,7 +134,7 @@ export class Dropdown extends LitElement {
 		if (option.type == DropdownOptionType.divider) {
 			return html`
 				<div class=${classMap(this.dropdownDividerClasses)}>
-					<hr>
+					<hr />
 				</div>
 			`
 		} else {
@@ -137,7 +145,8 @@ export class Dropdown extends LitElement {
 				<button
 					class=${classMap(classes)}
 					key=${option.key}
-					@click=${this.dropdownOptionClick}>
+					@click=${this.dropdownOptionClick}
+				>
 					${option.value}
 				</button>
 			`
@@ -152,7 +161,7 @@ export class Dropdown extends LitElement {
 		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownDividerClasses.darkTheme = this.theme == Theme.dark
-		this.dropdownContentClasses['slide-down-in'] = this.showItems
+		this.dropdownContentClasses["slide-down-in"] = this.showItems
 		this.dropdownContentClasses.visible = this.showItems
 
 		this.dropdownButtonStyles.width = `${this.width}px`
@@ -172,8 +181,8 @@ export class Dropdown extends LitElement {
 					style=${styleMap(this.dropdownButtonStyles)}
 					name="dropdown-button"
 					?aria-disabled=${this.disabled}
-					@click=${this.dropdownButtonClick}>
-
+					@click=${this.dropdownButtonClick}
+				>
 					<span>${this.buttonText}</span>
 
 					<div id="chevron-svg-container">
@@ -186,7 +195,9 @@ export class Dropdown extends LitElement {
 					class=${classMap(this.dropdownContentClasses)}
 					style=${styleMap(this.dropdownContentStyles)}
 				>
-					${this.options.map((option) => this.getDropdownOption(option, option.key == this.selectedKey))}
+					${this.options.map(option =>
+						this.getDropdownOption(option, option.key == this.selectedKey)
+					)}
 				</div>
 			</div>
 		`

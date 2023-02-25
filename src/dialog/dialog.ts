@@ -1,17 +1,17 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { Settings } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { Settings } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { Theme } from '../types.js'
-import { globalStyles } from '../styles.js'
-import { dialogStyles } from './dialog.styles.js'
+} from "../utils.js"
+import { Theme } from "../types.js"
+import { globalStyles } from "../styles.js"
+import { dialogStyles } from "./dialog.styles.js"
 
 export const dialogTagName = "dav-dialog"
 
@@ -65,7 +65,9 @@ export class Dialog extends LitElement {
 		}
 
 		if (screenSegments != null) {
-			this.dualScreenLayout = screenSegments.length > 1 && screenSegments[0].width == screenSegments[1].width
+			this.dualScreenLayout =
+				screenSegments.length > 1 &&
+				screenSegments[0].width == screenSegments[1].width
 		}
 	}
 
@@ -74,7 +76,7 @@ export class Dialog extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	private overlayClick() {
 		if (!this.loading) {
@@ -95,8 +97,8 @@ export class Dialog extends LitElement {
 			return html`
 				<dav-progress-ring
 					style="width: 16px; height: 16px; margin: 8px 14px 0px 0px;"
-					indeterminate="true">
-				</dav-progress-ring>
+					indeterminate="true"
+				></dav-progress-ring>
 			`
 		} else {
 			return html``
@@ -149,10 +151,7 @@ export class Dialog extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div style=${styleMap(this.containerStyles)}>
-				<div
-					id="overlay"
-					@click=${this.overlayClick}>
-				</div>
+				<div id="overlay" @click=${this.overlayClick}></div>
 
 				<div
 					id="dialog"
@@ -161,11 +160,9 @@ export class Dialog extends LitElement {
 					role="dialog"
 					aria-modal="true"
 					aria-live="assertive"
-					aria-labelledby="header">
-
-					<h4
-						id="header"
-						class=${classMap(this.headerClasses)}>
+					aria-labelledby="header"
+				>
+					<h4 id="header" class=${classMap(this.headerClasses)}>
 						${this.header}
 					</h4>
 
@@ -173,14 +170,8 @@ export class Dialog extends LitElement {
 						<slot></slot>
 					</div>
 
-					<div
-						class="d-flex"
-						style="float: right">
-
-						${this.getProgressRing()}
-
-						${this.getDefaultButton()}
-
+					<div class="d-flex" style="float: right">
+						${this.getProgressRing()} ${this.getDefaultButton()}
 						${this.getPrimaryButton()}
 					</div>
 				</div>

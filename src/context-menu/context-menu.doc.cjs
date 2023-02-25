@@ -18,11 +18,13 @@ module.exports = {
 	examples: [
 		{
 			title: "Default ContextMenu",
-			controller: function (element) {
+			controller: function(element) {
 				let div = element.getElementsByTagName("div")[0]
-				let contextMenu = element.getElementsByTagName("dav-context-menu")[0]
+				let contextMenu = element.getElementsByTagName(
+					"dav-context-menu"
+				)[0]
 
-				div.addEventListener("contextmenu", (event) => {
+				div.addEventListener("contextmenu", event => {
 					event.preventDefault()
 
 					contextMenu.posX = event.pageX

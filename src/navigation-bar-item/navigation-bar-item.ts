@@ -1,13 +1,13 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { navigationBarItemStyles } from './navigation-bar-item.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { navigationBarItemStyles } from "./navigation-bar-item.styles.js"
 
 export const navigationBarItemTagName = "dav-navigation-bar-item"
 
@@ -17,8 +17,8 @@ export class NavigationBarItem extends LitElement {
 
 	@state() private itemClasses = {
 		"item-container": true,
-      active: false
-   }
+		active: false
+	}
 
 	@property({ type: Boolean }) active: boolean = false
 
@@ -34,6 +34,6 @@ export class NavigationBarItem extends LitElement {
 					<slot name="label"></slot>
 				</div>
 			</button>
-      `
+		`
 	}
 }

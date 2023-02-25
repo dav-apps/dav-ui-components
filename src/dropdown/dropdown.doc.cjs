@@ -3,24 +3,24 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Dropdown",
-			controller: function (element) {
+			controller: function(element) {
 				element.style.height = "200px"
 				let dropdown = element.getElementsByTagName("dav-dropdown")[0]
 
 				dropdown.options = [
 					{
-						key: 'system',
-						value: 'System default',
+						key: "system",
+						value: "System default",
 						type: 0
 					},
 					{
-						key: 'light',
-						value: 'Light',
+						key: "light",
+						value: "Light",
 						type: 0
 					},
 					{
-						key: 'dark',
-						value: 'Dark',
+						key: "dark",
+						value: "Dark",
 						type: 0
 					}
 				]

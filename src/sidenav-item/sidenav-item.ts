@@ -1,17 +1,17 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { ifDefined } from 'lit/directives/if-defined.js'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { ifDefined } from "lit/directives/if-defined.js"
+import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { sidenavItemStyles } from './sidenav-item.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { sidenavItemStyles } from "./sidenav-item.styles.js"
 
 export const sidenavItemTagName = "dav-sidenav-item"
 
@@ -44,7 +44,7 @@ export class SidenavItem extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	getIcon() {
 		if (this.icon.length > 0) {
@@ -72,12 +72,13 @@ export class SidenavItem extends LitElement {
 		return html`
 			${getGlobalStyleHtml()}
 
-			<a id="item"
+			<a
+				id="item"
 				class=${classMap(this.itemClasses)}
 				dir="ltr"
 				href=${ifDefined(this.link)}
-				@click=${this.itemClick}>
-
+				@click=${this.itemClick}
+			>
 				${this.getIcon()}
 
 				<span style=${styleMap(this.spanStyles)}>

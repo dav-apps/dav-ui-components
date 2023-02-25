@@ -11,11 +11,12 @@ export const linkButtonStyles = css`
 		padding: 8px 11px;
 		border-radius: 5px;
 		transition: 200ms;
-		font-family: 'Roboto';
+		font-family: "Roboto";
 		font-weight: 400;
 	}
 
-	a:hover, a:focus {
+	a:hover,
+	a:focus {
 		color: rgb(var(--md-ref-palette-primary30-rgb));
 		background-color: var(--md-sys-color-primary-light-hover);
 	}

@@ -1,9 +1,9 @@
 module.exports = {
-	name: 'TabBar',
+	name: "TabBar",
 	examples: [
 		{
-			title: 'Default TabBar',
-			controller: function (element) {
+			title: "Default TabBar",
+			controller: function(element) {
 				let tabBar = element.getElementsByTagName("dav-tab-bar")[0]
 				let tabBarItem1 = tabBar.getElementsByTagName("dav-tab-bar-item")[0]
 				let tabBarItem2 = tabBar.getElementsByTagName("dav-tab-bar-item")[1]

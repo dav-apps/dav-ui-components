@@ -1,16 +1,16 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { Theme, Settings, ButtonColor, ButtonSize } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { Theme, Settings, ButtonColor, ButtonSize } from "../types.js"
 import {
 	convertStringToButtonColor,
 	convertStringToButtonSize,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { buttonStyles } from './button.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { buttonStyles } from "./button.styles.js"
 
 export const buttonTagName = "dav-button"
 
@@ -36,11 +36,13 @@ export class Button extends LitElement {
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonSize(value)
-	}) size: ButtonSize = ButtonSize.normal
+	})
+	size: ButtonSize = ButtonSize.normal
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonColor(value)
-	}) color: ButtonColor = ButtonColor.primary
+	})
+	color: ButtonColor = ButtonColor.primary
 	@property({ type: Boolean }) tonal: boolean = false
 	@property({ type: Boolean }) outline: boolean = false
 	@property({ type: Boolean }) text: boolean = false
@@ -56,7 +58,7 @@ export class Button extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	buttonClick(event: PointerEvent) {
 		if (this.disabled) {
@@ -103,7 +105,8 @@ export class Button extends LitElement {
 			<button
 				class=${classMap(this.buttonClasses)}
 				?aria-disabled=${this.disabled}
-				@click="${this.buttonClick}">
+				@click="${this.buttonClick}"
+			>
 				<slot></slot>
 			</button>
 		`

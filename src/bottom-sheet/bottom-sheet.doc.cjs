@@ -3,7 +3,7 @@ module.exports = {
 	examples: [
 		{
 			title: "Default BottomSheet",
-			controller: function (element) {
+			controller: function(element) {
 				const touchStart = "touchstart"
 				const touchMove = "touchmove"
 				const touchEnd = "touchend"
@@ -14,9 +14,13 @@ module.exports = {
 				let startPosition = 0
 
 				let openButton = document.getElementById("open-button")
-				let openNonDismissableButton = document.getElementById("open-non-dismissable-button")
+				let openNonDismissableButton = document.getElementById(
+					"open-non-dismissable-button"
+				)
 				let closeButton = document.getElementById("close-button")
-				let bottomSheet = document.getElementsByTagName("dav-bottom-sheet")[0]
+				let bottomSheet = document.getElementsByTagName(
+					"dav-bottom-sheet"
+				)[0]
 
 				openButton.onclick = () => {
 					bottomSheet.dismissable = true
@@ -55,7 +59,7 @@ module.exports = {
 							swipeStart = false
 						}
 
-						bottomSheet.position = (touchDiffY + startPosition)
+						bottomSheet.position = touchDiffY + startPosition
 					} else if (event.type == touchEnd) {
 						touchStartY = 0
 						touchDiffY = 0

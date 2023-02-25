@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'IconButton',
+	name: "IconButton",
 	properties: [
 		{
 			name: "selected",
@@ -9,8 +9,8 @@ module.exports = {
 	],
 	examples: [
 		{
-			title: 'Default IconButton',
-			controller: function (element) {
+			title: "Default IconButton",
+			controller: function(element) {
 				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
 
 				iconButton.onclick = () => {

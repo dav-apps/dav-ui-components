@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'Setting',
+	name: "Setting",
 	properties: [
 		{
 			name: "header",
@@ -9,7 +9,7 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Setting",
-			controller: function (element) {
+			controller: function(element) {
 				let toggle = element.getElementsByTagName("dav-toggle")[0]
 				let timeoutRunning = false
 

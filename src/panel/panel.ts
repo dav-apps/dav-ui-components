@@ -1,18 +1,18 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { query } from 'lit/decorators/query.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
 import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { Settings, Theme } from '../types.js'
-import { xmarkLightSvg } from '../svg/xmark-light.js'
-import { globalStyles } from '../styles.js'
-import { panelStyles } from './panel.styles.js'
-import { slideIn, slideOut } from './panel.animations.js'
+} from "../utils.js"
+import { Settings, Theme } from "../types.js"
+import { xmarkLightSvg } from "../svg/xmark-light.js"
+import { globalStyles } from "../styles.js"
+import { panelStyles } from "./panel.styles.js"
+import { slideIn, slideOut } from "./panel.animations.js"
 
 export const panelTagName = "dav-panel"
 
@@ -52,10 +52,13 @@ export class Panel extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	updated(changedProperties: Map<string, any>) {
-		if (changedProperties.has("visible") && changedProperties.get("visible") != null) {
+		if (
+			changedProperties.has("visible") &&
+			changedProperties.get("visible") != null
+		) {
 			let newIsVisible = !changedProperties.get("visible") as boolean
 			let animation: Animation
 
@@ -93,19 +96,10 @@ export class Panel extends LitElement {
 		}
 
 		return html`
-			<div
-				id="container"
-				style=${styleMap(this.containerStyles)}
-			>
-				<div
-					id="overlay"
-					@click=${this.overlayClick}>
-				</div>
+			<div id="container" style=${styleMap(this.containerStyles)}>
+				<div id="overlay" @click=${this.overlayClick}></div>
 
-				<div
-					id="content"
-					class=${classMap(this.contentClasses)}
-				>
+				<div id="content" class=${classMap(this.contentClasses)}>
 					<div id="header-container">
 						<h1 id="header" class=${classMap(this.headerClasses)}>
 							${this.header}

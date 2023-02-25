@@ -1,13 +1,21 @@
 module.exports = {
-	name: 'NavigationBar',
+	name: "NavigationBar",
 	examples: [
 		{
-			title: 'Default NavigationBar',
-			controller: function (element) {
-				let navigationBar = element.getElementsByTagName("dav-navigation-bar")[0]
-				let navigationBarItem1 = navigationBar.getElementsByTagName("dav-navigation-bar-item")[0]
-				let navigationBarItem2 = navigationBar.getElementsByTagName("dav-navigation-bar-item")[1]
-				let navigationBarItem3 = navigationBar.getElementsByTagName("dav-navigation-bar-item")[2]
+			title: "Default NavigationBar",
+			controller: function(element) {
+				let navigationBar = element.getElementsByTagName(
+					"dav-navigation-bar"
+				)[0]
+				let navigationBarItem1 = navigationBar.getElementsByTagName(
+					"dav-navigation-bar-item"
+				)[0]
+				let navigationBarItem2 = navigationBar.getElementsByTagName(
+					"dav-navigation-bar-item"
+				)[1]
+				let navigationBarItem3 = navigationBar.getElementsByTagName(
+					"dav-navigation-bar-item"
+				)[2]
 
 				function setActiveItem(itemIndex) {
 					navigationBarItem1.active = false

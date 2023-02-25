@@ -32,7 +32,10 @@ export const panelStyles = css`
 	}
 
 	#content.darkTheme {
-		background-color: var(--dark-theme-color-secondary, var(--default-dark-theme-color-secondary));
+		background-color: var(
+			--dark-theme-color-secondary,
+			var(--default-dark-theme-color-secondary)
+		);
 	}
 
 	#header-container {

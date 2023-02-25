@@ -5,13 +5,19 @@ export const sidenavStyles = css`
 		width: max-content;
 		height: 100%;
 		padding: 10px 6px;
-		background-color: var(--light-theme-color-secondary, var(--default-light-theme-color-secondary));
+		background-color: var(
+			--light-theme-color-secondary,
+			var(--default-light-theme-color-secondary)
+		);
 		transition: 0.2s;
 		overflow-y: auto;
 	}
 
 	#container.darkTheme {
-		background-color: var(--dark-theme-color-secondary, var(--default-dark-theme-color-secondary));
+		background-color: var(
+			--dark-theme-color-secondary,
+			var(--default-dark-theme-color-secondary)
+		);
 	}
 
 	#container.over {

@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { getGlobalStyleHtml } from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { messageBarStyles } from './message-bar.styles.js'
+import { LitElement, html } from "lit"
+import { customElement, property } from "lit/decorators.js"
+import { getGlobalStyleHtml } from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { messageBarStyles } from "./message-bar.styles.js"
 
 export const messageBarTagName = "dav-message-bar"
 
@@ -33,8 +33,8 @@ export class MessageBar extends LitElement {
 			<div
 				class="alert alert-${this.type}"
 				style="display: flex; align-items: center; margin-bottom: 0px; font-size: 13px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
-				role="alert">
-
+				role="alert"
+			>
 				${this.getIcon()}
 
 				<span style="margin-left: 0.75rem">

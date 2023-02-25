@@ -1,19 +1,19 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { query } from 'lit/decorators/query.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { Theme, SidenavMode, Settings } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { Theme, SidenavMode, Settings } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings,
 	convertStringToSidenavMode
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { sidenavStyles } from './sidenav.styles.js'
-import { showOverlay, hideOverlay } from './sidenav.animations.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { sidenavStyles } from "./sidenav.styles.js"
+import { showOverlay, hideOverlay } from "./sidenav.animations.js"
 
 export const sidenavTagName = "dav-sidenav"
 
@@ -45,7 +45,8 @@ export class Sidenav extends LitElement {
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToSidenavMode(value)
-	}) mode: SidenavMode = SidenavMode.side
+	})
+	mode: SidenavMode = SidenavMode.side
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -57,13 +58,13 @@ export class Sidenav extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	updated(changedProperties: Map<string, any>) {
 		if (
-			this.mode == SidenavMode.over
-			&& changedProperties.has("open")
-			&& changedProperties.get("open") != null
+			this.mode == SidenavMode.over &&
+			changedProperties.has("open") &&
+			changedProperties.get("open") != null
 		) {
 			let newOpen = !changedProperties.get("open") as boolean
 
@@ -110,14 +111,14 @@ export class Sidenav extends LitElement {
 			<div
 				id="overlay"
 				style=${styleMap(this.overlayStyles)}
-				@click=${this.overlayClick}>
-			</div>
+				@click=${this.overlayClick}
+			></div>
 
 			<div
 				id="container"
 				class=${classMap(this.containerClasses)}
-				style=${styleMap(this.containerStyles)}>
-
+				style=${styleMap(this.containerStyles)}
+			>
 				<slot></slot>
 			</div>
 		`

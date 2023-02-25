@@ -1,12 +1,12 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { navigationBarStyles } from './navigation-bar.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { navigationBarStyles } from "./navigation-bar.styles.js"
 
 export const navigationBarTagName = "dav-navigation-bar"
 
@@ -16,11 +16,11 @@ export class NavigationBar extends LitElement {
 
 	render() {
 		return html`
-         ${getGlobalStyleHtml()}
+			${getGlobalStyleHtml()}
 
-         <div id="container">
-            <slot></slot>
-         </div>
-      `
+			<div id="container">
+				<slot></slot>
+			</div>
+		`
 	}
 }

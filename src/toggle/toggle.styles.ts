@@ -8,7 +8,7 @@ export const toggleStyles = css`
 		height: 20px;
 	}
 
-	#switch input { 
+	#switch input {
 		opacity: 0;
 		width: 0;
 		height: 0;
@@ -32,7 +32,8 @@ export const toggleStyles = css`
 		background-color: #545e66;
 	}
 
-	#slider:hover, input:focus + #slider {
+	#slider:hover,
+	input:focus + #slider {
 		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
 	}
 

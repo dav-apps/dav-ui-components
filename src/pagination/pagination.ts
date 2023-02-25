@@ -1,15 +1,15 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { paginationStyles } from './pagination.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { paginationStyles } from "./pagination.styles.js"
 
 export const paginationTagName = "dav-pagination"
 
@@ -45,28 +45,34 @@ export class Pagination extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	backButtonClick() {
 		if (this.currentPage > 1) {
-			this.dispatchEvent(new CustomEvent("pageChange", {
-				detail: { page: this.currentPage - 1 }
-			}))
+			this.dispatchEvent(
+				new CustomEvent("pageChange", {
+					detail: { page: this.currentPage - 1 }
+				})
+			)
 		}
 	}
 
 	forwardButtonClick() {
 		if (this.currentPage < this.pages) {
-			this.dispatchEvent(new CustomEvent("pageChange", {
-				detail: { page: this.currentPage + 1 }
-			}))
+			this.dispatchEvent(
+				new CustomEvent("pageChange", {
+					detail: { page: this.currentPage + 1 }
+				})
+			)
 		}
 	}
 
 	pageButtonClick(index: number) {
-		this.dispatchEvent(new CustomEvent("pageChange", {
-			detail: { page: index }
-		}))
+		this.dispatchEvent(
+			new CustomEvent("pageChange", {
+				detail: { page: index }
+			})
+		)
 	}
 
 	getBackButton() {
@@ -81,7 +87,8 @@ export class Pagination extends LitElement {
 				id="back-button"
 				class=${classMap(this.backButtonClasses)}
 				?aria-disabled=${disabled}
-				@click=${this.backButtonClick}>
+				@click=${this.backButtonClick}
+			>
 				<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
 			</button>
 		`
@@ -99,7 +106,8 @@ export class Pagination extends LitElement {
 				id="forward-button"
 				class=${classMap(this.forwardButtonClasses)}
 				?aria-disabled=${disabled}
-				@click=${this.forwardButtonClick}>
+				@click=${this.forwardButtonClick}
+			>
 				<i class="ms-Icon ms-Icon--Forward" aria-hidden="true"></i>
 			</button>
 		`
@@ -116,7 +124,8 @@ export class Pagination extends LitElement {
 			return html`
 				<button
 					class=${classMap(pageButtonClasses)}
-					@click=${() => this.pageButtonClick(index)}>
+					@click=${() => this.pageButtonClick(index)}
+				>
 					${index}
 				</button>
 			`
@@ -150,7 +159,11 @@ export class Pagination extends LitElement {
 					reducedStartAdded = true
 					buttons.push(this.getButtonPlaceholder())
 				}
-			} else if (this.reducedEnd && index >= this.currentPage + 2 && index != this.pages) {
+			} else if (
+				this.reducedEnd &&
+				index >= this.currentPage + 2 &&
+				index != this.pages
+			) {
 				if (!reducedEndAdded) {
 					reducedEndAdded = true
 					buttons.push(this.getButtonPlaceholder())
@@ -165,16 +178,13 @@ export class Pagination extends LitElement {
 
 	render() {
 		this.reducedStart = this.pages >= 8 && this.currentPage >= 5
-		this.reducedEnd = this.pages >= 8 && this.currentPage <= (this.pages - 4)
+		this.reducedEnd = this.pages >= 8 && this.currentPage <= this.pages - 4
 
 		return html`
 			${getGlobalStyleHtml()}
 
 			<div id="container" dir="ltr">
-				${this.getBackButton()}
-
-				${this.getPageButtons()}
-
+				${this.getBackButton()} ${this.getPageButtons()}
 				${this.getForwardButton()}
 			</div>
 		`

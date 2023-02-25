@@ -1,4 +1,4 @@
-import { Locale } from './types.js'
+import { Locale } from "./types.js"
 
 export const en: Locale = {
 	dropdown: {

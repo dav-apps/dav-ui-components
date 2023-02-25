@@ -1,7 +1,7 @@
-import { LitElement, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
-import { globalStyles } from '../styles.js'
-import { sidenavContainerStyles } from './sidenav-container.styles.js'
+import { LitElement, html } from "lit"
+import { customElement } from "lit/decorators.js"
+import { globalStyles } from "../styles.js"
+import { sidenavContainerStyles } from "./sidenav-container.styles.js"
 
 export const sidenavContainerTagName = "dav-sidenav-container"
 

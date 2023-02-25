@@ -26,7 +26,7 @@ export const checkboxStyles = css`
 
 	#checkbox-label {
 		cursor: pointer;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 14px;
 		padding-left: 10px;
 		color: #212529;

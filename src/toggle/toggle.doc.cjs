@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'Toggle',
+	name: "Toggle",
 	properties: [
 		{
 			name: "checked",
@@ -10,7 +10,7 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Toggle",
-			controller: function (element) {
+			controller: function(element) {
 				let toggle = element.getElementsByTagName("dav-toggle")[0]
 				let timeoutRunning = false
 

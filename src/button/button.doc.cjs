@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'Button',
+	name: "Button",
 	properties: [
 		{
 			name: "size",

@@ -31,13 +31,27 @@ export const headerStyles = css`
 		height: 35px;
 	}
 
-	.icon-button:hover, .icon-button:active {
-		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
-		border-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
+	.icon-button:hover,
+	.icon-button:active {
+		background-color: var(
+			--light-theme-hover-background-color,
+			var(--default-light-theme-hover-background-color)
+		);
+		border-color: var(
+			--light-theme-hover-background-color,
+			var(--default-light-theme-hover-background-color)
+		);
 	}
 
-	.icon-button.darkTheme:hover, .icon-button.darkTheme:active {
-		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
-		border-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
+	.icon-button.darkTheme:hover,
+	.icon-button.darkTheme:active {
+		background-color: var(
+			--dark-theme-hover-background-color,
+			var(--default-dark-theme-hover-background-color)
+		);
+		border-color: var(
+			--dark-theme-hover-background-color,
+			var(--default-dark-theme-hover-background-color)
+		);
 	}
 `

@@ -1,16 +1,16 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { checkboxStyles } from './checkbox.styles.js'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { checkboxStyles } from "./checkbox.styles.js"
+import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
 
 export const checkboxTagName = "dav-checkbox"
 
@@ -52,7 +52,7 @@ export class Checkbox extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	checkboxClick() {
 		this.toggleCheckbox()
@@ -68,9 +68,11 @@ export class Checkbox extends LitElement {
 	toggleCheckbox() {
 		if (!this.disabled) {
 			this.checked = !this.checked
-			this.dispatchEvent(new CustomEvent("change", {
-				detail: { checked: this.checked }
-			}))
+			this.dispatchEvent(
+				new CustomEvent("change", {
+					detail: { checked: this.checked }
+				})
+			)
 		}
 	}
 
@@ -81,7 +83,7 @@ export class Checkbox extends LitElement {
 		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkboxLabelClasses.darkTheme = this.theme == Theme.dark
 		this.checkboxLabelClasses.empty = this.label.length == 0
-		this.checkboxLabelClasses['visually-hidden'] = this.labelHidden
+		this.checkboxLabelClasses["visually-hidden"] = this.labelHidden
 
 		this.checkmarkPathStyles.display = this.checked ? "unset" : "none"
 
@@ -97,28 +99,29 @@ export class Checkbox extends LitElement {
 				?aria-disabled=${this.disabled}
 				aria-labelledby="checkbox-label"
 				@click=${this.checkboxClick}
-				@keydown=${this.checkboxKeydown}>
-
+				@keydown=${this.checkboxKeydown}
+			>
 				<svg
 					id="checkmark"
 					class=${classMap(this.checkmarkClasses)}
 					viewBox="0,0,20,20"
 					width="18"
-					height="18">
-
+					height="18"
+				>
 					<path
 						style=${styleMap(this.checkmarkPathStyles)}
 						d="M8.143 12.6697L15.235 4.5L16.8 5.90363L8.23812 15.7667L3.80005 11.2556L5.27591 9.7555L8.143 12.6697Z"
 						fill-rule="evenodd"
-						clip-rule="evenodd">
-					</path>
+						clip-rule="evenodd"
+					></path>
 				</svg>
 			</div>
 
 			<label
 				id="checkbox-label"
 				class=${classMap(this.checkboxLabelClasses)}
-				@click=${this.checkboxClick}>
+				@click=${this.checkboxClick}
+			>
 				${this.label}
 			</label>
 		`

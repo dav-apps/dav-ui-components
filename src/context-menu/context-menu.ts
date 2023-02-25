@@ -1,15 +1,15 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { Settings, Theme } from "../types.js"
 import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { contextMenuStyles } from './context-menu.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { contextMenuStyles } from "./context-menu.styles.js"
 
 export const contextMenuTagName = "dav-context-menu"
 
@@ -18,7 +18,7 @@ export class ContextMenu extends LitElement {
 	static styles = [globalStyles, contextMenuStyles]
 
 	@state() private containerClasses = {
-		'slide-down-in': false,
+		"slide-down-in": false,
 		visible: false,
 		darkTheme: false
 	}
@@ -45,7 +45,7 @@ export class ContextMenu extends LitElement {
 		document.removeEventListener("click", this.documentClick)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {
@@ -54,7 +54,7 @@ export class ContextMenu extends LitElement {
 	}
 
 	render() {
-		this.containerClasses['slide-down-in'] = this.visible
+		this.containerClasses["slide-down-in"] = this.visible
 		this.containerClasses.visible = this.visible
 		this.containerClasses.darkTheme = this.theme == Theme.dark
 
@@ -65,7 +65,8 @@ export class ContextMenu extends LitElement {
 			<div
 				id="container"
 				class=${classMap(this.containerClasses)}
-				style=${styleMap(this.containerStyles)}>
+				style=${styleMap(this.containerStyles)}
+			>
 				<slot></slot>
 			</div>
 		`

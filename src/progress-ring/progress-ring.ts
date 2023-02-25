@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { globalStyles } from '../styles.js'
-import { progressRingStyles } from './progress-ring.styles.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { globalStyles } from "../styles.js"
+import { progressRingStyles } from "./progress-ring.styles.js"
 
 export const progressRingTagName = "dav-progress-ring"
 
@@ -27,10 +27,7 @@ export class ProgressRing extends LitElement {
 		this.circleStyles.stroke = this.color
 
 		return html`
-			<svg
-				viewBox="0 0 16 16"
-				style=${styleMap(this.svgStyles)}
-			>
+			<svg viewBox="0 0 16 16" style=${styleMap(this.svgStyles)}>
 				<circle
 					style=${styleMap(this.circleStyles)}
 					stroke-width="2px"
@@ -38,8 +35,8 @@ export class ProgressRing extends LitElement {
 					fill="transparent"
 					cx="8px"
 					cy="8px"
-					r="7px">
-				</circle>
+					r="7px"
+				></circle>
 			</svg>
 		`
 	}

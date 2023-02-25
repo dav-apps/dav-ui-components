@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'LinkButton',
+	name: "LinkButton",
 	properties: [
 		{
 			name: "url",
@@ -12,7 +12,7 @@ module.exports = {
 	],
 	examples: [
 		{
-			title: 'Default LinkButton',
+			title: "Default LinkButton",
 			template: `
 				<dav-link-button url="https://dav-apps.tech">
 					Hello World

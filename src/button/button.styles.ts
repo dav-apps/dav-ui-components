@@ -61,21 +61,25 @@ export const buttonStyles = css`
 		color: var(--md-sys-color-on-error-container-light);
 	}
 
-	button.outline, button.text {
+	button.outline,
+	button.text {
 		background-color: var(--md-sys-color-surface-light);
 		color: var(--md-sys-color-primary-light);
 		border: 1px solid var(--md-sys-color-outline-light);
 	}
 
-	button.outline.secondary, button.text.secondary {
+	button.outline.secondary,
+	button.text.secondary {
 		color: var(--md-sys-color-secondary-light);
 	}
 
-	button.outline.tertiary, button.text.tertiary {
+	button.outline.tertiary,
+	button.text.tertiary {
 		color: var(--md-sys-color-tertiary-light);
 	}
 
-	button.outline.error, button.text.error {
+	button.outline.error,
+	button.text.error {
 		color: var(--md-sys-color-error-light);
 	}
 
@@ -131,75 +135,96 @@ export const buttonStyles = css`
 		background-color: rgb(var(--md-ref-palette-error85-rgb));
 	}
 
-	button.outline:hover, button.text:hover {
+	button.outline:hover,
+	button.text:hover {
 		background-color: var(--md-sys-color-primary-light-hover);
 	}
 
-	button.outline.secondary:hover, button.text.secondary:hover {
+	button.outline.secondary:hover,
+	button.text.secondary:hover {
 		background-color: var(--md-sys-color-secondary-light-hover);
 	}
 
-	button.outline.tertiary:hover, button.text.tertiary:hover {
+	button.outline.tertiary:hover,
+	button.text.tertiary:hover {
 		background-color: var(--md-sys-color-tertiary-light-hover);
 	}
 
-	button.outline.error:hover, button.text.error:hover {
+	button.outline.error:hover,
+	button.text.error:hover {
 		background-color: var(--md-sys-color-error-light-hover);
 	}
 
-	button:active, button:focus {
+	button:active,
+	button:focus {
 		background-color: rgb(var(--md-ref-palette-primary30-rgb));
 	}
 
-	button.tonal:active, button.tonal:focus {
+	button.tonal:active,
+	button.tonal:focus {
 		background-color: rgb(var(--md-ref-palette-primary80-rgb));
 	}
 
-	button.secondary:active, button.secondary:focus {
+	button.secondary:active,
+	button.secondary:focus {
 		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
 	}
 
-	button.tonal.secondary:active, button.tonal.secondary:focus {
+	button.tonal.secondary:active,
+	button.tonal.secondary:focus {
 		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
 	}
 
-	button.tertiary:active, button.tertiary:focus {
+	button.tertiary:active,
+	button.tertiary:focus {
 		background-color: rgb(var(--md-ref-palette-tertiary30-rgb));
 	}
 
-	button.tonal.tertiary:active, button.tonal.tertiary:focus {
+	button.tonal.tertiary:active,
+	button.tonal.tertiary:focus {
 		background-color: rgb(var(--md-ref-palette-tertiary80-rgb));
 	}
 
-	button.error:active, button.error:focus {
+	button.error:active,
+	button.error:focus {
 		background-color: rgb(var(--md-ref-palette-error30-rgb));
 	}
 
-	button.tonal.error:active, button.tonal.error:focus {
+	button.tonal.error:active,
+	button.tonal.error:focus {
 		background-color: rgb(var(--md-ref-palette-error80-rgb));
 	}
 
-	button.outline:active, button.outline:focus,
-	button.text:active, button.text:focus {
+	button.outline:active,
+	button.outline:focus,
+	button.text:active,
+	button.text:focus {
 		background-color: var(--md-sys-color-primary-light-focus);
 	}
 
-	button.outline.secondary:active, button.outline.secondary:focus,
-	button.text.secondary:active, button.text.secondary:focus {
+	button.outline.secondary:active,
+	button.outline.secondary:focus,
+	button.text.secondary:active,
+	button.text.secondary:focus {
 		background-color: var(--md-sys-color-secondary-light-focus);
 	}
 
-	button.outline.tertiary:active, button.outline.tertiary:focus,
-	button.text.tertiary:active, button.text.tertiary:focus {
+	button.outline.tertiary:active,
+	button.outline.tertiary:focus,
+	button.text.tertiary:active,
+	button.text.tertiary:focus {
 		background-color: var(--md-sys-color-tertiary-light-focus);
 	}
 
-	button.outline.error:active, button.outline.error:focus,
-	button.text.error:active, button.text.error:focus {
+	button.outline.error:active,
+	button.outline.error:focus,
+	button.text.error:active,
+	button.text.error:focus {
 		background-color: var(--md-sys-color-error-light-focus);
 	}
 
-	button.darkTheme:hover, button.darkTheme:active {
+	button.darkTheme:hover,
+	button.darkTheme:active {
 		background-color: #1c2938;
 	}
 `

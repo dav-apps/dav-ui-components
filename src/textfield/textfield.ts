@@ -1,16 +1,16 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { query } from 'lit/decorators/query.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
+import { classMap } from "lit/directives/class-map.js"
+import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { textfieldStyles } from './textfield.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { textfieldStyles } from "./textfield.styles.js"
 
 export const textfieldTagName = "dav-textfield"
 
@@ -52,14 +52,16 @@ export class Textfield extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	input() {
 		this.value = this.textfieldInput.value
 
-		this.dispatchEvent(new CustomEvent("change", {
-			detail: { value: this.value }
-		}))
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: { value: this.value }
+			})
+		)
 	}
 
 	keydown(event: KeyboardEvent) {
@@ -74,7 +76,8 @@ export class Textfield extends LitElement {
 				<label
 					id="textfield-label"
 					class=${classMap(this.textfieldLabelClasses)}
-					for="textfield-input">
+					for="textfield-input"
+				>
 					${this.label}
 				</label>
 			`
@@ -86,8 +89,7 @@ export class Textfield extends LitElement {
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
-				<p id="textfield-error-message"
-					class="ms-motion-slideDownIn">
+				<p id="textfield-error-message" class="ms-motion-slideDownIn">
 					${this.errorMessage}
 				</p>
 			`
@@ -122,7 +124,8 @@ export class Textfield extends LitElement {
 					min=${this.min}
 					max=${this.max}
 					@input=${this.input}
-					@keydown=${this.keydown}>
+					@keydown=${this.keydown}
+				/>
 
 				${this.getErrorMessage()}
 			</div>

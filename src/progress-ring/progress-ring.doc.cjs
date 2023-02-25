@@ -1,5 +1,5 @@
 module.exports = {
-	name: 'ProgressRing',
+	name: "ProgressRing",
 	properties: [
 		{
 			name: "size",

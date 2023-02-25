@@ -1,17 +1,17 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { Theme, HeaderSize, Settings } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { Theme, HeaderSize, Settings } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings,
 	convertStringToHeaderSize
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { headerStyles } from './header.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { headerStyles } from "./header.styles.js"
 
 export const headerTagName = "dav-header"
 
@@ -49,7 +49,8 @@ export class Header extends LitElement {
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToHeaderSize(value)
-	}) size: HeaderSize = HeaderSize.normal
+	})
+	size: HeaderSize = HeaderSize.normal
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -61,7 +62,7 @@ export class Header extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	backButtonClick() {
 		this.dispatchEvent(new CustomEvent("backButtonClick"))
@@ -79,7 +80,8 @@ export class Header extends LitElement {
 					class=${classMap(this.backButtonClasses)}
 					style=${styleMap(this.backButtonStyles)}
 					type="button"
-					@click=${this.backButtonClick}>
+					@click=${this.backButtonClick}
+				>
 					<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
 				</button>
 			`
@@ -96,7 +98,8 @@ export class Header extends LitElement {
 					class=${classMap(this.editButtonClasses)}
 					style=${styleMap(this.editButtonStyles)}
 					type="button"
-					@click=${this.editButtonClick}>
+					@click=${this.editButtonClick}
+				>
 					<i class="ms-Icon ms-Icon--Edit" aria-hidden="true"></i>
 				</button>
 			`
@@ -135,10 +138,9 @@ export class Header extends LitElement {
 				id="header"
 				class=${classMap(this.headerClasses)}
 				style=${styleMap(this.headerStyles)}
-				dir="ltr">
-				${this.getBackButton()}
-				${this.header}
-				${this.getEditButton()}
+				dir="ltr"
+			>
+				${this.getBackButton()} ${this.header} ${this.getEditButton()}
 			</h1>
 		`
 	}

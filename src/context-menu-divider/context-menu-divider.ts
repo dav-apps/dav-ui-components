@@ -1,7 +1,7 @@
-import { LitElement, html } from 'lit'
-import { customElement } from 'lit/decorators.js'
-import { globalStyles } from '../styles.js'
-import { contextMenuDividerStyles } from './context-menu-divider.styles.js'
+import { LitElement, html } from "lit"
+import { customElement } from "lit/decorators.js"
+import { globalStyles } from "../styles.js"
+import { contextMenuDividerStyles } from "./context-menu-divider.styles.js"
 
 export const contextMenuDividerTagName = "dav-context-menu-divider"
 

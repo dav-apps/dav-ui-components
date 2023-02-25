@@ -1,18 +1,18 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { query } from 'lit/decorators/query.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { classMap } from 'lit/directives/class-map.js'
-import autosize from 'autosize'
-import { Settings, Theme } from '../types.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { classMap } from "lit/directives/class-map.js"
+import autosize from "autosize"
+import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
-} from '../utils.js'
-import { globalStyles } from '../styles.js'
-import { textareaStyles } from './textarea.styles.js'
+} from "../utils.js"
+import { globalStyles } from "../styles.js"
+import { textareaStyles } from "./textarea.styles.js"
 
 export const textareaTagName = "dav-textarea"
 
@@ -57,14 +57,16 @@ export class Textarea extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => this.theme = settings.theme
+	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
 	input() {
 		this.value = this.textarea.value
 
-		this.dispatchEvent(new CustomEvent("change", {
-			detail: { value: this.value }
-		}))
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: { value: this.value }
+			})
+		)
 	}
 
 	getLabel() {
@@ -73,7 +75,8 @@ export class Textarea extends LitElement {
 				<label
 					id="textarea-label"
 					class=${classMap(this.textareaLabelClasses)}
-					for="textarea">
+					for="textarea"
+				>
 					${this.label}
 				</label>
 			`
@@ -85,8 +88,7 @@ export class Textarea extends LitElement {
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
-				<p id="textarea-error-message"
-					class="ms-motion-slideDownIn">
+				<p id="textarea-error-message" class="ms-motion-slideDownIn">
 					${this.errorMessage}
 				</p>
 			`
@@ -117,8 +119,8 @@ export class Textarea extends LitElement {
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
 					placeholder=${this.placeholder}
-					@input=${this.input}>
-				</textarea>
+					@input=${this.input}
+				></textarea>
 
 				${this.getErrorMessage()}
 			</div>

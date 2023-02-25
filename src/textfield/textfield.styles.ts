@@ -2,7 +2,7 @@ import { css } from "@lit/reactive-element"
 
 export const textfieldStyles = css`
 	#textfield-label {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 14px;
 		margin: 0 0 4px;
 		cursor: pointer;
@@ -28,7 +28,7 @@ export const textfieldStyles = css`
 		width: 100%;
 		height: 28px;
 		background: transparent;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 		font-size: 14px;
 		border: 1px solid #8f8f8fb3;
 		border-radius: 4px;
@@ -73,8 +73,8 @@ export const textfieldStyles = css`
 	#textfield-error-message {
 		max-width: 200px;
 		margin: 0px 0px 0px 4px;
-		color: #A80000;
+		color: #a80000;
 		font-size: 12.5px;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	}
 `

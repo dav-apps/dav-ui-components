@@ -19,7 +19,10 @@ export const dialogStyles = css`
 	}
 
 	#dialog.darkTheme {
-		background-color: var(--dark-theme-color-tertiary, var(--default-dark-theme-color-tertiary));
+		background-color: var(
+			--dark-theme-color-tertiary,
+			var(--default-dark-theme-color-tertiary)
+		);
 	}
 
 	#header {

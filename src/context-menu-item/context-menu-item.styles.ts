@@ -17,7 +17,8 @@ export const contextMenuItemStyles = css`
 		font-family: Roboto, sans-serif;
 	}
 
-	button:hover, button:focus {
+	button:hover,
+	button:focus {
 		cursor: pointer;
 		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
 	}
@@ -30,8 +31,12 @@ export const contextMenuItemStyles = css`
 		color: white;
 	}
 
-	button.darkTheme:focus, button.darkTheme:hover {
-		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
+	button.darkTheme:focus,
+	button.darkTheme:hover {
+		background-color: var(
+			--dark-theme-hover-background-color,
+			var(--default-dark-theme-hover-background-color)
+		);
 	}
 
 	#icon-container {

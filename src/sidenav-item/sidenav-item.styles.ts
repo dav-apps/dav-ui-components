@@ -17,16 +17,24 @@ export const sidenavItemStyles = css`
 		cursor: pointer;
 	}
 
-	#item:focus, #item:hover {
-		background-color: var(--light-theme-hover-background-color, var(--default-light-theme-hover-background-color));
+	#item:focus,
+	#item:hover {
+		background-color: var(
+			--light-theme-hover-background-color,
+			var(--default-light-theme-hover-background-color)
+		);
 	}
 
 	#item.darkTheme {
 		color: white;
 	}
 
-	#item.darkTheme:focus, #item.darkTheme:hover {
-		background-color: var(--dark-theme-hover-background-color, var(--default-dark-theme-hover-background-color));
+	#item.darkTheme:focus,
+	#item.darkTheme:hover {
+		background-color: var(
+			--dark-theme-hover-background-color,
+			var(--default-dark-theme-hover-background-color)
+		);
 	}
 
 	#item > i {

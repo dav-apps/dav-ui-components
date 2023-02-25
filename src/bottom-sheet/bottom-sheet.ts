@@ -1,11 +1,11 @@
-import { LitElement, html } from 'lit'
-import { customElement, property, state } from 'lit/decorators.js'
-import { query } from 'lit/decorators/query.js'
-import { classMap } from 'lit/directives/class-map.js'
-import { styleMap } from 'lit/directives/style-map.js'
-import { BottomSheetPosition } from '../types.js'
-import { globalStyles } from '../styles.js'
-import { bottomSheetStyles } from './bottom-sheet.styles.js'
+import { LitElement, html } from "lit"
+import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
+import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
+import { BottomSheetPosition } from "../types.js"
+import { globalStyles } from "../styles.js"
+import { bottomSheetStyles } from "./bottom-sheet.styles.js"
 
 export const bottomSheetTagName = "dav-bottom-sheet"
 const minBottomSheetPosition = 24
@@ -91,17 +91,26 @@ export class BottomSheet extends LitElement {
 
 				if (this.position == minBottomSheetPosition) {
 					this.dispatchEvent(new CustomEvent("snapBottom"))
-				} else if (this.position == this.bottomSheetContainer.clientHeight) {
+				} else if (
+					this.position == this.bottomSheetContainer.clientHeight
+				) {
 					this.dispatchEvent(new CustomEvent("snapTop"))
 				}
 
-				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight - this.position}px)`
+				this.contentContainerStyles.transform = `translateY(
+					${this.bottomSheetContainer.clientHeight - this.position}px)`
 
 				if (!this.dismissable) {
 					// Calculate the opacity
 					this.overlayStyles.opacity = (
-						(100 / (this.bottomSheetContainer.clientHeight - minBottomSheetPosition)) * (this.position - minBottomSheetPosition) / 100
-					).toPrecision(3).toString()
+						((100 /
+							(this.bottomSheetContainer.clientHeight -
+								minBottomSheetPosition)) *
+							(this.position - minBottomSheetPosition)) /
+						100
+					)
+						.toPrecision(3)
+						.toString()
 
 					if (this.position == minBottomSheetPosition) {
 						// Hide the overlay
@@ -125,12 +134,17 @@ export class BottomSheet extends LitElement {
 	}
 
 	render() {
-		if (!this.resizeObserverInitialized && this.bottomSheetContainer != null) {
-			const resizeObserver = new ResizeObserver((entries) => {
+		if (
+			!this.resizeObserverInitialized &&
+			this.bottomSheetContainer != null
+		) {
+			const resizeObserver = new ResizeObserver(entries => {
 				if (
-					entries.length == 0
-					|| entries[0].target != this.bottomSheetContainer
-				) return
+					entries.length == 0 ||
+					entries[0].target != this.bottomSheetContainer
+				) {
+					return
+				}
 
 				this.updateContentContainerTransform()
 				this.requestUpdate()
@@ -153,8 +167,8 @@ export class BottomSheet extends LitElement {
 					id="overlay"
 					class=${classMap(this.overlayClasses)}
 					style=${styleMap(this.overlayStyles)}
-					@click=${this.overlayClick}>
-				</div>
+					@click=${this.overlayClick}
+				></div>
 
 				<div
 					id="bottom-sheet-container"
@@ -163,8 +177,8 @@ export class BottomSheet extends LitElement {
 				>
 					<div
 						id="bottom-sheet-left-overlay"
-						@click=${this.overlayClick}>
-					</div>
+						@click=${this.overlayClick}
+					></div>
 
 					<div id="content-container">
 						<div id="handle"></div>
@@ -176,8 +190,8 @@ export class BottomSheet extends LitElement {
 
 					<div
 						id="bottom-sheet-right-overlay"
-						@click=${this.overlayClick}>
-					</div>
+						@click=${this.overlayClick}
+					></div>
 				</div>
 			</div>
 		`

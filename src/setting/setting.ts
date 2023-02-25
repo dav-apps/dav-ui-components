@@ -1,7 +1,7 @@
-import { LitElement, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
-import { globalStyles } from '../styles.js'
-import { settingStyles } from './setting.styles.js'
+import { LitElement, html } from "lit"
+import { customElement, property } from "lit/decorators.js"
+import { globalStyles } from "../styles.js"
+import { settingStyles } from "./setting.styles.js"
 
 export const settingTagName = "dav-setting"
 
