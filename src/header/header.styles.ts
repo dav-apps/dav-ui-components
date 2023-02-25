@@ -1,57 +1,37 @@
 import { css } from "@lit/reactive-element"
 
 export const headerStyles = css`
+	#container {
+		display: flex;
+		align-items: center;
+	}
+
 	#header {
 		display: flex;
 		justify-content: center;
+		font-family: Roboto, Arial, sans-serif;
+		font-weight: 400;
 	}
 
 	#header.darkTheme {
 		color: white;
 	}
 
-	.icon-button {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 18px;
-	}
-
-	.icon-button.darkTheme {
-		color: white;
+	dav-icon-button {
+		width: 36px;
+		height: 36px;
 	}
 
 	#back-button {
-		width: 40px;
-		height: 35px;
+		margin-right: 12px;
 	}
 
 	#edit-button {
-		width: 32px;
-		height: 35px;
+		margin-left: 12px;
 	}
 
-	.icon-button:hover,
-	.icon-button:active {
-		background-color: var(
-			--light-theme-hover-background-color,
-			var(--default-light-theme-hover-background-color)
-		);
-		border-color: var(
-			--light-theme-hover-background-color,
-			var(--default-light-theme-hover-background-color)
-		);
-	}
-
-	.icon-button.darkTheme:hover,
-	.icon-button.darkTheme:active {
-		background-color: var(
-			--dark-theme-hover-background-color,
-			var(--default-dark-theme-hover-background-color)
-		);
-		border-color: var(
-			--dark-theme-hover-background-color,
-			var(--default-dark-theme-hover-background-color)
-		);
+	svg {
+		width: 18px;
+		height: 18px;
 	}
 `

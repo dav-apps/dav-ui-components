@@ -105,8 +105,8 @@ export function convertStringToSidenavMode(value: string): SidenavMode {
 
 export function convertStringToHeaderSize(value: string): HeaderSize {
 	switch (value) {
-		case "big":
-			return HeaderSize.big
+		case "large":
+			return HeaderSize.large
 		case "small":
 			return HeaderSize.small
 		default:
