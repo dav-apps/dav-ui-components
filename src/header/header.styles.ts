@@ -3,6 +3,7 @@ import { css } from "@lit/reactive-element"
 export const headerStyles = css`
 	#container {
 		display: flex;
+		justify-content: center;
 		align-items: center;
 	}
 
