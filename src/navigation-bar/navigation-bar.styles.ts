@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const navigationBarStyles = css`
-	#container {
+	:host {
 		display: flex;
 		justify-content: space-around;
 		height: 80px;
