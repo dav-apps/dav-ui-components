@@ -1,13 +1,21 @@
 import { css } from "@lit/reactive-element"
 
 export const headerStyles = css`
-	#container {
+	.container {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-	#header {
+	.container.start {
+		justify-content: start;
+	}
+
+	.container.end {
+		justify-content: end;
+	}
+
+	.header {
 		display: flex;
 		justify-content: center;
 		margin: 0;
@@ -15,7 +23,7 @@ export const headerStyles = css`
 		font-weight: 400;
 	}
 
-	#header.darkTheme {
+	.header.darkTheme {
 		color: white;
 	}
 
@@ -24,11 +32,11 @@ export const headerStyles = css`
 		height: 36px;
 	}
 
-	#back-button {
+	.back-button {
 		margin-right: 12px;
 	}
 
-	#edit-button {
+	.edit-button {
 		margin-left: 12px;
 	}
 

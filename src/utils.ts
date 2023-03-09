@@ -5,8 +5,9 @@ import {
 	ButtonColor,
 	ButtonSize,
 	SidenavMode,
-	HeaderSize,
-	Settings
+	Settings,
+	Alignment,
+	HeaderSize
 } from "./types.js"
 
 var settingsChangeCallbacks: Function[] = []
@@ -100,6 +101,17 @@ export function convertStringToSidenavMode(value: string): SidenavMode {
 			return SidenavMode.over
 		default:
 			return SidenavMode.side
+	}
+}
+
+export function convertStringToAlignment(value: string): Alignment {
+	switch (value) {
+		case "start":
+			return Alignment.start
+		case "end":
+			return Alignment.end
+		default:
+			return Alignment.center
 	}
 }
 

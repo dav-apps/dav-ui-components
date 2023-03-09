@@ -44,6 +44,12 @@ export enum SidenavMode {
 	over = "over"
 }
 
+export enum Alignment {
+	start = "start",
+	center = "center",
+	end = "end"
+}
+
 export enum HeaderSize {
 	large = "large",
 	normal = "normal",

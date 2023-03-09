@@ -2,11 +2,12 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { Theme, HeaderSize, Settings } from "../types.js"
+import { Theme, Alignment, HeaderSize, Settings } from "../types.js"
 import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings,
+	convertStringToAlignment,
 	convertStringToHeaderSize
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
@@ -20,7 +21,13 @@ export const headerTagName = "dav-header"
 export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
+	@state() private containerClasses = {
+		container: true,
+		start: false,
+		end: false
+	}
 	@state() private headerClasses = {
+		header: true,
 		darkTheme: false
 	}
 	@state() private headerStyles = {
@@ -29,6 +36,11 @@ export class Header extends LitElement {
 
 	@state() private theme: Theme = getSettings().theme
 
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToAlignment(value)
+	})
+	alignment: Alignment = Alignment.center
 	@property({ type: Boolean }) backButtonVisible: boolean = false
 	@property({ type: Boolean }) editButtonVisible: boolean = false
 	@property({
@@ -60,7 +72,7 @@ export class Header extends LitElement {
 	getBackButton() {
 		if (this.backButtonVisible) {
 			return html`
-				<dav-icon-button id="back-button" @click=${this.backButtonClick}>
+				<dav-icon-button class="back-button" @click=${this.backButtonClick}>
 					${arrowLeftLightSvg}
 				</dav-icon-button>
 			`
@@ -72,7 +84,7 @@ export class Header extends LitElement {
 	getEditButton() {
 		if (this.editButtonVisible) {
 			return html`
-				<dav-icon-button id="edit-button" @click=${this.editButtonClick}>
+				<dav-icon-button class="edit-button" @click=${this.editButtonClick}>
 					${penLightSvg}
 				</dav-icon-button>
 			`
@@ -83,6 +95,21 @@ export class Header extends LitElement {
 
 	render() {
 		this.headerClasses.darkTheme = this.theme == Theme.dark
+
+		switch (this.alignment) {
+			case Alignment.start:
+				this.containerClasses.start = true
+				this.containerClasses.end = false
+				break
+			case Alignment.end:
+				this.containerClasses.start = false
+				this.containerClasses.end = true
+				break
+			default:
+				this.containerClasses.start = false
+				this.containerClasses.end = false
+				break
+		}
 
 		switch (this.size) {
 			case HeaderSize.large:
@@ -97,11 +124,10 @@ export class Header extends LitElement {
 		}
 
 		return html`
-			<div id="container">
+			<div class=${classMap(this.containerClasses)}>
 				${this.getBackButton()}
 
 				<h1
-					id="header"
 					class=${classMap(this.headerClasses)}
 					style=${styleMap(this.headerStyles)}
 				>
