@@ -83,6 +83,7 @@ export const paginationStyles = css`
 	svg {
 		width: 16px;
 		height: 16px;
+		fill: var(--md-sys-color-on-secondary-container-light);
 	}
 
 	.forward-button svg {
