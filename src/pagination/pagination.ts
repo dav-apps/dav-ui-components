@@ -3,13 +3,13 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings, Theme } from "../types.js"
 import {
-	getGlobalStyleHtml,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { paginationStyles } from "./pagination.styles.js"
+import { arrowLeftLightSvg } from "../svg/arrow-left-light.js"
 
 export const paginationTagName = "dav-pagination"
 
@@ -19,11 +19,13 @@ export class Pagination extends LitElement {
 
 	@state() private backButtonClasses = {
 		"pagination-button": true,
+		"back-button": true,
 		disabled: false,
 		darkTheme: false
 	}
 	@state() private forwardButtonClasses = {
 		"pagination-button": true,
+		"forward-button": true,
 		disabled: false,
 		darkTheme: false
 	}
@@ -84,12 +86,11 @@ export class Pagination extends LitElement {
 
 		return html`
 			<button
-				id="back-button"
 				class=${classMap(this.backButtonClasses)}
 				?aria-disabled=${disabled}
 				@click=${this.backButtonClick}
 			>
-				<i class="ms-Icon ms-Icon--Back" aria-hidden="true"></i>
+				${arrowLeftLightSvg}
 			</button>
 		`
 	}
@@ -103,12 +104,11 @@ export class Pagination extends LitElement {
 
 		return html`
 			<button
-				id="forward-button"
 				class=${classMap(this.forwardButtonClasses)}
 				?aria-disabled=${disabled}
 				@click=${this.forwardButtonClick}
 			>
-				<i class="ms-Icon ms-Icon--Forward" aria-hidden="true"></i>
+				${arrowLeftLightSvg}
 			</button>
 		`
 	}
@@ -181,9 +181,7 @@ export class Pagination extends LitElement {
 		this.reducedEnd = this.pages >= 8 && this.currentPage <= this.pages - 4
 
 		return html`
-			${getGlobalStyleHtml()}
-
-			<div id="container" dir="ltr">
+			<div class="container">
 				${this.getBackButton()} ${this.getPageButtons()}
 				${this.getForwardButton()}
 			</div>

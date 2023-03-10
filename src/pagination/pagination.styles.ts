@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const paginationStyles = css`
-	#container {
+	.container {
 		display: flex;
 		justify-content: center;
 	}
@@ -12,29 +12,35 @@ export const paginationStyles = css`
 		align-items: center;
 		width: 38px;
 		height: 38px;
+		font-family: Roboto, Arial, sans-serif;
 		font-size: 16px;
 		padding: 0;
-		margin: 0px 1px;
-		background-color: #f8f9fa;
-		border-radius: 0.5rem;
-		border: 1px solid #f8f9fa;
-		transition: 0.2s;
+		margin: 0px 2px;
+		background-color: var(--md-sys-color-secondary-container-light);
+		color: var(--md-sys-color-on-secondary-container-light);
+		border-radius: 19px;
+		border: none;
+		transition: 200ms;
+		cursor: pointer;
 	}
 
-	.pagination-button:not(.selected, .disabled):hover,
-	.pagination-button:not(.selected, .disabled):active {
-		background-color: #efefef;
-		border-color: #efefef;
+	.pagination-button:hover {
+		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
 	}
 
-	.pagination-button.darkTheme {
+	.pagination-button:active,
+	.pagination-button:focus {
+		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
+	}
+
+	.pagination-button .pagination-button.darkTheme {
 		color: white;
 		background-color: #1c2938;
 		border-color: #1c2938;
 	}
 
-	.pagination-button.darkTheme:not(.selected, .disabled):hover,
-	.pagination-button.darkTheme:not(.selected, .disabled):active {
+	.pagination-button.darkTheme:hover,
+	.pagination-button.darkTheme:active {
 		background-color: #232e3c;
 		border-color: #232e3c;
 	}
@@ -43,11 +49,21 @@ export const paginationStyles = css`
 		cursor: not-allowed;
 	}
 
-	.selected {
-		background-color: #d9d9d9;
+	.pagination-button.selected {
+		background-color: var(--md-sys-color-secondary-light);
+		color: var(--md-sys-color-on-secondary-light);
 	}
 
-	.selected.darkTheme {
+	.pagination-button.selected:hover {
+		background-color: rgb(var(--md-ref-palette-secondary35-rgb));
+	}
+
+	.pagination-button.selected:active,
+	.pagination-button.selected:focus {
+		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
+	}
+
+	.pagination-button.selected.darkTheme {
 		background-color: #3d4753;
 	}
 
@@ -57,9 +73,19 @@ export const paginationStyles = css`
 		align-items: center;
 		width: 38px;
 		margin: 0px 1px;
+		color: var(--md-sys-color-on-surface-light);
 	}
 
 	.button-placeholder.darkTheme {
-		color: white;
+		color: var(--md-sys-color-on-surface-dark);
+	}
+
+	svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.forward-button svg {
+		transform: rotate(180deg);
 	}
 `
