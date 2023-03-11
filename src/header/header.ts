@@ -14,6 +14,7 @@ import { globalStyles } from "../styles.js"
 import { headerStyles } from "./header.styles.js"
 import { arrowLeftLightSvg } from "../svg/arrow-left-light.js"
 import { penLightSvg } from "../svg/pen-light.js"
+import { plusLightSvg } from "../svg/plus-light.js"
 
 export const headerTagName = "dav-header"
 
@@ -42,6 +43,7 @@ export class Header extends LitElement {
 	})
 	alignment: Alignment = Alignment.center
 	@property({ type: Boolean }) backButtonVisible: boolean = false
+	@property({ type: Boolean }) addButtonVisible: boolean = false
 	@property({ type: Boolean }) editButtonVisible: boolean = false
 	@property({
 		type: String,
@@ -65,6 +67,10 @@ export class Header extends LitElement {
 		this.dispatchEvent(new CustomEvent("backButtonClick"))
 	}
 
+	addButtonClick() {
+		this.dispatchEvent(new CustomEvent("addButtonClick"))
+	}
+
 	editButtonClick() {
 		this.dispatchEvent(new CustomEvent("editButtonClick"))
 	}
@@ -72,7 +78,11 @@ export class Header extends LitElement {
 	getBackButton() {
 		if (this.backButtonVisible) {
 			return html`
-				<dav-icon-button class="back-button" @click=${this.backButtonClick}>
+				<dav-icon-button
+					class="back-button"
+					size="small"
+					@click=${this.backButtonClick}
+				>
 					${arrowLeftLightSvg}
 				</dav-icon-button>
 			`
@@ -81,10 +91,28 @@ export class Header extends LitElement {
 		return html``
 	}
 
+	getAddButton() {
+		if (this.addButtonVisible) {
+			return html`
+				<dav-icon-button
+					class="add-button"
+					size="small"
+					@click=${this.addButtonClick}
+				>
+					${plusLightSvg}
+				</dav-icon-button>
+			`
+		}
+	}
+
 	getEditButton() {
 		if (this.editButtonVisible) {
 			return html`
-				<dav-icon-button class="edit-button" @click=${this.editButtonClick}>
+				<dav-icon-button
+					class="edit-button"
+					size="small"
+					@click=${this.editButtonClick}
+				>
 					${penLightSvg}
 				</dav-icon-button>
 			`
@@ -134,7 +162,9 @@ export class Header extends LitElement {
 					<slot></slot>
 				</h1>
 
-				${this.getEditButton()}
+				<div class="right-button-container">
+					${this.getAddButton()} ${this.getEditButton()}
+				</div>
 			</div>
 		`
 	}

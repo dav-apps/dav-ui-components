@@ -2,10 +2,12 @@ module.exports = {
 	name: "Header",
 	examples: [
 		{
-			title: "Normal Header",
+			title: "Small Header",
 			template: `
 				<dav-header
+					size="small"
 					backButtonVisible
+					addButtonVisible
 					editButtonVisible
 				>
 					Hello World
@@ -13,11 +15,11 @@ module.exports = {
 			`
 		},
 		{
-			title: "Small Header",
+			title: "Normal Header",
 			template: `
 				<dav-header
-					size="small"
 					backButtonVisible
+					addButtonVisible
 					editButtonVisible
 				>
 					Hello World
@@ -30,6 +32,7 @@ module.exports = {
 				<dav-header
 					size="large"
 					backButtonVisible
+					addButtonVisible
 					editButtonVisible
 				>
 					Hello World

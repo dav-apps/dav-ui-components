@@ -27,6 +27,10 @@ export const headerStyles = css`
 		color: white;
 	}
 
+	.right-button-container {
+		margin-left: 10px;
+	}
+
 	dav-icon-button {
 		width: 36px;
 		height: 36px;
@@ -36,12 +40,11 @@ export const headerStyles = css`
 		margin-right: 12px;
 	}
 
-	.edit-button {
-		margin-left: 12px;
+	.add-button {
+		margin: 0 2px;
 	}
 
-	svg {
-		width: 18px;
-		height: 18px;
+	.edit-button {
+		margin: 0 2px;
 	}
 `
