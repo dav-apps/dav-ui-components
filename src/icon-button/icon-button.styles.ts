@@ -3,9 +3,6 @@ import { css } from "@lit/reactive-element"
 export const iconButtonStyles = css`
 	:host {
 		display: inline-block;
-		height: 48px;
-		width: 48px;
-		font-size: 24px;
 	}
 
 	::slotted(*) {
@@ -18,15 +15,21 @@ export const iconButtonStyles = css`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: inherit;
-		height: inherit;
-		font-size: inherit;
+		width: 48px;
+		height: 48px;
+		font-size: 24px;
 		color: var(--md-sys-color-on-surface-variant-light);
 		background-color: transparent;
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
 		transition: 200ms;
+	}
+
+	button.small {
+		height: 32px;
+		width: 32px;
+		font-size: 16px;
 	}
 
 	button:hover {
