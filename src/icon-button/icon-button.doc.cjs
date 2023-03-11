@@ -22,6 +22,21 @@ module.exports = {
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</dav-icon-button>
 			`
+		},
+		{
+			title: "Small IconButton",
+			controller: function(element) {
+				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
+
+				iconButton.onclick = () => {
+					iconButton.selected = !iconButton.selected
+				}
+			},
+			template: `
+				<dav-icon-button size="small">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</dav-icon-button>
+			`
 		}
 	]
 }
