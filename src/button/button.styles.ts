@@ -22,8 +22,9 @@ export const buttonStyles = css`
 	}
 
 	button.small {
-		height: 32px;
+		height: 34px;
 		padding: 0 16px;
+		font-size: 13px;
 	}
 
 	button.tonal {
