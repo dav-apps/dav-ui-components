@@ -26,10 +26,20 @@ export const iconButtonStyles = css`
 		transition: 200ms;
 	}
 
+	button ::slotted(svg) {
+		width: 24px;
+		height: 24px;
+	}
+
 	button.small {
 		height: 32px;
 		width: 32px;
-		font-size: 16px;
+		font-size: 18px;
+	}
+
+	button.small ::slotted(svg) {
+		width: 18px;
+		height: 18px;
 	}
 
 	button:hover {
