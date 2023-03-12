@@ -37,6 +37,22 @@ module.exports = {
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</dav-icon-button>
 			`
+		},
+		{
+			title: "IconButton with link",
+			template: `
+				<dav-icon-button href="https://dav-apps.tech" target="blank">
+					<i class="fa-solid fa-globe"></i>
+				</dav-icon-button>
+			`
+		},
+		{
+			title: "Small IconButton with link",
+			template: `
+				<dav-icon-button size="small" href="https://dav-apps.tech" target="blank">
+					<i class="fa-solid fa-globe"></i>
+				</dav-icon-button>
+			`
 		}
 	]
 }
