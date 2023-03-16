@@ -41,6 +41,8 @@ module.exports = {
 		"./dist/src/header/header.styles.js",
 		"./dist/src/icon-button/icon-button.js",
 		"./dist/src/icon-button/icon-button.styles.js",
+		"./dist/src/icon-card/icon-card.js",
+		"./dist/src/icon-card/icon-card.styles.js",
 		"./dist/src/icon-text-button/icon-text-button.js",
 		"./dist/src/icon-text-button/icon-text-button.styles.js",
 		"./dist/src/link-button/link-button.js",

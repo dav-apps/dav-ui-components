@@ -25,6 +25,7 @@ import { Dialog, dialogTagName } from "./src/dialog/dialog.js"
 import { Dropdown, dropdownTagName } from "./src/dropdown/dropdown.js"
 import { Header, headerTagName } from "./src/header/header.js"
 import { IconButton, iconButtonTagName } from "./src/icon-button/icon-button.js"
+import { IconCard, iconCardTagName } from "./src/icon-card/icon-card.js"
 import {
 	IconTextButton,
 	iconTextButtonTagName
@@ -77,6 +78,7 @@ declare global {
 		[dropdownTagName]: Dropdown
 		[headerTagName]: Header
 		[iconButtonTagName]: IconButton
+		[iconCardTagName]: IconCard
 		[iconTextButtonTagName]: IconTextButton
 		[linkButtonTagName]: LinkButton
 		[messageBarTagName]: MessageBar
@@ -113,6 +115,7 @@ export {
 	Dropdown,
 	Header,
 	IconButton,
+	IconCard,
 	IconTextButton,
 	LinkButton,
 	MessageBar,
