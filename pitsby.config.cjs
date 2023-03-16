@@ -23,6 +23,8 @@ module.exports = {
 		"./dist/src/bottom-sheet/bottom-sheet.styles.js",
 		"./dist/src/button/button.js",
 		"./dist/src/button/button.styles.js",
+		"./dist/src/card/card.js",
+		"./dist/src/card/card.styles.js",
 		"./dist/src/checkbox/checkbox.js",
 		"./dist/src/checkbox/checkbox.styles.js",
 		"./dist/src/context-menu/context-menu.js",

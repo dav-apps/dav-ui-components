@@ -7,6 +7,7 @@ import {
 	bottomSheetTagName
 } from "./src/bottom-sheet/bottom-sheet.js"
 import { Button, buttonTagName } from "./src/button/button.js"
+import { Card, cardTagName } from "./src/card/card.js"
 import { Checkbox, checkboxTagName } from "./src/checkbox/checkbox.js"
 import {
 	ContextMenu,
@@ -67,6 +68,7 @@ declare global {
 	interface HTMLElementTagNameMap {
 		[bottomSheetTagName]: BottomSheet
 		[buttonTagName]: Button
+		[cardTagName]: Card
 		[checkboxTagName]: Checkbox
 		[contextMenuTagName]: ContextMenu
 		[contextMenuDividerTagName]: ContextMenuDivider
@@ -102,6 +104,7 @@ export {
 	DropdownOptionType,
 	BottomSheet,
 	Button,
+	Card,
 	Checkbox,
 	ContextMenu,
 	ContextMenuDivider,
