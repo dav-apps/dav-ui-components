@@ -11,9 +11,9 @@ export class IconCard extends LitElement {
 
 	render() {
 		return html`
-			<div class="icon-card-container">
+			<button class="icon-card-container">
 				<slot></slot>
-			</div>
+			</button>
 		`
 	}
 }
