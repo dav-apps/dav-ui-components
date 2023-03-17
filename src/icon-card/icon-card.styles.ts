@@ -8,10 +8,17 @@ export const iconCardStyles = css`
 		text-align: center;
 		background-color: var(--md-sys-color-surface-light);
 		color: var(--md-sys-color-on-surface-light);
-		border: 1px solid var(--md-sys-color-outline-light);
+		border: 1px solid rgb(var(--md-ref-palette-neutral90-rgb));
 		border-radius: 12px;
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 25px;
 		cursor: pointer;
+		transition: 200ms;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	}
+
+	.icon-card-container:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
 `
