@@ -7,7 +7,8 @@ import {
 	SidenavMode,
 	Settings,
 	Alignment,
-	HeaderSize
+	HeaderSize,
+	Orientation
 } from "./types.js"
 
 var settingsChangeCallbacks: Function[] = []
@@ -123,6 +124,15 @@ export function convertStringToHeaderSize(value: string): HeaderSize {
 			return HeaderSize.small
 		default:
 			return HeaderSize.normal
+	}
+}
+
+export function convertStringToOrientation(value: string): Orientation {
+	switch (value) {
+		case "horizontal":
+			return Orientation.horizontal
+		default:
+			return Orientation.vertical
 	}
 }
 //#endregion

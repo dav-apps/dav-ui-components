@@ -55,3 +55,8 @@ export enum HeaderSize {
 	normal = "normal",
 	small = "small"
 }
+
+export enum Orientation {
+	vertical = "vertical",
+	horizontal = "horizontal"
+}
