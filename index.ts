@@ -31,6 +31,7 @@ import {
 	iconTextButtonTagName
 } from "./src/icon-text-button/icon-text-button.js"
 import { LinkButton, linkButtonTagName } from "./src/link-button/link-button.js"
+import { ListItem, listItemTagName } from "./src/list-item/list-item.js"
 import { MessageBar, messageBarTagName } from "./src/message-bar/message-bar.js"
 import {
 	NavigationBar,
@@ -81,6 +82,7 @@ declare global {
 		[iconCardTagName]: IconCard
 		[iconTextButtonTagName]: IconTextButton
 		[linkButtonTagName]: LinkButton
+		[listItemTagName]: ListItem
 		[messageBarTagName]: MessageBar
 		[navigationBarTagName]: NavigationBar
 		[navigationBarItemTagName]: NavigationBarItem
@@ -118,6 +120,7 @@ export {
 	IconCard,
 	IconTextButton,
 	LinkButton,
+	ListItem,
 	MessageBar,
 	NavigationBar,
 	NavigationBarItem,
