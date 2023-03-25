@@ -7,6 +7,7 @@
 		"lit-html": "/external/node_modules/lit-html/lit-html.js",
 		"lit-html/": "/external/node_modules/lit-html/",
 		"lit-element/lit-element.js": "/external/node_modules/lit-element/lit-element.js",
-		"autosize": "/external/node_modules/autosize/dist/autosize.esm.js"
+		"autosize": "/external/node_modules/autosize/dist/autosize.esm.js",
+		"blurhash": "/external/node_modules/blurhash/dist/esm/index.js"
 	}
 }
