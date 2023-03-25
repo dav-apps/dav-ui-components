@@ -3,6 +3,10 @@ import { DropdownOption, DropdownOptionType } from "./src/types.js"
 
 // Components
 import {
+	BlurhashImage,
+	blurhashImageTagName
+} from "./src/blurhash-image/blurhash-image.js"
+import {
 	BottomSheet,
 	bottomSheetTagName
 } from "./src/bottom-sheet/bottom-sheet.js"
@@ -68,6 +72,7 @@ import { Toggle, toggleTagName } from "./src/toggle/toggle.js"
 
 declare global {
 	interface HTMLElementTagNameMap {
+		[blurhashImageTagName]: BlurhashImage
 		[bottomSheetTagName]: BottomSheet
 		[buttonTagName]: Button
 		[cardTagName]: Card
@@ -106,6 +111,7 @@ export {
 	setTheme,
 	DropdownOption,
 	DropdownOptionType,
+	BlurhashImage,
 	BottomSheet,
 	Button,
 	Card,
