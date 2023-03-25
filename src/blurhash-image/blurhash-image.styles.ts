@@ -4,6 +4,7 @@ export const blurhashImageStyles = css`
 	.blurhash-image-container {
 		display: inline-block;
 		position: relative;
+		border-radius: inherit;
 	}
 
 	.progress-ring-container {
@@ -20,5 +21,6 @@ export const blurhashImageStyles = css`
 	img {
 		width: 100%;
 		height: 100%;
+		border-radius: inherit;
 	}
 `

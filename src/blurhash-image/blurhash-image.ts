@@ -26,6 +26,7 @@ export class BlurhashImage extends LitElement {
 	@property({ type: Number }) height: number = 100
 	@property({ type: String }) fallbackSrc: string = ""
 	@property({ type: String }) blurhash: string = ""
+	@property({ type: Boolean }) loading: boolean = false
 
 	private loadImage() {
 		if (this.imageLoaded) return
@@ -96,6 +97,16 @@ export class BlurhashImage extends LitElement {
 		}
 	}
 
+	getProgressRing() {
+		if (this.loading) {
+			return html`
+				<div class="progress-ring-container">
+					<dav-progress-ring size="20"></dav-progress-ring>
+				</div>
+			`
+		}
+	}
+
 	render() {
 		this.loadImage()
 		this.blurhashImageContainerStyles.width = `${this.width}px`
@@ -106,9 +117,7 @@ export class BlurhashImage extends LitElement {
 				class="blurhash-image-container"
 				style=${styleMap(this.blurhashImageContainerStyles)}
 			>
-				<div class="progress-ring-container">
-					<dav-progress-ring size="20"></dav-progress-ring>
-				</div>
+				${this.getProgressRing()}
 
 				<img src=${this.imageSrc} />
 			</div>
