@@ -18,8 +18,8 @@ export class BlurhashImage extends LitElement {
 		height: "100px"
 	}
 	@state() private imageSrc: string = ""
-	@state() private imageLoaded: boolean = false
-	@state() private intersectionObserverInitialized: boolean = false
+	@state() private loadedBlurhash: string = ""
+	@state() private loadedImage: string = ""
 
 	@property({ type: String }) src: string = ""
 	@property({ type: Number }) width: number = 100
@@ -30,73 +30,77 @@ export class BlurhashImage extends LitElement {
 	@property({ type: String }) title: string = ""
 	@property({ type: String }) alt: string = ""
 
-	private loadImage() {
-		if (this.imageLoaded) return
+	private loadBlurhash() {
+		if (
+			this.blurhash == this.loadedBlurhash ||
+			this.blurhash == null ||
+			this.blurhash.length < 6
+		) {
+			return
+		}
+
+		this.loadedBlurhash = this.blurhash
 		this.imageSrc = this.fallbackSrc
 
-		if (this.blurhash && this.blurhash.length >= 6) {
-			let cacheKey = BlurhashImageCache.GetBlurhashImageCacheKey(
-				this.blurhash,
-				this.width,
-				this.height
-			)
-			let cacheItem = BlurhashImageCache.GetBlurhashImageCacheItem(cacheKey)
+		let cacheKey = BlurhashImageCache.GetBlurhashImageCacheKey(
+			this.blurhash,
+			this.width,
+			this.height
+		)
+		let cacheItem = BlurhashImageCache.GetBlurhashImageCacheItem(cacheKey)
 
-			if (cacheItem != null) {
-				this.imageSrc = cacheItem
-			} else {
-				// Generate the blurhash
-				let canvas = document.createElement("canvas")
-				canvas.width = this.width
-				canvas.height = this.height
+		if (cacheItem != null) {
+			this.imageSrc = cacheItem
+		} else {
+			// Generate the blurhash
+			let canvas = document.createElement("canvas")
+			canvas.width = this.width
+			canvas.height = this.height
 
-				if (
-					canvas.getContext &&
-					Number.isFinite(this.width) &&
-					Number.isFinite(this.height)
-				) {
-					// Decode the blurhash and set the canvas
-					let ctx = canvas.getContext("2d")
-					let pixels = decode(this.blurhash, this.width, this.height)
-					let imageData = ctx.createImageData(this.width, this.height)
-					imageData.data.set(pixels)
-					ctx.putImageData(imageData, 0, 0)
+			if (
+				canvas.getContext &&
+				Number.isFinite(this.width) &&
+				Number.isFinite(this.height)
+			) {
+				// Decode the blurhash and set the canvas
+				let ctx = canvas.getContext("2d")
+				let pixels = decode(this.blurhash, this.width, this.height)
+				let imageData = ctx.createImageData(this.width, this.height)
+				imageData.data.set(pixels)
+				ctx.putImageData(imageData, 0, 0)
 
-					//  Convert the canvas content to base64 url
-					this.imageSrc = canvas.toDataURL()
+				//  Convert the canvas content to base64 url
+				this.imageSrc = canvas.toDataURL()
 
-					BlurhashImageCache.SetBlurhashImageCacheItem(
-						cacheKey,
-						this.imageSrc
-					)
-				}
+				BlurhashImageCache.SetBlurhashImageCacheItem(
+					cacheKey,
+					this.imageSrc
+				)
 			}
 		}
+	}
 
-		if (
-			this.src != null &&
-			this.src.length > 0 &&
-			!this.intersectionObserverInitialized
-		) {
-			const intersectionObserver = new IntersectionObserver(entries => {
-				if (entries[0].intersectionRatio <= 0) return
+	private loadImage() {
+		if (this.src == null || this.src.length == 0) return
 
-				// Start loading the proper image
-				let img = document.createElement("img")
-				img.src = this.src
+		this.loadedImage = this.src
 
-				img.onload = () => {
-					// Show the proper image
-					this.imageSrc = this.src
-					this.imageLoaded = true
-				}
+		const intersectionObserver = new IntersectionObserver(entries => {
+			if (entries[0].intersectionRatio <= 0) return
 
-				intersectionObserver.disconnect()
-			})
+			// Start loading the proper image
+			let img = document.createElement("img")
+			img.src = this.src
 
-			intersectionObserver.observe(this)
-			this.intersectionObserverInitialized = true
-		}
+			img.onload = () => {
+				// Show the proper image
+				this.imageSrc = this.src
+			}
+
+			intersectionObserver.disconnect()
+		})
+
+		intersectionObserver.observe(this)
 	}
 
 	getProgressRing() {
@@ -110,6 +114,7 @@ export class BlurhashImage extends LitElement {
 	}
 
 	render() {
+		this.loadBlurhash()
 		this.loadImage()
 		this.blurhashImageContainerStyles.width = `${this.width}px`
 		this.blurhashImageContainerStyles.height = `${this.height}px`
