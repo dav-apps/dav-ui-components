@@ -1,10 +1,15 @@
 import { css } from "@lit/reactive-element"
 
 export const blurhashImageStyles = css`
+	:host {
+		display: inline-block;
+	}
+
 	.blurhash-image-container {
 		display: inline-block;
 		position: relative;
 		border-radius: inherit;
+		box-shadow: inherit;
 	}
 
 	.progress-ring-container {
@@ -22,5 +27,6 @@ export const blurhashImageStyles = css`
 		width: 100%;
 		height: 100%;
 		border-radius: inherit;
+		box-shadow: inherit;
 	}
 `

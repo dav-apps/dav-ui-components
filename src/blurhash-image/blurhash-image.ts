@@ -27,12 +27,14 @@ export class BlurhashImage extends LitElement {
 	@property({ type: String }) fallbackSrc: string = ""
 	@property({ type: String }) blurhash: string = ""
 	@property({ type: Boolean }) loading: boolean = false
+	@property({ type: String }) title: string = ""
+	@property({ type: String }) alt: string = ""
 
 	private loadImage() {
 		if (this.imageLoaded) return
 		this.imageSrc = this.fallbackSrc
 
-		if (this.blurhash.length >= 6) {
+		if (this.blurhash && this.blurhash.length >= 6) {
 			let cacheKey = BlurhashImageCache.GetBlurhashImageCacheKey(
 				this.blurhash,
 				this.width,
@@ -119,7 +121,7 @@ export class BlurhashImage extends LitElement {
 			>
 				${this.getProgressRing()}
 
-				<img src=${this.imageSrc} />
+				<img src=${this.imageSrc} title=${this.title} alt=${this.alt} />
 			</div>
 		`
 	}
