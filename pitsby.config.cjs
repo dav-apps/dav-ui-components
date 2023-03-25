@@ -21,6 +21,7 @@ module.exports = {
 		"./dist/src/utils.js",
 		"./dist/src/blurhash-image/blurhash-image.js",
 		"./dist/src/blurhash-image/blurhash-image.styles.js",
+		"./dist/src/blurhash-image/blurhash-image-cache.js",
 		"./dist/src/bottom-sheet/bottom-sheet.js",
 		"./dist/src/bottom-sheet/bottom-sheet.styles.js",
 		"./dist/src/button/button.js",
