@@ -22,8 +22,8 @@ export class BlurhashImage extends LitElement {
 	@state() private loadedImage: string = ""
 
 	@property({ type: String }) src: string = ""
-	@property({ type: Number }) width: number = 100
-	@property({ type: Number }) height: number = 100
+	@property({ type: Number }) width: number = 0
+	@property({ type: Number }) height: number = 0
 	@property({ type: String }) fallbackSrc: string = ""
 	@property({ type: String }) blurhash: string = ""
 	@property({ type: Boolean }) loading: boolean = false
@@ -81,7 +81,13 @@ export class BlurhashImage extends LitElement {
 	}
 
 	private loadImage() {
-		if (this.src == null || this.src.length == 0) return
+		if (
+			this.src == this.loadedImage ||
+			this.src == null ||
+			this.src.length == 0
+		) {
+			return
+		}
 
 		this.loadedImage = this.src
 
@@ -116,8 +122,18 @@ export class BlurhashImage extends LitElement {
 	render() {
 		this.loadBlurhash()
 		this.loadImage()
-		this.blurhashImageContainerStyles.width = `${this.width}px`
-		this.blurhashImageContainerStyles.height = `${this.height}px`
+
+		if (this.width > 0) {
+			this.blurhashImageContainerStyles.width = `${this.width}px`
+		} else {
+			this.blurhashImageContainerStyles.width = "unset"
+		}
+
+		if (this.height > 0) {
+			this.blurhashImageContainerStyles.height = `${this.height}px`
+		} else {
+			this.blurhashImageContainerStyles.height = "unset"
+		}
 
 		return html`
 			<div

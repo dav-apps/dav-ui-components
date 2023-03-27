@@ -6,7 +6,7 @@ export const blurhashImageStyles = css`
 	}
 
 	.blurhash-image-container {
-		display: inline-block;
+		display: flex;
 		position: relative;
 		border-radius: inherit;
 		box-shadow: inherit;
