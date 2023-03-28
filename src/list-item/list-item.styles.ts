@@ -6,6 +6,18 @@ export const listItemStyles = css`
 		align-items: center;
 		padding: 8px 16px;
 		background-color: var(--md-sys-color-surface-light);
+		transition: 200ms;
+		cursor: pointer;
+		border-radius: 12px;
+	}
+
+	.list-item-container:hover,
+	.list-item-container:focus {
+		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+	}
+
+	.list-item-container:active {
+		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
 	}
 
 	.list-item-image-container {

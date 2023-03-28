@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
+import { customElement, property } from "lit/decorators.js"
 import { globalStyles } from "../styles.js"
 import { listItemStyles } from "./list-item.styles.js"
 
@@ -45,7 +45,7 @@ export class ListItem extends LitElement {
 
 	render() {
 		return html`
-			<div class="list-item-container">
+			<div class="list-item-container" tabindex="0">
 				${this.getImage()}
 
 				<div class="list-item-body">
