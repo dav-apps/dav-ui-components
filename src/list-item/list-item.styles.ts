@@ -21,9 +21,14 @@ export const listItemStyles = css`
 	}
 
 	.list-item-image-container {
-		height: 56;
-		width: 56;
+		height: 84px;
+		width: 84px;
 		margin-right: 16px;
+	}
+
+	.list-item-container.small .list-item-image-container {
+		height: 56px;
+		width: 56px;
 	}
 
 	.list-item-image {
@@ -37,13 +42,21 @@ export const listItemStyles = css`
 
 	.list-item-headline {
 		color: var(--md-sys-color-on-surface-light);
-		font-size: 16px;
+		font-size: 18px;
 		margin: 0;
+	}
+
+	.list-item-container.small .list-item-headline {
+		font-size: 16px;
 	}
 
 	.list-item-subhead {
 		color: var(--md-sys-color-on-surface-variant-light);
-		font-size: 14px;
+		font-size: 16px;
 		margin: 0;
+	}
+
+	.list-item-container.small .list-item-subhead {
+		font-size: 14px;
 	}
 `

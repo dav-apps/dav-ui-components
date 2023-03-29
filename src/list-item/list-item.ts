@@ -1,5 +1,8 @@
 import { LitElement, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { ListItemSize } from "../types.js"
+import { convertStringToListItemSize } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { listItemStyles } from "./list-item.styles.js"
 
@@ -9,9 +12,19 @@ export const listItemTagName = "dav-list-item"
 export class ListItem extends LitElement {
 	static styles = [globalStyles, listItemStyles]
 
+	@state() private listItemContainerClasses = {
+		"list-item-container": true,
+		small: false
+	}
+
 	@property({ type: String }) imageSrc: string = ""
 	@property({ type: String }) headline: string = ""
 	@property({ type: String }) subhead: string = ""
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToListItemSize(value)
+	})
+	size: ListItemSize = ListItemSize.normal
 
 	getImage() {
 		if (this.imageSrc.length > 0) {
@@ -20,7 +33,7 @@ export class ListItem extends LitElement {
 					<dav-blurhash-image
 						class="list-item-image"
 						src=${this.imageSrc}
-						height="56"
+						height=${this.listItemContainerClasses.small ? 56 : 84}
 					></dav-blurhash-image>
 				</div>
 			`
@@ -44,8 +57,10 @@ export class ListItem extends LitElement {
 	}
 
 	render() {
+		this.listItemContainerClasses.small = this.size == ListItemSize.small
+
 		return html`
-			<div class="list-item-container" tabindex="0">
+			<div class=${classMap(this.listItemContainerClasses)} tabindex="0">
 				${this.getImage()}
 
 				<div class="list-item-body">

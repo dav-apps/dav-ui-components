@@ -8,7 +8,8 @@ import {
 	Settings,
 	Alignment,
 	HeaderSize,
-	Orientation
+	Orientation,
+	ListItemSize
 } from "./types.js"
 
 var settingsChangeCallbacks: Function[] = []
@@ -133,6 +134,15 @@ export function convertStringToOrientation(value: string): Orientation {
 			return Orientation.horizontal
 		default:
 			return Orientation.vertical
+	}
+}
+
+export function convertStringToListItemSize(value: string): ListItemSize {
+	switch (value) {
+		case "small":
+			return ListItemSize.small
+		default:
+			return ListItemSize.normal
 	}
 }
 //#endregion

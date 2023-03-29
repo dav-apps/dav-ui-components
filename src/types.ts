@@ -60,3 +60,8 @@ export enum Orientation {
 	vertical = "vertical",
 	horizontal = "horizontal"
 }
+
+export enum ListItemSize {
+	small = "small",
+	normal = "normal"
+}
