@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
-import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { decode } from "blurhash"
 import { globalStyles } from "../styles.js"
@@ -36,6 +35,10 @@ export class BlurhashImage extends LitElement {
 			this.blurhash == null ||
 			this.blurhash.length < 6
 		) {
+			if (this.imageSrc.length == 0) {
+				this.imageSrc = this.fallbackSrc
+			}
+
 			return
 		}
 

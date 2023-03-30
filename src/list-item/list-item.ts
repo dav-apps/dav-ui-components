@@ -18,7 +18,9 @@ export class ListItem extends LitElement {
 	}
 
 	@property({ type: String }) imageSrc: string = ""
-	@property({ type: String }) headline: string = ""
+	@property({ type: String }) imageFallbackSrc: string = ""
+	@property({ type: String })
+	headline: string = ""
 	@property({ type: String }) subhead: string = ""
 	@property({
 		type: String,
@@ -33,6 +35,7 @@ export class ListItem extends LitElement {
 					<dav-blurhash-image
 						class="list-item-image"
 						src=${this.imageSrc}
+						fallbackSrc=${this.imageFallbackSrc}
 						height=${this.listItemContainerClasses.small ? 56 : 84}
 					></dav-blurhash-image>
 				</div>
