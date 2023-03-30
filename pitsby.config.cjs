@@ -51,6 +51,7 @@ module.exports = {
 		"./dist/src/link-button/link-button.js",
 		"./dist/src/link-button/link-button.styles.js",
 		"./dist/src/list/list.js",
+		"./dist/src/list/list.styles.js",
 		"./dist/src/list-item/list-item.js",
 		"./dist/src/list-item/list-item.styles.js",
 		"./dist/src/message-bar/message-bar.js",
