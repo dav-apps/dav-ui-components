@@ -29,7 +29,10 @@ export class ListItem extends LitElement {
 	size: ListItemSize = ListItemSize.normal
 
 	getImage() {
-		if (this.imageSrc.length > 0) {
+		if (
+			(this.imageSrc != null && this.imageSrc.length > 0) ||
+			(this.imageFallbackSrc != null && this.imageFallbackSrc.length > 0)
+		) {
 			return html`
 				<div class="list-item-image-container">
 					<dav-blurhash-image
@@ -44,7 +47,7 @@ export class ListItem extends LitElement {
 	}
 
 	getHeadline() {
-		if (this.headline.length > 0) {
+		if (this.headline != null && this.headline.length > 0) {
 			return html`
 				<p class="list-item-headline">${this.headline}</p>
 			`
@@ -52,7 +55,7 @@ export class ListItem extends LitElement {
 	}
 
 	getSubhead() {
-		if (this.subhead.length > 0) {
+		if (this.subhead != null && this.subhead.length > 0) {
 			return html`
 				<p class="list-item-subhead">${this.subhead}</p>
 			`
