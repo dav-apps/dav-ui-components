@@ -88,144 +88,138 @@ export const buttonStyles = css`
 		border: none;
 	}
 
-	button.darkTheme {
-		background-color: var(--md-sys-color-secondary-container-dark);
-		color: white;
-	}
-
 	button.disabled {
 		cursor: not-allowed;
-		background-color: #edededb3;
-		color: #00000080;
+		background-color: rgba(var(--md-ref-palette-neutral10-rgb), 0.12);
+		color: rgba(var(--md-ref-palette-neutral10-rgb), 0.38);
 	}
 
-	button.disabled.darkTheme {
-		color: #ffffff80;
-		background-color: #2e3b46;
+	button.outline.disabled {
+		background-color: var(--md-sys-color-surface-light);
+		border-color: rgba(var(--md-ref-palette-neutral10-rgb), 0.38);
 	}
 
-	button:hover {
+	button.text.disabled {
+		background-color: var(--md-sys-color-surface-light);
+	}
+
+	button:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-primary35-rgb));
 	}
 
-	button.tonal:hover {
+	button.tonal:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-primary85-rgb));
 	}
 
-	button.secondary:hover {
+	button.secondary:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-secondary35-rgb));
 	}
 
-	button.tonal.secondary:hover {
+	button.tonal.secondary:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
 	}
 
-	button.tertiary:hover {
+	button.tertiary:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-tertiary35-rgb));
 	}
 
-	button.tonal.tertiary:hover {
+	button.tonal.tertiary:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-tertiary85-rgb));
 	}
 
-	button.error:hover {
+	button.error:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-error35-rgb));
 	}
 
-	button.tonal.error:hover {
+	button.tonal.error:not(.disabled):hover {
 		background-color: rgb(var(--md-ref-palette-error85-rgb));
 	}
 
-	button.outline:hover,
-	button.text:hover {
+	button.outline:not(.disabled):hover,
+	button.text:not(.disabled):hover {
 		background-color: var(--md-sys-color-primary-light-hover);
 	}
 
-	button.outline.secondary:hover,
-	button.text.secondary:hover {
+	button.outline.secondary:not(.disabled):hover,
+	button.text.secondary:not(.disabled):hover {
 		background-color: var(--md-sys-color-secondary-light-hover);
 	}
 
-	button.outline.tertiary:hover,
-	button.text.tertiary:hover {
+	button.outline.tertiary:not(.disabled):hover,
+	button.text.tertiary:not(.disabled):hover {
 		background-color: var(--md-sys-color-tertiary-light-hover);
 	}
 
-	button.outline.error:hover,
-	button.text.error:hover {
+	button.outline.error:not(.disabled):hover,
+	button.text.error:not(.disabled):hover {
 		background-color: var(--md-sys-color-error-light-hover);
 	}
 
-	button:active,
-	button:focus {
+	button:not(.disabled):active,
+	button:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-primary30-rgb));
 	}
 
-	button.tonal:active,
-	button.tonal:focus {
+	button.tonal:not(.disabled):active,
+	button.tonal:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-primary80-rgb));
 	}
 
-	button.secondary:active,
-	button.secondary:focus {
+	button.secondary:not(.disabled):active,
+	button.secondary:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
 	}
 
-	button.tonal.secondary:active,
-	button.tonal.secondary:focus {
+	button.tonal.secondary:not(.disabled):active,
+	button.tonal.secondary:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
 	}
 
-	button.tertiary:active,
-	button.tertiary:focus {
+	button.tertiary:not(.disabled):active,
+	button.tertiary:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-tertiary30-rgb));
 	}
 
-	button.tonal.tertiary:active,
-	button.tonal.tertiary:focus {
+	button.tonal.tertiary:not(.disabled):active,
+	button.tonal.tertiary:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-tertiary80-rgb));
 	}
 
-	button.error:active,
-	button.error:focus {
+	button.error:not(.disabled):active,
+	button.error:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-error30-rgb));
 	}
 
-	button.tonal.error:active,
-	button.tonal.error:focus {
+	button.tonal.error:not(.disabled):active,
+	button.tonal.error:not(.disabled):focus {
 		background-color: rgb(var(--md-ref-palette-error80-rgb));
 	}
 
-	button.outline:active,
-	button.outline:focus,
-	button.text:active,
-	button.text:focus {
+	button.outline:not(.disabled):active,
+	button.outline:not(.disabled):focus,
+	button.text:not(.disabled):active,
+	button.text:not(.disabled):focus {
 		background-color: var(--md-sys-color-primary-light-focus);
 	}
 
-	button.outline.secondary:active,
-	button.outline.secondary:focus,
-	button.text.secondary:active,
-	button.text.secondary:focus {
+	button.outline.secondary:not(.disabled):active,
+	button.outline.secondary:not(.disabled):focus,
+	button.text.secondary:not(.disabled):active,
+	button.text.secondary:not(.disabled):focus {
 		background-color: var(--md-sys-color-secondary-light-focus);
 	}
 
-	button.outline.tertiary:active,
-	button.outline.tertiary:focus,
-	button.text.tertiary:active,
-	button.text.tertiary:focus {
+	button.outline.tertiary:not(.disabled):active,
+	button.outline.tertiary:not(.disabled):focus,
+	button.text.tertiary:not(.disabled):active,
+	button.text.tertiary:not(.disabled):focus {
 		background-color: var(--md-sys-color-tertiary-light-focus);
 	}
 
-	button.outline.error:active,
-	button.outline.error:focus,
-	button.text.error:active,
-	button.text.error:focus {
+	button.outline.error:not(.disabled):active,
+	button.outline.error:not(.disabled):focus,
+	button.text.error:not(.disabled):active,
+	button.text.error:not(.disabled):focus {
 		background-color: var(--md-sys-color-error-light-focus);
-	}
-
-	button.darkTheme:hover,
-	button.darkTheme:active {
-		background-color: #1c2938;
 	}
 `

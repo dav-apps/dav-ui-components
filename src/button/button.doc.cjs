@@ -99,6 +99,24 @@ module.exports = {
 					<dav-button size="small" color="error" text>Hello World</dav-button>
 				</div>
 			`
+		},
+		{
+			title: "Disabled button",
+			template: `
+				<div style="display: flex; gap: 30px">
+					<dav-button disabled>Hello World</dav-button>
+					<dav-button tonal disabled>Hello World</dav-button>
+					<dav-button outline disabled>Hello World</dav-button>
+					<dav-button text disabled>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; gap: 30px; margin-top: 30px">
+					<dav-button size="small" disabled>Hello World</dav-button>
+					<dav-button size="small" tonal disabled>Hello World</dav-button>
+					<dav-button size="small" outline disabled>Hello World</dav-button>
+					<dav-button size="small" text disabled>Hello World</dav-button>
+				</div>
+			`
 		}
 	]
 }
