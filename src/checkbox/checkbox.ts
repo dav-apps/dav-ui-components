@@ -54,7 +54,8 @@ export class Checkbox extends LitElement {
 
 	settingsChange = (settings: Settings) => (this.theme = settings.theme)
 
-	checkboxClick() {
+	checkboxClick(event: PointerEvent) {
+		event.preventDefault()
 		this.toggleCheckbox()
 	}
 
@@ -66,14 +67,15 @@ export class Checkbox extends LitElement {
 	}
 
 	toggleCheckbox() {
-		if (!this.disabled) {
-			this.checked = !this.checked
-			this.dispatchEvent(
-				new CustomEvent("change", {
-					detail: { checked: this.checked }
-				})
-			)
-		}
+		if (this.disabled) return
+
+		this.checked = !this.checked
+
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: { checked: this.checked }
+			})
+		)
 	}
 
 	render() {

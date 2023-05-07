@@ -41,11 +41,11 @@ export class Toggle extends LitElement {
 	private checkboxClicked(event: PointerEvent) {
 		event.preventDefault()
 
+		this.checked = !this.checked
+
 		this.dispatchEvent(
 			new CustomEvent("change", {
-				detail: {
-					checked: this.checked
-				}
+				detail: { checked: this.checked }
 			})
 		)
 	}
@@ -62,7 +62,7 @@ export class Toggle extends LitElement {
 					?checked=${this.checked}
 					@click=${this.checkboxClicked}
 				/>
-				<span id="slider" class=${classMap(this.sliderClasses)}> </span>
+				<span id="slider" class=${classMap(this.sliderClasses)}></span>
 			</label>
 		`
 	}
