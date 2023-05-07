@@ -12,18 +12,10 @@ module.exports = {
 			title: "Default Toggle",
 			controller: function(element) {
 				let toggle = element.getElementsByTagName("dav-toggle")[0]
-				let timeoutRunning = false
 
-				toggle.onclick = () => {
-					if (timeoutRunning) return
-					timeoutRunning = true
-
-					toggle.checked = !toggle.checked
-
-					setTimeout(() => {
-						timeoutRunning = false
-					}, 100)
-				}
+				toggle.addEventListener("change", event => {
+					toggle.checked = !event.detail.checked
+				})
 			},
 			template: `<dav-toggle></dav-toggle>`
 		}
