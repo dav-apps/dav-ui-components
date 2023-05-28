@@ -9,21 +9,6 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Setting",
-			controller: function(element) {
-				let toggle = element.getElementsByTagName("dav-toggle")[0]
-				let timeoutRunning = false
-
-				toggle.onclick = () => {
-					if (timeoutRunning) return
-					timeoutRunning = true
-
-					toggle.checked = !toggle.checked
-
-					setTimeout(() => {
-						timeoutRunning = false
-					}, 100)
-				}
-			},
 			template: `
 				<dav-setting header="Hello World">
 					<dav-toggle></dav-toggle>
