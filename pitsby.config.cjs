@@ -1,4 +1,5 @@
 module.exports = {
+	themeChange: theme => {},
 	projects: [
 		{
 			engine: "vanilla",
@@ -129,6 +130,8 @@ module.exports = {
 		"./node_modules/lit/directives/style-map.js.map",
 		"./node_modules/lit-html/lit-html.js",
 		"./node_modules/lit-html/lit-html.js.map",
+		"./node_modules/lit-html/is-server.js",
+		"./node_modules/lit-html/is-server.js.map",
 		"./node_modules/lit-html/directive.js",
 		"./node_modules/lit-html/directive.js.map",
 		"./node_modules/lit-html/directives/class-map.js",

@@ -6,21 +6,19 @@
 	"types": "dist/index.d.ts",
 	"type": "module",
 	"scripts": {
-		"prepare": "npm run build",
-		"build": "tsc",
-		"docs": "npm run build; rm -rf docs; pitsby build",
-		"docs:watch": "npm run build; rm -rf docs; pitsby build --watch"
+		"build": "tsc; rm -rf docs; pitsby build",
+		"dev": "tsc; rm -rf docs; pitsby build --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^6.2.1",
-		"autosize": "^5.0.1",
+		"@fortawesome/fontawesome-free": "^6.4.2",
+		"autosize": "^6.0.1",
 		"blurhash": "^2.0.5",
-		"lit": "^2.2.4"
+		"lit": "^2.8.0"
 	},
 	"devDependencies": {
-		"@glorious/pitsby": "^1.33.0",
-		"tslib": "^2.4.0",
-		"typescript": "^4.6.4"
+		"@glorious/pitsby": "^1.36.0",
+		"tslib": "^2.6.1",
+		"typescript": "^5.1.6"
 	}
 }
