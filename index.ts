@@ -108,6 +108,13 @@ declare global {
 	}
 }
 
+if (window) {
+	window["davUIComponents"] = {
+		setLocale,
+		setTheme
+	}
+}
+
 export {
 	setLocale,
 	setTheme,

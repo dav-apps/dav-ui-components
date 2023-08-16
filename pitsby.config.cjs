@@ -1,11 +1,15 @@
 module.exports = {
-	themeChange: theme => {},
 	projects: [
 		{
 			engine: "vanilla",
 			collectDocsFrom: "./src"
 		}
 	],
+	colorScheme: {
+		onChange: function (scheme) {
+			window.davUIComponents.setTheme(scheme)
+		}
+	},
 	scripts: [
 		{ src: "./src/doc.importmap.js", type: "importmap", inline: true },
 		{ src: "./dist/index.js", type: "module" }

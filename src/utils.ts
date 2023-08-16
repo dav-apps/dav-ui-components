@@ -224,8 +224,8 @@ export function setLocale(lang: string) {
 	triggerSettingsChangedCallbacks()
 }
 
-export function setTheme(darkTheme: boolean) {
-	settings.theme = darkTheme ? Theme.dark : Theme.light
+export function setTheme(theme: Theme) {
+	settings.theme = theme
 	triggerSettingsChangedCallbacks()
 }
 //#endregion
