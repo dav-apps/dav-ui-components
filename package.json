@@ -7,7 +7,9 @@
 	"type": "module",
 	"scripts": {
 		"build": "tsc; rm -rf docs; pitsby build",
-		"dev": "tsc; rm -rf docs; pitsby build --watch"
+		"dev": "rm -rf docs; concurrently npm:compile:watch npm:docs:watch",
+		"compile:watch": "tsc -w",
+		"docs:watch": "pitsby build --watch"
 	},
 	"license": "MIT",
 	"dependencies": {
@@ -18,6 +20,7 @@
 	},
 	"devDependencies": {
 		"@glorious/pitsby": "^1.36.0",
+		"concurrently": "^8.2.0",
 		"tslib": "^2.6.1",
 		"typescript": "^5.1.6"
 	}
