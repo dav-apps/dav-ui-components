@@ -12,7 +12,7 @@ export const tabStyles = css`
 		width: 100%;
 		height: 100%;
 		font-size: 18px;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 		padding: 0 16px;
 		transition: all 500ms;
 	}
@@ -22,11 +22,11 @@ export const tabStyles = css`
 	}
 
 	#container.active {
-		color: var(--md-sys-color-primary-light);
+		color: var(--dav-color-primary);
 	}
 
 	#container:not(.active):hover > p {
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 	}
 
 	#border {

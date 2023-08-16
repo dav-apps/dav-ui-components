@@ -22,8 +22,8 @@ export const toggleStyles = css`
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: var(--md-sys-color-surface-light);
-		border: 1px solid var(--md-sys-color-outline-light);
+		background-color: var(--dav-color-surface);
+		border: 1px solid var(--dav-color-outline);
 		border-radius: 34px;
 		transition: 200ms;
 	}
@@ -34,7 +34,7 @@ export const toggleStyles = css`
 
 	#slider:hover,
 	input:focus + #slider {
-		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
 	}
 
 	#slider:before {
@@ -71,24 +71,24 @@ export const toggleStyles = css`
 	}
 
 	#switch.checked:hover #slider {
-		background-color: rgb(var(--md-ref-palette-primary35-rgb));
+		background-color: rgb(var(--dav-color-palette-primary35-rgb));
 	}
 
 	#switch.checked input:focus + #slider {
-		background-color: rgb(var(--md-ref-palette-primary35-rgb));
+		background-color: rgb(var(--dav-color-palette-primary35-rgb));
 	}
 
 	#switch.checked #slider {
-		background-color: var(--md-sys-color-primary-light);
-		border: 1px solid var(--md-sys-color-primary-light);
+		background-color: var(--dav-color-primary);
+		border: 1px solid var(--dav-color-primary);
 	}
 
 	#switch #slider:before {
-		background-color: var(--md-sys-color-on-surface-variant-light);
+		background-color: var(--dav-color-on-surface-variant);
 	}
 
 	#switch.checked #slider:before {
-		background-color: var(--md-sys-color-on-primary-light);
+		background-color: var(--dav-color-on-primary);
 		transform: translateX(18px);
 	}
 `

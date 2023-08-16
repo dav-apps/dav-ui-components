@@ -5,7 +5,7 @@ export const listItemStyles = css`
 		display: flex;
 		align-items: center;
 		padding: 8px 16px;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 		transition: 200ms;
 		cursor: pointer;
 		border-radius: 12px;
@@ -13,11 +13,11 @@ export const listItemStyles = css`
 
 	.list-item-container:hover,
 	.list-item-container:focus {
-		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
 	}
 
 	.list-item-container:active {
-		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
 	}
 
 	.list-item-image-container {
@@ -41,7 +41,7 @@ export const listItemStyles = css`
 	}
 
 	.list-item-headline {
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 		font-size: 18px;
 		margin: 0;
 	}
@@ -51,7 +51,7 @@ export const listItemStyles = css`
 	}
 
 	.list-item-subhead {
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 		font-size: 16px;
 		margin: 0;
 	}

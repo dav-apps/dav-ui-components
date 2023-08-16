@@ -18,7 +18,7 @@ export const bottomSheetStyles = css`
 		left: 0;
 		right: 0;
 		width: 0;
-		background-color: var(--md-sys-color-scrim-light);
+		background-color: var(--dav-color-scrim);
 		transition: 200ms;
 	}
 
@@ -50,7 +50,7 @@ export const bottomSheetStyles = css`
 	#handle {
 		width: 32px;
 		height: 4px;
-		background-color: rgb(var(--md-ref-palette-neutral10-rgb), 0.4);
+		background-color: rgb(var(--dav-color-palette-neutral10-rgb), 0.4);
 		margin: 10px auto;
 		border-radius: 2px;
 	}
@@ -61,7 +61,7 @@ export const bottomSheetStyles = css`
 		width: 100vw;
 		max-width: 640px;
 		border-radius: 28px 28px 0 0;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 	}
 
 	#content {

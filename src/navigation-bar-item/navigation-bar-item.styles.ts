@@ -16,7 +16,7 @@ export const navigationBarItemStyles = css`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: var(--md-sys-color-on-secondary-container-light);
+		color: var(--dav-color-on-secondary-container);
 		height: 32px;
 		width: 64px;
 		font-size: 18px;
@@ -26,23 +26,23 @@ export const navigationBarItemStyles = css`
 	}
 
 	.item-container.active .icon-container {
-		background-color: var(--md-sys-color-secondary-container-light);
+		background-color: var(--dav-color-secondary-container);
 	}
 
 	.item-container.active:hover .icon-container {
-		box-shadow: inset 0 0 10px 0 rgb(var(--md-ref-palette-secondary95-rgb));
+		box-shadow: inset 0 0 10px 0 rgb(var(--dav-color-palette-secondary95-rgb));
 	}
 
 	.item-container:not(.active):hover .icon-container {
-		background-color: var(--md-sys-color-secondary-container-light-hover);
+		background-color: var(--dav-color-secondary-container-hover);
 	}
 
 	.item-container:not(.active):focus .icon-container {
-		background-color: var(--md-sys-color-secondary-container-light-focus);
+		background-color: var(--dav-color-secondary-container-focus);
 	}
 
 	.label-container {
-		color: var(--md-sys-color-on-secondary-container-light);
+		color: var(--dav-color-on-secondary-container);
 		font-family: Roboto;
 		margin-top: 6px;
 		font-weight: 400;

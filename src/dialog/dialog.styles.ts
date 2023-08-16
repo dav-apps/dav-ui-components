@@ -7,11 +7,11 @@ export const dialogStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--md-sys-color-scrim-light);
+		background-color: var(--dav-color-scrim);
 	}
 
 	#dialog {
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 		margin: 2ex;
 		padding: 2ex;
 		border-radius: 5pt;
@@ -29,7 +29,7 @@ export const dialogStyles = css`
 		margin-bottom: 20px;
 		font-weight: 100;
 		font-family: Roboto, sans-serif;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 	}
 
 	#header.darkTheme {
@@ -38,6 +38,6 @@ export const dialogStyles = css`
 
 	#content-container {
 		font-family: Roboto, sans-serif;
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 	}
 `

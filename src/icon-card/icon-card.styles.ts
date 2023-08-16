@@ -7,9 +7,9 @@ export const iconCardStyles = css`
 		min-width: 64px;
 		padding: 26px 40px;
 		text-align: center;
-		background-color: var(--md-sys-color-surface-light);
-		color: var(--md-sys-color-on-surface-light);
-		border: 1px solid rgb(var(--md-ref-palette-neutral90-rgb));
+		background-color: var(--dav-color-surface);
+		color: var(--dav-color-on-surface);
+		border: 1px solid rgb(var(--dav-color-palette-neutral90-rgb));
 		border-radius: 12px;
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 25px;

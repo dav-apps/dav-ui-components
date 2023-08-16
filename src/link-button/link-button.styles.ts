@@ -7,7 +7,7 @@ export const linkButtonStyles = css`
 
 	a {
 		text-decoration: none;
-		color: var(--md-sys-color-primary-light);
+		color: var(--dav-color-primary);
 		padding: 8px 11px;
 		border-radius: 5px;
 		transition: 200ms;
@@ -17,12 +17,12 @@ export const linkButtonStyles = css`
 
 	a:hover,
 	a:focus {
-		color: rgb(var(--md-ref-palette-primary30-rgb));
-		background-color: var(--md-sys-color-primary-light-hover);
+		color: rgb(var(--dav-color-palette-primary30-rgb));
+		background-color: var(--dav-color-primary-hover);
 	}
 
 	a:active {
-		color: rgb(var(--md-ref-palette-primary20-rgb));
-		background-color: var(--md-sys-color-primary-light-focus);
+		color: rgb(var(--dav-color-palette-primary20-rgb));
+		background-color: var(--dav-color-primary-focus);
 	}
 `

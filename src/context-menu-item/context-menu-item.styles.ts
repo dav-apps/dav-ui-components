@@ -10,7 +10,7 @@ export const contextMenuItemStyles = css`
 		border: none;
 		border-radius: 4px;
 		background-color: transparent;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 		margin: 4px;
 		padding: 4px 10px;
 		transition: 200ms;
@@ -20,11 +20,11 @@ export const contextMenuItemStyles = css`
 	button:hover,
 	button:focus {
 		cursor: pointer;
-		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
 	}
 
 	button:active {
-		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
 	}
 
 	button.darkTheme {

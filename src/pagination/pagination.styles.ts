@@ -16,8 +16,8 @@ export const paginationStyles = css`
 		font-size: 16px;
 		padding: 0;
 		margin: 0px 2px;
-		background-color: var(--md-sys-color-secondary-container-light);
-		color: var(--md-sys-color-on-secondary-container-light);
+		background-color: var(--dav-color-secondary-container);
+		color: var(--dav-color-on-secondary-container);
 		border-radius: 19px;
 		border: none;
 		transition: 200ms;
@@ -25,12 +25,12 @@ export const paginationStyles = css`
 	}
 
 	.pagination-button:hover {
-		background-color: rgb(var(--md-ref-palette-secondary85-rgb));
+		background-color: rgb(var(--dav-color-palette-secondary85-rgb));
 	}
 
 	.pagination-button:active,
 	.pagination-button:focus {
-		background-color: rgb(var(--md-ref-palette-secondary80-rgb));
+		background-color: rgb(var(--dav-color-palette-secondary80-rgb));
 	}
 
 	.pagination-button .pagination-button.darkTheme {
@@ -50,17 +50,17 @@ export const paginationStyles = css`
 	}
 
 	.pagination-button.selected {
-		background-color: var(--md-sys-color-secondary-light);
-		color: var(--md-sys-color-on-secondary-light);
+		background-color: var(--dav-color-secondary);
+		color: var(--dav-color-on-secondary);
 	}
 
 	.pagination-button.selected:hover {
-		background-color: rgb(var(--md-ref-palette-secondary35-rgb));
+		background-color: rgb(var(--dav-color-palette-secondary35-rgb));
 	}
 
 	.pagination-button.selected:active,
 	.pagination-button.selected:focus {
-		background-color: rgb(var(--md-ref-palette-secondary30-rgb));
+		background-color: rgb(var(--dav-color-palette-secondary30-rgb));
 	}
 
 	.pagination-button.selected.darkTheme {
@@ -73,17 +73,17 @@ export const paginationStyles = css`
 		align-items: center;
 		width: 38px;
 		margin: 0px 1px;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 	}
 
 	.button-placeholder.darkTheme {
-		color: var(--md-sys-color-on-surface-dark);
+		color: var(--dav-color-on-surface-dark);
 	}
 
 	svg {
 		width: 16px;
 		height: 16px;
-		fill: var(--md-sys-color-on-secondary-container-light);
+		fill: var(--dav-color-on-secondary-container);
 	}
 
 	.forward-button svg {

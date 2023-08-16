@@ -11,19 +11,19 @@ export const dropdownStyles = css`
 		justify-content: space-between;
 		align-items: center;
 		background-color: white;
-		border: 1px solid var(--md-sys-color-outline-light);
+		border: 1px solid var(--dav-color-outline);
 		border-radius: 6px;
 		padding: 5px 10px;
 		font-family: Roboto, sans-serif;
 		font-size: 14px;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 		transition: 200ms;
 	}
 
 	#dropdown-button:hover,
 	#dropdown-button:focus {
-		border: 1px solid var(--md-sys-color-primary-light);
-		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+		border: 1px solid var(--dav-color-primary);
+		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
 	}
 
 	#dropdown-button.darkTheme {
@@ -48,7 +48,7 @@ export const dropdownStyles = css`
 		height: 21px;
 		line-height: 21px;
 		overflow: hidden;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 	}
 
 	#dropdown-button.darkTheme span {
@@ -77,7 +77,7 @@ export const dropdownStyles = css`
 	#chevron-svg-container {
 		display: flex;
 		width: 12px;
-		fill: var(--md-sys-color-on-surface-light);
+		fill: var(--dav-color-on-surface);
 		transition: 200ms;
 	}
 
@@ -95,7 +95,7 @@ export const dropdownStyles = css`
 		font-family: Roboto, sans-serif;
 		font-size: 14px;
 		border-radius: 6px;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 	}
 
 	#dropdown-content.visible {
@@ -109,8 +109,8 @@ export const dropdownStyles = css`
 		border: none;
 		width: 100%;
 		text-align: left;
-		background-color: var(--md-sys-color-surface-light);
-		color: var(--md-sys-color-on-surface-light);
+		background-color: var(--dav-color-surface);
+		color: var(--dav-color-on-surface);
 		border-radius: 6px;
 		margin: 4px;
 		width: -webkit-fill-available;
@@ -128,15 +128,15 @@ export const dropdownStyles = css`
 
 	.dropdown-option:hover,
 	.dropdown-option:focus {
-		background-color: rgb(var(--md-ref-palette-neutral95-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
 	}
 
 	.dropdown-option:active {
-		background-color: rgb(var(--md-ref-palette-neutral90-rgb));
+		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
 	}
 
 	.dropdown-option.selected {
-		background-color: var(--md-sys-color-primary-light-hover);
+		background-color: var(--dav-color-primary-hover);
 	}
 
 	.dropdown-option.darkTheme:focus,

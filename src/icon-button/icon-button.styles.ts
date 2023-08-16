@@ -18,7 +18,7 @@ export const iconButtonStyles = css`
 		width: 48px;
 		height: 48px;
 		font-size: 24px;
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 		background-color: transparent;
 		border: none;
 		border-radius: 50%;
@@ -44,27 +44,27 @@ export const iconButtonStyles = css`
 	}
 
 	.icon-button:hover {
-		background-color: var(--md-sys-color-on-surface-variant-light-hover);
+		background-color: var(--dav-color-on-surface-variant-hover);
 	}
 
 	.icon-button:focus,
 	.icon-button:active {
-		background-color: var(--md-sys-color-on-surface-variant-light-focus);
+		background-color: var(--dav-color-on-surface-variant-focus);
 	}
 
 	.icon-button.selected {
-		color: var(--md-sys-color-primary-light);
+		color: var(--dav-color-primary);
 	}
 
 	.icon-button.selected:hover {
-		background-color: var(--md-sys-color-primary-light-hover);
+		background-color: var(--dav-color-primary-hover);
 	}
 
 	.icon-button.selected:focus {
-		background-color: var(--md-sys-color-primary-light-focus);
+		background-color: var(--dav-color-primary-focus);
 	}
 
 	.icon-button.selected:active {
-		background-color: var(--md-sys-color-primary-light-focus);
+		background-color: var(--dav-color-primary-focus);
 	}
 `

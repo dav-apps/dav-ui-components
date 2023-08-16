@@ -6,9 +6,9 @@ export const cardStyles = css`
 		flex-direction: column;
 		min-width: 60px;
 		width: inherit;
-		background-color: var(--md-sys-color-surface-light);
-		color: var(--md-sys-color-on-surface-light);
-		border: 1px solid var(--md-sys-color-outline-light);
+		background-color: var(--dav-color-surface);
+		color: var(--dav-color-on-surface);
+		border: 1px solid var(--dav-color-outline);
 		border-radius: 12px;
 		font-family: Roboto, Arial, sans-serif;
 		overflow: hidden;

@@ -5,6 +5,6 @@ export const navigationBarStyles = css`
 		display: flex;
 		justify-content: space-around;
 		height: 80px;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 	}
 `

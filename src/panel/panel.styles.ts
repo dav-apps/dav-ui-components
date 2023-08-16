@@ -16,7 +16,7 @@ export const panelStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--md-sys-color-scrim-light);
+		background-color: var(--dav-color-scrim);
 	}
 
 	#content {
@@ -27,7 +27,7 @@ export const panelStyles = css`
 		display: flex;
 		flex-direction: column;
 		width: 340px;
-		background-color: var(--md-sys-color-surface-light);
+		background-color: var(--dav-color-surface);
 		border-radius: 28px 0 0 28px;
 	}
 
@@ -43,7 +43,7 @@ export const panelStyles = css`
 		justify-content: space-between;
 		align-items: center;
 		padding: 24px 24px 0 24px;
-		color: var(--md-sys-color-on-surface-light);
+		color: var(--dav-color-on-surface);
 	}
 
 	#header {
@@ -64,7 +64,7 @@ export const panelStyles = css`
 	#close-button svg {
 		width: 24px;
 		height: 24px;
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 	}
 
 	#close-button.darkTheme {

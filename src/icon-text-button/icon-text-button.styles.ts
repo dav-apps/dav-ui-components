@@ -9,7 +9,7 @@ export const iconTextButtonStyles = css`
 		align-items: center;
 		max-width: 72px;
 		padding: 10px 8px;
-		color: var(--md-sys-color-on-surface-variant-light);
+		color: var(--dav-color-on-surface-variant);
 		background-color: transparent;
 		border: none;
 		border-radius: 6px;
@@ -18,12 +18,12 @@ export const iconTextButtonStyles = css`
 	}
 
 	button:hover {
-		background-color: var(--md-sys-color-on-surface-variant-light-hover);
+		background-color: var(--dav-color-on-surface-variant-hover);
 	}
 
 	button:focus,
 	button:active {
-		background-color: var(--md-sys-color-on-surface-variant-light-focus);
+		background-color: var(--dav-color-on-surface-variant-focus);
 	}
 
 	#icon-container {
