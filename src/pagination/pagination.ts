@@ -3,6 +3,7 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings, Theme } from "../types.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -17,6 +18,10 @@ export const paginationTagName = "dav-pagination"
 export class Pagination extends LitElement {
 	static styles = [globalStyles, paginationStyles]
 
+	@state() private theme: Theme = getSettings().theme
+	@state() private reducedStart: boolean = false
+	@state() private reducedEnd: boolean = false
+
 	@state() private backButtonClasses = {
 		"pagination-button": true,
 		"back-button": true,
@@ -29,10 +34,6 @@ export class Pagination extends LitElement {
 		disabled: false,
 		darkTheme: false
 	}
-
-	@state() private theme: Theme = getSettings().theme
-	@state() private reducedStart: boolean = false
-	@state() private reducedEnd: boolean = false
 
 	@property({ type: Number }) pages: number = 1
 	@property({ type: Number }) currentPage: number = 1
@@ -47,7 +48,10 @@ export class Pagination extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	backButtonClick() {
 		if (this.currentPage > 1) {

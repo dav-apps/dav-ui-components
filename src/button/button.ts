@@ -1,13 +1,14 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Theme, Settings, ButtonColor, ButtonSize } from "../types.js"
+import { Settings, Theme, ButtonColor, ButtonSize } from "../types.js"
 import {
-	convertStringToButtonColor,
-	convertStringToButtonSize,
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings
+	getSettings,
+	convertStringToButtonColor,
+	convertStringToButtonSize
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { buttonStyles } from "./button.styles.js"
@@ -17,6 +18,8 @@ export const buttonTagName = "dav-button"
 @customElement(buttonTagName)
 export class Button extends LitElement {
 	static styles = [globalStyles, buttonStyles]
+
+	@state() private theme: Theme = getSettings().theme
 
 	@state() private buttonClasses = {
 		small: false,
@@ -30,8 +33,6 @@ export class Button extends LitElement {
 		disabled: false,
 		darkTheme: false
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property({
 		type: String,
@@ -58,7 +59,10 @@ export class Button extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	buttonClick(event: PointerEvent) {
 		if (this.disabled) {

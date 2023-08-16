@@ -1,8 +1,14 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { ListItemSize } from "../types.js"
-import { convertStringToListItemSize } from "../utils.js"
+import { Settings, Theme, ListItemSize } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings,
+	convertStringToListItemSize
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { listItemStyles } from "./list-item.styles.js"
 
@@ -11,6 +17,8 @@ export const listItemTagName = "dav-list-item"
 @customElement(listItemTagName)
 export class ListItem extends LitElement {
 	static styles = [globalStyles, listItemStyles]
+
+	@state() private theme: Theme = getSettings().theme
 
 	@state() private listItemContainerClasses = {
 		"list-item-container": true,
@@ -27,6 +35,21 @@ export class ListItem extends LitElement {
 		converter: (value: string) => convertStringToListItemSize(value)
 	})
 	size: ListItemSize = ListItemSize.normal
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	getImage() {
 		if (
@@ -48,17 +71,13 @@ export class ListItem extends LitElement {
 
 	getHeadline() {
 		if (this.headline != null && this.headline.length > 0) {
-			return html`
-				<p class="list-item-headline">${this.headline}</p>
-			`
+			return html`<p class="list-item-headline">${this.headline}</p>`
 		}
 	}
 
 	getSubhead() {
 		if (this.subhead != null && this.subhead.length > 0) {
-			return html`
-				<p class="list-item-subhead">${this.subhead}</p>
-			`
+			return html`<p class="list-item-subhead">${this.subhead}</p>`
 		}
 	}
 

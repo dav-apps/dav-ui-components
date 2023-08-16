@@ -6,6 +6,7 @@ import { checkboxStyles } from "./checkbox.styles.js"
 import { Settings, Theme } from "../types.js"
 import {
 	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -17,6 +18,8 @@ export const checkboxTagName = "dav-checkbox"
 @customElement(checkboxTagName)
 export class Checkbox extends LitElement {
 	static styles = [globalStyles, checkboxStyles]
+
+	@state() private theme: Theme = getSettings().theme
 
 	@state() private checkboxClasses = {
 		checked: false,
@@ -35,8 +38,6 @@ export class Checkbox extends LitElement {
 		display: "none"
 	}
 
-	@state() private theme: Theme = getSettings().theme
-
 	@property() label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
@@ -52,7 +53,10 @@ export class Checkbox extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	checkboxClick(event: PointerEvent) {
 		event.preventDefault()

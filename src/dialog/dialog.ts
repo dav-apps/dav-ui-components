@@ -5,6 +5,7 @@ import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
 	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -18,6 +19,9 @@ export const dialogTagName = "dav-dialog"
 @customElement(dialogTagName)
 export class Dialog extends LitElement {
 	static styles = [globalStyles, dialogStyles]
+
+	@state() private theme: Theme = getSettings().theme
+	@state() private dualScreenLayout: boolean = false
 
 	@state() private dialogClasses = {
 		shadow: true,
@@ -41,9 +45,6 @@ export class Dialog extends LitElement {
 	@state() private dialogStyles = {
 		maxWidth: "600px"
 	}
-
-	@state() private theme: Theme = getSettings().theme
-	@state() private dualScreenLayout: boolean = false
 
 	@property() header: string = ""
 	@property() primaryButtonText: string = ""
@@ -76,7 +77,10 @@ export class Dialog extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	private overlayClick() {
 		if (!this.loading) {

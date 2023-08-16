@@ -4,6 +4,7 @@ import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, Theme } from "../types.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -17,6 +18,8 @@ export const contextMenuTagName = "dav-context-menu"
 export class ContextMenu extends LitElement {
 	static styles = [globalStyles, contextMenuStyles]
 
+	@state() private theme: Theme = getSettings().theme
+
 	@state() private containerClasses = {
 		"slide-down-in": false,
 		visible: false,
@@ -26,8 +29,6 @@ export class ContextMenu extends LitElement {
 		top: "0px",
 		left: "0px"
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Number }) posX: number = 0
@@ -45,7 +46,10 @@ export class ContextMenu extends LitElement {
 		document.removeEventListener("click", this.documentClick)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {

@@ -3,6 +3,7 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings, Theme } from "../types.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -16,11 +17,11 @@ export const contextMenuItemTagName = "dav-context-menu-item"
 export class ContextMenuItem extends LitElement {
 	static styles = [globalStyles, contextMenuItemStyles]
 
+	@state() private theme: Theme = getSettings().theme
+
 	@state() private buttonClasses = {
 		darkTheme: false
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 
@@ -34,7 +35,10 @@ export class ContextMenuItem extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	render() {
 		this.buttonClasses.darkTheme = this.theme == Theme.dark

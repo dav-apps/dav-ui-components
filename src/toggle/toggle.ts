@@ -3,6 +3,7 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Theme, Settings } from "../types.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -16,13 +17,14 @@ export const toggleTagName = "dav-toggle"
 export class Toggle extends LitElement {
 	static styles = [globalStyles, toggleStyles]
 
+	@state() private theme: Theme = getSettings().theme
+
 	@state() private inputClasses = {
 		checked: false
 	}
 	@state() private sliderClasses = {
 		darkTheme: false
 	}
-	@state() private theme: Theme = getSettings().theme
 
 	@property({ type: Boolean }) checked: boolean = false
 
@@ -36,7 +38,10 @@ export class Toggle extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	private checkboxClicked(event: PointerEvent) {
 		event.preventDefault()

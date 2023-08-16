@@ -1,8 +1,14 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { ButtonSize } from "../types.js"
-import { convertStringToButtonSize } from "../utils.js"
+import { Settings, Theme, ButtonSize } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings,
+	convertStringToButtonSize
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { iconButtonStyles } from "./icon-button.styles.js"
 
@@ -11,6 +17,8 @@ export const iconButtonTagName = "dav-icon-button"
 @customElement(iconButtonTagName)
 export class IconButton extends LitElement {
 	static styles = [globalStyles, iconButtonStyles]
+
+	@state() private theme: Theme = getSettings().theme
 
 	@state() private iconButtonClasses = {
 		"icon-button": true,
@@ -26,6 +34,21 @@ export class IconButton extends LitElement {
 	})
 	size: ButtonSize = ButtonSize.normal
 	@property({ type: String }) target: string = ""
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	render() {
 		this.iconButtonClasses.selected = this.selected

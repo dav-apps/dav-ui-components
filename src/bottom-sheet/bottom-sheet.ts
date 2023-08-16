@@ -3,7 +3,13 @@ import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { BottomSheetPosition } from "../types.js"
+import { Settings, Theme, BottomSheetPosition } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
+	getSettings
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { bottomSheetStyles } from "./bottom-sheet.styles.js"
 
@@ -15,8 +21,13 @@ const snapTopWindowHeightFactor = 0.8
 export class BottomSheet extends LitElement {
 	static styles = [globalStyles, bottomSheetStyles]
 
+	private resizeObserverInitialized: boolean = false
+	private animatePosition: boolean = true
+
 	@query("#content-container") contentContainer: HTMLDivElement
 	@query("#bottom-sheet-container") bottomSheetContainer: HTMLDivElement
+
+	@state() private theme: Theme = getSettings().theme
 
 	@state() private containerClasses = {
 		visible: false
@@ -34,12 +45,24 @@ export class BottomSheet extends LitElement {
 		transform: ""
 	}
 
-	private resizeObserverInitialized: boolean = false
-	private animatePosition: boolean = true
-
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) dismissable: boolean = true
 	@property({ type: Number }) position: number = 0
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	public snap(position: BottomSheetPosition = "auto") {
 		if (this.position > window.innerHeight * snapTopWindowHeightFactor) {

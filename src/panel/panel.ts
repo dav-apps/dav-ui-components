@@ -4,6 +4,7 @@ import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -23,6 +24,8 @@ export class Panel extends LitElement {
 	@query("#overlay") overlay: HTMLDivElement
 	@query("#content") content: HTMLDivElement
 
+	@state() private theme: Theme = getSettings().theme
+
 	@state() private contentClasses = {
 		"shadow-lg": true,
 		darkTheme: false
@@ -37,8 +40,6 @@ export class Panel extends LitElement {
 		display: "none"
 	}
 
-	@state() private theme: Theme = getSettings().theme
-
 	@property() header: string = ""
 	@property({ type: Boolean }) visible: boolean = false
 
@@ -52,7 +53,10 @@ export class Panel extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	updated(changedProperties: Map<string, any>) {
 		if (

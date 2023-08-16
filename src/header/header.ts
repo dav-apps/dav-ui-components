@@ -4,6 +4,7 @@ import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Theme, Alignment, HeaderSize, Settings } from "../types.js"
 import {
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings,
@@ -22,6 +23,8 @@ export const headerTagName = "dav-header"
 export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
+	@state() private theme: Theme = getSettings().theme
+
 	@state() private containerClasses = {
 		container: true,
 		start: false,
@@ -34,8 +37,6 @@ export class Header extends LitElement {
 	@state() private headerStyles = {
 		fontSize: "40px"
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property({
 		type: String,
@@ -61,7 +62,10 @@ export class Header extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		this.theme = settings.theme
+		setThemeColorVariables(this.style, this.theme)
+	}
 
 	backButtonClick() {
 		this.dispatchEvent(new CustomEvent("backButtonClick"))

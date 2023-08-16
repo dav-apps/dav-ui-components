@@ -4,6 +4,7 @@ import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import {
 	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
@@ -23,6 +24,11 @@ export const dropdownTagName = "dav-dropdown"
 @customElement(dropdownTagName)
 export class Dropdown extends LitElement {
 	static styles = [globalStyles, dropdownStyles]
+
+	@state() private locale = getSettings().locale.dropdown
+	@state() private theme: Theme = getSettings().theme
+	@state() private showItems: boolean = false
+	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
 	@state() private dropdownLabelClasses = {
 		darkTheme: false
@@ -52,11 +58,6 @@ export class Dropdown extends LitElement {
 		width: "160px"
 	}
 
-	@state() private locale = getSettings().locale.dropdown
-	@state() private theme: Theme = getSettings().theme
-	@state() private showItems: boolean = false
-	@state() private buttonText: string = this.locale.defaultDropdownButtonText
-
 	@property() label: string = ""
 	@property({ type: Array }) options: DropdownOption[] = []
 	@property() selectedKey: string = ""
@@ -78,6 +79,7 @@ export class Dropdown extends LitElement {
 	settingsChange = (settings: Settings) => {
 		this.theme = settings.theme
 		this.locale = settings.locale.dropdown
+		setThemeColorVariables(this.style, this.theme)
 	}
 
 	documentClick = (event: MouseEvent) => {
@@ -185,9 +187,7 @@ export class Dropdown extends LitElement {
 				>
 					<span>${this.buttonText}</span>
 
-					<div id="chevron-svg-container">
-						${chevronDownLightSvg}
-					</div>
+					<div id="chevron-svg-container">${chevronDownLightSvg}</div>
 				</button>
 
 				<div
