@@ -39,7 +39,7 @@ export class BottomSheet extends LitElement {
 		animate: false
 	}
 	@state() private overlayStyles = {
-		opacity: "1"
+		opacity: "0.5"
 	}
 	@state() private contentContainerStyles = {
 		transform: ""
@@ -130,7 +130,7 @@ export class BottomSheet extends LitElement {
 							(this.bottomSheetContainer.clientHeight -
 								minBottomSheetPosition)) *
 							(this.position - minBottomSheetPosition)) /
-						100
+						200
 					)
 						.toPrecision(3)
 						.toString()
@@ -180,7 +180,7 @@ export class BottomSheet extends LitElement {
 		this.containerClasses.visible = this.visible
 		this.overlayClasses.visible = this.visible
 		this.bottomSheetContainerClasses.animate = this.animatePosition
-		this.overlayStyles.opacity = this.visible ? "1" : "0"
+		this.overlayStyles.opacity = this.visible ? "0.5" : "0"
 
 		this.updateContentContainerTransform()
 

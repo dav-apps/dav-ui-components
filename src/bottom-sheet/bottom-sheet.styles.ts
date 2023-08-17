@@ -50,7 +50,7 @@ export const bottomSheetStyles = css`
 	#handle {
 		width: 32px;
 		height: 4px;
-		background-color: rgb(var(--dav-color-palette-neutral10-rgb), 0.4);
+		background-color: rgb(var(--dav-color-on-surface-variant-rgb), 0.4);
 		margin: 10px auto;
 		border-radius: 2px;
 	}
