@@ -2,26 +2,13 @@ import { css } from "@lit/reactive-element"
 
 export const globalStyles = css`
 	:host {
-		--default-light-theme-color-primary: #ffffff;
-		--default-light-theme-color-secondary: #ffffff;
-		--default-light-theme-color-tertiary: #ffffff;
-		--default-light-theme-hover-background-color: #f1f1f1;
-		--default-light-theme-scrollbar-color: #eaeaea;
-		--default-dark-theme-color-primary: #15202b;
-		--default-dark-theme-color-secondary: #1c2938;
-		--default-dark-theme-color-tertiary: #2e3b46;
-		--default-dark-theme-hover-background-color: #26313a;
-		--default-dark-theme-scrollbar-color: #303644;
-		--default-overlay-color: #3b3b3b67;
-		--primary: #0d47a1;
-		--secondary: #d32f2f;
-
 		--hover-opacity: 0.08;
 		--focus-opacity: 0.12;
 
 		--black-rgb: 0, 0, 0; /* #000000 */
 		--white-rgb: 255, 255, 255; /* #ffffff */
 
+		/* Color palette */
 		/* primary */
 		--dav-color-palette-primary10-rgb: 0, 25, 68; /* #001944 */
 		--dav-color-palette-primary20-rgb: 0, 45, 110; /* #002d6e */
@@ -122,249 +109,249 @@ export const globalStyles = css`
 		--dav-color-palette-error98-rgb: 255, 248, 247; /* #fff8f7 */
 		--dav-color-palette-error99-rgb: 255, 251, 255; /* #fffbff */
 
+		/* RGB color variables */
 		/* light */
-		--dav-color-primary-light: rgb(var(--dav-color-palette-primary40-rgb));
-		--dav-color-primary-light-hover: rgb(
-			var(--dav-color-palette-primary40-rgb),
-			var(--hover-opacity)
+		--dav-color-primary-light-rgb: var(--dav-color-palette-primary40-rgb);
+		--dav-color-on-primary-light-rgb: var(--white-rgb);
+		--dav-color-primary-container-light-rgb: var(
+			--dav-color-palette-primary90-rgb
 		);
-		--dav-color-primary-light-focus: rgb(
-			var(--dav-color-palette-primary40-rgb),
-			var(--focus-opacity)
+		--dav-color-on-primary-container-light-rgb: var(
+			--dav-color-palette-primary10-rgb
 		);
-		--dav-color-on-primary-light: rgb(var(--white-rgb));
-		--dav-color-primary-container-light: rgb(
-			var(--dav-color-palette-primary90-rgb)
+		--dav-color-secondary-light-rgb: var(--dav-color-palette-secondary40-rgb);
+		--dav-color-on-secondary-light-rgb: var(--white-rgb);
+		--dav-color-secondary-container-light-rgb: var(
+			--dav-color-palette-secondary90-rgb
 		);
-		--dav-color-on-primary-container-light: rgb(
-			var(--dav-color-palette-primary10-rgb)
+		--dav-color-on-secondary-container-light-rgb: var(
+			--dav-color-palette-secondary10-rgb
 		);
-		--dav-color-secondary-light: rgb(
-			var(--dav-color-palette-secondary40-rgb)
+		--dav-color-tertiary-light-rgb: var(--dav-color-palette-tertiary40-rgb);
+		--dav-color-on-tertiary-light-rgb: var(--white-rgb);
+		--dav-color-tertiary-container-light-rgb: var(
+			--dav-color-palette-tertiary90-rgb
 		);
-		--dav-color-secondary-light-hover: rgb(
-			var(--dav-color-palette-secondary40-rgb),
-			var(--hover-opacity)
+		--dav-color-on-tertiary-container-light-rgb: var(
+			--dav-color-palette-tertiary10-rgb
 		);
-		--dav-color-secondary-light-focus: rgb(
-			var(--dav-color-palette-secondary40-rgb),
-			var(--focus-opacity)
+		--dav-color-error-light-rgb: var(--dav-color-palette-error40-rgb);
+		--dav-color-error-container-light-rgb: var(
+			--dav-color-palette-error90-rgb
 		);
-		--dav-color-on-secondary-light: rgb(var(--white-rgb));
-		--dav-color-secondary-container-light: rgb(
-			var(--dav-color-palette-secondary90-rgb)
+		--dav-color-on-error-light-rgb: var(--white-rgb);
+		--dav-color-on-error-container-light-rgb: var(
+			--dav-color-palette-error10-rgb
 		);
-		--dav-color-secondary-container-light-hover: rgb(
-			var(--dav-color-palette-secondary95-rgb)
+		--dav-color-background-light-rgb: var(--dav-color-palette-primary99-rgb);
+		--dav-color-on-background-light-rgb: var(
+			--dav-color-palette-neutral10-rgb
 		);
-		--dav-color-secondary-container-light-focus: rgb(
-			var(--dav-color-palette-secondary95-rgb)
+		--dav-color-surface-light-rgb: var(--dav-color-palette-neutral99-rgb);
+		--dav-color-on-surface-light-rgb: var(--dav-color-palette-neutral10-rgb);
+		--dav-color-surface-variant-light-rgb: var(
+			--dav-color-palette-neutral-variant90-rgb
 		);
-		--dav-color-on-secondary-container-light: rgb(
-			var(--dav-color-palette-secondary10-rgb)
+		--dav-color-on-surface-variant-light-rgb: var(
+			--dav-color-palette-neutral-variant30-rgb
 		);
-		--dav-color-tertiary-light: rgb(var(--dav-color-palette-tertiary40-rgb));
-		--dav-color-tertiary-light-hover: rgb(
-			var(--dav-color-palette-tertiary40-rgb),
-			var(--hover-opacity)
+		--dav-color-outline-light-rgb: var(
+			--dav-color-palette-neutral-variant50-rgb
 		);
-		--dav-color-tertiary-light-focus: rgb(
-			var(--dav-color-palette-tertiary40-rgb),
-			var(--focus-opacity)
+		--dav-color-inverse-on-surface-light-rgb: var(
+			--dav-color-palette-neutral95-rgb
 		);
-		--dav-color-on-tertiary-light: rgb(var(--white-rgb));
-		--dav-color-tertiary-container-light: rgb(
-			var(--dav-color-palette-tertiary90-rgb)
+		--dav-color-inverse-surface-light-rgb: var(
+			--dav-color-palette-neutral20-rgb
 		);
-		--dav-color-on-tertiary-container-light: rgb(
-			var(--dav-color-palette-tertiary10-rgb)
+		--dav-color-inverse-primary-light-rgb: var(
+			--dav-color-palette-primary80-rgb
 		);
-		--dav-color-error-light: rgb(var(--dav-color-palette-error40-rgb));
-		--dav-color-error-light-hover: rgb(
-			var(--dav-color-palette-error40-rgb),
-			var(--hover-opacity)
+		--dav-color-shadow-light-rgb: var(--black-rgb);
+		--dav-color-surface-tint-light-rgb: var(
+			--dav-color-palette-primary40-rgb
 		);
-		--dav-color-error-light-focus: rgb(
-			var(--dav-color-palette-error40-rgb),
-			var(--focus-opacity)
+		--dav-color-outline-variant-light-rgb: var(
+			--dav-color-palette-neutral-variant80-rgb
 		);
-		--dav-color-error-container-light: rgb(
-			var(--dav-color-palette-error90-rgb)
-		);
-		--dav-color-on-error-light: rgb(var(--white-rgb));
-		--dav-color-on-error-container-light: rgb(
-			var(--dav-color-palette-error10-rgb)
-		);
-		--dav-color-background-light: rgb(var(--dav-color-palette-primary99-rgb));
-		--dav-color-on-background-light: rgb(
-			var(--dav-color-palette-neutral10-rgb)
-		);
-		--dav-color-surface-light: rgb(var(--dav-color-palette-neutral99-rgb));
-		--dav-color-on-surface-light: rgb(var(--dav-color-palette-neutral10-rgb));
-		--dav-color-surface-variant-light: rgb(
-			var(--dav-color-palette-neutral-variant90-rgb)
-		);
-		--dav-color-on-surface-variant-light: rgb(
-			var(--dav-color-palette-neutral-variant30-rgb)
-		);
-		--dav-color-on-surface-variant-light-hover: rgba(
-			var(--dav-color-palette-neutral-variant30-rgb),
-			var(--hover-opacity)
-		);
-		--dav-color-on-surface-variant-light-focus: rgba(
-			var(--dav-color-palette-neutral-variant30-rgb),
-			var(--focus-opacity)
-		);
-		--dav-color-outline-light: rgb(
-			var(--dav-color-palette-neutral-variant50-rgb)
-		);
-		--dav-color-inverse-on-surface-light: rgb(
-			var(--dav-color-palette-neutral95-rgb)
-		);
-		--dav-color-inverse-surface-light: rgb(
-			var(--dav-color-palette-neutral20-rgb)
-		);
-		--dav-color-inverse-primary-light: rgb(
-			var(--dav-color-palette-primary80-rgb)
-		);
-		--dav-color-shadow-light: rgb(var(--black-rgb));
-		--dav-color-surface-tint-light: rgb(
-			var(--dav-color-palette-primary40-rgb)
-		);
-		--dav-color-outline-variant-light: rgb(
-			var(--dav-color-palette-neutral-variant80-rgb)
-		);
-		--dav-color-scrim-light: rgb(var(--black-rgb), 0.5);
+		--dav-color-scrim-light-rgb: var(--black-rgb);
 
 		/* dark */
-		--dav-color-primary-dark: rgb(var(--dav-color-palette-primary80-rgb));
-		--dav-color-on-primary-dark: rgb(var(--dav-color-palette-primary20-rgb));
-		--dav-color-primary-container-dark: rgb(
-			var(--dav-color-palette-primary30-rgb)
+		--dav-color-primary-dark-rgb: var(--dav-color-palette-primary80-rgb);
+		--dav-color-on-primary-dark-rgb: var(--dav-color-palette-primary20-rgb);
+		--dav-color-primary-container-dark-rgb: var(
+			--dav-color-palette-primary30-rgb
 		);
-		--dav-color-on-primary-container-dark: rgb(
-			var(--dav-color-palette-primary90-rgb)
+		--dav-color-on-primary-container-dark-rgb: var(
+			--dav-color-palette-primary90-rgb
 		);
-		--dav-color-secondary-dark: rgb(var(--dav-color-palette-secondary80-rgb));
-		--dav-color-on-secondary-dark: rgb(
-			var(--dav-color-palette-secondary20-rgb)
+		--dav-color-secondary-dark-rgb: var(--dav-color-palette-secondary80-rgb);
+		--dav-color-on-secondary-dark-rgb: var(
+			--dav-color-palette-secondary20-rgb
 		);
-		--dav-color-secondary-container-dark: rgb(
-			var(--dav-color-palette-secondary30-rgb)
+		--dav-color-secondary-container-dark-rgb: var(
+			--dav-color-palette-secondary30-rgb
 		);
-		--dav-color-on-secondary-container-dark: rgb(
-			var(--dav-color-palette-secondary90-rgb)
+		--dav-color-on-secondary-container-dark-rgb: var(
+			--dav-color-palette-secondary90-rgb
 		);
-		--dav-color-tertiary-dark: rgb(var(--dav-color-palette-tertiary80-rgb));
-		--dav-color-on-tertiary-dark: rgb(
-			var(--dav-color-palette-tertiary20-rgb)
+		--dav-color-tertiary-dark-rgb: var(--dav-color-palette-tertiary80-rgb);
+		--dav-color-on-tertiary-dark-rgb: var(--dav-color-palette-tertiary20-rgb);
+		--dav-color-tertiary-container-dark-rgb: var(
+			--dav-color-palette-tertiary30-rgb
 		);
-		--dav-color-tertiary-container-dark: rgb(
-			var(--dav-color-palette-tertiary30-rgb)
+		--dav-color-on-tertiary-container-dark-rgb: var(
+			--dav-color-palette-tertiary90-rgb
 		);
-		--dav-color-on-tertiary-container-dark: rgb(
-			var(--dav-color-palette-tertiary90-rgb)
+		--dav-color-error-dark-rgb: var(--dav-color-palette-error80-rgb);
+		--dav-color-error-container-dark-rgb: var(
+			--dav-color-palette-error30-rgb
 		);
-		--dav-color-error-dark: rgb(var(--dav-color-palette-error80-rgb));
-		--dav-color-error-container-dark: rgb(
-			var(--dav-color-palette-error30-rgb)
+		--dav-color-on-error-dark-rgb: var(--dav-color-palette-error20-rgb);
+		--dav-color-on-error-container-dark-rgb: var(
+			--dav-color-palette-error90-rgb
 		);
-		--dav-color-on-error-dark: rgb(var(--dav-color-palette-error20-rgb));
-		--dav-color-on-error-container-dark: rgb(
-			var(--dav-color-palette-error90-rgb)
+		--dav-color-background-dark-rgb: var(--dav-color-palette-neutral10-rgb);
+		--dav-color-on-background-dark-rgb: var(
+			--dav-color-palette-neutral90-rgb
 		);
-		--dav-color-background-dark: rgb(var(--dav-color-palette-neutral10-rgb));
-		--dav-color-on-background-dark: rgb(
-			var(--dav-color-palette-neutral90-rgb)
+		--dav-color-surface-dark-rgb: var(--dav-color-palette-neutral10-rgb);
+		--dav-color-on-surface-dark-rgb: var(--dav-color-palette-neutral90-rgb);
+		--dav-color-surface-variant-dark-rgb: var(
+			--dav-color-palette-neutral-variant30-rgb
 		);
-		--dav-color-surface-dark: rgb(var(--dav-color-palette-neutral10-rgb));
-		--dav-color-on-surface-dark: rgb(var(--dav-color-palette-neutral90-rgb));
-		--dav-color-surface-variant-dark: rgb(
-			var(--dav-color-palette-neutral-variant30-rgb)
+		--dav-color-on-surface-variant-dark-rgb: var(
+			--dav-color-palette-neutral-variant80-rgb
 		);
-		--dav-color-on-surface-variant-dark: rgb(
-			var(--dav-color-palette-neutral-variant80-rgb)
+		--dav-color-outline-dark-rgb: var(
+			--dav-color-palette-neutral-variant60-rgb
 		);
-		--dav-color-outline-dark: rgb(
-			var(--dav-color-palette-neutral-variant60-rgb)
+		--dav-color-inverse-on-surface-dark-rgb: var(
+			--dav-color-palette-neutral10-rgb
 		);
-		--dav-color-inverse-on-surface-dark: rgb(
-			var(--dav-color-palette-neutral10-rgb)
+		--dav-color-inverse-surface-dark-rgb: var(
+			--dav-color-palette-neutral90-rgb
 		);
-		--dav-color-inverse-surface-dark: rgb(
-			var(--dav-color-palette-neutral90-rgb)
+		--dav-color-inverse-primary-dark-rgb: var(
+			--dav-color-palette-primary40-rgb
 		);
-		--dav-color-inverse-primary-dark: rgb(
-			var(--dav-color-palette-primary40-rgb)
+		--dav-color-shadow-dark-rgb: var(--black-rgb);
+		--dav-color-surface-tint-dark-rgb: var(--dav-color-palette-primary80-rgb);
+		--dav-color-outline-variant-dark-rgb: var(
+			--dav-color-palette-neutral-variant30-rgb
 		);
-		--dav-color-shadow-dark: rgb(var(--black-rgb));
-		--dav-color-surface-tint-dark: rgb(
-			var(--dav-color-palette-primary80-rgb)
-		);
-		--dav-color-outline-variant-dark: rgb(
-			var(--dav-color-palette-neutral-variant30-rgb)
-		);
-		--dav-color-scrim-dark: rgb(var(--black-rgb));
+		--dav-color-scrim-dark-rgb: var(--black-rgb);
 
 		/* default */
-		--dav-color-primary: var(--dav-color-primary-light);
-		--dav-color-primary-hover: var(--dav-color-primary-light-hover);
-		--dav-color-primary-focus: var(--dav-color-primary-light-focus);
-		--dav-color-on-primary: var(--dav-color-on-primary-light);
-		--dav-color-primary-container: var(--dav-color-primary-container-light);
-		--dav-color-on-primary-container: var(
-			--dav-color-on-primary-container-light
+		--dav-color-primary-rgb: var(--dav-color-primary-light-rgb);
+		--dav-color-on-primary-rgb: var(--dav-color-on-primary-light-rgb);
+		--dav-color-primary-container-rgb: var(
+			--dav-color-primary-container-light-rgb
 		);
-		--dav-color-secondary: var(--dav-color-secondary-light);
-		--dav-color-secondary-hover: var(--dav-color-secondary-light-hover);
-		--dav-color-secondary-focus: var(--dav-color-secondary-light-focus);
-		--dav-color-on-secondary: var(--dav-color-on-secondary-light);
-		--dav-color-secondary-container: var(
-			--dav-color-secondary-container-light
+		--dav-color-on-primary-container-rgb: var(
+			--dav-color-on-primary-container-light-rgb
 		);
-		--dav-color-secondary-container-hover: var(
-			--dav-color-secondary-container-light-hover
+		--dav-color-secondary-rgb: var(--dav-color-secondary-light-rgb);
+		--dav-color-on-secondary-rgb: var(--dav-color-on-secondary-light-rgb);
+		--dav-color-secondary-container-rgb: var(
+			--dav-color-secondary-container-light-rgb
 		);
-		--dav-color-secondary-container-focus: var(
-			--dav-color-secondary-container-light-focus
+		--dav-color-on-secondary-container-rgb: var(
+			--dav-color-on-secondary-container-light-rgb
 		);
-		--dav-color-on-secondary-container: var(
-			--dav-color-on-secondary-container-light
+		--dav-color-tertiary-rgb: var(--dav-color-tertiary-light-rgb);
+		--dav-color-on-tertiary-rgb: var(--dav-color-on-tertiary-light-rgb);
+		--dav-color-tertiary-container-rgb: var(
+			--dav-color-tertiary-container-light-rgb
 		);
-		--dav-color-tertiary: var(--dav-color-tertiary-light);
-		--dav-color-tertiary-hover: var(--dav-color-tertiary-light-hover);
-		--dav-color-tertiary-focus: var(--dav-color-tertiary-light-focus);
-		--dav-color-on-tertiary: var(--dav-color-on-tertiary-light);
-		--dav-color-tertiary-container: var(--dav-color-tertiary-container-light);
-		--dav-color-on-tertiary-container: var(
-			--dav-color-on-tertiary-container-light
+		--dav-color-on-tertiary-container-rgb: var(
+			--dav-color-on-tertiary-container-light-rgb
 		);
-		--dav-color-error: var(--dav-color-error-light);
-		--dav-color-error-hover: var(--dav-color-error-light-hover);
-		--dav-color-error-focus: var(--dav-color-error-light-focus);
-		--dav-color-error-container: var(--dav-color-error-container-light);
-		--dav-color-on-error: var(--dav-color-on-error-light);
-		--dav-color-on-error-container: var(--dav-color-on-error-container-light);
-		--dav-color-background: var(--dav-color-background-light);
-		--dav-color-on-background: var(--dav-color-on-background-light);
-		--dav-color-surface: var(--dav-color-surface-light);
-		--dav-color-on-surface: var(--dav-color-on-surface-light);
-		--dav-color-surface-variant: var(--dav-color-surface-variant-light);
-		--dav-color-on-surface-variant: var(--dav-color-on-surface-variant-light);
-		--dav-color-on-surface-variant-hover: var(
-			--dav-color-on-surface-variant-light-hover
+		--dav-color-error-rgb: var(--dav-color-error-light-rgb);
+		--dav-color-error-container-rgb: var(
+			--dav-color-error-container-light-rgb
 		);
-		--dav-color-on-surface-variant-focus: var(
-			--dav-color-on-surface-variant-light-focus
+		--dav-color-on-error-rgb: var(--dav-color-on-error-light-rgb);
+		--dav-color-on-error-container-rgb: var(
+			--dav-color-on-error-container-light-rgb
 		);
-		--dav-color-outline: var(--dav-color-outline-light);
-		--dav-color-inverse-on-surface: var(--dav-color-inverse-on-surface-light);
-		--dav-color-inverse-surface: var(--dav-color-inverse-surface-light);
-		--dav-color-inverse-primary: var(--dav-color-inverse-primary-light);
-		--dav-color-shadow: var(--dav-color-shadow-light);
-		--dav-color-surface-tint: var(--dav-color-surface-tint-light);
-		--dav-color-outline-variant: var(--dav-color-outline-variant-light);
-		--dav-color-scrim: var(--dav-color-scrim-light);
+		--dav-color-background-rgb: var(--dav-color-background-light-rgb);
+		--dav-color-on-background-rgb: var(--dav-color-on-background-light-rgb);
+		--dav-color-surface-rgb: var(--dav-color-surface-light-rgb);
+		--dav-color-on-surface-rgb: var(--dav-color-on-surface-light-rgb);
+		--dav-color-surface-variant-rgb: var(
+			--dav-color-surface-variant-light-rgb
+		);
+		--dav-color-on-surface-variant-rgb: var(
+			--dav-color-on-surface-variant-light-rgb
+		);
+		--dav-color-outline-rgb: var(--dav-color-outline-light-rgb);
+		--dav-color-inverse-on-surface-rgb: var(
+			--dav-color-inverse-on-surface-light-rgb
+		);
+		--dav-color-inverse-surface-rgb: var(
+			--dav-color-inverse-surface-light-rgb
+		);
+		--dav-color-inverse-primary-rgb: var(
+			--dav-color-inverse-primary-light-rgb
+		);
+		--dav-color-shadow-rgb: var(--dav-color-shadow-light-rgb);
+		--dav-color-surface-tint-rgb: var(--dav-color-surface-tint-light-rgb);
+		--dav-color-outline-variant-rgb: var(
+			--dav-color-outline-variant-light-rgb
+		);
+		--dav-color-scrim-rgb: var(--dav-color-scrim-light-rgb);
+
+		/* Non-RGB color variables */
+		/* default */
+		--dav-color-primary: rgb(var(--dav-color-primary-rgb));
+		--dav-color-on-primary: rgb(var(--dav-color-on-primary-rgb));
+		--dav-color-primary-container: rgb(
+			var(--dav-color-primary-container-rgb)
+		);
+		--dav-color-on-primary-container: rgb(
+			var(--dav-color-on-primary-container-rgb)
+		);
+		--dav-color-secondary: rgb(var(--dav-color-secondary-rgb));
+		--dav-color-on-secondary: rgb(var(--dav-color-on-secondary-rgb));
+		--dav-color-secondary-container: rgb(
+			var(--dav-color-secondary-container-rgb)
+		);
+		--dav-color-on-secondary-container: rgb(
+			var(--dav-color-on-secondary-container-rgb)
+		);
+		--dav-color-tertiary: rgb(var(--dav-color-tertiary-rgb));
+		--dav-color-on-tertiary: rgb(var(--dav-color-on-tertiary-rgb));
+		--dav-color-tertiary-container: rgb(
+			var(--dav-color-tertiary-container-rgb)
+		);
+		--dav-color-on-tertiary-container: rgb(
+			var(--dav-color-on-tertiary-container-rgb)
+		);
+		--dav-color-error: rgb(var(--dav-color-error-rgb));
+		--dav-color-error-container: rgb(var(--dav-color-error-container-rgb));
+		--dav-color-on-error: rgb(var(--dav-color-on-error-rgb));
+		--dav-color-on-error-container: rgb(
+			var(--dav-color-on-error-container-rgb)
+		);
+		--dav-color-background: rgb(var(--dav-color-background-rgb));
+		--dav-color-on-background: rgb(var(--dav-color-on-background-rgb));
+		--dav-color-surface: rgb(var(--dav-color-surface-rgb));
+		--dav-color-on-surface: rgb(var(--dav-color-on-surface-rgb));
+		--dav-color-surface-variant: rgb(var(--dav-color-surface-variant-rgb));
+		--dav-color-on-surface-variant: rgb(
+			var(--dav-color-on-surface-variant-rgb)
+		);
+		--dav-color-outline: rgb(var(--dav-color-outline-rgb));
+		--dav-color-inverse-on-surface: rgb(
+			var(--dav-color-inverse-on-surface-rgb)
+		);
+		--dav-color-inverse-surface: rgb(var(--dav-color-inverse-surface-rgb));
+		--dav-color-inverse-primary: rgb(var(--dav-color-inverse-primary-rgb));
+		--dav-color-shadow: rgb(var(--dav-color-shadow-rgb));
+		--dav-color-surface-tint: rgb(var(--dav-color-surface-tint-rgb));
+		--dav-color-outline-variant: rgb(var(--dav-color-outline-variant-rgb));
+		--dav-color-scrim: rgb(var(--dav-color-scrim-rgb));
 	}
 
 	.modern-vertical-scrollbar::-webkit-scrollbar {

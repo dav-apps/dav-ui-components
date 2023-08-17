@@ -41,161 +41,132 @@ export function setThemeColorVariables(
 	style: CSSStyleDeclaration,
 	theme: Theme
 ) {
-	style.setProperty("--dav-color-primary", `var(--dav-color-primary-${theme})`)
 	style.setProperty(
-		"--dav-color-primary-hover",
-		`var(--dav-color-primary-${theme}-hover)`
+		"--dav-color-primary-rgb",
+		`var(--dav-color-primary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-primary-focus",
-		`var(--dav-color-primary-${theme}-focus)`
+		"--dav-color-on-primary-rgb",
+		`var(--dav-color-on-primary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-primary",
-		`var(--dav-color-on-primary-${theme})`
+		"--dav-color-primary-container-rgb",
+		`var(--dav-color-primary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-primary-container",
-		`var(--dav-color-primary-container-${theme})`
+		"--dav-color-on-primary-container-rgb",
+		`var(--dav-color-on-primary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-primary-container",
-		`var(--dav-color-on-primary-container-${theme})`
+		"--dav-color-secondary-rgb",
+		`var(--dav-color-secondary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary",
-		`var(--dav-color-secondary-${theme})`
+		"--dav-color-on-secondary-rgb",
+		`var(--dav-color-on-secondary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary-hover",
-		`var(--dav-color-secondary-${theme}-hover)`
+		"--dav-color-secondary-container-rgb",
+		`var(--dav-color-secondary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary-focus",
-		`var(--dav-color-secondary-${theme}-focus)`
+		"--dav-color-on-secondary-container-rgb",
+		`var(--dav-color-on-secondary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-secondary",
-		`var(--dav-color-on-secondary-${theme})`
+		"--dav-color-tertiary-rgb",
+		`var(--dav-color-tertiary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary-container",
-		`var(--dav-color-secondary-container-${theme})`
+		"--dav-color-on-tertiary-rgb",
+		`var(--dav-color-on-tertiary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary-container-hover",
-		`var(--dav-color-secondary-container-${theme}-hover)`
+		"--dav-color-tertiary-container-rgb",
+		`var(--dav-color-tertiary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-secondary-container-focus",
-		`var(--dav-color-secondary-container-${theme}-focus)`
+		"--dav-color-on-tertiary-container-rgb",
+		`var(--dav-color-on-tertiary-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-secondary-container",
-		`var(--dav-color-on-secondary-container-${theme})`
+		"--dav-color-error-rgb",
+		`var(--dav-color-error-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-tertiary",
-		`var(--dav-color-tertiary-${theme})`
+		"--dav-color-error-container-rgb",
+		`var(--dav-color-error-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-tertiary-hover",
-		`var(--dav-color-tertiary-${theme}-hover)`
+		"--dav-color-on-error-rgb",
+		`var(--dav-color-on-error-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-tertiary-focus",
-		`var(--dav-color-tertiary-${theme}-focus)`
+		"--dav-color-on-error-container-rgb",
+		`var(--dav-color-on-error-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-tertiary",
-		`var(--dav-color-on-tertiary-${theme})`
+		"--dav-color-background-rgb",
+		`var(--dav-color-background-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-tertiary-container",
-		`var(--dav-color-tertiary-container-${theme})`
+		"--dav-color-on-background-rgb",
+		`var(--dav-color-on-background-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-tertiary-container",
-		`var(--dav-color-on-tertiary-container-${theme})`
-	)
-	style.setProperty("--dav-color-error", `var(--dav-color-error-${theme})`)
-	style.setProperty(
-		"--dav-color-error-hover",
-		`var(--dav-color-error-${theme}-hover)`
+		"--dav-color-surface-rgb",
+		`var(--dav-color-surface-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-error-focus",
-		`var(--dav-color-error-${theme}-focus)`
+		"--dav-color-on-surface-rgb",
+		`var(--dav-color-on-surface-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-error-container",
-		`var(--dav-color-error-container-${theme})`
+		"--dav-color-surface-variant-rgb",
+		`var(--dav-color-surface-variant-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-error",
-		`var(--dav-color-on-error-${theme})`
+		"--dav-color-on-surface-variant-rgb",
+		`var(--dav-color-on-surface-variant-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-error-container",
-		`var(--dav-color-on-error-container-${theme})`
+		"--dav-color-outline-rgb",
+		`var(--dav-color-outline-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-background",
-		`var(--dav-color-background-${theme})`
+		"--dav-color-inverse-on-surface-rgb",
+		`var(--dav-color-inverse-on-surface-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-background",
-		`var(--dav-color-on-background-${theme})`
-	)
-	style.setProperty("--dav-color-surface", `var(--dav-color-surface-${theme})`)
-	style.setProperty(
-		"--dav-color-on-surface",
-		`var(--dav-color-on-surface-${theme})`
+		"--dav-color-inverse-surface-rgb",
+		`var(--dav-color-inverse-surface-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-surface-variant",
-		`var(--dav-color-surface-variant-${theme})`
+		"--dav-color-inverse-primary-rgb",
+		`var(--dav-color-inverse-primary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-surface-variant",
-		`var(--dav-color-on-surface-variant-${theme})`
+		"--dav-color-shadow-rgb",
+		`var(--dav-color-shadow-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-surface-variant-hover",
-		`var(--dav-color-on-surface-variant-${theme}-hover)`
+		"--dav-color-shadow-tint-rgb",
+		`var(--dav-color-shadow-tint-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-surface-variant-focus",
-		`var(--dav-color-on-surface-variant-${theme}-focus)`
-	)
-	style.setProperty("--dav-color-outline", `var(--dav-color-outline-${theme})`)
-	style.setProperty(
-		"--dav-color-inverse-on-surface",
-		`var(--dav-color-inverse-on-surface-${theme})`
+		"--dav-color-outline-variant-rgb",
+		`var(--dav-color-outline-variant-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-inverse-surface",
-		`var(--dav-color-inverse-surface-${theme})`
+		"--dav-color-scrim-rgb",
+		`var(--dav-color-scrim-${theme}-rgb)`
 	)
-	style.setProperty(
-		"--dav-color-inverse-primary",
-		`var(--dav-color-inverse-primary-${theme})`
-	)
-	style.setProperty("--dav-color-shadow", `var(--dav-color-shadow-${theme})`)
-	style.setProperty(
-		"--dav-color-shadow-tint",
-		`var(--dav-color-shadow-tint-${theme})`
-	)
-	style.setProperty(
-		"--dav-color-outline-variant",
-		`var(--dav-color-outline-variant-${theme})`
-	)
-	style.setProperty("--dav-color-scrim", `var(--dav-color-scrim-${theme})`)
 }
 
 //#region Settings functions
 export function subscribeSettingsChange(callback: Function) {
 	settingsChangeCallbacks.push(callback)
+	callback(settings)
 }
 
 export function unsubscribeSettingsChange(callback: Function) {
