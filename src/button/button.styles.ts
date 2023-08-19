@@ -90,8 +90,8 @@ export const buttonStyles = css`
 
 	button.disabled {
 		cursor: not-allowed;
-		background-color: rgba(var(--dav-color-palette-neutral10-rgb), 0.12);
-		color: rgba(var(--dav-color-palette-neutral10-rgb), 0.38);
+		background-color: rgb(var(--dav-color-on-surface-rgb), 0.12);
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 
 	button.outline.disabled {
@@ -104,35 +104,35 @@ export const buttonStyles = css`
 	}
 
 	button:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-primary35-rgb));
+		background-color: var(--dav-color-primary-hover);
 	}
 
 	button.tonal:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-primary85-rgb));
+		background-color: var(--dav-color-primary-container-hover);
 	}
 
 	button.secondary:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-secondary35-rgb));
+		background-color: var(--dav-color-secondary-hover);
 	}
 
 	button.tonal.secondary:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-secondary85-rgb));
+		background-color: var(--dav-color-secondary-container-hover);
 	}
 
 	button.tertiary:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-tertiary35-rgb));
+		background-color: var(--dav-color-tertiary-hover);
 	}
 
 	button.tonal.tertiary:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-tertiary85-rgb));
+		background-color: var(--dav-color-tertiary-container-hover);
 	}
 
 	button.error:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-error35-rgb));
+		background-color: var(--dav-color-error-hover);
 	}
 
 	button.tonal.error:not(.disabled):hover {
-		background-color: rgb(var(--dav-color-palette-error85-rgb));
+		background-color: var(--dav-color-error-container-hover);
 	}
 
 	button.outline:not(.disabled):hover,
@@ -157,42 +157,42 @@ export const buttonStyles = css`
 
 	button:not(.disabled):active,
 	button:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-primary30-rgb));
+		background-color: var(--dav-color-primary-focus);
 	}
 
 	button.tonal:not(.disabled):active,
 	button.tonal:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-primary80-rgb));
+		background-color: var(--dav-color-primary-container-focus);
 	}
 
 	button.secondary:not(.disabled):active,
 	button.secondary:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-secondary30-rgb));
+		background-color: var(--dav-color-secondary-focus);
 	}
 
 	button.tonal.secondary:not(.disabled):active,
 	button.tonal.secondary:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-secondary80-rgb));
+		background-color: var(--dav-color-secondary-container-focus);
 	}
 
 	button.tertiary:not(.disabled):active,
 	button.tertiary:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-tertiary30-rgb));
+		background-color: var(--dav-color-tertiary-focus);
 	}
 
 	button.tonal.tertiary:not(.disabled):active,
 	button.tonal.tertiary:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-tertiary80-rgb));
+		background-color: var(--dav-color-tertiary-container-focus);
 	}
 
 	button.error:not(.disabled):active,
 	button.error:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-error30-rgb));
+		background-color: var(--dav-color-error-focus);
 	}
 
 	button.tonal.error:not(.disabled):active,
 	button.tonal.error:not(.disabled):focus {
-		background-color: rgb(var(--dav-color-palette-error80-rgb));
+		background-color: var(--dav-color-error-container-focus);
 	}
 
 	button.outline:not(.disabled):active,
