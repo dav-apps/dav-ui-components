@@ -25,11 +25,7 @@ export class Dialog extends LitElement {
 
 	@state() private dialogClasses = {
 		shadow: true,
-		"ms-motion-slideUpIn": true,
-		darkTheme: false
-	}
-	@state() private headerClasses = {
-		darkTheme: false
+		"ms-motion-slideUpIn": true
 	}
 	@state() private containerStyles = {
 		display: "flex",
@@ -148,9 +144,6 @@ export class Dialog extends LitElement {
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
 
-		this.dialogClasses.darkTheme = this.theme == Theme.dark
-		this.headerClasses.darkTheme = this.theme == Theme.dark
-
 		return html`
 			${getGlobalStyleHtml()}
 
@@ -166,9 +159,7 @@ export class Dialog extends LitElement {
 					aria-live="assertive"
 					aria-labelledby="header"
 				>
-					<h4 id="header" class=${classMap(this.headerClasses)}>
-						${this.header}
-					</h4>
+					<h4 id="header">${this.header}</h4>
 
 					<div id="content-container">
 						<slot></slot>

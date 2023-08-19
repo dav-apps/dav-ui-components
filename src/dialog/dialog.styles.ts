@@ -7,7 +7,7 @@ export const dialogStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--dav-color-scrim);
+		background-color: rgb(var(--dav-color-scrim-rgb), 0.5);
 	}
 
 	#dialog {
@@ -18,22 +18,11 @@ export const dialogStyles = css`
 		min-width: 280px;
 	}
 
-	#dialog.darkTheme {
-		background-color: var(
-			--dark-theme-color-tertiary,
-			var(--default-dark-theme-color-tertiary)
-		);
-	}
-
 	#header {
 		margin-bottom: 20px;
 		font-weight: 100;
 		font-family: Roboto, sans-serif;
 		color: var(--dav-color-on-surface);
-	}
-
-	#header.darkTheme {
-		color: white;
 	}
 
 	#content-container {
