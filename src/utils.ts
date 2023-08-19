@@ -150,8 +150,8 @@ export function setThemeColorVariables(
 		`var(--dav-color-shadow-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-shadow-tint-rgb",
-		`var(--dav-color-shadow-tint-${theme}-rgb)`
+		"--dav-color-surface-tint-rgb",
+		`var(--dav-color-surface-tint-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-outline-variant-rgb",
@@ -160,6 +160,14 @@ export function setThemeColorVariables(
 	style.setProperty(
 		"--dav-color-scrim-rgb",
 		`var(--dav-color-scrim-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-hover-rgb",
+		`var(--dav-color-surface-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-focus-rgb",
+		`var(--dav-color-surface-focus-${theme}-rgb)`
 	)
 
 	// State variables

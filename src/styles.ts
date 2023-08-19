@@ -221,6 +221,12 @@ export const globalStyles = css`
 		--dav-color-error-container-focus-light-rgb: var(
 			--dav-color-palette-error80-rgb
 		);
+		--dav-color-surface-hover-light-rgb: var(
+			--dav-color-palette-neutral95-rgb
+		);
+		--dav-color-surface-focus-light-rgb: var(
+			--dav-color-palette-neutral90-rgb
+		);
 
 		/* dark */
 		--dav-color-primary-dark-rgb: var(--dav-color-palette-primary80-rgb);
@@ -333,6 +339,12 @@ export const globalStyles = css`
 		--dav-color-error-container-focus-dark-rgb: var(
 			--dav-color-palette-error40-rgb
 		);
+		--dav-color-surface-hover-dark-rgb: var(
+			--dav-color-palette-neutral20-rgb
+		);
+		--dav-color-surface-focus-dark-rgb: var(
+			--dav-color-palette-neutral25-rgb
+		);
 
 		/* default */
 		--dav-color-primary-rgb: var(--dav-color-primary-light-rgb);
@@ -431,6 +443,8 @@ export const globalStyles = css`
 		--dav-color-error-container-focus-rgb: var(
 			--dav-color-error-container-focus-light-rgb
 		);
+		--dav-color-surface-hover-rgb: var(--dav-color-surface-hover-light-rgb);
+		--dav-color-surface-focus-rgb: var(--dav-color-surface-focus-light-rgb);
 
 		/* Non-RGB color variables */
 		/* default */
@@ -516,6 +530,8 @@ export const globalStyles = css`
 		--dav-color-error-container-focus: rgb(
 			var(--dav-color-error-container-focus-rgb)
 		);
+		--dav-color-surface-hover: rgb(var(--dav-color-surface-hover-rgb));
+		--dav-color-surface-focus: rgb(var(--dav-color-surface-focus-rgb));
 	}
 
 	.modern-vertical-scrollbar::-webkit-scrollbar {
