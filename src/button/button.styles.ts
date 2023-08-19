@@ -96,7 +96,7 @@ export const buttonStyles = css`
 
 	button.outline.disabled {
 		background-color: var(--dav-color-surface);
-		border-color: rgba(var(--dav-color-palette-neutral10-rgb), 0.38);
+		border-color: rgb(var(--dav-color-on-surface-rgb), 0.12);
 	}
 
 	button.text.disabled {
@@ -137,22 +137,7 @@ export const buttonStyles = css`
 
 	button.outline:not(.disabled):hover,
 	button.text:not(.disabled):hover {
-		background-color: var(--dav-color-primary-hover);
-	}
-
-	button.outline.secondary:not(.disabled):hover,
-	button.text.secondary:not(.disabled):hover {
-		background-color: var(--dav-color-secondary-hover);
-	}
-
-	button.outline.tertiary:not(.disabled):hover,
-	button.text.tertiary:not(.disabled):hover {
-		background-color: var(--dav-color-tertiary-hover);
-	}
-
-	button.outline.error:not(.disabled):hover,
-	button.text.error:not(.disabled):hover {
-		background-color: var(--dav-color-error-hover);
+		background-color: var(--dav-color-surface-hover);
 	}
 
 	button:not(.disabled):active,
@@ -199,27 +184,6 @@ export const buttonStyles = css`
 	button.outline:not(.disabled):focus,
 	button.text:not(.disabled):active,
 	button.text:not(.disabled):focus {
-		background-color: var(--dav-color-primary-focus);
-	}
-
-	button.outline.secondary:not(.disabled):active,
-	button.outline.secondary:not(.disabled):focus,
-	button.text.secondary:not(.disabled):active,
-	button.text.secondary:not(.disabled):focus {
-		background-color: var(--dav-color-secondary-focus);
-	}
-
-	button.outline.tertiary:not(.disabled):active,
-	button.outline.tertiary:not(.disabled):focus,
-	button.text.tertiary:not(.disabled):active,
-	button.text.tertiary:not(.disabled):focus {
-		background-color: var(--dav-color-tertiary-focus);
-	}
-
-	button.outline.error:not(.disabled):active,
-	button.outline.error:not(.disabled):focus,
-	button.text.error:not(.disabled):active,
-	button.text.error:not(.disabled):focus {
-		background-color: var(--dav-color-error-focus);
+		background-color: var(--dav-color-surface-focus);
 	}
 `
