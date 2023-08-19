@@ -17,26 +17,14 @@ export const contextMenuItemStyles = css`
 		font-family: Roboto, sans-serif;
 	}
 
-	button:hover,
-	button:focus {
+	button:hover {
 		cursor: pointer;
-		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
+		background-color: var(--dav-color-surface-hover);
 	}
 
-	button:active {
-		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
-	}
-
-	button.darkTheme {
-		color: white;
-	}
-
-	button.darkTheme:focus,
-	button.darkTheme:hover {
-		background-color: var(
-			--dark-theme-hover-background-color,
-			var(--default-dark-theme-hover-background-color)
-		);
+	button:active,
+	button:focus {
+		background-color: var(--dav-color-surface-focus);
 	}
 
 	#icon-container {

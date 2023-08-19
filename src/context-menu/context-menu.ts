@@ -22,8 +22,7 @@ export class ContextMenu extends LitElement {
 
 	@state() private containerClasses = {
 		"slide-down-in": false,
-		visible: false,
-		darkTheme: false
+		visible: false
 	}
 	@state() private containerStyles = {
 		top: "0px",
@@ -60,7 +59,6 @@ export class ContextMenu extends LitElement {
 	render() {
 		this.containerClasses["slide-down-in"] = this.visible
 		this.containerClasses.visible = this.visible
-		this.containerClasses.darkTheme = this.theme == Theme.dark
 
 		this.containerStyles.top = `${this.posY}px`
 		this.containerStyles.left = `${this.posX}px`

@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
-import { classMap } from "lit/directives/class-map.js"
 import { Settings, Theme } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -18,10 +17,6 @@ export class ContextMenuItem extends LitElement {
 	static styles = [globalStyles, contextMenuItemStyles]
 
 	@state() private theme: Theme = getSettings().theme
-
-	@state() private buttonClasses = {
-		darkTheme: false
-	}
 
 	@property() value: string = ""
 
@@ -41,10 +36,8 @@ export class ContextMenuItem extends LitElement {
 	}
 
 	render() {
-		this.buttonClasses.darkTheme = this.theme == Theme.dark
-
 		return html`
-			<button class=${classMap(this.buttonClasses)}>
+			<button>
 				<div id="icon-container">
 					<slot name="icon"></slot>
 				</div>
