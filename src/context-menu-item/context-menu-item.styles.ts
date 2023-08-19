@@ -15,10 +15,10 @@ export const contextMenuItemStyles = css`
 		padding: 4px 10px;
 		transition: 200ms;
 		font-family: Roboto, sans-serif;
+		cursor: pointer;
 	}
 
 	button:hover {
-		cursor: pointer;
 		background-color: var(--dav-color-surface-hover);
 	}
 

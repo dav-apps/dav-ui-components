@@ -3,7 +3,8 @@ import { css } from "@lit/reactive-element"
 export const dropdownStyles = css`
 	#dropdown {
 		position: relative;
-		display: inline-block;
+		display: inline-flex;
+		flex-direction: column;
 	}
 
 	#dropdown-button {
@@ -11,37 +12,27 @@ export const dropdownStyles = css`
 		justify-content: space-between;
 		align-items: center;
 		background-color: white;
-		border: 1px solid var(--dav-color-outline);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.4);
 		border-radius: 6px;
 		padding: 5px 10px;
 		font-family: Roboto, sans-serif;
 		font-size: 14px;
 		background-color: var(--dav-color-surface);
 		transition: 200ms;
+		cursor: pointer;
 	}
 
 	#dropdown-button:hover,
-	#dropdown-button:focus {
+	#dropdown-button:focus,
+	#dropdown-button:active {
 		border: 1px solid var(--dav-color-primary);
-		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
-	}
-
-	#dropdown-button.darkTheme {
-		background-color: var(
-			--dark-theme-color-tertiary,
-			var(--default-dark-theme-color-tertiary)
-		);
-		border-color: #787878;
+		background-color: var(--dav-color-surface-hover);
 	}
 
 	#dropdown-button.disabled {
 		cursor: not-allowed;
 		background-color: #edededb3;
 		border: none;
-	}
-
-	#dropdown-button.disabled.darkTheme {
-		background-color: #2e3b46b3;
 	}
 
 	#dropdown-button span {
@@ -51,27 +42,15 @@ export const dropdownStyles = css`
 		color: var(--dav-color-on-surface);
 	}
 
-	#dropdown-button.darkTheme span {
-		color: white;
-	}
-
 	#dropdown-button i {
 		padding-top: 1px;
 		font-size: 12px;
 	}
 
-	#dropdown-button.darkTheme i {
-		color: white;
-	}
-
 	#dropdown-label {
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-		margin-bottom: 0.2rem;
+		font-family: Roboto, sans-serif;
+		margin-bottom: 8px;
 		font-size: 14px;
-	}
-
-	#dropdown-label.darkTheme {
-		color: white;
 	}
 
 	#chevron-svg-container {
@@ -90,12 +69,13 @@ export const dropdownStyles = css`
 		display: none;
 		position: absolute;
 		overflow: auto;
-		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		z-index: 1;
-		font-family: Roboto, sans-serif;
-		font-size: 14px;
-		border-radius: 6px;
 		background-color: var(--dav-color-surface);
+		box-shadow: 0px 8px 16px 0px rgb(var(--dav-color-shadow-rgb), 0.2);
+		font-family: Roboto, sans-serif;
+		font-size: 16px;
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.12);
+		border-radius: 6px;
 	}
 
 	#dropdown-content.visible {
@@ -116,35 +96,19 @@ export const dropdownStyles = css`
 		width: -webkit-fill-available;
 		width: -moz-available;
 		transition: 200ms;
+		cursor: pointer;
+		font-family: Roboto, sans-serif;
+		font-size: 15px;
 	}
 
-	.dropdown-option.darkTheme {
-		color: white;
-		background-color: var(
-			--dark-theme-color-tertiary,
-			var(--default-dark-theme-color-tertiary)
-		);
+	.dropdown-option:hover {
+		background-color: var(--dav-color-surface-hover);
 	}
 
-	.dropdown-option:hover,
-	.dropdown-option:focus {
-		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
-	}
-
-	.dropdown-option:active {
-		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
-	}
-
+	.dropdown-option:focus,
+	.dropdown-option:active,
 	.dropdown-option.selected {
-		background-color: var(--dav-color-primary-hover);
-	}
-
-	.dropdown-option.darkTheme:focus,
-	.dropdown-option.darkTheme:hover {
-		background-color: var(
-			--dark-theme-hover-background-color,
-			var(--default-dark-theme-hover-background-color)
-		);
+		background-color: var(--dav-color-surface-focus);
 	}
 
 	.dropdown-divider {
@@ -152,14 +116,6 @@ export const dropdownStyles = css`
 		border: none;
 		margin: 0;
 		padding: 0.5rem;
-	}
-
-	.dropdown-divider.darkTheme {
-		color: white;
-		background-color: var(
-			--dark-theme-color-tertiary,
-			var(--default-dark-theme-color-tertiary)
-		);
 	}
 
 	.dropdown-divider hr {

@@ -8,8 +8,7 @@ export const contextMenuStyles = css`
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.12);
 		border-radius: 6px;
 		font-size: 16px;
-		box-shadow: 0 6.4px 14.4px 0 rgb(0 0 0 / 13%),
-			0 1.2px 3.6px 0 rgb(0 0 0 / 11%);
+		box-shadow: 0px 8px 16px 0px rgb(var(--dav-color-shadow-rgb), 0.2);
 	}
 
 	#container.visible {

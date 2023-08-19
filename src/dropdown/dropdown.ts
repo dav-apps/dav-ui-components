@@ -3,7 +3,6 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import {
-	getGlobalStyleHtml,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
@@ -30,22 +29,16 @@ export class Dropdown extends LitElement {
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
-	@state() private dropdownLabelClasses = {
-		darkTheme: false
-	}
 	@state() private dropdownButtonClasses = {
 		disabled: false,
-		active: false,
-		darkTheme: false
+		active: false
 	}
 	@state() private dropdownOptionClasses = {
 		"dropdown-option": true,
-		selected: false,
-		darkTheme: false
+		selected: false
 	}
 	@state() private dropdownDividerClasses = {
-		"dropdown-divider": true,
-		darkTheme: false
+		"dropdown-divider": true
 	}
 	@state() private dropdownContentClasses = {
 		"slide-down-in": false,
@@ -122,11 +115,7 @@ export class Dropdown extends LitElement {
 		}
 
 		return html`
-			<label
-				id="dropdown-label"
-				class=${classMap(this.dropdownLabelClasses)}
-				for="dropdown-button"
-			>
+			<label id="dropdown-label" for="dropdown-button">
 				${this.label}
 			</label>
 		`
@@ -157,12 +146,8 @@ export class Dropdown extends LitElement {
 
 	render() {
 		// Update the UI based on the properties
-		this.dropdownLabelClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownButtonClasses.disabled = this.disabled
 		this.dropdownButtonClasses.active = this.showItems
-		this.dropdownButtonClasses.darkTheme = this.theme == Theme.dark
-		this.dropdownOptionClasses.darkTheme = this.theme == Theme.dark
-		this.dropdownDividerClasses.darkTheme = this.theme == Theme.dark
 		this.dropdownContentClasses["slide-down-in"] = this.showItems
 		this.dropdownContentClasses.visible = this.showItems
 
@@ -172,32 +157,35 @@ export class Dropdown extends LitElement {
 		this.updateDropdownButtonText()
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div id="dropdown">
 				${this.getLabel()}
 
-				<button
-					id="dropdown-button"
-					class=${classMap(this.dropdownButtonClasses)}
-					style=${styleMap(this.dropdownButtonStyles)}
-					name="dropdown-button"
-					?aria-disabled=${this.disabled}
-					@click=${this.dropdownButtonClick}
-				>
-					<span>${this.buttonText}</span>
+				<div>
+					<button
+						id="dropdown-button"
+						class=${classMap(this.dropdownButtonClasses)}
+						style=${styleMap(this.dropdownButtonStyles)}
+						name="dropdown-button"
+						?aria-disabled=${this.disabled}
+						@click=${this.dropdownButtonClick}
+					>
+						<span>${this.buttonText}</span>
 
-					<div id="chevron-svg-container">${chevronDownLightSvg}</div>
-				</button>
+						<div id="chevron-svg-container">${chevronDownLightSvg}</div>
+					</button>
 
-				<div
-					id="dropdown-content"
-					class=${classMap(this.dropdownContentClasses)}
-					style=${styleMap(this.dropdownContentStyles)}
-				>
-					${this.options.map(option =>
-						this.getDropdownOption(option, option.key == this.selectedKey)
-					)}
+					<div
+						id="dropdown-content"
+						class=${classMap(this.dropdownContentClasses)}
+						style=${styleMap(this.dropdownContentStyles)}
+					>
+						${this.options.map(option =>
+							this.getDropdownOption(
+								option,
+								option.key == this.selectedKey
+							)
+						)}
+					</div>
 				</div>
 			</div>
 		`
