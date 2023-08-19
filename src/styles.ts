@@ -176,6 +176,52 @@ export const globalStyles = css`
 		);
 		--dav-color-scrim-light-rgb: var(--black-rgb);
 
+		/* light states */
+		--dav-color-primary-hover-light-rgb: var(
+			--dav-color-palette-primary35-rgb
+		);
+		--dav-color-primary-focus-light-rgb: var(
+			--dav-color-palette-primary30-rgb
+		);
+		--dav-color-primary-container-hover-light-rgb: var(
+			--dav-color-palette-primary85-rgb
+		);
+		--dav-color-primary-container-focus-light-rgb: var(
+			--dav-color-palette-primary80-rgb
+		);
+		--dav-color-secondary-hover-light-rgb: var(
+			--dav-color-palette-secondary35-rgb
+		);
+		--dav-color-secondary-focus-light-rgb: var(
+			--dav-color-palette-secondary30-rgb
+		);
+		--dav-color-secondary-container-hover-light-rgb: var(
+			--dav-color-palette-secondary85-rgb
+		);
+		--dav-color-secondary-container-focus-light-rgb: var(
+			--dav-color-palette-secondary80-rgb
+		);
+		--dav-color-tertiary-hover-light-rgb: var(
+			--dav-color-palette-tertiary35-rgb
+		);
+		--dav-color-tertiary-focus-light-rgb: var(
+			--dav-color-palette-tertiary30-rgb
+		);
+		--dav-color-tertiary-container-hover-light-rgb: var(
+			--dav-color-palette-tertiary85-rgb
+		);
+		--dav-color-tertiary-container-focus-light-rgb: var(
+			--dav-color-palette-tertiary80-rgb
+		);
+		--dav-color-error-hover-light-rgb: var(--dav-color-palette-error35-rgb);
+		--dav-color-error-focus-light-rgb: var(--dav-color-palette-error30-rgb);
+		--dav-color-error-container-hover-light-rgb: var(
+			--dav-color-palette-error85-rgb
+		);
+		--dav-color-error-container-focus-light-rgb: var(
+			--dav-color-palette-error80-rgb
+		);
+
 		/* dark */
 		--dav-color-primary-dark-rgb: var(--dav-color-palette-primary80-rgb);
 		--dav-color-on-primary-dark-rgb: var(--dav-color-palette-primary20-rgb);
@@ -242,6 +288,52 @@ export const globalStyles = css`
 		);
 		--dav-color-scrim-dark-rgb: var(--black-rgb);
 
+		/* dark states */
+		--dav-color-primary-hover-dark-rgb: var(
+			--dav-color-palette-primary85-rgb
+		);
+		--dav-color-primary-focus-dark-rgb: var(
+			--dav-color-palette-primary90-rgb
+		);
+		--dav-color-primary-container-hover-dark-rgb: var(
+			--dav-color-palette-primary35-rgb
+		);
+		--dav-color-primary-container-focus-dark-rgb: var(
+			--dav-color-palette-primary40-rgb
+		);
+		--dav-color-secondary-hover-dark-rgb: var(
+			--dav-color-palette-secondary85-rgb
+		);
+		--dav-color-secondary-focus-dark-rgb: var(
+			--dav-color-palette-secondary90-rgb
+		);
+		--dav-color-secondary-container-hover-dark-rgb: var(
+			--dav-color-palette-secondary35-rgb
+		);
+		--dav-color-secondary-container-focus-dark-rgb: var(
+			--dav-color-palette-secondary40-rgb
+		);
+		--dav-color-tertiary-hover-dark-rgb: var(
+			--dav-color-palette-tertiary85-rgb
+		);
+		--dav-color-tertiary-focus-dark-rgb: var(
+			--dav-color-palette-tertiary90-rgb
+		);
+		--dav-color-tertiary-container-hover-dark-rgb: var(
+			--dav-color-palette-tertiary35-rgb
+		);
+		--dav-color-tertiary-container-focus-dark-rgb: var(
+			--dav-color-palette-tertiary40-rgb
+		);
+		--dav-color-error-hover-dark-rgb: var(--dav-color-palette-error85-rgb);
+		--dav-color-error-focus-dark-rgb: var(--dav-color-palette-error90-rgb);
+		--dav-color-error-container-hover-dark-rgb: var(
+			--dav-color-palette-error35-rgb
+		);
+		--dav-color-error-container-focus-dark-rgb: var(
+			--dav-color-palette-error40-rgb
+		);
+
 		/* default */
 		--dav-color-primary-rgb: var(--dav-color-primary-light-rgb);
 		--dav-color-on-primary-rgb: var(--dav-color-on-primary-light-rgb);
@@ -302,6 +394,44 @@ export const globalStyles = css`
 		);
 		--dav-color-scrim-rgb: var(--dav-color-scrim-light-rgb);
 
+		/* default states */
+		--dav-color-primary-hover-rgb: var(--dav-color-primary-hover-light-rgb);
+		--dav-color-primary-focus-rgb: var(--dav-color-primary-focus-light-rgb);
+		--dav-color-primary-container-hover-rgb: var(
+			--dav-color-primary-container-hover-light-rgb
+		);
+		--dav-color-primary-container-focus-rgb: var(
+			--dav-color-primary-container-focus-light-rgb
+		);
+		--dav-color-secondary-hover-rgb: var(
+			--dav-color-secondary-hover-light-rgb
+		);
+		--dav-color-secondary-focus-rgb: var(
+			--dav-color-secondary-focus-light-rgb
+		);
+		--dav-color-secondary-container-hover-rgb: var(
+			--dav-color-secondary-container-hover-light-rgb
+		);
+		--dav-color-secondary-container-focus-rgb: var(
+			--dav-color-secondary-container-focus-light-rgb
+		);
+		--dav-color-tertiary-hover-rgb: var(--dav-color-tertiary-hover-light-rgb);
+		--dav-color-tertiary-focus-rgb: var(--dav-color-tertiary-focus-light-rgb);
+		--dav-color-tertiary-container-hover-rgb: var(
+			--dav-color-tertiary-container-hover-light-rgb
+		);
+		--dav-color-tertiary-container-focus-rgb: var(
+			--dav-color-tertiary-container-focus-light-rgb
+		);
+		--dav-color-error-hover-rgb: var(--dav-color-error-hover-light-rgb);
+		--dav-color-error-focus-rgb: var(--dav-color-error-focus-light-rgb);
+		--dav-color-error-container-hover-rgb: var(
+			--dav-color-error-container-hover-light-rgb
+		);
+		--dav-color-error-container-focus-rgb: var(
+			--dav-color-error-container-focus-light-rgb
+		);
+
 		/* Non-RGB color variables */
 		/* default */
 		--dav-color-primary: rgb(var(--dav-color-primary-rgb));
@@ -352,6 +482,40 @@ export const globalStyles = css`
 		--dav-color-surface-tint: rgb(var(--dav-color-surface-tint-rgb));
 		--dav-color-outline-variant: rgb(var(--dav-color-outline-variant-rgb));
 		--dav-color-scrim: rgb(var(--dav-color-scrim-rgb));
+
+		/* default states */
+		--dav-color-primary-hover: rgb(var(--dav-color-primary-hover-rgb));
+		--dav-color-primary-focus: rgb(var(--dav-color-primary-focus-rgb));
+		--dav-color-primary-container-hover: rgb(
+			var(--dav-color-primary-container-hover-rgb)
+		);
+		--dav-color-primary-container-focus: rgb(
+			var(--dav-color-primary-container-focus-rgb)
+		);
+		--dav-color-secondary-hover: rgb(var(--dav-color-secondary-hover-rgb));
+		--dav-color-secondary-focus: rgb(var(--dav-color-secondary-focus-rgb));
+		--dav-color-secondary-container-hover: rgb(
+			var(--dav-color-secondary-container-hover-rgb)
+		);
+		--dav-color-secondary-container-focus: rgb(
+			var(--dav-color-secondary-container-focus-rgb)
+		);
+		--dav-color-tertiary-hover: rgb(var(--dav-color-tertiary-hover-rgb));
+		--dav-color-tertiary-focus: rgb(var(--dav-color-tertiary-focus-rgb));
+		--dav-color-tertiary-container-hover: rgb(
+			var(--dav-color-tertiary-container-hover-rgb)
+		);
+		--dav-color-tertiary-container-focus: rgb(
+			var(--dav-color-tertiary-container-focus-rgb)
+		);
+		--dav-color-error-hover: rgb(var(--dav-color-error-hover-rgb));
+		--dav-color-error-focus: rgb(var(--dav-color-error-focus-rgb));
+		--dav-color-error-container-hover: rgb(
+			var(--dav-color-error-container-hover-rgb)
+		);
+		--dav-color-error-container-focus: rgb(
+			var(--dav-color-error-container-focus-rgb)
+		);
 	}
 
 	.modern-vertical-scrollbar::-webkit-scrollbar {

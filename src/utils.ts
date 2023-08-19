@@ -161,6 +161,72 @@ export function setThemeColorVariables(
 		"--dav-color-scrim-rgb",
 		`var(--dav-color-scrim-${theme}-rgb)`
 	)
+
+	// State variables
+	style.setProperty(
+		"--dav-color-primary-hover-rgb",
+		`var(--dav-color-primary-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-primary-focus-rgb",
+		`var(--dav-color-primary-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-primary-container-hover-rgb",
+		`var(--dav-color-primary-container-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-primary-container-focus-rgb",
+		`var(--dav-color-primary-container-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-secondary-hover-rgb",
+		`var(--dav-color-secondary-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-secondary-focus-rgb",
+		`var(--dav-color-secondary-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-secondary-container-hover-rgb",
+		`var(--dav-color-secondary-container-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-secondary-container-focus-rgb",
+		`var(--dav-color-secondary-container-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-tertiary-hover-rgb",
+		`var(--dav-color-tertiary-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-tertiary-focus-rgb",
+		`var(--dav-color-tertiary-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-tertiary-container-hover-rgb",
+		`var(--dav-color-tertiary-container-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-tertiary-container-focus-rgb",
+		`var(--dav-color-tertiary-container-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-error-hover-rgb",
+		`var(--dav-color-error-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-error-focus-rgb",
+		`var(--dav-color-error-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-error-container-hover-rgb",
+		`var(--dav-color-error-container-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-error-container-focus-rgb",
+		`var(--dav-color-error-container-focus-${theme}-rgb)`
+	)
 }
 
 //#region Settings functions
