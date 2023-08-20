@@ -2,12 +2,11 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { Theme, Alignment, HeaderSize, Settings } from "../types.js"
+import { Alignment, HeaderSize, Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings,
 	convertStringToAlignment,
 	convertStringToHeaderSize
 } from "../utils.js"
@@ -23,16 +22,10 @@ export const headerTagName = "dav-header"
 export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
-	@state() private theme: Theme = getSettings().theme
-
 	@state() private containerClasses = {
 		container: true,
 		start: false,
 		end: false
-	}
-	@state() private headerClasses = {
-		header: true,
-		darkTheme: false
 	}
 	@state() private headerStyles = {
 		fontSize: "40px"
@@ -63,8 +56,7 @@ export class Header extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	backButtonClick() {
@@ -91,8 +83,6 @@ export class Header extends LitElement {
 				</dav-icon-button>
 			`
 		}
-
-		return html``
 	}
 
 	getAddButton() {
@@ -121,13 +111,9 @@ export class Header extends LitElement {
 				</dav-icon-button>
 			`
 		}
-
-		return html``
 	}
 
 	render() {
-		this.headerClasses.darkTheme = this.theme == Theme.dark
-
 		switch (this.alignment) {
 			case Alignment.start:
 				this.containerClasses.start = true
@@ -159,10 +145,7 @@ export class Header extends LitElement {
 			<div class=${classMap(this.containerClasses)}>
 				${this.getBackButton()}
 
-				<h1
-					class=${classMap(this.headerClasses)}
-					style=${styleMap(this.headerStyles)}
-				>
+				<h1 class="header" style=${styleMap(this.headerStyles)}>
 					<slot></slot>
 				</h1>
 

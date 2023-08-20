@@ -21,10 +21,7 @@ export const headerStyles = css`
 		margin: 0;
 		font-family: Roboto, Arial, sans-serif;
 		font-weight: 400;
-	}
-
-	.header.darkTheme {
-		color: white;
+		color: var(--dav-color-on-surface);
 	}
 
 	.right-button-container {
