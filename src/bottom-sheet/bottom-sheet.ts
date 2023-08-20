@@ -3,12 +3,11 @@ import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { Settings, Theme, BottomSheetPosition } from "../types.js"
+import { Settings, BottomSheetPosition } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { bottomSheetStyles } from "./bottom-sheet.styles.js"
@@ -26,8 +25,6 @@ export class BottomSheet extends LitElement {
 
 	@query("#content-container") contentContainer: HTMLDivElement
 	@query("#bottom-sheet-container") bottomSheetContainer: HTMLDivElement
-
-	@state() private theme: Theme = getSettings().theme
 
 	@state() private containerClasses = {
 		visible: false
@@ -60,8 +57,7 @@ export class BottomSheet extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	public snap(position: BottomSheetPosition = "auto") {

@@ -8,12 +8,7 @@ import {
 	unsubscribeSettingsChange,
 	getSettings
 } from "../utils.js"
-import {
-	DropdownOption,
-	Theme,
-	DropdownOptionType,
-	Settings
-} from "../types.js"
+import { DropdownOption, DropdownOptionType, Settings } from "../types.js"
 import { chevronDownLightSvg } from "../svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
 import { dropdownStyles } from "./dropdown.styles.js"
@@ -25,7 +20,6 @@ export class Dropdown extends LitElement {
 	static styles = [globalStyles, dropdownStyles]
 
 	@state() private locale = getSettings().locale.dropdown
-	@state() private theme: Theme = getSettings().theme
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
@@ -70,9 +64,8 @@ export class Dropdown extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
 		this.locale = settings.locale.dropdown
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	documentClick = (event: MouseEvent) => {
@@ -110,15 +103,13 @@ export class Dropdown extends LitElement {
 	}
 
 	getLabel() {
-		if (this.label.length == 0) {
-			return html``
+		if (this.label.length > 0) {
+			return html`
+				<label id="dropdown-label" for="dropdown-button">
+					${this.label}
+				</label>
+			`
 		}
-
-		return html`
-			<label id="dropdown-label" for="dropdown-button">
-				${this.label}
-			</label>
-		`
 	}
 
 	getDropdownOption(option: DropdownOption, selected: boolean) {

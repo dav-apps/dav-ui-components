@@ -1,12 +1,11 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, Theme, Orientation } from "../types.js"
+import { Settings, Orientation } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings,
 	convertStringToOrientation
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
@@ -17,8 +16,6 @@ export const cardTagName = "dav-card"
 @customElement(cardTagName)
 export class Card extends LitElement {
 	static styles = [globalStyles, cardStyles]
-
-	@state() private theme: Theme = getSettings().theme
 
 	@state() private cardContainerClasses = {
 		"card-container": true,
@@ -45,8 +42,7 @@ export class Card extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	getHeadline() {

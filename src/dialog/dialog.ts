@@ -7,10 +7,8 @@ import {
 	getGlobalStyleHtml,
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
-import { Theme } from "../types.js"
 import { globalStyles } from "../styles.js"
 import { dialogStyles } from "./dialog.styles.js"
 
@@ -20,7 +18,6 @@ export const dialogTagName = "dav-dialog"
 export class Dialog extends LitElement {
 	static styles = [globalStyles, dialogStyles]
 
-	@state() private theme: Theme = getSettings().theme
 	@state() private dualScreenLayout: boolean = false
 
 	@state() private dialogClasses = {
@@ -74,8 +71,7 @@ export class Dialog extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	private overlayClick() {
@@ -100,8 +96,6 @@ export class Dialog extends LitElement {
 					indeterminate="true"
 				></dav-progress-ring>
 			`
-		} else {
-			return html``
 		}
 	}
 
@@ -117,8 +111,6 @@ export class Dialog extends LitElement {
 				</dav-button>
 			`
 		}
-
-		return html``
 	}
 
 	getPrimaryButton() {
@@ -134,8 +126,6 @@ export class Dialog extends LitElement {
 				</dav-button>
 			`
 		}
-
-		return html``
 	}
 
 	render() {
