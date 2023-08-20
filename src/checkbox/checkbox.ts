@@ -3,13 +3,12 @@ import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { checkboxStyles } from "./checkbox.styles.js"
-import { Settings, Theme } from "../types.js"
+import { Settings } from "../types.js"
 import {
 	getGlobalStyleHtml,
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 
@@ -19,18 +18,12 @@ export const checkboxTagName = "dav-checkbox"
 export class Checkbox extends LitElement {
 	static styles = [globalStyles, checkboxStyles]
 
-	@state() private theme: Theme = getSettings().theme
-
 	@state() private checkboxClasses = {
 		checked: false,
 		disabled: false
 	}
-	@state() private checkmarkClasses = {
-		darkTheme: false
-	}
 	@state() private checkboxLabelClasses = {
 		disabled: false,
-		darkTheme: false,
 		empty: false,
 		"visually-hidden": false
 	}
@@ -54,8 +47,7 @@ export class Checkbox extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	checkboxClick(event: PointerEvent) {
@@ -85,9 +77,7 @@ export class Checkbox extends LitElement {
 	render() {
 		this.checkboxClasses.checked = this.checked
 		this.checkboxClasses.disabled = this.disabled
-		this.checkmarkClasses.darkTheme = this.theme == Theme.dark
 		this.checkboxLabelClasses.disabled = this.disabled
-		this.checkboxLabelClasses.darkTheme = this.theme == Theme.dark
 		this.checkboxLabelClasses.empty = this.label.length == 0
 		this.checkboxLabelClasses["visually-hidden"] = this.labelHidden
 
@@ -107,13 +97,7 @@ export class Checkbox extends LitElement {
 				@click=${this.checkboxClick}
 				@keydown=${this.checkboxKeydown}
 			>
-				<svg
-					id="checkmark"
-					class=${classMap(this.checkmarkClasses)}
-					viewBox="0,0,20,20"
-					width="18"
-					height="18"
-				>
+				<svg id="checkmark" viewBox="0,0,20,20" width="18" height="18">
 					<path
 						style=${styleMap(this.checkmarkPathStyles)}
 						d="M8.143 12.6697L15.235 4.5L16.8 5.90363L8.23812 15.7667L3.80005 11.2556L5.27591 9.7555L8.143 12.6697Z"
