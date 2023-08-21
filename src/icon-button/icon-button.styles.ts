@@ -9,7 +9,6 @@ export const iconButtonStyles = css`
 		position: relative;
 	}
 
-	/* Colors by MD3 Standard Icon button (https://m3.material.io/components/icon-buttons/specs#eca0451e-430b-41e1-bea3-a31cb7ccda76) */
 	.icon-button {
 		position: relative;
 		display: flex;
@@ -44,12 +43,12 @@ export const iconButtonStyles = css`
 	}
 
 	.icon-button:hover {
-		background-color: var(--dav-color-on-surface-variant-hover);
+		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
 	}
 
 	.icon-button:focus,
 	.icon-button:active {
-		background-color: var(--dav-color-on-surface-variant-focus);
+		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
 	}
 
 	.icon-button.selected {
@@ -57,14 +56,11 @@ export const iconButtonStyles = css`
 	}
 
 	.icon-button.selected:hover {
-		background-color: var(--dav-color-primary-hover);
+		background-color: rgb(var(--dav-color-primary-rgb), 0.08);
 	}
 
-	.icon-button.selected:focus {
-		background-color: var(--dav-color-primary-focus);
-	}
-
+	.icon-button.selected:focus,
 	.icon-button.selected:active {
-		background-color: var(--dav-color-primary-focus);
+		background-color: rgb(var(--dav-color-primary-rgb), 0.12);
 	}
 `
