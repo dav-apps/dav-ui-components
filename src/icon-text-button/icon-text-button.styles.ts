@@ -18,12 +18,12 @@ export const iconTextButtonStyles = css`
 	}
 
 	button:hover {
-		background-color: var(--dav-color-on-surface-variant-hover);
+		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
 	}
 
 	button:focus,
 	button:active {
-		background-color: var(--dav-color-on-surface-variant-focus);
+		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
 	}
 
 	#icon-container {
@@ -31,7 +31,7 @@ export const iconTextButtonStyles = css`
 	}
 
 	#label {
-		font-family: Roboto, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		font-size: 12px;
 		margin-top: 10px;
 	}
