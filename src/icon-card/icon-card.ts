@@ -1,11 +1,10 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
-import { Settings, Theme } from "../types.js"
+import { customElement, property } from "lit/decorators.js"
+import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { iconCardStyles } from "./icon-card.styles.js"
@@ -15,8 +14,6 @@ export const iconCardTagName = "dav-icon-card"
 @customElement(iconCardTagName)
 export class IconCard extends LitElement {
 	static styles = [globalStyles, iconCardStyles]
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property({ type: String }) text: string = ""
 
@@ -31,8 +28,7 @@ export class IconCard extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	getText() {

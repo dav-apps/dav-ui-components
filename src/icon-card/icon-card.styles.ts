@@ -2,14 +2,14 @@ import { css } from "@lit/reactive-element"
 
 export const iconCardStyles = css`
 	.icon-card-container {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 		min-width: 64px;
 		padding: 26px 40px;
 		text-align: center;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);
-		border: 1px solid rgb(var(--dav-color-palette-neutral90-rgb));
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.15);
 		border-radius: 12px;
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 25px;
