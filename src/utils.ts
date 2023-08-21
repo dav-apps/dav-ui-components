@@ -235,6 +235,14 @@ export function setThemeColorVariables(
 		"--dav-color-error-container-focus-rgb",
 		`var(--dav-color-error-container-focus-${theme}-rgb)`
 	)
+	style.setProperty(
+		"--dav-color-surface-variant-hover-rgb",
+		`var(--dav-color-surface-variant-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-variant-focus-rgb",
+		`var(--dav-color-surface-variant-focus-${theme}-rgb)`
+	)
 }
 
 //#region Settings functions

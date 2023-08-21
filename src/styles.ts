@@ -71,6 +71,7 @@ export const globalStyles = css`
 		--dav-color-palette-neutral60-rgb: 145, 144, 148; /* #919094 */
 		--dav-color-palette-neutral70-rgb: 172, 171, 175; /* #acabaf */
 		--dav-color-palette-neutral80-rgb: 199, 198, 202; /* #c7c6ca */
+		--dav-color-palette-neutral85-rgb: 213, 212, 216; /* #d5d4d8 */
 		--dav-color-palette-neutral90-rgb: 227, 226, 230; /* #e3e2e6 */
 		--dav-color-palette-neutral95-rgb: 242, 240, 244; /* #f2f0f4 */
 		--dav-color-palette-neutral98-rgb: 251, 248, 253; /* #fbf8fd */
@@ -87,6 +88,7 @@ export const globalStyles = css`
 		--dav-color-palette-neutral-variant60-rgb: 143, 144, 153; /* #8f9099 */
 		--dav-color-palette-neutral-variant70-rgb: 169, 171, 180; /* #a9abb4 */
 		--dav-color-palette-neutral-variant80-rgb: 197, 198, 208; /* #c5c6d0 */
+		--dav-color-palette-neutral-variant85-rgb: 210, 211, 223; /* #d2d3df */
 		--dav-color-palette-neutral-variant90-rgb: 225, 226, 236; /* #e1e2ec */
 		--dav-color-palette-neutral-variant95-rgb: 239, 240, 250; /* #eff0fa */
 		--dav-color-palette-neutral-variant98-rgb: 250, 248, 255; /* #faf8ff */
@@ -227,6 +229,12 @@ export const globalStyles = css`
 		--dav-color-surface-focus-light-rgb: var(
 			--dav-color-palette-neutral90-rgb
 		);
+		--dav-color-surface-variant-hover-light-rgb: var(
+			--dav-color-palette-neutral-variant85-rgb
+		);
+		--dav-color-surface-variant-focus-light-rgb: var(
+			--dav-color-palette-neutral-variant80-rgb
+		);
 
 		/* dark */
 		--dav-color-primary-dark-rgb: var(--dav-color-palette-primary80-rgb);
@@ -345,6 +353,12 @@ export const globalStyles = css`
 		--dav-color-surface-focus-dark-rgb: var(
 			--dav-color-palette-neutral25-rgb
 		);
+		--dav-color-surface-variant-hover-dark-rgb: var(
+			--dav-color-palette-neutral-variant35-rgb
+		);
+		--dav-color-surface-variant-focus-dark-rgb: var(
+			--dav-color-palette-neutral-variant40-rgb
+		);
 
 		/* default */
 		--dav-color-primary-rgb: var(--dav-color-primary-light-rgb);
@@ -445,6 +459,12 @@ export const globalStyles = css`
 		);
 		--dav-color-surface-hover-rgb: var(--dav-color-surface-hover-light-rgb);
 		--dav-color-surface-focus-rgb: var(--dav-color-surface-focus-light-rgb);
+		--dav-color-surface-variant-hover-rgb: var(
+			--dav-color-surface-variant-hover-light-rgb
+		);
+		--dav-color-surface-variant-focus-rgb: var(
+			--dav-color-surface-variant-focus-light-rgb
+		);
 
 		/* Non-RGB color variables */
 		/* default */
@@ -532,6 +552,12 @@ export const globalStyles = css`
 		);
 		--dav-color-surface-hover: rgb(var(--dav-color-surface-hover-rgb));
 		--dav-color-surface-focus: rgb(var(--dav-color-surface-focus-rgb));
+		--dav-color-surface-variant-hover: rgb(
+			var(--dav-color-surface-variant-hover-rgb)
+		);
+		--dav-color-surface-variant-focus: rgb(
+			var(--dav-color-surface-variant-focus-rgb)
+		);
 	}
 
 	.modern-vertical-scrollbar::-webkit-scrollbar {
