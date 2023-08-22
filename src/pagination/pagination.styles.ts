@@ -25,24 +25,12 @@ export const paginationStyles = css`
 	}
 
 	.pagination-button:hover {
-		background-color: rgb(var(--dav-color-palette-secondary85-rgb));
+		background-color: var(--dav-color-secondary-container-hover);
 	}
 
-	.pagination-button:active,
-	.pagination-button:focus {
-		background-color: rgb(var(--dav-color-palette-secondary80-rgb));
-	}
-
-	.pagination-button .pagination-button.darkTheme {
-		color: white;
-		background-color: #1c2938;
-		border-color: #1c2938;
-	}
-
-	.pagination-button.darkTheme:hover,
-	.pagination-button.darkTheme:active {
-		background-color: #232e3c;
-		border-color: #232e3c;
+	.pagination-button:focus,
+	.pagination-button:active {
+		background-color: var(--dav-color-secondary-container-focus);
 	}
 
 	.pagination-button.disabled {
@@ -55,16 +43,12 @@ export const paginationStyles = css`
 	}
 
 	.pagination-button.selected:hover {
-		background-color: rgb(var(--dav-color-palette-secondary35-rgb));
+		background-color: var(--dav-color-secondary-hover);
 	}
 
-	.pagination-button.selected:active,
-	.pagination-button.selected:focus {
-		background-color: rgb(var(--dav-color-palette-secondary30-rgb));
-	}
-
-	.pagination-button.selected.darkTheme {
-		background-color: #3d4753;
+	.pagination-button.selected:focus,
+	.pagination-button.selected:active {
+		background-color: var(--dav-color-secondary-focus);
 	}
 
 	.button-placeholder {
@@ -74,10 +58,6 @@ export const paginationStyles = css`
 		width: 38px;
 		margin: 0px 1px;
 		color: var(--dav-color-on-surface);
-	}
-
-	.button-placeholder.darkTheme {
-		color: var(--dav-color-on-surface-dark);
 	}
 
 	svg {

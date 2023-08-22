@@ -5,8 +5,7 @@ import { Settings, Theme } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { paginationStyles } from "./pagination.styles.js"
@@ -18,21 +17,18 @@ export const paginationTagName = "dav-pagination"
 export class Pagination extends LitElement {
 	static styles = [globalStyles, paginationStyles]
 
-	@state() private theme: Theme = getSettings().theme
 	@state() private reducedStart: boolean = false
 	@state() private reducedEnd: boolean = false
 
 	@state() private backButtonClasses = {
 		"pagination-button": true,
 		"back-button": true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
 	@state() private forwardButtonClasses = {
 		"pagination-button": true,
 		"forward-button": true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
 
 	@property({ type: Number }) pages: number = 1
@@ -49,8 +45,7 @@ export class Pagination extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	backButtonClick() {
@@ -85,7 +80,6 @@ export class Pagination extends LitElement {
 		if (this.pages <= 0) return
 		let disabled = this.currentPage == 1
 
-		this.backButtonClasses.darkTheme = this.theme == Theme.dark
 		this.backButtonClasses.disabled = disabled
 
 		return html`
@@ -103,7 +97,6 @@ export class Pagination extends LitElement {
 		if (this.pages <= 0) return
 		let disabled = this.currentPage == this.pages
 
-		this.forwardButtonClasses.darkTheme = this.theme == Theme.dark
 		this.forwardButtonClasses.disabled = disabled
 
 		return html`
@@ -121,8 +114,7 @@ export class Pagination extends LitElement {
 		if (this.pages > 1) {
 			let pageButtonClasses = {
 				"pagination-button": true,
-				selected: index == this.currentPage,
-				darkTheme: this.theme == Theme.dark
+				selected: index == this.currentPage
 			}
 
 			return html`
@@ -138,8 +130,7 @@ export class Pagination extends LitElement {
 
 	getButtonPlaceholder() {
 		let buttonPlaceholderClasses = {
-			"button-placeholder": true,
-			darkTheme: this.theme == Theme.dark
+			"button-placeholder": true
 		}
 
 		return html`
