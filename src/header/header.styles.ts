@@ -33,6 +33,10 @@ export const headerStyles = css`
 		height: 36px;
 	}
 
+	dav-icon-button svg {
+		fill: var(--dav-color-on-surface);
+	}
+
 	.back-button {
 		margin-right: 12px;
 	}
