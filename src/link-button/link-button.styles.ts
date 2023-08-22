@@ -6,23 +6,24 @@ export const linkButtonStyles = css`
 	}
 
 	a {
+		display: inline-block;
 		text-decoration: none;
 		color: var(--dav-color-primary);
 		padding: 8px 11px;
 		border-radius: 5px;
 		transition: 200ms;
-		font-family: "Roboto";
+		font-family: Roboto, Arial, sans-serif;
 		font-weight: 400;
 	}
 
-	a:hover,
-	a:focus {
-		color: rgb(var(--dav-color-palette-primary30-rgb));
+	a:hover {
+		color: var(--dav-color-on-primary);
 		background-color: var(--dav-color-primary-hover);
+		transform: translateY(-4px);
 	}
 
+	a:focus,
 	a:active {
-		color: rgb(var(--dav-color-palette-primary20-rgb));
 		background-color: var(--dav-color-primary-focus);
 	}
 `
