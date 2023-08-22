@@ -41,6 +41,7 @@ export function setThemeColorVariables(
 	style: CSSStyleDeclaration,
 	theme: Theme
 ) {
+	style.setProperty("--base-rgb", `var(--base-${theme}-rgb)`)
 	style.setProperty(
 		"--dav-color-primary-rgb",
 		`var(--dav-color-primary-${theme}-rgb)`

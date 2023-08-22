@@ -2,9 +2,6 @@ import { css } from "@lit/reactive-element"
 
 export const globalStyles = css`
 	:host {
-		--hover-opacity: 0.08;
-		--focus-opacity: 0.12;
-
 		--black-rgb: 0, 0, 0; /* #000000 */
 		--white-rgb: 255, 255, 255; /* #ffffff */
 
@@ -113,6 +110,7 @@ export const globalStyles = css`
 
 		/* RGB color variables */
 		/* light */
+		--base-light-rgb: var(--white-rgb);
 		--dav-color-primary-light-rgb: var(--dav-color-palette-primary40-rgb);
 		--dav-color-on-primary-light-rgb: var(--white-rgb);
 		--dav-color-primary-container-light-rgb: var(
@@ -237,6 +235,7 @@ export const globalStyles = css`
 		);
 
 		/* dark */
+		--base-dark-rgb: var(--black-rgb);
 		--dav-color-primary-dark-rgb: var(--dav-color-palette-primary80-rgb);
 		--dav-color-on-primary-dark-rgb: var(--dav-color-palette-primary20-rgb);
 		--dav-color-primary-container-dark-rgb: var(
@@ -361,6 +360,7 @@ export const globalStyles = css`
 		);
 
 		/* default */
+		--base-rgb: var(--white-rgb);
 		--dav-color-primary-rgb: var(--dav-color-primary-light-rgb);
 		--dav-color-on-primary-rgb: var(--dav-color-on-primary-light-rgb);
 		--dav-color-primary-container-rgb: var(
@@ -468,6 +468,7 @@ export const globalStyles = css`
 
 		/* Non-RGB color variables */
 		/* default */
+		--base: rgb(var(--base-rgb));
 		--dav-color-primary: rgb(var(--dav-color-primary-rgb));
 		--dav-color-on-primary: rgb(var(--dav-color-on-primary-rgb));
 		--dav-color-primary-container: rgb(

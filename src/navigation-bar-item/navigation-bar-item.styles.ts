@@ -30,7 +30,7 @@ export const navigationBarItemStyles = css`
 	}
 
 	.item-container.active:hover .icon-container {
-		box-shadow: inset 0 0 10px 0 rgb(var(--dav-color-palette-secondary95-rgb));
+		box-shadow: inset 0 0 10px 0 rgb(var(--base-rgb), 0.6);
 	}
 
 	.item-container:not(.active):hover .icon-container {
