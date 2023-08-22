@@ -1,12 +1,11 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, Theme, ListItemSize } from "../types.js"
+import { Settings, ListItemSize } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings,
 	convertStringToListItemSize
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
@@ -17,8 +16,6 @@ export const listItemTagName = "dav-list-item"
 @customElement(listItemTagName)
 export class ListItem extends LitElement {
 	static styles = [globalStyles, listItemStyles]
-
-	@state() private theme: Theme = getSettings().theme
 
 	@state() private listItemContainerClasses = {
 		"list-item-container": true,
@@ -47,8 +44,7 @@ export class ListItem extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	getImage() {

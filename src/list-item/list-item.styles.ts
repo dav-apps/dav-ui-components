@@ -11,13 +11,13 @@ export const listItemStyles = css`
 		border-radius: 12px;
 	}
 
-	.list-item-container:hover,
-	.list-item-container:focus {
-		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
+	.list-item-container:hover {
+		background-color: var(--dav-color-surface-hover);
 	}
 
+	.list-item-container:focus,
 	.list-item-container:active {
-		background-color: rgb(var(--dav-color-palette-neutral90-rgb));
+		background-color: var(--dav-color-surface-focus);
 	}
 
 	.list-item-image-container {
