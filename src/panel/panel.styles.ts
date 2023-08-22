@@ -16,7 +16,7 @@ export const panelStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--dav-color-scrim);
+		background-color: rgb(var(--dav-color-scrim-rgb), 0.5);
 	}
 
 	#content {
@@ -31,13 +31,6 @@ export const panelStyles = css`
 		border-radius: 28px 0 0 28px;
 	}
 
-	#content.darkTheme {
-		background-color: var(
-			--dark-theme-color-secondary,
-			var(--default-dark-theme-color-secondary)
-		);
-	}
-
 	#header-container {
 		display: flex;
 		justify-content: space-between;
@@ -47,14 +40,11 @@ export const panelStyles = css`
 	}
 
 	#header {
+		color: var(--dav-color-on-surface);
 		font-size: 22px;
-		font-family: Roboto, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		font-weight: 500;
 		margin: 0;
-	}
-
-	#header.darkTheme {
-		color: #f3f3f3;
 	}
 
 	#close-button {
@@ -64,11 +54,7 @@ export const panelStyles = css`
 	#close-button svg {
 		width: 24px;
 		height: 24px;
-		color: var(--dav-color-on-surface-variant);
-	}
-
-	#close-button.darkTheme {
-		color: white;
+		fill: var(--dav-color-on-surface);
 	}
 
 	#slot-container {

@@ -3,13 +3,12 @@ import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
+import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
-import { Settings, Theme } from "../types.js"
 import { xmarkLightSvg } from "../svg/xmark-light.js"
 import { globalStyles } from "../styles.js"
 import { panelStyles } from "./panel.styles.js"
@@ -23,8 +22,6 @@ export class Panel extends LitElement {
 
 	@query("#overlay") overlay: HTMLDivElement
 	@query("#content") content: HTMLDivElement
-
-	@state() private theme: Theme = getSettings().theme
 
 	@state() private contentClasses = {
 		"shadow-lg": true,
@@ -54,8 +51,7 @@ export class Panel extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	updated(changedProperties: Map<string, any>) {
@@ -90,11 +86,6 @@ export class Panel extends LitElement {
 	}
 
 	render() {
-		// Update the UI based on the properties
-		this.contentClasses.darkTheme = this.theme == Theme.dark
-		this.closeButtonClasses.darkTheme = this.theme == Theme.dark
-		this.headerClasses.darkTheme = this.theme == Theme.dark
-
 		if (this.visible) {
 			this.containerStyles.display = "block"
 		}
