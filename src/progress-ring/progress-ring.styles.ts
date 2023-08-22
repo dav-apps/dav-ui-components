@@ -8,6 +8,7 @@ export const progressRingStyles = css`
 	circle {
 		transform-origin: 50% 50%;
 		animation: spin 2s linear infinite;
+		stroke: var(--dav-color-primary);
 	}
 
 	@keyframes spin {

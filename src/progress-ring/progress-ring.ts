@@ -15,11 +15,11 @@ export class ProgressRing extends LitElement {
 		height: "24px"
 	}
 	@state() private circleStyles = {
-		stroke: "#036ac4"
+		stroke: null
 	}
 
 	@property({ type: Number }) size: number = 24
-	@property() color: string = "#036ac4"
+	@property() color: string = null
 
 	render() {
 		this.svgStyles.width = `${this.size}px`
