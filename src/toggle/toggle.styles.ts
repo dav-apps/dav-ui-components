@@ -28,13 +28,13 @@ export const toggleStyles = css`
 		transition: 200ms;
 	}
 
-	#slider.darkTheme {
-		background-color: #545e66;
+	#slider:hover {
+		background-color: var(--dav-color-surface-hover);
 	}
 
-	#slider:hover,
-	input:focus + #slider {
-		background-color: rgb(var(--dav-color-palette-neutral95-rgb));
+	input:focus + #slider,
+	input:active + #slider {
+		background-color: var(--dav-color-surface-focus);
 	}
 
 	#slider:before {
@@ -71,11 +71,12 @@ export const toggleStyles = css`
 	}
 
 	#switch.checked:hover #slider {
-		background-color: rgb(var(--dav-color-palette-primary35-rgb));
+		background-color: var(--dav-color-primary-hover);
 	}
 
-	#switch.checked input:focus + #slider {
-		background-color: rgb(var(--dav-color-palette-primary35-rgb));
+	#switch.checked input:focus + #slider,
+	#switch.checked input:active + #slider {
+		background-color: var(--dav-color-primary-focus);
 	}
 
 	#switch.checked #slider {

@@ -1,12 +1,11 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Theme, Settings } from "../types.js"
+import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { toggleStyles } from "./toggle.styles.js"
@@ -17,13 +16,8 @@ export const toggleTagName = "dav-toggle"
 export class Toggle extends LitElement {
 	static styles = [globalStyles, toggleStyles]
 
-	@state() private theme: Theme = getSettings().theme
-
 	@state() private inputClasses = {
 		checked: false
-	}
-	@state() private sliderClasses = {
-		darkTheme: false
 	}
 
 	@property({ type: Boolean }) checked: boolean = false
@@ -39,8 +33,7 @@ export class Toggle extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
-		this.theme = settings.theme
-		setThemeColorVariables(this.style, this.theme)
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	private checkboxClicked(event: PointerEvent) {
@@ -56,9 +49,7 @@ export class Toggle extends LitElement {
 	}
 
 	render() {
-		// Update the UI based on the properties
 		this.inputClasses.checked = this.checked
-		this.sliderClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
 			<label id="switch" class=${classMap(this.inputClasses)}>
@@ -67,7 +58,7 @@ export class Toggle extends LitElement {
 					?checked=${this.checked}
 					@click=${this.checkboxClicked}
 				/>
-				<span id="slider" class=${classMap(this.sliderClasses)}></span>
+				<span id="slider"></span>
 			</label>
 		`
 	}
