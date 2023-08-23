@@ -1,12 +1,12 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, ButtonColor, ButtonSize } from "../types.js"
+import { Settings, ThemeColor, ButtonSize } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	convertStringToButtonColor,
+	convertStringToThemeColor,
 	convertStringToButtonSize
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
@@ -37,9 +37,9 @@ export class Button extends LitElement {
 	size: ButtonSize = ButtonSize.normal
 	@property({
 		type: String,
-		converter: (value: string) => convertStringToButtonColor(value)
+		converter: (value: string) => convertStringToThemeColor(value)
 	})
-	color: ButtonColor = ButtonColor.primary
+	color: ThemeColor = ThemeColor.primary
 	@property({ type: Boolean }) tonal: boolean = false
 	@property({ type: Boolean }) outline: boolean = false
 	@property({ type: Boolean }) text: boolean = false
@@ -67,37 +67,28 @@ export class Button extends LitElement {
 
 	render() {
 		this.buttonClasses.small = this.size == ButtonSize.small
-
-		switch (this.color) {
-			case ButtonColor.secondary:
-				this.buttonClasses.primary = false
-				this.buttonClasses.secondary = true
-				this.buttonClasses.tertiary = false
-				this.buttonClasses.error = false
-				break
-			case ButtonColor.tertiary:
-				this.buttonClasses.primary = false
-				this.buttonClasses.secondary = false
-				this.buttonClasses.tertiary = true
-				this.buttonClasses.error = false
-				break
-			case ButtonColor.error:
-				this.buttonClasses.primary = false
-				this.buttonClasses.secondary = false
-				this.buttonClasses.tertiary = false
-				this.buttonClasses.error = true
-				break
-			default:
-				this.buttonClasses.primary = true
-				this.buttonClasses.secondary = false
-				this.buttonClasses.tertiary = false
-				this.buttonClasses.error = false
-		}
-
+		this.buttonClasses.primary = false
+		this.buttonClasses.secondary = false
+		this.buttonClasses.tertiary = false
+		this.buttonClasses.error = false
 		this.buttonClasses.tonal = this.tonal
 		this.buttonClasses.outline = this.outline
 		this.buttonClasses.text = this.text
 		this.buttonClasses.disabled = this.disabled
+
+		switch (this.color) {
+			case ThemeColor.secondary:
+				this.buttonClasses.secondary = true
+				break
+			case ThemeColor.tertiary:
+				this.buttonClasses.tertiary = true
+				break
+			case ThemeColor.error:
+				this.buttonClasses.error = true
+				break
+			default:
+				this.buttonClasses.primary = true
+		}
 
 		return html`
 			<button

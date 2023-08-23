@@ -2,7 +2,7 @@ import { html } from "lit"
 import { en, de } from "./locale.js"
 import {
 	Theme,
-	ButtonColor,
+	ThemeColor,
 	ButtonSize,
 	SidenavMode,
 	Settings,
@@ -285,16 +285,16 @@ export function setTheme(theme: Theme) {
 //#endregion
 
 //#region Enum converter functions
-export function convertStringToButtonColor(value: string): ButtonColor {
+export function convertStringToThemeColor(value: string): ThemeColor {
 	switch (value) {
 		case "secondary":
-			return ButtonColor.secondary
+			return ThemeColor.secondary
 		case "tertiary":
-			return ButtonColor.tertiary
+			return ThemeColor.tertiary
 		case "error":
-			return ButtonColor.error
+			return ThemeColor.error
 		default:
-			return ButtonColor.primary
+			return ThemeColor.primary
 	}
 }
 

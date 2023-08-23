@@ -22,7 +22,7 @@ export enum Theme {
 	dark = "dark"
 }
 
-export enum ButtonColor {
+export enum ThemeColor {
 	primary = "primary",
 	secondary = "secondary",
 	tertiary = "tertiary",
