@@ -4,8 +4,11 @@ import { classMap } from "lit/directives/class-map.js"
 import { circleCheckLightSvg } from "../svg/circle-check-light.js"
 import { circleExclamationLightSvg } from "../svg/circle-exclamation-light.js"
 import { circleInfoLightSvg } from "../svg/circle-info-light.js"
-import { ThemeColor, MessageBarType } from "../types.js"
+import { Settings, ThemeColor, MessageBarType } from "../types.js"
 import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange,
 	convertStringToThemeColor,
 	convertStringToMessageBarType
 } from "../utils.js"
@@ -36,6 +39,20 @@ export class MessageBar extends LitElement {
 		converter: (value: string) => convertStringToThemeColor(value)
 	})
 	color: ThemeColor = ThemeColor.primary
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	getIcon() {
 		switch (this.type) {
