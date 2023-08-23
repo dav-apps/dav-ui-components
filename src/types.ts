@@ -65,3 +65,9 @@ export enum ListItemSize {
 	small = "small",
 	normal = "normal"
 }
+
+export enum MessageBarType {
+	info = "info",
+	success = "success",
+	error = "error"
+}

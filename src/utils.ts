@@ -9,7 +9,8 @@ import {
 	Alignment,
 	HeaderSize,
 	Orientation,
-	ListItemSize
+	ListItemSize,
+	MessageBarType
 } from "./types.js"
 
 var settingsChangeCallbacks: Function[] = []
@@ -353,6 +354,17 @@ export function convertStringToListItemSize(value: string): ListItemSize {
 			return ListItemSize.small
 		default:
 			return ListItemSize.normal
+	}
+}
+
+export function convertStringToMessageBarType(value: string): MessageBarType {
+	switch (value) {
+		case "success":
+			return MessageBarType.success
+		case "error":
+			return MessageBarType.error
+		default:
+			return MessageBarType.info
 	}
 }
 //#endregion
