@@ -71,7 +71,10 @@ export class MessageBar extends LitElement {
 		}
 
 		return html`
-			<div class=${classMap(this.messageBarClasses)} role="alert">
+			<div
+				class=${classMap(this.messageBarClasses)}
+				role=${this.type == MessageBarType.error ? "alert" : ""}
+			>
 				${this.getIcon()}
 
 				<span>
