@@ -2,7 +2,7 @@ module.exports = {
 	name: "Dialog",
 	properties: [
 		{
-			name: "header",
+			name: "headline",
 			type: "String"
 		},
 		{
@@ -44,6 +44,15 @@ module.exports = {
 				})
 
 				dialog.addEventListener("primaryButtonClick", () => {
+					dialog.loading = true
+
+					setTimeout(() => {
+						dialog.visible = false
+						dialog.loading = false
+					}, 2000)
+				})
+
+				dialog.addEventListener("defaultButtonClick", () => {
 					dialog.visible = false
 				})
 			},
@@ -53,8 +62,9 @@ module.exports = {
 				</dav-button>
 
 				<dav-dialog
-					header="Hello World"
-					primaryButtonText="Close"
+					headline="Hello World"
+					primaryButtonText="Save"
+					defaultButtonText="Close"
 				>
 					<p>This is a dialog</p>
 				</dav-dialog>

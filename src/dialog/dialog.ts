@@ -4,7 +4,6 @@ import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
@@ -21,8 +20,9 @@ export class Dialog extends LitElement {
 	@state() private dualScreenLayout: boolean = false
 
 	@state() private dialogClasses = {
+		dialog: true,
 		shadow: true,
-		"ms-motion-slideUpIn": true
+		"slide-down-in": true
 	}
 	@state() private containerStyles = {
 		display: "flex",
@@ -39,7 +39,7 @@ export class Dialog extends LitElement {
 		maxWidth: "600px"
 	}
 
-	@property() header: string = ""
+	@property() headline: string = ""
 	@property() primaryButtonText: string = ""
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) visible: boolean = false
@@ -91,10 +91,7 @@ export class Dialog extends LitElement {
 	getProgressRing() {
 		if (this.loading) {
 			return html`
-				<dav-progress-ring
-					style="width: 16px; height: 16px; margin: 8px 14px 0px 0px;"
-					indeterminate="true"
-				></dav-progress-ring>
+				<dav-progress-ring indeterminate size="24"></dav-progress-ring>
 			`
 		}
 	}
@@ -103,7 +100,8 @@ export class Dialog extends LitElement {
 		if (this.defaultButtonText.length > 0) {
 			return html`
 				<dav-button
-					text
+					size="small"
+					outline
 					?disabled=${this.loading}
 					@click=${this.defaultButtonClick}
 				>
@@ -117,8 +115,8 @@ export class Dialog extends LitElement {
 		if (this.primaryButtonText.length > 0) {
 			return html`
 				<dav-button
-					style="margin-left: 10px"
-					text
+					class="primary-button"
+					size="small"
 					?disabled=${this.loading}
 					@click=${this.primaryButtonClick}
 				>
@@ -129,33 +127,29 @@ export class Dialog extends LitElement {
 	}
 
 	render() {
-		// Update the UI based on the properties
 		this.containerStyles.display = this.visible ? "flex" : "none"
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div style=${styleMap(this.containerStyles)}>
-				<div id="overlay" @click=${this.overlayClick}></div>
+				<div class="overlay" @click=${this.overlayClick}></div>
 
 				<div
-					id="dialog"
 					class=${classMap(this.dialogClasses)}
 					style=${styleMap(this.dialogStyles)}
 					role="dialog"
 					aria-modal="true"
 					aria-live="assertive"
-					aria-labelledby="header"
+					aria-labelledby="headline"
 				>
-					<h4 id="header">${this.header}</h4>
+					<h4 class="headline">${this.headline}</h4>
 
-					<div id="content-container">
+					<div class="content-container">
 						<slot></slot>
 					</div>
 
-					<div class="d-flex" style="float: right">
+					<div class="button-container">
 						${this.getProgressRing()} ${this.getDefaultButton()}
 						${this.getPrimaryButton()}
 					</div>
