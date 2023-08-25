@@ -36,6 +36,7 @@ module.exports = {
 		"./dist/src/checkbox/checkbox.js",
 		"./dist/src/checkbox/checkbox.styles.js",
 		"./dist/src/context-menu/context-menu.js",
+		"./dist/src/context-menu/context-menu.animations.js",
 		"./dist/src/context-menu/context-menu.styles.js",
 		"./dist/src/context-menu-divider/context-menu-divider.js",
 		"./dist/src/context-menu-divider/context-menu-divider.styles.js",

@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
-import { classMap } from "lit/directives/class-map.js"
+import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
@@ -10,6 +9,7 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { contextMenuStyles } from "./context-menu.styles.js"
+import { slideIn, slideOut } from "./context-menu.animations.js"
 
 export const contextMenuTagName = "dav-context-menu"
 
@@ -17,11 +17,10 @@ export const contextMenuTagName = "dav-context-menu"
 export class ContextMenu extends LitElement {
 	static styles = [globalStyles, contextMenuStyles]
 
-	@state() private containerClasses = {
-		"slide-down-in": false,
-		visible: false
-	}
+	@query(".container") container: HTMLDivElement
+
 	@state() private containerStyles = {
+		display: "none",
 		top: "0px",
 		left: "0px"
 	}
@@ -46,6 +45,31 @@ export class ContextMenu extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	updated(changedProperties: Map<string, any>) {
+		if (
+			changedProperties.has("visible") &&
+			changedProperties.get("visible") != null
+		) {
+			let newIsVisible = !changedProperties.get("visible") as boolean
+			let animation: Animation
+
+			if (newIsVisible) {
+				// Play slide in animation
+				animation = slideIn(this.container)
+			} else {
+				// Play slide out animation
+				animation = slideOut(this.container)
+			}
+
+			animation.onfinish = () => {
+				this.containerStyles.display = newIsVisible
+					? "inline-block"
+					: "none"
+				this.requestUpdate()
+			}
+		}
+	}
+
 	documentClick = (event: MouseEvent) => {
 		if (event.target != this) {
 			this.visible = false
@@ -53,18 +77,15 @@ export class ContextMenu extends LitElement {
 	}
 
 	render() {
-		this.containerClasses["slide-down-in"] = this.visible
-		this.containerClasses.visible = this.visible
+		if (this.visible) {
+			this.containerStyles.display = "inline-block"
+		}
 
 		this.containerStyles.top = `${this.posY}px`
 		this.containerStyles.left = `${this.posX}px`
 
 		return html`
-			<div
-				id="container"
-				class=${classMap(this.containerClasses)}
-				style=${styleMap(this.containerStyles)}
-			>
+			<div class="container" style=${styleMap(this.containerStyles)}>
 				<slot></slot>
 			</div>
 		`
