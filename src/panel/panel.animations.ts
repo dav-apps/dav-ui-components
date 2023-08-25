@@ -1,8 +1,10 @@
 export function slideIn(
 	content: HTMLDivElement,
 	overlay: HTMLDivElement
-): Animation {
-	let animation = content.animate(
+): Animation[] {
+	const duration = 160
+
+	let contentAnimation = content.animate(
 		[
 			{
 				right: "-20px",
@@ -14,13 +16,13 @@ export function slideIn(
 			}
 		],
 		{
-			duration: 160,
+			duration,
 			easing: "ease-in-out",
 			fill: "forwards"
 		}
 	)
 
-	overlay.animate(
+	let overlayAnimation = overlay.animate(
 		[
 			{
 				opacity: 0
@@ -30,19 +32,21 @@ export function slideIn(
 			}
 		],
 		{
-			duration: 160,
+			duration,
 			fill: "forwards"
 		}
 	)
 
-	return animation
+	return [contentAnimation, overlayAnimation]
 }
 
 export function slideOut(
 	content: HTMLDivElement,
 	overlay: HTMLDivElement
-): Animation {
-	let animation = content.animate(
+): Animation[] {
+	const duration = 160
+
+	let contentAnimation = content.animate(
 		[
 			{
 				right: "0",
@@ -54,13 +58,13 @@ export function slideOut(
 			}
 		],
 		{
-			duration: 160,
+			duration,
 			easing: "ease-in-out",
 			fill: "forwards"
 		}
 	)
 
-	overlay.animate(
+	let overlayAnimation = overlay.animate(
 		[
 			{
 				opacity: 1
@@ -70,10 +74,10 @@ export function slideOut(
 			}
 		],
 		{
-			duration: 160,
+			duration,
 			fill: "forwards"
 		}
 	)
 
-	return animation
+	return [contentAnimation, overlayAnimation]
 }

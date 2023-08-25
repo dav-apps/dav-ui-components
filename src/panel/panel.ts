@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
-import { query } from "lit/decorators/query.js"
+import { customElement, property, state, query } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
@@ -54,26 +53,27 @@ export class Panel extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	updated(changedProperties: Map<string, any>) {
+	async updated(changedProperties: Map<string, any>) {
 		if (
 			changedProperties.has("visible") &&
 			changedProperties.get("visible") != null
 		) {
 			let newIsVisible = !changedProperties.get("visible") as boolean
-			let animation: Animation
+			let animations: Animation[]
 
 			if (newIsVisible) {
 				// Play slide in animation
-				animation = slideIn(this.content, this.overlay)
+				animations = slideIn(this.content, this.overlay)
 			} else {
 				// Play slide out animation
-				animation = slideOut(this.content, this.overlay)
+				animations = slideOut(this.content, this.overlay)
 			}
 
-			animation.onfinish = () => {
-				this.containerStyles.display = newIsVisible ? "block" : "none"
-				this.requestUpdate()
-			}
+			// Wait for all animations to end
+			await Promise.all(animations.map(a => a.finished))
+
+			this.containerStyles.display = newIsVisible ? "block" : "none"
+			this.requestUpdate()
 		}
 	}
 
