@@ -32,8 +32,8 @@ module.exports = {
 		{
 			title: "Default Dialog",
 			controller: function (element) {
-				let openButton = document.getElementById("open-button")
-				let dialog = document.getElementsByTagName("dav-dialog")[0]
+				let openButton = element.getElementsByTagName("dav-button")[0]
+				let dialog = element.getElementsByTagName("dav-dialog")[0]
 
 				openButton.onclick = () => {
 					dialog.visible = true
@@ -57,7 +57,7 @@ module.exports = {
 				})
 			},
 			template: `
-				<dav-button id="open-button">
+				<dav-button>
 					Open dialog
 				</dav-button>
 
@@ -67,6 +67,48 @@ module.exports = {
 					defaultButtonText="Close"
 				>
 					<p>This is a dialog</p>
+				</dav-dialog>
+			`
+		},
+		{
+			title: "Dialog with error button",
+			controller: function (element) {
+				let openButton = element.getElementsByTagName("dav-button")[0]
+				let dialog = element.getElementsByTagName("dav-dialog")[0]
+
+				openButton.onclick = () => {
+					dialog.visible = true
+				}
+
+				dialog.addEventListener("dismiss", () => {
+					dialog.visible = false
+				})
+
+				dialog.addEventListener("primaryButtonClick", () => {
+					dialog.loading = true
+
+					setTimeout(() => {
+						dialog.visible = false
+						dialog.loading = false
+					}, 2000)
+				})
+
+				dialog.addEventListener("defaultButtonClick", () => {
+					dialog.visible = false
+				})
+			},
+			template: `
+				<dav-button>
+					Open dialog
+				</dav-button>
+
+				<dav-dialog
+					headline="Log out?"
+					primaryButtonText="Log out"
+					primaryButtonColor="error"
+					defaultButtonText="Cancel"
+				>
+					<p>All your local data will be removed.</p>
 				</dav-dialog>
 			`
 		}

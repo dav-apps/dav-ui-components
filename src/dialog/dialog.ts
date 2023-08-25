@@ -2,11 +2,12 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { Settings } from "../types.js"
+import { Settings, ThemeColor } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange
+	unsubscribeSettingsChange,
+	convertStringToThemeColor
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { dialogStyles } from "./dialog.styles.js"
@@ -41,6 +42,11 @@ export class Dialog extends LitElement {
 
 	@property() headline: string = ""
 	@property() primaryButtonText: string = ""
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToThemeColor(value)
+	})
+	primaryButtonColor: ThemeColor = ThemeColor.primary
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
@@ -115,7 +121,7 @@ export class Dialog extends LitElement {
 		if (this.primaryButtonText.length > 0) {
 			return html`
 				<dav-button
-					class="primary-button"
+					color=${this.primaryButtonColor}
 					size="small"
 					?disabled=${this.loading}
 					@click=${this.primaryButtonClick}

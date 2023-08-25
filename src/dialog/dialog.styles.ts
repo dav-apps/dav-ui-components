@@ -8,6 +8,7 @@ export const dialogStyles = css`
 		left: 0;
 		right: 0;
 		background-color: rgb(var(--dav-color-scrim-rgb), 0.5);
+		backdrop-filter: blur(4px);
 	}
 
 	.dialog {
