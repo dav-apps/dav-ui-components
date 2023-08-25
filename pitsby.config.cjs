@@ -42,6 +42,7 @@ module.exports = {
 		"./dist/src/context-menu-item/context-menu-item.js",
 		"./dist/src/context-menu-item/context-menu-item.styles.js",
 		"./dist/src/dialog/dialog.js",
+		"./dist/src/dialog/dialog.animations.js",
 		"./dist/src/dialog/dialog.styles.js",
 		"./dist/src/dropdown/dropdown.js",
 		"./dist/src/dropdown/dropdown.styles.js",

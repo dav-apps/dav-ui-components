@@ -89,7 +89,10 @@ module.exports = {
 
 					setTimeout(() => {
 						dialog.visible = false
-						dialog.loading = false
+
+						setTimeout(() => {
+							dialog.loading = false
+						}, 400)
 					}, 2000)
 				})
 

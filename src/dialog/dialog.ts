@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
-import { classMap } from "lit/directives/class-map.js"
+import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, ThemeColor } from "../types.js"
 import {
@@ -11,6 +10,7 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { dialogStyles } from "./dialog.styles.js"
+import { slideIn, slideOut } from "./dialog.animations.js"
 
 export const dialogTagName = "dav-dialog"
 
@@ -18,15 +18,13 @@ export const dialogTagName = "dav-dialog"
 export class Dialog extends LitElement {
 	static styles = [globalStyles, dialogStyles]
 
+	@query(".overlay") overlay: HTMLDivElement
+	@query(".dialog") dialog: HTMLDivElement
+
 	@state() private dualScreenLayout: boolean = false
 
-	@state() private dialogClasses = {
-		dialog: true,
-		shadow: true,
-		"slide-down-in": true
-	}
 	@state() private containerStyles = {
-		display: "flex",
+		display: "none",
 		justifyContent: "center",
 		alignItems: "center",
 		position: "fixed",
@@ -78,6 +76,30 @@ export class Dialog extends LitElement {
 
 	settingsChange = (settings: Settings) => {
 		setThemeColorVariables(this.style, settings.theme)
+	}
+
+	async updated(changedProperties: Map<string, any>) {
+		if (
+			changedProperties.has("visible") &&
+			changedProperties.get("visible") != null
+		) {
+			let newIsVisible = !changedProperties.get("visible") as boolean
+			let animations: Animation[]
+
+			if (newIsVisible) {
+				// Play slide in animation
+				animations = slideIn(this.dialog, this.overlay)
+			} else {
+				// Play slide out animation
+				animations = slideOut(this.dialog, this.overlay)
+			}
+
+			// Wait for all animations to end
+			await Promise.all(animations.map(a => a.finished))
+
+			this.containerStyles.display = newIsVisible ? "flex" : "none"
+			this.requestUpdate()
+		}
 	}
 
 	private overlayClick() {
@@ -133,7 +155,10 @@ export class Dialog extends LitElement {
 	}
 
 	render() {
-		this.containerStyles.display = this.visible ? "flex" : "none"
+		if (this.visible) {
+			this.containerStyles.display = "flex"
+		}
+
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
 
@@ -142,7 +167,7 @@ export class Dialog extends LitElement {
 				<div class="overlay" @click=${this.overlayClick}></div>
 
 				<div
-					class=${classMap(this.dialogClasses)}
+					class="dialog"
 					style=${styleMap(this.dialogStyles)}
 					role="dialog"
 					aria-modal="true"
