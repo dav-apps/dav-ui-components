@@ -1,15 +1,11 @@
 import { css } from "@lit/reactive-element"
 
 export const linkButtonStyles = css`
-	:host {
-		margin: 3px 0;
-	}
-
 	a {
 		display: inline-block;
 		text-decoration: none;
 		color: var(--dav-color-primary);
-		padding: 8px 11px;
+		padding: 2px 6px;
 		border-radius: 5px;
 		transition: 200ms;
 		font-family: Roboto, Arial, sans-serif;
@@ -24,6 +20,8 @@ export const linkButtonStyles = css`
 
 	a:focus,
 	a:active {
+		color: var(--dav-color-on-primary);
 		background-color: var(--dav-color-primary-focus);
+		transform: translateY(-4px);
 	}
 `
