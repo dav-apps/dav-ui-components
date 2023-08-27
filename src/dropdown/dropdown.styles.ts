@@ -11,13 +11,12 @@ export const dropdownStyles = css`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background-color: white;
-		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.4);
+		background-color: var(--dav-color-surface);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
 		border-radius: 6px;
 		padding: 5px 10px;
 		font-family: Roboto, sans-serif;
 		font-size: 14px;
-		background-color: var(--dav-color-surface);
 		transition: 200ms;
 		cursor: pointer;
 	}
@@ -31,8 +30,8 @@ export const dropdownStyles = css`
 
 	.dropdown-button.disabled {
 		cursor: not-allowed;
-		background-color: #edededb3;
-		border: none;
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
+		background-color: rgb(var(--dav-color-surface-rgb), 0.6);
 	}
 
 	.dropdown-button span {
@@ -48,9 +47,10 @@ export const dropdownStyles = css`
 	}
 
 	.dropdown-label {
-		font-family: Roboto, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		margin-bottom: 8px;
 		font-size: 14px;
+		font-weight: 400;
 	}
 
 	.chevron-svg-container {
@@ -60,8 +60,8 @@ export const dropdownStyles = css`
 		transition: 200ms;
 	}
 
-	.dropdown-button:active #chevron-svg-container,
-	.dropdown-button.active #chevron-svg-container {
+	.dropdown-button:active .chevron-svg-container,
+	.dropdown-button.active .chevron-svg-container {
 		transform: translateY(2px);
 	}
 
@@ -70,12 +70,13 @@ export const dropdownStyles = css`
 		position: absolute;
 		overflow: auto;
 		z-index: 1;
-		background-color: var(--dav-color-surface);
+		background-color: rgb(var(--dav-color-surface-rgb), 0.75);
 		box-shadow: 0px 8px 16px 0px rgb(var(--dav-color-shadow-rgb), 0.2);
 		font-family: Roboto, sans-serif;
 		font-size: 16px;
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.12);
 		border-radius: 6px;
+		backdrop-filter: blur(4px);
 	}
 
 	.dropdown-content.visible {
@@ -89,7 +90,7 @@ export const dropdownStyles = css`
 		border: none;
 		width: 100%;
 		text-align: left;
-		background-color: var(--dav-color-surface);
+		background-color: transparent;
 		color: var(--dav-color-on-surface);
 		border-radius: 6px;
 		margin: 4px;

@@ -2,13 +2,13 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
+import { DropdownOption, DropdownOptionType, Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
 	getSettings
 } from "../utils.js"
-import { DropdownOption, DropdownOptionType, Settings } from "../types.js"
 import { chevronDownLightSvg } from "../svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
 import { dropdownStyles } from "./dropdown.styles.js"

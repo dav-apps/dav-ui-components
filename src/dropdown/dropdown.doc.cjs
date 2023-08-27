@@ -3,7 +3,7 @@ module.exports = {
 	examples: [
 		{
 			title: "Default Dropdown",
-			controller: function(element) {
+			controller: function (element) {
 				element.style.height = "200px"
 				let dropdown = element.getElementsByTagName("dav-dropdown")[0]
 
@@ -28,6 +28,15 @@ module.exports = {
 			template: `
 				<dav-dropdown
 					label="Theme">
+				</dav-dropdown>
+			`
+		},
+		{
+			title: "Disabled Dropdown",
+			template: `
+				<dav-dropdown
+					label="Theme"
+					disabled>
 				</dav-dropdown>
 			`
 		}
