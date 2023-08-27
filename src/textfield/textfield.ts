@@ -2,12 +2,11 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, Theme } from "../types.js"
+import { Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { textfieldStyles } from "./textfield.styles.js"
@@ -22,16 +21,12 @@ export class Textfield extends LitElement {
 
 	@state() private textfieldLabelClasses = {
 		"textfield-label": true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
 	@state() private textfieldInputClasses = {
 		"textfield-input": true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 	@property() label: string = ""
@@ -54,7 +49,9 @@ export class Textfield extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	input() {
 		this.value = this.textfieldInput.value
@@ -97,14 +94,10 @@ export class Textfield extends LitElement {
 
 	render() {
 		this.textfieldLabelClasses.disabled = this.disabled
-		this.textfieldLabelClasses.darkTheme = this.theme == Theme.dark
 		this.textfieldInputClasses.disabled = this.disabled
-		this.textfieldInputClasses.darkTheme = this.theme == Theme.dark
 
 		return html`
-			${getGlobalStyleHtml()}
-
-			<div>
+			<div class="container">
 				${this.getLabel()}
 
 				<input

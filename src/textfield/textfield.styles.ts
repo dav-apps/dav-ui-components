@@ -1,80 +1,66 @@
 import { css } from "@lit/reactive-element"
 
 export const textfieldStyles = css`
-	.textfield-label {
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-		font-size: 14px;
-		margin: 0 0 4px;
-		cursor: pointer;
-		color: #212529;
+	.container {
+		display: flex;
+		flex-direction: column;
 	}
 
-	.textfield-label.darkTheme {
-		color: #f3f3f3;
+	.textfield-label {
+		font-family: Roboto, Arial, sans-serif;
+		font-size: 14px;
+		font-weight: 400;
+		margin-bottom: 6px;
+		cursor: pointer;
+		color: var(--dav-color-on-surface);
 	}
 
 	.textfield-label.disabled {
 		cursor: not-allowed;
-		color: #212529b3;
-	}
-
-	.textfield-label.disabled.darkTheme {
-		color: #f3f3f3b3;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
 	.textfield-input {
 		margin: 2px 0px;
 		padding: 0px 9px;
-		width: 100%;
 		height: 28px;
 		background: transparent;
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
-		border: 1px solid #8f8f8fb3;
-		border-radius: 4px;
+		background-color: var(--dav-color-surface);
+		color: var(--dav-color-on-surface);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
+		border-radius: 6px;
+		transition: 200ms;
 	}
 
-	.textfield-input.darkTheme {
-		color: white;
-		border: 1px solid #b5b5b5;
+	.textfield-input:not(.disabled):hover,
+	.textfield-input:not(.disabled):focus,
+	.textfield-input:not(.disabled):active {
+		background-color: var(--dav-color-surface-hover);
+		border: 1px solid var(--dav-color-primary);
+		outline: 1px solid var(--dav-color-primary);
 	}
 
 	.textfield-input.disabled {
 		cursor: not-allowed;
-		border: 1px solid #c3c3c3;
-		color: #8d8d8d;
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
+		background-color: rgb(var(--dav-color-surface-rgb), 0.6);
 	}
 
-	.textfield-input.disabled.darkTheme {
-		border: 1px solid #707070;
-		color: #c5c5c5;
-	}
-
-	.textfield-input.darkTheme::-ms-reveal {
-		filter: invert(100%);
-	}
-
-	.textfield-input.darkTheme::placeholder {
-		color: #919090;
+	.textfield-input::placeholder {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
 	.textfield-input.disabled::placeholder {
-		color: #d6d6d6;
-	}
-
-	.textfield-input.disabled.darkTheme::placeholder {
-		color: #767676;
-	}
-
-	.textfield-input:focus {
-		outline: 1px solid #878787;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.4);
 	}
 
 	.textfield-error-message {
 		max-width: 200px;
-		margin: 0px 0px 0px 4px;
-		color: #a80000;
-		font-size: 12.5px;
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		margin: 4px 0px 0px 4px;
+		color: var(--dav-color-error);
+		font-size: 13px;
+		font-family: Roboto, Arial, sans-serif;
 	}
 `
