@@ -26,6 +26,8 @@ export class BottomSheet extends LitElement {
 	@query(".content-container") contentContainer: HTMLDivElement
 	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
 
+	@state() private overlayOpacity: number = 0
+
 	@state() private containerClasses = {
 		container: true,
 		visible: false
@@ -39,7 +41,8 @@ export class BottomSheet extends LitElement {
 		animate: false
 	}
 	@state() private overlayStyles = {
-		opacity: "0.5"
+		//opacity: "0.5"
+		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
 	@state() private contentContainerStyles = {
 		transform: ""
@@ -124,15 +127,12 @@ export class BottomSheet extends LitElement {
 
 				if (!this.dismissable) {
 					// Calculate the opacity
-					this.overlayStyles.opacity = (
+					this.overlayOpacity =
 						((100 /
 							(this.bottomSheetContainer.clientHeight -
 								minBottomSheetPosition)) *
 							(this.position - minBottomSheetPosition)) /
 						200
-					)
-						.toPrecision(3)
-						.toString()
 
 					if (this.position == minBottomSheetPosition) {
 						// Hide the overlay
@@ -179,7 +179,16 @@ export class BottomSheet extends LitElement {
 		this.containerClasses.visible = this.visible
 		this.overlayClasses.visible = this.visible
 		this.bottomSheetContainerClasses.animate = this.animatePosition
-		this.overlayStyles.opacity = this.visible ? "0.5" : "0"
+
+		if (this.dismissable) {
+			this.overlayOpacity = this.visible ? 0.5 : 0
+		}
+
+		this.overlayStyles[
+			"background-color"
+		] = `rgb(var(--dav-color-scrim-rgb), ${this.overlayOpacity
+			.toPrecision(3)
+			.toString()})`
 
 		this.updateContentContainerTransform()
 

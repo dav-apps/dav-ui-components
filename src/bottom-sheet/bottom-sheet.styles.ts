@@ -18,7 +18,7 @@ export const bottomSheetStyles = css`
 		left: 0;
 		right: 0;
 		width: 0;
-		background-color: var(--dav-color-scrim);
+		backdrop-filter: blur(4px);
 		transition: 200ms;
 	}
 
