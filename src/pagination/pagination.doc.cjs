@@ -14,7 +14,7 @@ module.exports = {
 		{
 			title: "Default Pagination",
 			controller: function(element) {
-				let pagination = document.getElementsByTagName("dav-pagination")[0]
+				let pagination = element.getElementsByTagName("dav-pagination")[0]
 
 				pagination.addEventListener("pageChange", event => {
 					let page = event.detail.page

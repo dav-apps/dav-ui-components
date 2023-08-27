@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const panelStyles = css`
-	#container {
+	.container {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -10,7 +10,7 @@ export const panelStyles = css`
 		z-index: 100;
 	}
 
-	#overlay {
+	.overlay {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -20,7 +20,7 @@ export const panelStyles = css`
 		backdrop-filter: blur(4px);
 	}
 
-	#content {
+	.content {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -32,7 +32,7 @@ export const panelStyles = css`
 		border-radius: 28px 0 0 28px;
 	}
 
-	#header-container {
+	.header-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -40,7 +40,7 @@ export const panelStyles = css`
 		color: var(--dav-color-on-surface);
 	}
 
-	#header {
+	.header {
 		color: var(--dav-color-on-surface);
 		font-size: 22px;
 		font-family: Roboto, Arial, sans-serif;
@@ -48,17 +48,17 @@ export const panelStyles = css`
 		margin: 0;
 	}
 
-	#close-button {
+	.close-button {
 		float: right;
 	}
 
-	#close-button svg {
+	.close-button svg {
 		width: 24px;
 		height: 24px;
 		fill: var(--dav-color-on-surface);
 	}
 
-	#slot-container {
+	.slot-container {
 		margin: 12px 0 0 24px;
 		overflow-y: auto;
 	}

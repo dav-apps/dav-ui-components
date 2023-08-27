@@ -33,8 +33,8 @@ export class Setting extends LitElement {
 
 	render() {
 		return html`
-			<div id="setting-container">
-				<p id="setting-header">${this.header}</p>
+			<div class="setting-container">
+				<p class="setting-header">${this.header}</p>
 
 				<div>
 					<slot></slot>

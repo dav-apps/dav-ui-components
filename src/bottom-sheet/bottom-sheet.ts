@@ -23,16 +23,19 @@ export class BottomSheet extends LitElement {
 	private resizeObserverInitialized: boolean = false
 	private animatePosition: boolean = true
 
-	@query("#content-container") contentContainer: HTMLDivElement
-	@query("#bottom-sheet-container") bottomSheetContainer: HTMLDivElement
+	@query(".content-container") contentContainer: HTMLDivElement
+	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
 
 	@state() private containerClasses = {
+		container: true,
 		visible: false
 	}
 	@state() private overlayClasses = {
+		overlay: true,
 		visible: false
 	}
 	@state() private bottomSheetContainerClasses = {
+		"bottom-sheet-container": true,
 		animate: false
 	}
 	@state() private overlayStyles = {
@@ -181,34 +184,32 @@ export class BottomSheet extends LitElement {
 		this.updateContentContainerTransform()
 
 		return html`
-			<div id="container" class=${classMap(this.containerClasses)}>
+			<div class=${classMap(this.containerClasses)}>
 				<div
-					id="overlay"
 					class=${classMap(this.overlayClasses)}
 					style=${styleMap(this.overlayStyles)}
 					@click=${this.overlayClick}
 				></div>
 
 				<div
-					id="bottom-sheet-container"
 					class=${classMap(this.bottomSheetContainerClasses)}
 					style=${styleMap(this.contentContainerStyles)}
 				>
 					<div
-						id="bottom-sheet-left-overlay"
+						class="bottom-sheet-left-overlay"
 						@click=${this.overlayClick}
 					></div>
 
-					<div id="content-container">
-						<div id="handle"></div>
+					<div class="content-container">
+						<div class="handle"></div>
 
-						<div id="content">
+						<div class="content">
 							<slot></slot>
 						</div>
 					</div>
 
 					<div
-						id="bottom-sheet-right-overlay"
+						class="bottom-sheet-right-overlay"
 						@click=${this.overlayClick}
 					></div>
 				</div>

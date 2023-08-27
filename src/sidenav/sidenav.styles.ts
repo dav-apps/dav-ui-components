@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const sidenavStyles = css`
-	#container {
+	.container {
 		width: max-content;
 		height: 100%;
 		padding: 10px 6px;
@@ -13,18 +13,18 @@ export const sidenavStyles = css`
 		overflow-y: auto;
 	}
 
-	#container.darkTheme {
+	.container.darkTheme {
 		background-color: var(
 			--dark-theme-color-secondary,
 			var(--default-dark-theme-color-secondary)
 		);
 	}
 
-	#container.over {
+	.container.over {
 		position: fixed;
 	}
 
-	#overlay {
+	.overlay {
 		position: fixed;
 		top: 0;
 		bottom: 0;

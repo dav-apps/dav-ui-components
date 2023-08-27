@@ -1,13 +1,13 @@
 import { css } from "@lit/reactive-element"
 
 export const dropdownStyles = css`
-	#dropdown {
+	.dropdown {
 		position: relative;
 		display: inline-flex;
 		flex-direction: column;
 	}
 
-	#dropdown-button {
+	.dropdown-button {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -22,50 +22,50 @@ export const dropdownStyles = css`
 		cursor: pointer;
 	}
 
-	#dropdown-button:hover,
-	#dropdown-button:focus,
-	#dropdown-button:active {
+	.dropdown-button:hover,
+	.dropdown-button:focus,
+	.dropdown-button:active {
 		border: 1px solid var(--dav-color-primary);
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	#dropdown-button.disabled {
+	.dropdown-button.disabled {
 		cursor: not-allowed;
 		background-color: #edededb3;
 		border: none;
 	}
 
-	#dropdown-button span {
+	.dropdown-button span {
 		height: 21px;
 		line-height: 21px;
 		overflow: hidden;
 		color: var(--dav-color-on-surface);
 	}
 
-	#dropdown-button i {
+	.dropdown-button i {
 		padding-top: 1px;
 		font-size: 12px;
 	}
 
-	#dropdown-label {
+	.dropdown-label {
 		font-family: Roboto, sans-serif;
 		margin-bottom: 8px;
 		font-size: 14px;
 	}
 
-	#chevron-svg-container {
+	.chevron-svg-container {
 		display: flex;
 		width: 12px;
 		fill: var(--dav-color-on-surface);
 		transition: 200ms;
 	}
 
-	#dropdown-button:active #chevron-svg-container,
-	#dropdown-button.active #chevron-svg-container {
+	.dropdown-button:active #chevron-svg-container,
+	.dropdown-button.active #chevron-svg-container {
 		transform: translateY(2px);
 	}
 
-	#dropdown-content {
+	.dropdown-content {
 		display: none;
 		position: absolute;
 		overflow: auto;
@@ -78,7 +78,7 @@ export const dropdownStyles = css`
 		border-radius: 6px;
 	}
 
-	#dropdown-content.visible {
+	.dropdown-content.visible {
 		display: block;
 	}
 

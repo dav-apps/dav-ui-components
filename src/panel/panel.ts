@@ -1,6 +1,5 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
-import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
@@ -19,19 +18,9 @@ export const panelTagName = "dav-panel"
 export class Panel extends LitElement {
 	static styles = [globalStyles, panelStyles]
 
-	@query("#overlay") overlay: HTMLDivElement
-	@query("#content") content: HTMLDivElement
+	@query(".overlay") overlay: HTMLDivElement
+	@query(".content") content: HTMLDivElement
 
-	@state() private contentClasses = {
-		"shadow-lg": true,
-		darkTheme: false
-	}
-	@state() private closeButtonClasses = {
-		darkTheme: false
-	}
-	@state() private headerClasses = {
-		darkTheme: false
-	}
 	@state() private containerStyles = {
 		display: "none"
 	}
@@ -91,25 +80,22 @@ export class Panel extends LitElement {
 		}
 
 		return html`
-			<div id="container" style=${styleMap(this.containerStyles)}>
-				<div id="overlay" @click=${this.overlayClick}></div>
+			<div class="container" style=${styleMap(this.containerStyles)}>
+				<div class="overlay" @click=${this.overlayClick}></div>
 
-				<div id="content" class=${classMap(this.contentClasses)}>
-					<div id="header-container">
-						<h1 id="header" class=${classMap(this.headerClasses)}>
-							${this.header}
-						</h1>
+				<div class="content">
+					<div class="header-container">
+						<h1 class="header">${this.header}</h1>
 
 						<dav-icon-button
-							id="close-button"
-							class=${classMap(this.closeButtonClasses)}
+							class="close-button"
 							@click=${this.closeButtonClick}
 						>
 							${xmarkLightSvg}
 						</dav-icon-button>
 					</div>
 
-					<div id="slot-container" class="modern-vertical-scrollbar">
+					<div class="modern-vertical-scrollbar slot-container">
 						<slot></slot>
 					</div>
 				</div>

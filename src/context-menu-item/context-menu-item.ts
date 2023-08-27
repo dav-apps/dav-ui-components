@@ -34,10 +34,10 @@ export class ContextMenuItem extends LitElement {
 	render() {
 		return html`
 			<button>
-				<div id="icon-container">
+				<div class="icon-container">
 					<slot name="icon"></slot>
 				</div>
-				<span id="label">${this.value}</span>
+				<span class="label">${this.value}</span>
 			</button>
 		`
 	}

@@ -24,6 +24,7 @@ export class Dropdown extends LitElement {
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
 	@state() private dropdownButtonClasses = {
+		"dropdown-button": true,
 		disabled: false,
 		active: false
 	}
@@ -35,6 +36,7 @@ export class Dropdown extends LitElement {
 		"dropdown-divider": true
 	}
 	@state() private dropdownContentClasses = {
+		"dropdown-content": true,
 		"slide-down-in": false,
 		visible: false
 	}
@@ -105,7 +107,7 @@ export class Dropdown extends LitElement {
 	getLabel() {
 		if (this.label.length > 0) {
 			return html`
-				<label id="dropdown-label" for="dropdown-button">
+				<label class="dropdown-label" for="dropdown-button">
 					${this.label}
 				</label>
 			`
@@ -148,12 +150,11 @@ export class Dropdown extends LitElement {
 		this.updateDropdownButtonText()
 
 		return html`
-			<div id="dropdown">
+			<div class="dropdown">
 				${this.getLabel()}
 
 				<div>
 					<button
-						id="dropdown-button"
 						class=${classMap(this.dropdownButtonClasses)}
 						style=${styleMap(this.dropdownButtonStyles)}
 						name="dropdown-button"
@@ -162,11 +163,12 @@ export class Dropdown extends LitElement {
 					>
 						<span>${this.buttonText}</span>
 
-						<div id="chevron-svg-container">${chevronDownLightSvg}</div>
+						<div class="chevron-svg-container">
+							${chevronDownLightSvg}
+						</div>
 					</button>
 
 					<div
-						id="dropdown-content"
 						class=${classMap(this.dropdownContentClasses)}
 						style=${styleMap(this.dropdownContentStyles)}
 					>

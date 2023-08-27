@@ -34,11 +34,11 @@ export class IconTextButton extends LitElement {
 	render() {
 		return html`
 			<button>
-				<div id="icon-container">
+				<div class="icon-container">
 					<slot></slot>
 				</div>
 
-				<span id="label">${this.label}</span>
+				<span class="label">${this.label}</span>
 			</button>
 		`
 	}

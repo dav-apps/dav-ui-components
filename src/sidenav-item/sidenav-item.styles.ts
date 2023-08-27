@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const sidenavItemStyles = css`
-	#item {
+	.item {
 		display: flex;
 		align-items: center;
 		width: 100%;
@@ -17,27 +17,27 @@ export const sidenavItemStyles = css`
 		cursor: pointer;
 	}
 
-	#item:focus,
-	#item:hover {
+	.item:focus,
+	.item:hover {
 		background-color: var(
 			--light-theme-hover-background-color,
 			var(--default-light-theme-hover-background-color)
 		);
 	}
 
-	#item.darkTheme {
+	.item.darkTheme {
 		color: white;
 	}
 
-	#item.darkTheme:focus,
-	#item.darkTheme:hover {
+	.item.darkTheme:focus,
+	.item.darkTheme:hover {
 		background-color: var(
 			--dark-theme-hover-background-color,
 			var(--default-dark-theme-hover-background-color)
 		);
 	}
 
-	#item > i {
+	.item > i {
 		font-size: 16px;
 		margin-right: 16px;
 		margin-top: -2px;

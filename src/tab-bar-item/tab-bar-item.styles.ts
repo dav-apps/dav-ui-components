@@ -5,7 +5,7 @@ export const tabStyles = css`
 		cursor: pointer;
 	}
 
-	#container {
+	.container {
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -21,30 +21,30 @@ export const tabStyles = css`
 		transition: all 200ms;
 	}
 
-	#container.active {
+	.container.active {
 		color: var(--dav-color-primary);
 	}
 
-	#container:not(.active):hover > p {
+	.container:not(.active):hover > p {
 		color: var(--dav-color-on-surface-variant);
 	}
 
-	#border {
+	.border {
 		border-bottom: 3px solid;
 		border-radius: 3px;
 		margin-top: -6px;
 		transition: all 150ms;
 	}
 
-	#container.active > #border {
+	.container.active > .border {
 		width: 35%;
 	}
 
-	#container.active:hover > #border {
+	.container.active:hover > .border {
 		width: 28%;
 	}
 
-	#container:not(.active) > #border {
+	.container:not(.active) > .border {
 		width: 0;
 	}
 `

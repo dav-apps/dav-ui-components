@@ -19,10 +19,12 @@ export class Checkbox extends LitElement {
 	static styles = [globalStyles, checkboxStyles]
 
 	@state() private checkboxClasses = {
+		checkbox: true,
 		checked: false,
 		disabled: false
 	}
 	@state() private checkboxLabelClasses = {
+		"checkbox-label": true,
 		disabled: false,
 		empty: false,
 		"visually-hidden": false
@@ -87,7 +89,6 @@ export class Checkbox extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div
-				id="checkbox"
 				class=${classMap(this.checkboxClasses)}
 				tabindex="0"
 				role="checkbox"
@@ -97,7 +98,7 @@ export class Checkbox extends LitElement {
 				@click=${this.checkboxClick}
 				@keydown=${this.checkboxKeydown}
 			>
-				<svg id="checkmark" viewBox="0,0,20,20" width="18" height="18">
+				<svg viewBox="0,0,20,20" width="18" height="18">
 					<path
 						style=${styleMap(this.checkmarkPathStyles)}
 						d="M8.143 12.6697L15.235 4.5L16.8 5.90363L8.23812 15.7667L3.80005 11.2556L5.27591 9.7555L8.143 12.6697Z"
@@ -108,7 +109,6 @@ export class Checkbox extends LitElement {
 			</div>
 
 			<label
-				id="checkbox-label"
 				class=${classMap(this.checkboxLabelClasses)}
 				@click=${this.checkboxClick}
 			>

@@ -20,13 +20,15 @@ export const textareaTagName = "dav-textarea"
 export class Textarea extends LitElement {
 	static styles = [globalStyles, textareaStyles]
 
-	@query("#textarea") textarea: HTMLTextAreaElement
+	@query(".textarea") textarea: HTMLTextAreaElement
 
 	@state() private textareaLabelClasses = {
+		"textarea-label": true,
 		disabled: false,
 		darkTheme: false
 	}
 	@state() private textareaClasses = {
+		textarea: true,
 		disabled: false,
 		darkTheme: false
 	}
@@ -72,29 +74,21 @@ export class Textarea extends LitElement {
 	getLabel() {
 		if (this.label != null && this.label.length > 0) {
 			return html`
-				<label
-					id="textarea-label"
-					class=${classMap(this.textareaLabelClasses)}
-					for="textarea"
-				>
+				<label class=${classMap(this.textareaLabelClasses)} for="textarea">
 					${this.label}
 				</label>
 			`
 		}
-
-		return html``
 	}
 
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
-				<p id="textarea-error-message" class="ms-motion-slideDownIn">
+				<p class="textarea-error-message ms-motion-slideDownIn">
 					${this.errorMessage}
 				</p>
 			`
 		}
-
-		return html``
 	}
 
 	render() {
@@ -107,11 +101,10 @@ export class Textarea extends LitElement {
 		return html`
 			${getGlobalStyleHtml()}
 
-			<div id="textarea-container">
+			<div class="textarea-container">
 				${this.getLabel()}
 
 				<textarea
-					id="textarea"
 					style=${styleMap(this.textareaStyles)}
 					class=${classMap(this.textareaClasses)}
 					name="textarea"

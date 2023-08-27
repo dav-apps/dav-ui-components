@@ -26,11 +26,11 @@ export const iconTextButtonStyles = css`
 		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
 	}
 
-	#icon-container {
+	.icon-container {
 		font-size: 18px;
 	}
 
-	#label {
+	.label {
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 12px;
 		margin-top: 10px;

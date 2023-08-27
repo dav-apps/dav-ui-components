@@ -1,5 +1,5 @@
 import { setLocale, setTheme } from "./src/utils.js"
-import { DropdownOption, DropdownOptionType } from "./src/types.js"
+import { Theme, DropdownOption, DropdownOptionType } from "./src/types.js"
 
 // Components
 import {
@@ -118,6 +118,7 @@ if (window) {
 export {
 	setLocale,
 	setTheme,
+	Theme,
 	DropdownOption,
 	DropdownOptionType,
 	BlurhashImage,

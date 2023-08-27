@@ -21,10 +21,11 @@ export const sidenavTagName = "dav-sidenav"
 export class Sidenav extends LitElement {
 	static styles = [globalStyles, sidenavStyles]
 
-	@query("#overlay") overlay: HTMLDivElement
-	@query("#container") container: HTMLDivElement
+	@query(".overlay") overlay: HTMLDivElement
+	@query(".container") container: HTMLDivElement
 
 	@state() private containerClasses = {
+		container: true,
 		"modern-vertical-scrollbar": true,
 		shadow: true,
 		over: false,
@@ -109,13 +110,12 @@ export class Sidenav extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<div
-				id="overlay"
+				class="overlay"
 				style=${styleMap(this.overlayStyles)}
 				@click=${this.overlayClick}
 			></div>
 
 			<div
-				id="container"
 				class=${classMap(this.containerClasses)}
 				style=${styleMap(this.containerStyles)}
 			>

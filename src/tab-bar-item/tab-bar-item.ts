@@ -17,6 +17,7 @@ export class TabBarItem extends LitElement {
 	static styles = [globalStyles, tabStyles]
 
 	@state() private itemClasses = {
+		container: true,
 		active: false
 	}
 
@@ -40,9 +41,9 @@ export class TabBarItem extends LitElement {
 		this.itemClasses.active = this.active
 
 		return html`
-			<div id="container" class=${classMap(this.itemClasses)}>
+			<div class=${classMap(this.itemClasses)}>
 				<p><slot></slot></p>
-				<div id="border"></div>
+				<div class="border"></div>
 			</div>
 		`
 	}

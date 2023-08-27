@@ -1,7 +1,7 @@
 import { css } from "@lit/reactive-element"
 
 export const bottomSheetStyles = css`
-	#container {
+	.container {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -11,7 +11,7 @@ export const bottomSheetStyles = css`
 		width: 0;
 	}
 
-	#overlay {
+	.overlay {
 		position: fixed;
 		top: 0;
 		bottom: 0;
@@ -22,11 +22,11 @@ export const bottomSheetStyles = css`
 		transition: 200ms;
 	}
 
-	#overlay.visible {
+	.overlay.visible {
 		width: unset;
 	}
 
-	#bottom-sheet-container {
+	.bottom-sheet-container {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
@@ -35,19 +35,19 @@ export const bottomSheetStyles = css`
 		background-color: transparent;
 	}
 
-	#bottom-sheet-container.animate {
+	.bottom-sheet-container.animate {
 		transition: 200ms;
 	}
 
-	#bottom-sheet-left-overlay {
+	.bottom-sheet-left-overlay {
 		grid-column: 1;
 	}
 
-	#bottom-sheet-right-overlay {
+	.bottom-sheet-right-overlay {
 		grid-column: 3;
 	}
 
-	#handle {
+	.handle {
 		width: 32px;
 		height: 4px;
 		background-color: rgb(var(--dav-color-on-surface-variant-rgb), 0.4);
@@ -55,7 +55,7 @@ export const bottomSheetStyles = css`
 		border-radius: 2px;
 	}
 
-	#content-container {
+	.content-container {
 		grid-column: 2;
 		justify-self: stretch;
 		width: 100vw;
@@ -64,7 +64,7 @@ export const bottomSheetStyles = css`
 		background-color: var(--dav-color-surface);
 	}
 
-	#content {
+	.content {
 		width: 100%;
 		height: 100%;
 		padding: 0 24px;

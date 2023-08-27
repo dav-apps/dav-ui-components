@@ -1,20 +1,20 @@
 import { css } from "@lit/reactive-element"
 
 export const toggleStyles = css`
-	#switch {
+	.switch {
 		position: relative;
 		display: inline-block;
 		width: 40px;
 		height: 20px;
 	}
 
-	#switch input {
+	.switch input {
 		opacity: 0;
 		width: 0;
 		height: 0;
 	}
 
-	#slider {
+	.slider {
 		position: absolute;
 		display: flex;
 		cursor: pointer;
@@ -28,16 +28,16 @@ export const toggleStyles = css`
 		transition: 200ms;
 	}
 
-	#slider:hover {
+	.slider:hover {
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	input:focus + #slider,
-	input:active + #slider {
+	input:focus + .slider,
+	input:active + .slider {
 		background-color: var(--dav-color-surface-focus);
 	}
 
-	#slider:before {
+	.slider:before {
 		display: block;
 		content: "";
 		height: 12px;
@@ -49,46 +49,46 @@ export const toggleStyles = css`
 		border-radius: 10px;
 	}
 
-	#switch:hover #slider:before {
+	.switch:hover .slider:before {
 		height: 14px;
 		width: 14px;
 		margin-left: 3px;
 	}
 
-	input:focus + #slider:before {
+	input:focus + .slider:before {
 		height: 14px;
 		width: 14px;
 		margin-left: 3px;
 	}
 
-	#switch:active #slider:before {
+	.switch:active .slider:before {
 		height: 14px;
 		width: 17px;
 	}
 
-	#switch.checked:active #slider:before {
+	.switch.checked:active .slider:before {
 		margin-left: -0.5px;
 	}
 
-	#switch.checked:hover #slider {
+	.switch.checked:hover .slider {
 		background-color: var(--dav-color-primary-hover);
 	}
 
-	#switch.checked input:focus + #slider,
-	#switch.checked input:active + #slider {
+	.switch.checked input:focus + .slider,
+	.switch.checked input:active + .slider {
 		background-color: var(--dav-color-primary-focus);
 	}
 
-	#switch.checked #slider {
+	.switch.checked .slider {
 		background-color: var(--dav-color-primary);
 		border: 1px solid var(--dav-color-primary);
 	}
 
-	#switch #slider:before {
+	.switch .slider:before {
 		background-color: var(--dav-color-on-surface-variant);
 	}
 
-	#switch.checked #slider:before {
+	.switch.checked .slider:before {
 		background-color: var(--dav-color-on-primary);
 		transform: translateX(18px);
 	}

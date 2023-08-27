@@ -14,7 +14,7 @@ export const contextMenuItemStyles = css`
 		margin: 4px;
 		padding: 4px 10px;
 		transition: 200ms;
-		font-family: Roboto, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		cursor: pointer;
 	}
 
@@ -27,12 +27,12 @@ export const contextMenuItemStyles = css`
 		background-color: var(--dav-color-surface-focus);
 	}
 
-	#icon-container {
+	.icon-container {
 		font-size: 16px;
 		width: 16px;
 	}
 
-	#label {
+	.label {
 		margin-left: 12px;
 	}
 `

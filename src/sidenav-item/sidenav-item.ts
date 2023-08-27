@@ -24,6 +24,7 @@ export class SidenavItem extends LitElement {
 	}
 
 	@state() private itemClasses = {
+		item: true,
 		darkTheme: false
 	}
 
@@ -52,8 +53,6 @@ export class SidenavItem extends LitElement {
 				<i class="ms-Icon ms-Icon--${this.icon}" aria-hidden="true"></i>
 			`
 		}
-
-		return html``
 	}
 
 	itemClick(event: PointerEvent) {
@@ -73,7 +72,6 @@ export class SidenavItem extends LitElement {
 			${getGlobalStyleHtml()}
 
 			<a
-				id="item"
 				class=${classMap(this.itemClasses)}
 				dir="ltr"
 				href=${ifDefined(this.link)}
@@ -81,9 +79,7 @@ export class SidenavItem extends LitElement {
 			>
 				${this.getIcon()}
 
-				<span style=${styleMap(this.spanStyles)}>
-					${this.value}
-				</span>
+				<span style=${styleMap(this.spanStyles)}>${this.value}</span>
 			</a>
 		`
 	}

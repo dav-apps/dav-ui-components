@@ -7,7 +7,7 @@ export const checkboxStyles = css`
 		margin: 4px 0px;
 	}
 
-	#checkbox {
+	.checkbox {
 		display: inherit;
 		background-color: var(--dav-color-surface);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
@@ -15,17 +15,17 @@ export const checkboxStyles = css`
 		cursor: pointer;
 	}
 
-	#checkbox.disabled {
+	.checkbox.disabled {
 		border-color: rgb(var(--dav-color-outline-rgb), 0.25);
 		cursor: not-allowed;
 	}
 
-	#checkbox:focus {
+	.checkbox:focus {
 		outline: 2px solid var(--dav-color-outline);
 		outline-offset: 2px;
 	}
 
-	#checkbox-label {
+	.checkbox-label {
 		color: var(--dav-color-on-surface);
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
@@ -33,21 +33,21 @@ export const checkboxStyles = css`
 		cursor: pointer;
 	}
 
-	#checkbox-label.empty {
+	.checkbox-label.empty {
 		padding: 0;
 	}
 
-	#checkbox-label.disabled {
+	.checkbox-label.disabled {
 		color: rgb(var(--dav-color-on-surface-rgb), 0.5);
 		cursor: not-allowed;
 	}
 
-	#checkmark {
+	svg {
 		fill: var(--dav-color-on-surface);
 		stroke-width: 0px;
 	}
 
-	#checkbox.disabled > #checkmark {
+	.checkbox.disabled > svg {
 		fill: rgb(var(--dav-color-on-surface-rgb), 0.5);
 	}
 `

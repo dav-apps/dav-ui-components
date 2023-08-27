@@ -17,6 +17,7 @@ export class Toggle extends LitElement {
 	static styles = [globalStyles, toggleStyles]
 
 	@state() private inputClasses = {
+		switch: true,
 		checked: false
 	}
 
@@ -52,13 +53,13 @@ export class Toggle extends LitElement {
 		this.inputClasses.checked = this.checked
 
 		return html`
-			<label id="switch" class=${classMap(this.inputClasses)}>
+			<label class=${classMap(this.inputClasses)}>
 				<input
 					type="checkbox"
 					?checked=${this.checked}
 					@click=${this.checkboxClicked}
 				/>
-				<span id="slider"></span>
+				<span class="slider"></span>
 			</label>
 		`
 	}

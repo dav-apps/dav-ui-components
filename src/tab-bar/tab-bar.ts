@@ -11,7 +11,7 @@ export class TabBar extends LitElement {
 
 	render() {
 		return html`
-			<div id="container">
+			<div class="container">
 				<slot></slot>
 			</div>
 		`

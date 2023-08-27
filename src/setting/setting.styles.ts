@@ -5,7 +5,7 @@ export const settingStyles = css`
 		width: 100%;
 	}
 
-	#setting-container {
+	.setting-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -18,7 +18,7 @@ export const settingStyles = css`
 		box-shadow: var(--dav-color-shadow) 0px 0px 2px 0px;
 	}
 
-	#setting-header {
+	.setting-header {
 		margin: 0;
 	}
 `
