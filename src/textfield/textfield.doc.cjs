@@ -14,6 +14,11 @@ module.exports = {
 			type: "String"
 		},
 		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "errorMessage",
 			type: "String"
 		}

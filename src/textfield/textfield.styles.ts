@@ -20,7 +20,7 @@ export const textfieldStyles = css`
 		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
-	.textfield-input {
+	#textfield {
 		margin: 2px 0px;
 		padding: 0px 9px;
 		height: 28px;
@@ -34,25 +34,25 @@ export const textfieldStyles = css`
 		transition: 200ms;
 	}
 
-	.textfield-input:not(.disabled):hover,
-	.textfield-input:not(.disabled):focus,
-	.textfield-input:not(.disabled):active {
+	#textfield:not(.disabled):hover,
+	#textfield:not(.disabled):focus,
+	#textfield:not(.disabled):active {
 		background-color: var(--dav-color-surface-hover);
 		border: 1px solid var(--dav-color-primary);
 		outline: 1px solid var(--dav-color-primary);
 	}
 
-	.textfield-input.disabled {
+	#textfield.disabled {
 		cursor: not-allowed;
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
 		background-color: rgb(var(--dav-color-surface-rgb), 0.6);
 	}
 
-	.textfield-input::placeholder {
+	#textfield::placeholder {
 		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
-	.textfield-input.disabled::placeholder {
+	#textfield.disabled::placeholder {
 		color: rgb(var(--dav-color-on-surface-rgb), 0.4);
 	}
 

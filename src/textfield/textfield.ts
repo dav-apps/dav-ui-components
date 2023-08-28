@@ -17,14 +17,13 @@ export const textfieldTagName = "dav-textfield"
 export class Textfield extends LitElement {
 	static styles = [globalStyles, textfieldStyles]
 
-	@query(".textfield-input") textfieldInput: HTMLInputElement
+	@query("#textfield") textfieldInput: HTMLInputElement
 
 	@state() private textfieldLabelClasses = {
 		"textfield-label": true,
 		disabled: false
 	}
 	@state() private textfieldInputClasses = {
-		"textfield-input": true,
 		disabled: false
 	}
 
@@ -74,7 +73,7 @@ export class Textfield extends LitElement {
 			return html`
 				<label
 					class=${classMap(this.textfieldLabelClasses)}
-					for="textfield-input"
+					for="textfield"
 				>
 					${this.label}
 				</label>
@@ -85,9 +84,7 @@ export class Textfield extends LitElement {
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
-				<p class="textfield-error-message ms-motion-slideDownIn">
-					${this.errorMessage}
-				</p>
+				<p class="textfield-error-message">${this.errorMessage}</p>
 			`
 		}
 	}
@@ -101,8 +98,9 @@ export class Textfield extends LitElement {
 				${this.getLabel()}
 
 				<input
+					id="textfield"
 					class=${classMap(this.textfieldInputClasses)}
-					name="textfield-input"
+					name="textfield"
 					.value=${this.value}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
