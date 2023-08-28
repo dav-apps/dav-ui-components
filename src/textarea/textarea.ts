@@ -4,12 +4,11 @@ import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { classMap } from "lit/directives/class-map.js"
 import autosize from "autosize"
-import { Settings, Theme } from "../types.js"
+import { Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { textareaStyles } from "./textarea.styles.js"
@@ -20,38 +19,35 @@ export const textareaTagName = "dav-textarea"
 export class Textarea extends LitElement {
 	static styles = [globalStyles, textareaStyles]
 
-	@query(".textarea") textarea: HTMLTextAreaElement
+	@query("#textarea") textarea: HTMLTextAreaElement
 
 	@state() private textareaLabelClasses = {
 		"textarea-label": true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
 	@state() private textareaClasses = {
-		textarea: true,
-		disabled: false,
-		darkTheme: false
+		disabled: false
 	}
 	@state() private textareaStyles = {
-		resize: "auto"
+		resize: ""
 	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
 	@property() label: string = ""
 	@property() placeholder: string = ""
 	@property({ type: Boolean }) disabled: boolean = false
-	@property() resize: string = ""
+	@property() resize: string = "auto"
 	@property() errorMessage: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
 
-		setTimeout(() => {
-			autosize(this.textarea)
-		}, 1)
+		if (this.resize == "auto") {
+			setTimeout(() => {
+				autosize(this.textarea)
+			}, 1)
+		}
 	}
 
 	disconnectedCallback() {
@@ -59,7 +55,9 @@ export class Textarea extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	input() {
 		this.value = this.textarea.value
@@ -74,7 +72,10 @@ export class Textarea extends LitElement {
 	getLabel() {
 		if (this.label != null && this.label.length > 0) {
 			return html`
-				<label class=${classMap(this.textareaLabelClasses)} for="textarea">
+				<label
+					class=${classMap(this.textareaLabelClasses)}
+					for="textarea-input"
+				>
 					${this.label}
 				</label>
 			`
@@ -84,30 +85,25 @@ export class Textarea extends LitElement {
 	getErrorMessage() {
 		if (this.errorMessage != null && this.errorMessage.length > 0) {
 			return html`
-				<p class="textarea-error-message ms-motion-slideDownIn">
-					${this.errorMessage}
-				</p>
+				<p class="textarea-error-message">${this.errorMessage}</p>
 			`
 		}
 	}
 
 	render() {
 		this.textareaLabelClasses.disabled = this.disabled
-		this.textareaLabelClasses.darkTheme = this.theme == Theme.dark
 		this.textareaClasses.disabled = this.disabled
-		this.textareaClasses.darkTheme = this.theme == Theme.dark
-		this.textareaStyles.resize = this.resize
+		this.textareaStyles.resize = this.resize || "none"
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div class="textarea-container">
 				${this.getLabel()}
 
 				<textarea
+					id="textarea"
 					style=${styleMap(this.textareaStyles)}
 					class=${classMap(this.textareaClasses)}
-					name="textarea"
+					name="textarea-input"
 					.value=${this.value}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}

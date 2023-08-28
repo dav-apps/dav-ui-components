@@ -4,81 +4,56 @@ export const textareaStyles = css`
 	.textarea-container {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
 	}
 
 	.textarea-label {
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
-		margin: 0 0 4px;
+		font-weight: 400;
+		margin-bottom: 6px;
 		cursor: pointer;
-		color: #212529;
-	}
-
-	.textarea-label.darkTheme {
-		color: #f3f3f3;
+		color: var(--dav-color-on-surface);
 	}
 
 	.textarea-label.disabled {
 		cursor: not-allowed;
-		color: #212529b3;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
-	.textarea-label.disabled.darkTheme {
-		color: #f3f3f3b3;
-	}
-
-	.textarea {
-		padding: 6px 9px;
-		width: 100%;
-		background: transparent;
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	#textarea {
+		padding: 6px 8px;
+		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
-		border: 1px solid #8f8f8fb3;
-		border-radius: 4px;
+		background-color: var(--dav-color-surface);
+		color: var(--dav-color-on-surface);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
+		border-radius: 6px;
+		transition: 200ms;
 	}
 
-	.textarea.darkTheme {
-		color: white;
-		border: 1px solid #b5b5b5;
+	#textarea:not(.disabled):hover,
+	#textarea:not(.disabled):focus,
+	#textarea:not(.disabled):active {
+		background-color: var(--dav-color-surface-hover);
+		border: 1px solid var(--dav-color-primary);
+		outline: 1px solid var(--dav-color-primary);
 	}
 
-	.textarea.disabled {
+	#textarea.disabled {
 		cursor: not-allowed;
-		border: 1px solid #c3c3c3;
-		color: #8d8d8d;
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
+		background-color: rgb(var(--dav-color-surface-rgb), 0.6);
 	}
 
-	.textarea.disabled.darkTheme {
-		border: 1px solid #707070;
-		color: #c5c5c5;
-	}
-
-	.textarea.darkTheme::-ms-reveal {
-		filter: invert(100%);
-	}
-
-	.textarea.darkTheme::placeholder {
-		color: #919090;
-	}
-
-	.textarea.disabled::placeholder {
-		color: #d6d6d6;
-	}
-
-	.textarea.disabled.darkTheme::placeholder {
-		color: #767676;
-	}
-
-	.textarea:focus {
-		outline: 1px solid #878787;
+	#textarea.disabled::placeholder {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.4);
 	}
 
 	.textarea-error-message {
 		max-width: 200px;
-		margin: 0px 0px 0px 4px;
-		color: #a80000;
-		font-size: 12.5px;
-		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		margin: 4px 0px 0px 4px;
+		color: var(--dav-color-error);
+		font-size: 13px;
+		font-family: Roboto, Arial, sans-serif;
 	}
 `
