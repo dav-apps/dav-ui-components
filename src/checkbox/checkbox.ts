@@ -1,7 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { styleMap } from "lit/directives/style-map.js"
 import { checkboxStyles } from "./checkbox.styles.js"
 import { Settings } from "../types.js"
 import {
@@ -27,9 +26,6 @@ export class Checkbox extends LitElement {
 		disabled: false,
 		empty: false,
 		"visually-hidden": false
-	}
-	@state() private checkmarkPathStyles = {
-		display: "none"
 	}
 
 	@property() label: string = ""
@@ -82,8 +78,6 @@ export class Checkbox extends LitElement {
 		this.checkboxLabelClasses.empty = this.label.length == 0
 		this.checkboxLabelClasses["visually-hidden"] = this.labelHidden
 
-		this.checkmarkPathStyles.display = this.checked ? "unset" : "none"
-
 		return html`
 			<div
 				class=${classMap(this.checkboxClasses)}
@@ -97,7 +91,6 @@ export class Checkbox extends LitElement {
 			>
 				<svg viewBox="0 0 24 24" width="18" height="18">
 					<path
-						style=${styleMap(this.checkmarkPathStyles)}
 						d="M4 12.6111L8.92308 17.5L20 6.5"
 						stroke-width="2"
 						stroke-linecap="round"
