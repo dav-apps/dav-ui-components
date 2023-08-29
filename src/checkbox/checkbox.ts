@@ -5,7 +5,6 @@ import { styleMap } from "lit/directives/style-map.js"
 import { checkboxStyles } from "./checkbox.styles.js"
 import { Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
@@ -86,8 +85,6 @@ export class Checkbox extends LitElement {
 		this.checkmarkPathStyles.display = this.checked ? "unset" : "none"
 
 		return html`
-			${getGlobalStyleHtml()}
-
 			<div
 				class=${classMap(this.checkboxClasses)}
 				tabindex="0"
@@ -98,13 +95,14 @@ export class Checkbox extends LitElement {
 				@click=${this.checkboxClick}
 				@keydown=${this.checkboxKeydown}
 			>
-				<svg viewBox="0,0,20,20" width="18" height="18">
+				<svg viewBox="0 0 24 24" width="18" height="18">
 					<path
 						style=${styleMap(this.checkmarkPathStyles)}
-						d="M8.143 12.6697L15.235 4.5L16.8 5.90363L8.23812 15.7667L3.80005 11.2556L5.27591 9.7555L8.143 12.6697Z"
-						fill-rule="evenodd"
-						clip-rule="evenodd"
-					></path>
+						d="M4 12.6111L8.92308 17.5L20 6.5"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
 				</svg>
 			</div>
 

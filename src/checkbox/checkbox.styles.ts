@@ -43,11 +43,12 @@ export const checkboxStyles = css`
 	}
 
 	svg {
-		fill: var(--dav-color-on-surface);
+		fill: transparent;
+		stroke: var(--dav-color-on-surface);
 		stroke-width: 0px;
 	}
 
 	.checkbox.disabled > svg {
-		fill: rgb(var(--dav-color-on-surface-rgb), 0.5);
+		stroke: rgb(var(--dav-color-on-surface-rgb), 0.5);
 	}
 `
