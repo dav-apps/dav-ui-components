@@ -55,10 +55,6 @@ import {
 import { Setting, settingTagName } from "./src/setting/setting.js"
 import { Sidenav, sidenavTagName } from "./src/sidenav/sidenav.js"
 import {
-	SidenavContainer,
-	sidenavContainerTagName
-} from "./src/sidenav-container/sidenav-container.js"
-import {
 	SidenavItem,
 	sidenavItemTagName
 } from "./src/sidenav-item/sidenav-item.js"
@@ -98,7 +94,6 @@ declare global {
 		[progressRingTagName]: ProgressRing
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
-		[sidenavContainerTagName]: SidenavContainer
 		[sidenavItemTagName]: SidenavItem
 		[tabBarTagName]: TabBar
 		[tabBarItemTagName]: TabBarItem
@@ -146,7 +141,6 @@ export {
 	ProgressRing,
 	Setting,
 	Sidenav,
-	SidenavContainer,
 	SidenavItem,
 	TabBar,
 	TabBarItem,

@@ -79,8 +79,6 @@ module.exports = {
 		"./dist/src/sidenav/sidenav.js",
 		"./dist/src/sidenav/sidenav.animations.js",
 		"./dist/src/sidenav/sidenav.styles.js",
-		"./dist/src/sidenav-container/sidenav-container.js",
-		"./dist/src/sidenav-container/sidenav-container.styles.js",
 		"./dist/src/sidenav-item/sidenav-item.js",
 		"./dist/src/sidenav-item/sidenav-item.styles.js",
 		"./dist/src/tab-bar/tab-bar.js",
