@@ -1,27 +1,19 @@
 import { css } from "@lit/reactive-element"
 
 export const sidenavStyles = css`
-	.container {
+	.container-inline {
+		display: inline-block;
 		width: max-content;
-		height: 100%;
-		padding: 10px 6px;
-		background-color: var(
-			--light-theme-color-secondary,
-			var(--default-light-theme-color-secondary)
-		);
-		transition: 0.2s;
-		overflow-y: auto;
+		background-color: var(--dav-color-surface);
 	}
 
-	.container.darkTheme {
-		background-color: var(
-			--dark-theme-color-secondary,
-			var(--default-dark-theme-color-secondary)
-		);
-	}
-
-	.container.over {
+	.container-over {
 		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
 	}
 
 	.overlay {
@@ -30,6 +22,5 @@ export const sidenavStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: var(--overlay-color, var(--default-overlay-color));
 	}
 `

@@ -1,14 +1,11 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
-import { classMap } from "lit/directives/class-map.js"
-import { styleMap } from "lit/directives/style-map.js"
-import { Theme, SidenavMode, Settings } from "../types.js"
+import { SidenavMode, Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings,
 	convertStringToSidenavMode
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
@@ -22,25 +19,6 @@ export class Sidenav extends LitElement {
 	static styles = [globalStyles, sidenavStyles]
 
 	@query(".overlay") overlay: HTMLDivElement
-	@query(".container") container: HTMLDivElement
-
-	@state() private containerClasses = {
-		container: true,
-		"modern-vertical-scrollbar": true,
-		shadow: true,
-		over: false,
-		darkTheme: false
-	}
-	@state() private overlayStyles = {
-		display: "none"
-	}
-	@state() private containerStyles = {
-		display: "none",
-		left: "-300px"
-	}
-
-	@state() private theme: Theme = getSettings().theme
-	@state() private initialized: boolean = false
 
 	@property({ type: Boolean }) open: boolean = false
 	@property({
@@ -59,7 +37,9 @@ export class Sidenav extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	updated(changedProperties: Map<string, any>) {
 		if (
@@ -75,7 +55,6 @@ export class Sidenav extends LitElement {
 			} else {
 				// Hide the overlay
 				hideOverlay(this.overlay).onfinish = () => {
-					this.overlayStyles.display = "none"
 					this.requestUpdate()
 				}
 			}
@@ -87,40 +66,22 @@ export class Sidenav extends LitElement {
 	}
 
 	render() {
-		this.containerClasses.over = this.mode == SidenavMode.over
-		this.containerClasses.darkTheme = this.theme == Theme.dark
-		this.containerStyles.display = this.hidden ? "none" : "block"
+		if (this.mode == SidenavMode.side) {
+			return html`
+				<div class="container-inline">
+					<slot></slot>
+				</div>
+			`
+		} else {
+			return html`
+				<div class="container-over">
+					<div class="container-over-content">
+						<slot></slot>
+					</div>
 
-		if (this.container != null) {
-			if (this.open && this.mode == SidenavMode.over) {
-				// Show the container
-				this.containerStyles.left = "0"
-				this.overlayStyles.display = "block"
-			} else {
-				if (this.initialized) {
-					// Hide the container
-					this.containerStyles.left = `-${this.container.offsetWidth}px`
-				} else {
-					this.initialized = true
-				}
-			}
+					<div class="overlay" @click=${this.overlayClick}></div>
+				</div>
+			`
 		}
-
-		return html`
-			${getGlobalStyleHtml()}
-
-			<div
-				class="overlay"
-				style=${styleMap(this.overlayStyles)}
-				@click=${this.overlayClick}
-			></div>
-
-			<div
-				class=${classMap(this.containerClasses)}
-				style=${styleMap(this.containerStyles)}
-			>
-				<slot></slot>
-			</div>
-		`
 	}
 }
