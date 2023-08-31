@@ -1,45 +1,45 @@
 import { css } from "@lit/reactive-element"
 
 export const sidenavItemStyles = css`
-	.item {
+	.sidenav-item {
 		display: flex;
 		align-items: center;
 		width: 100%;
-		height: 37px;
+		height: 34px;
 		border: none;
-		border-radius: 4px;
+		border-radius: 20px;
 		background-color: transparent;
-		color: black;
-		padding: 4px 14px;
+		color: var(--dav-color-on-surface);
+		padding: 0px 16px;
 		margin: 5px 0px;
-		transition: 0.1s;
+		transition: 200ms;
 		text-decoration: none;
 		cursor: pointer;
+		font-size: 13px;
+		font-family: Roboto, Arial, sans-serif;
+		font-weight: 400;
 	}
 
-	.item:focus,
-	.item:hover {
-		background-color: var(
-			--light-theme-hover-background-color,
-			var(--default-light-theme-hover-background-color)
-		);
+	.sidenav-item.active {
+		background-color: var(--dav-color-primary);
+		color: var(--dav-color-on-primary);
 	}
 
-	.item.darkTheme {
-		color: white;
+	.sidenav-item:hover {
+		background-color: var(--dav-color-surface-hover);
 	}
 
-	.item.darkTheme:focus,
-	.item.darkTheme:hover {
-		background-color: var(
-			--dark-theme-hover-background-color,
-			var(--default-dark-theme-hover-background-color)
-		);
+	.sidenav-item:focus,
+	.sidenav-item:active {
+		background-color: var(--dav-color-surface-focus);
 	}
 
-	.item > i {
-		font-size: 16px;
-		margin-right: 16px;
-		margin-top: -2px;
+	.sidenav-item.active:hover {
+		background-color: var(--dav-color-primary-hover);
+	}
+
+	.sidenav-item.active:focus,
+	.sidenav-item.active:active {
+		background-color: var(--dav-color-primary-focus);
 	}
 `

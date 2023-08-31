@@ -1,14 +1,11 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { styleMap } from "lit/directives/style-map.js"
-import { ifDefined } from "lit/directives/if-defined.js"
-import { Settings, Theme } from "../types.js"
+import { Settings } from "../types.js"
 import {
-	getGlobalStyleHtml,
+	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange,
-	getSettings
+	unsubscribeSettingsChange
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { sidenavItemStyles } from "./sidenav-item.styles.js"
@@ -19,21 +16,13 @@ export const sidenavItemTagName = "dav-sidenav-item"
 export class SidenavItem extends LitElement {
 	static styles = [globalStyles, sidenavItemStyles]
 
-	@state() private spanStyles = {
-		marginLeft: "0px"
+	@state() sidenavItemClasses = {
+		"sidenav-item": true,
+		active: false
 	}
-
-	@state() private itemClasses = {
-		item: true,
-		darkTheme: false
-	}
-
-	@state() private theme: Theme = getSettings().theme
 
 	@property() value: string = ""
-	@property() icon: string = ""
-	@property({ type: Boolean }) indent: boolean = false
-	@property() link: string = null
+	@property({ type: Boolean }) active: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -45,42 +34,17 @@ export class SidenavItem extends LitElement {
 		unsubscribeSettingsChange(this.settingsChange)
 	}
 
-	settingsChange = (settings: Settings) => (this.theme = settings.theme)
-
-	getIcon() {
-		if (this.icon.length > 0) {
-			return html`
-				<i class="ms-Icon ms-Icon--${this.icon}" aria-hidden="true"></i>
-			`
-		}
-	}
-
-	itemClick(event: PointerEvent) {
-		event.preventDefault()
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
 	}
 
 	render() {
-		this.itemClasses.darkTheme = this.theme == Theme.dark
-
-		if (this.icon.length == 0 && this.indent) {
-			this.spanStyles.marginLeft = "12px"
-		} else {
-			this.spanStyles.marginLeft = "0px"
-		}
+		this.sidenavItemClasses.active = this.active
 
 		return html`
-			${getGlobalStyleHtml()}
-
-			<a
-				class=${classMap(this.itemClasses)}
-				dir="ltr"
-				href=${ifDefined(this.link)}
-				@click=${this.itemClick}
-			>
-				${this.getIcon()}
-
-				<span style=${styleMap(this.spanStyles)}>${this.value}</span>
-			</a>
+			<button class=${classMap(this.sidenavItemClasses)}>
+				<span>${this.value}</span>
+			</button>
 		`
 	}
 }
