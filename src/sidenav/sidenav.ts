@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
-import { query } from "lit/decorators/query.js"
+import { customElement, property, state, query } from "lit/decorators.js"
+import { styleMap } from "lit/directives/style-map.js"
 import { SidenavMode, Settings } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -10,7 +10,7 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { sidenavStyles } from "./sidenav.styles.js"
-import { showOverlay, hideOverlay } from "./sidenav.animations.js"
+import { slideIn, slideOut } from "./sidenav.animations.js"
 
 export const sidenavTagName = "dav-sidenav"
 
@@ -18,7 +18,12 @@ export const sidenavTagName = "dav-sidenav"
 export class Sidenav extends LitElement {
 	static styles = [globalStyles, sidenavStyles]
 
+	@query(".container-over-content") containerOverContent: HTMLDivElement
 	@query(".overlay") overlay: HTMLDivElement
+
+	@state() private containerOverContentStyles = {
+		display: "none"
+	}
 
 	@property({ type: Boolean }) open: boolean = false
 	@property({
@@ -41,23 +46,28 @@ export class Sidenav extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	updated(changedProperties: Map<string, any>) {
+	async updated(changedProperties: Map<string, any>) {
 		if (
 			this.mode == SidenavMode.over &&
 			changedProperties.has("open") &&
 			changedProperties.get("open") != null
 		) {
-			let newOpen = !changedProperties.get("open") as boolean
+			let newIsOpen = !changedProperties.get("open") as boolean
+			let animations: Animation[] = []
 
-			if (newOpen) {
-				// Show the overlay
-				showOverlay(this.overlay)
+			if (newIsOpen) {
+				// Play slide in animation
+				animations = slideIn(this.containerOverContent, this.overlay)
 			} else {
-				// Hide the overlay
-				hideOverlay(this.overlay).onfinish = () => {
-					this.requestUpdate()
-				}
+				// Play slide out animation
+				animations = slideOut(this.containerOverContent, this.overlay)
 			}
+
+			// Wait for all animations to end
+			await Promise.all(animations.map(a => a.finished))
+
+			this.containerOverContentStyles.display = newIsOpen ? "flex" : "none"
+			this.requestUpdate()
 		}
 	}
 
@@ -66,6 +76,10 @@ export class Sidenav extends LitElement {
 	}
 
 	render() {
+		if (this.open) {
+			this.containerOverContentStyles.display = "flex"
+		}
+
 		if (this.mode == SidenavMode.side) {
 			return html`
 				<div class="container-inline">
@@ -74,12 +88,15 @@ export class Sidenav extends LitElement {
 			`
 		} else {
 			return html`
-				<div class="container-over">
+				<div
+					class="container-over"
+					style=${styleMap(this.containerOverContentStyles)}
+				>
+					<div class="overlay" @click=${this.overlayClick}></div>
+
 					<div class="container-over-content">
 						<slot></slot>
 					</div>
-
-					<div class="overlay" @click=${this.overlayClick}></div>
 				</div>
 			`
 		}

@@ -11,7 +11,6 @@ export const sidenavItemStyles = css`
 		background-color: transparent;
 		color: var(--dav-color-on-surface);
 		padding: 0px 16px;
-		margin: 5px 0px;
 		transition: 200ms;
 		text-decoration: none;
 		cursor: pointer;
