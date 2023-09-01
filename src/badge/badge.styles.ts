@@ -11,6 +11,14 @@ export const badgeStyles = css`
 		padding: 4px 12px;
 		border-radius: 14px;
 		font-size: 14px;
+		cursor: pointer;
+		transition: 200ms;
+	}
+
+	.container:hover,
+	.container:focus {
+		transform: translateY(-3px);
+		box-shadow: 0px 4px 8px 0px rgb(var(--dav-color-shadow-rgb), 0.1);
 	}
 
 	.container.secondary {
