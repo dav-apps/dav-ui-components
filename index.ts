@@ -2,6 +2,7 @@ import { setLocale, setTheme } from "./src/utils.js"
 import { Theme, DropdownOption, DropdownOptionType } from "./src/types.js"
 
 // Components
+import { Badge, badgeTagName } from "./src/badge/badge.js"
 import {
 	BlurhashImage,
 	blurhashImageTagName
@@ -69,6 +70,7 @@ import { Toggle, toggleTagName } from "./src/toggle/toggle.js"
 
 declare global {
 	interface HTMLElementTagNameMap {
+		[badgeTagName]: Badge
 		[blurhashImageTagName]: BlurhashImage
 		[bottomSheetTagName]: BottomSheet
 		[buttonTagName]: Button
@@ -116,6 +118,7 @@ export {
 	Theme,
 	DropdownOption,
 	DropdownOptionType,
+	Badge,
 	BlurhashImage,
 	BottomSheet,
 	Button,

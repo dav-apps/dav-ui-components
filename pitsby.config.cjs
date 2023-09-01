@@ -24,6 +24,8 @@ module.exports = {
 		"./dist/src/styles.js",
 		"./dist/src/types.js",
 		"./dist/src/utils.js",
+		"./dist/src/badge/badge.js",
+		"./dist/src/badge/badge.styles.js",
 		"./dist/src/blurhash-image/blurhash-image.js",
 		"./dist/src/blurhash-image/blurhash-image.styles.js",
 		"./dist/src/blurhash-image/blurhash-image-cache.js",
