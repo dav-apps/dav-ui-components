@@ -21,7 +21,8 @@ export class Badge extends LitElement {
 		container: true,
 		secondary: false,
 		tertiary: false,
-		error: false
+		error: false,
+		tonal: false
 	}
 
 	@property({
@@ -29,6 +30,7 @@ export class Badge extends LitElement {
 		converter: (value: string) => convertStringToThemeColor(value)
 	})
 	color: ThemeColor = ThemeColor.primary
+	@property({ type: Boolean }) tonal: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -48,6 +50,7 @@ export class Badge extends LitElement {
 		this.containerClasses.secondary = false
 		this.containerClasses.tertiary = false
 		this.containerClasses.error = false
+		this.containerClasses.tonal = this.tonal
 
 		switch (this.color) {
 			case ThemeColor.secondary:
