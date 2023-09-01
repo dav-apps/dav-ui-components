@@ -29,7 +29,7 @@ export const panelStyles = css`
 		flex-direction: column;
 		width: 340px;
 		background-color: var(--dav-color-surface);
-		border-radius: 28px 0 0 28px;
+		border-radius: 20px 0 0 20px;
 	}
 
 	.header-container {

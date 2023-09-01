@@ -20,7 +20,6 @@ export class Button extends LitElement {
 
 	@state() private buttonClasses = {
 		small: false,
-		primary: false,
 		secondary: false,
 		tertiary: false,
 		error: false,
@@ -67,7 +66,6 @@ export class Button extends LitElement {
 
 	render() {
 		this.buttonClasses.small = this.size == ButtonSize.small
-		this.buttonClasses.primary = false
 		this.buttonClasses.secondary = false
 		this.buttonClasses.tertiary = false
 		this.buttonClasses.error = false
@@ -86,8 +84,6 @@ export class Button extends LitElement {
 			case ThemeColor.error:
 				this.buttonClasses.error = true
 				break
-			default:
-				this.buttonClasses.primary = true
 		}
 
 		return html`

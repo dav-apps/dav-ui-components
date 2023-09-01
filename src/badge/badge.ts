@@ -1,10 +1,12 @@
 import { LitElement, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
-import { Settings } from "../types.js"
+import { customElement, property, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { Settings, ThemeColor } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
-	unsubscribeSettingsChange
+	unsubscribeSettingsChange,
+	convertStringToThemeColor
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { badgeStyles } from "./badge.styles.js"
@@ -14,6 +16,19 @@ export const badgeTagName = "dav-badge"
 @customElement(badgeTagName)
 export class Badge extends LitElement {
 	static styles = [globalStyles, badgeStyles]
+
+	@state() private containerClasses = {
+		container: true,
+		secondary: false,
+		tertiary: false,
+		error: false
+	}
+
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToThemeColor(value)
+	})
+	color: ThemeColor = ThemeColor.primary
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -30,8 +45,24 @@ export class Badge extends LitElement {
 	}
 
 	render() {
+		this.containerClasses.secondary = false
+		this.containerClasses.tertiary = false
+		this.containerClasses.error = false
+
+		switch (this.color) {
+			case ThemeColor.secondary:
+				this.containerClasses.secondary = true
+				break
+			case ThemeColor.tertiary:
+				this.containerClasses.tertiary = true
+				break
+			case ThemeColor.error:
+				this.containerClasses.error = true
+				break
+		}
+
 		return html`
-			<div class="container">
+			<div class=${classMap(this.containerClasses)}>
 				<slot></slot>
 			</div>
 		`

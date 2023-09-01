@@ -12,4 +12,19 @@ export const badgeStyles = css`
 		border-radius: 14px;
 		font-size: 14px;
 	}
+
+	.container.secondary {
+		background-color: var(--dav-color-secondary-container);
+		color: var(--dav-color-on-secondary-container);
+	}
+
+	.container.tertiary {
+		background-color: var(--dav-color-tertiary-container);
+		color: var(--dav-color-on-tertiary-container);
+	}
+
+	.container.error {
+		background-color: var(--dav-color-error-container);
+		color: var(--dav-color-on-error-container);
+	}
 `
