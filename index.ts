@@ -50,6 +50,10 @@ import {
 import { Pagination, paginationTagName } from "./src/pagination/pagination.js"
 import { Panel, panelTagName } from "./src/panel/panel.js"
 import {
+	ProgressBar,
+	progressBarTagName
+} from "./src/progress-bar/progress-bar.js"
+import {
 	ProgressRing,
 	progressRingTagName
 } from "./src/progress-ring/progress-ring.js"
@@ -93,6 +97,7 @@ declare global {
 		[navigationBarItemTagName]: NavigationBarItem
 		[paginationTagName]: Pagination
 		[panelTagName]: Panel
+		[progressBarTagName]: ProgressBar
 		[progressRingTagName]: ProgressRing
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
@@ -141,6 +146,7 @@ export {
 	NavigationBarItem,
 	Pagination,
 	Panel,
+	ProgressBar,
 	ProgressRing,
 	Setting,
 	Sidenav,
