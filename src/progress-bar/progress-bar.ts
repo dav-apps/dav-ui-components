@@ -17,10 +17,24 @@ export class ProgressBar extends LitElement {
 	@property({ type: Number }) value: number = 0
 
 	render() {
-		this.indicatorStyles.width = `${this.value}%`
+		let value = this.value
+
+		if (this.value < 0) {
+			value = 0
+		} else if (this.value > 100) {
+			value = 100
+		}
+
+		this.indicatorStyles.width = `${value}%`
 
 		return html`
-			<div class="container">
+			<div
+				class="container"
+				role="progressbar"
+				aria-valuenow=${value}
+				aria-valuemin="0"
+				aria-valuemax="100"
+			>
 				<div class="track"></div>
 
 				<div

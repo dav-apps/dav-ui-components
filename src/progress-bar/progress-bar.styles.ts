@@ -9,12 +9,14 @@ export const progressBarStyles = css`
 		position: absolute;
 		width: 100%;
 		height: 4px;
+		border-radius: 2px;
 		background-color: var(--dav-color-surface-container-highest);
 	}
 
 	.indicator {
 		position: absolute;
 		height: 4px;
+		border-radius: 2px;
 		background-color: var(--dav-color-primary);
 		transition: 200ms;
 	}
