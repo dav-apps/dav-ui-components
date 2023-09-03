@@ -29,28 +29,32 @@ export function setThemeColorVariables(
 		`var(--dav-color-primary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-primary-rgb",
-		`var(--dav-color-on-primary-${theme}-rgb)`
-	)
-	style.setProperty(
 		"--dav-color-primary-container-rgb",
 		`var(--dav-color-primary-container-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-on-primary-rgb",
+		`var(--dav-color-on-primary-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-on-primary-container-rgb",
 		`var(--dav-color-on-primary-container-${theme}-rgb)`
 	)
 	style.setProperty(
+		"--dav-color-inverse-primary-rgb",
+		`var(--dav-color-inverse-primary-${theme}-rgb)`
+	)
+	style.setProperty(
 		"--dav-color-secondary-rgb",
 		`var(--dav-color-secondary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-secondary-rgb",
-		`var(--dav-color-on-secondary-${theme}-rgb)`
-	)
-	style.setProperty(
 		"--dav-color-secondary-container-rgb",
 		`var(--dav-color-secondary-container-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-on-secondary-rgb",
+		`var(--dav-color-on-secondary-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-on-secondary-container-rgb",
@@ -61,16 +65,76 @@ export function setThemeColorVariables(
 		`var(--dav-color-tertiary-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-on-tertiary-rgb",
-		`var(--dav-color-on-tertiary-${theme}-rgb)`
-	)
-	style.setProperty(
 		"--dav-color-tertiary-container-rgb",
 		`var(--dav-color-tertiary-container-${theme}-rgb)`
 	)
 	style.setProperty(
+		"--dav-color-on-tertiary-rgb",
+		`var(--dav-color-on-tertiary-${theme}-rgb)`
+	)
+	style.setProperty(
 		"--dav-color-on-tertiary-container-rgb",
 		`var(--dav-color-on-tertiary-container-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-rgb",
+		`var(--dav-color-surface-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-dim-rgb",
+		`var(--dav-color-surface-dim-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-bright-rgb",
+		`var(--dav-color-surface-bright-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-container-lowest-rgb",
+		`var(--dav-color-surface-container-lowest-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-container-low-rgb",
+		`var(--dav-color-surface-container-low-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-container-rgb",
+		`var(--dav-color-surface-container-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-container-high-rgb",
+		`var(--dav-color-surface-container-high-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-container-highest-rgb",
+		`var(--dav-color-surface-container-highest-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-variant-rgb",
+		`var(--dav-color-surface-variant-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-on-surface-rgb",
+		`var(--dav-color-on-surface-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-on-surface-variant-rgb",
+		`var(--dav-color-on-surface-variant-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-inverse-surface-rgb",
+		`var(--dav-color-inverse-surface-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-inverse-on-surface-rgb",
+		`var(--dav-color-inverse-on-surface-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-background-rgb",
+		`var(--dav-color-background-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-on-background-rgb",
+		`var(--dav-color-on-background-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-error-rgb",
@@ -89,44 +153,12 @@ export function setThemeColorVariables(
 		`var(--dav-color-on-error-container-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-background-rgb",
-		`var(--dav-color-background-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-on-background-rgb",
-		`var(--dav-color-on-background-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-surface-rgb",
-		`var(--dav-color-surface-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-on-surface-rgb",
-		`var(--dav-color-on-surface-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-surface-variant-rgb",
-		`var(--dav-color-surface-variant-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-on-surface-variant-rgb",
-		`var(--dav-color-on-surface-variant-${theme}-rgb)`
-	)
-	style.setProperty(
 		"--dav-color-outline-rgb",
 		`var(--dav-color-outline-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-inverse-on-surface-rgb",
-		`var(--dav-color-inverse-on-surface-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-inverse-surface-rgb",
-		`var(--dav-color-inverse-surface-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-inverse-primary-rgb",
-		`var(--dav-color-inverse-primary-${theme}-rgb)`
+		"--dav-color-outline-variant-rgb",
+		`var(--dav-color-outline-variant-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-shadow-rgb",
@@ -137,20 +169,8 @@ export function setThemeColorVariables(
 		`var(--dav-color-surface-tint-${theme}-rgb)`
 	)
 	style.setProperty(
-		"--dav-color-outline-variant-rgb",
-		`var(--dav-color-outline-variant-${theme}-rgb)`
-	)
-	style.setProperty(
 		"--dav-color-scrim-rgb",
 		`var(--dav-color-scrim-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-surface-hover-rgb",
-		`var(--dav-color-surface-hover-${theme}-rgb)`
-	)
-	style.setProperty(
-		"--dav-color-surface-focus-rgb",
-		`var(--dav-color-surface-focus-${theme}-rgb)`
 	)
 
 	// State variables
@@ -217,6 +237,14 @@ export function setThemeColorVariables(
 	style.setProperty(
 		"--dav-color-error-container-focus-rgb",
 		`var(--dav-color-error-container-focus-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-hover-rgb",
+		`var(--dav-color-surface-hover-${theme}-rgb)`
+	)
+	style.setProperty(
+		"--dav-color-surface-focus-rgb",
+		`var(--dav-color-surface-focus-${theme}-rgb)`
 	)
 	style.setProperty(
 		"--dav-color-surface-variant-hover-rgb",
