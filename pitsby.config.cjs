@@ -74,6 +74,8 @@ module.exports = {
 		"./dist/src/panel/panel.js",
 		"./dist/src/panel/panel.animations.js",
 		"./dist/src/panel/panel.styles.js",
+		"./dist/src/profile-card/profile-card.js",
+		"./dist/src/profile-card/profile-card.styles.js",
 		"./dist/src/progress-bar/progress-bar.js",
 		"./dist/src/progress-bar/progress-bar.styles.js",
 		"./dist/src/progress-ring/progress-ring.js",

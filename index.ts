@@ -50,6 +50,10 @@ import {
 import { Pagination, paginationTagName } from "./src/pagination/pagination.js"
 import { Panel, panelTagName } from "./src/panel/panel.js"
 import {
+	ProfileCard,
+	profileCardTagName
+} from "./src/profile-card/profile-card.js"
+import {
 	ProgressBar,
 	progressBarTagName
 } from "./src/progress-bar/progress-bar.js"
@@ -97,6 +101,7 @@ declare global {
 		[navigationBarItemTagName]: NavigationBarItem
 		[paginationTagName]: Pagination
 		[panelTagName]: Panel
+		[profileCardTagName]: ProfileCard
 		[progressBarTagName]: ProgressBar
 		[progressRingTagName]: ProgressRing
 		[settingTagName]: Setting
@@ -146,6 +151,7 @@ export {
 	NavigationBarItem,
 	Pagination,
 	Panel,
+	ProfileCard,
 	ProgressBar,
 	ProgressRing,
 	Setting,
