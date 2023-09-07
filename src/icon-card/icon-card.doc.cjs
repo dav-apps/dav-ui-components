@@ -16,6 +16,18 @@ module.exports = {
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</dav-icon-card>
 			`
+		},
+		{
+			title: "IconCard with link",
+			template: `
+				<dav-icon-card
+					text="Hello World"
+					href="https://dav-apps.tech"
+					target="blank"
+				>
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</dav-icon-card>
+			`
 		}
 	]
 }

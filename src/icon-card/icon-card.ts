@@ -16,6 +16,8 @@ export class IconCard extends LitElement {
 	static styles = [globalStyles, iconCardStyles]
 
 	@property({ type: String }) text: string = ""
+	@property() href: string = ""
+	@property() target: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -38,12 +40,26 @@ export class IconCard extends LitElement {
 	}
 
 	render() {
-		return html`
-			<button class="icon-card-container">
-				<slot></slot>
+		if (this.href.length > 0) {
+			return html`
+				<a
+					class="icon-card-container"
+					href=${this.href}
+					target=${this.target}
+				>
+					<slot></slot>
 
-				${this.getText()}
-			</button>
-		`
+					${this.getText()}
+				</a>
+			`
+		} else {
+			return html`
+				<button class="icon-card-container">
+					<slot></slot>
+
+					${this.getText()}
+				</button>
+			`
+		}
 	}
 }

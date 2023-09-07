@@ -18,6 +18,10 @@ export const iconCardStyles = css`
 		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 	}
 
+	a.icon-card-container {
+		text-decoration: none;
+	}
+
 	.icon-card-container:hover,
 	.icon-card-container:focus {
 		transform: translateY(-8px);
@@ -26,5 +30,6 @@ export const iconCardStyles = css`
 
 	.icon-card-container > p {
 		margin: 0 0 0 24px;
+		font-weight: 400;
 	}
 `
