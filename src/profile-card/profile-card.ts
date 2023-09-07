@@ -20,7 +20,7 @@ export class ProfileCard extends LitElement {
 	@property() imageBlurhash: string = ""
 	@property() name: string = ""
 	@property() href: string = ""
-	@property() target: string = "blank"
+	@property() target: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -55,13 +55,20 @@ export class ProfileCard extends LitElement {
 	render() {
 		if (this.href.length > 0) {
 			return html`
-				<a class="container" href=${this.href} target=${this.target}>
+				<a
+					class="container"
+					href=${this.href}
+					target=${this.target}
+					title=${this.name}
+				>
 					${this.getContainerContent()}
 				</a>
 			`
 		} else {
 			return html`
-				<button class="container">${this.getContainerContent()}</button>
+				<button class="container" title=${this.name}>
+					${this.getContainerContent()}
+				</button>
 			`
 		}
 	}
