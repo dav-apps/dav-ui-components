@@ -14,6 +14,10 @@ export const profileCardStyles = css`
 		transition: 200ms;
 	}
 
+	a.container {
+		text-decoration: none;
+	}
+
 	.container:hover,
 	.container:focus {
 		transform: translateY(-4px);

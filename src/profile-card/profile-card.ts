@@ -19,6 +19,8 @@ export class ProfileCard extends LitElement {
 	@property() imageFallbackSrc: string = ""
 	@property() imageBlurhash: string = ""
 	@property() name: string = ""
+	@property() href: string = ""
+	@property() target: string = "blank"
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -34,21 +36,33 @@ export class ProfileCard extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	render() {
+	getContainerContent() {
 		return html`
-			<button class="container">
-				<dav-blurhash-image
-					src=${this.imageSrc}
-					fallbackSrc=${this.imageFallbackSrc}
-					imageBlurhash=${this.imageBlurhash}
-					title=${this.name}
-					alt=${this.name}
-					width="36"
-					height="36"
-				></dav-blurhash-image>
+			<dav-blurhash-image
+				src=${this.imageSrc}
+				fallbackSrc=${this.imageFallbackSrc}
+				imageBlurhash=${this.imageBlurhash}
+				title=${this.name}
+				alt=${this.name}
+				width="36"
+				height="36"
+			></dav-blurhash-image>
 
-				<p>${this.name}</p>
-			</button>
+			<p>${this.name}</p>
 		`
+	}
+
+	render() {
+		if (this.href.length > 0) {
+			return html`
+				<a class="container" href=${this.href} target=${this.target}>
+					${this.getContainerContent()}
+				</a>
+			`
+		} else {
+			return html`
+				<button class="container">${this.getContainerContent()}</button>
+			`
+		}
 	}
 }
