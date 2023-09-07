@@ -48,6 +48,12 @@ module.exports = {
 					<dav-badge color="error" tonal>Hello World</dav-badge>
 				</div>
 			`
+		},
+		{
+			title: "Badge with link",
+			template: `
+				<dav-badge color="error" href="https://dav-apps.tech" target="blank">Hello World</dav-badge>
+			`
 		}
 	]
 }

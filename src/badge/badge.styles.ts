@@ -6,6 +6,7 @@ export const badgeStyles = css`
 	}
 
 	.container {
+		display: inline-flex;
 		background-color: var(--dav-color-primary);
 		color: var(--dav-color-on-primary);
 		padding: 4px 12px;
@@ -13,6 +14,10 @@ export const badgeStyles = css`
 		font-size: 14px;
 		cursor: pointer;
 		transition: 200ms;
+	}
+
+	a.container {
+		text-decoration: none;
 	}
 
 	.container:hover,

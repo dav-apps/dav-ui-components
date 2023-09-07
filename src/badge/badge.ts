@@ -31,6 +31,8 @@ export class Badge extends LitElement {
 	})
 	color: ThemeColor = ThemeColor.primary
 	@property({ type: Boolean }) tonal: boolean = false
+	@property() href: string = ""
+	@property() target: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -64,10 +66,22 @@ export class Badge extends LitElement {
 				break
 		}
 
-		return html`
-			<div class=${classMap(this.containerClasses)}>
-				<slot></slot>
-			</div>
-		`
+		if (this.href.length > 0) {
+			return html`
+				<a
+					class=${classMap(this.containerClasses)}
+					href=${this.href}
+					target=${this.target}
+				>
+					<slot></slot>
+				</a>
+			`
+		} else {
+			return html`
+				<div class=${classMap(this.containerClasses)}>
+					<slot></slot>
+				</div>
+			`
+		}
 	}
 }
