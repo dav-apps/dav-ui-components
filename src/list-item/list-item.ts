@@ -17,8 +17,8 @@ export const listItemTagName = "dav-list-item"
 export class ListItem extends LitElement {
 	static styles = [globalStyles, listItemStyles]
 
-	@state() private listItemContainerClasses = {
-		"list-item-container": true,
+	@state() private containerClasses = {
+		container: true,
 		small: false
 	}
 
@@ -32,6 +32,8 @@ export class ListItem extends LitElement {
 		converter: (value: string) => convertStringToListItemSize(value)
 	})
 	size: ListItemSize = ListItemSize.normal
+	@property() href: string = ""
+	@property() target: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -53,12 +55,12 @@ export class ListItem extends LitElement {
 			(this.imageFallbackSrc != null && this.imageFallbackSrc.length > 0)
 		) {
 			return html`
-				<div class="list-item-image-container">
+				<div class="image-container">
 					<dav-blurhash-image
-						class="list-item-image"
+						class="image"
 						src=${this.imageSrc}
 						fallbackSrc=${this.imageFallbackSrc}
-						height=${this.listItemContainerClasses.small ? 56 : 84}
+						height=${this.containerClasses.small ? 56 : 84}
 					></dav-blurhash-image>
 				</div>
 			`
@@ -67,27 +69,43 @@ export class ListItem extends LitElement {
 
 	getHeadline() {
 		if (this.headline != null && this.headline.length > 0) {
-			return html`<p class="list-item-headline">${this.headline}</p>`
+			return html`<p class="headline">${this.headline}</p>`
 		}
 	}
 
 	getSubhead() {
 		if (this.subhead != null && this.subhead.length > 0) {
-			return html`<p class="list-item-subhead">${this.subhead}</p>`
+			return html`<p class="subhead">${this.subhead}</p>`
 		}
 	}
 
-	render() {
-		this.listItemContainerClasses.small = this.size == ListItemSize.small
-
+	getContainerContent() {
 		return html`
-			<div class=${classMap(this.listItemContainerClasses)} tabindex="0">
-				${this.getImage()}
+			${this.getImage()}
 
-				<div class="list-item-body">
-					${this.getHeadline()} ${this.getSubhead()}
-				</div>
-			</div>
+			<div class="body">${this.getHeadline()} ${this.getSubhead()}</div>
 		`
+	}
+
+	render() {
+		this.containerClasses.small = this.size == ListItemSize.small
+
+		if (this.href.length > 0) {
+			return html`
+				<a
+					class=${classMap(this.containerClasses)}
+					href=${this.href}
+					target=${this.target}
+				>
+					${this.getContainerContent()}
+				</a>
+			`
+		} else {
+			return html`
+				<button class=${classMap(this.containerClasses)}>
+					${this.getContainerContent()}
+				</button>
+			`
+		}
 	}
 }

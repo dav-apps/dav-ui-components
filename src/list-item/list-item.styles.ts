@@ -1,62 +1,70 @@
 import { css } from "@lit/reactive-element"
 
 export const listItemStyles = css`
-	.list-item-container {
+	.container {
 		display: flex;
 		align-items: center;
+		width: 100%;
 		padding: 8px 16px;
 		background-color: var(--dav-color-surface);
 		transition: 200ms;
 		cursor: pointer;
+		border: none;
 		border-radius: 12px;
 	}
 
-	.list-item-container:hover {
+	a.container {
+		text-decoration: none;
+	}
+
+	.container:hover {
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	.list-item-container:focus,
-	.list-item-container:active {
+	.container:focus,
+	.container:active {
 		background-color: var(--dav-color-surface-focus);
 	}
 
-	.list-item-image-container {
+	.image-container {
 		height: 84px;
 		width: 84px;
 		margin-right: 16px;
 	}
 
-	.list-item-container.small .list-item-image-container {
+	.container.small .image-container {
 		height: 56px;
 		width: 56px;
 	}
 
-	.list-item-image {
+	.image {
 		border-radius: 6px;
 	}
 
-	.list-item-body {
+	.body {
 		display: flex;
 		flex-direction: column;
+		align-items: start;
+		font-family: Roboto, Arial, sans-serif;
 	}
 
-	.list-item-headline {
+	.headline {
 		color: var(--dav-color-on-surface);
 		font-size: 18px;
 		margin: 0;
 	}
 
-	.list-item-container.small .list-item-headline {
+	.container.small .headline {
 		font-size: 16px;
 	}
 
-	.list-item-subhead {
+	.subhead {
 		color: var(--dav-color-on-surface-variant);
 		font-size: 16px;
 		margin: 0;
 	}
 
-	.list-item-container.small .list-item-subhead {
+	.container.small .subhead {
 		font-size: 14px;
 	}
 `
