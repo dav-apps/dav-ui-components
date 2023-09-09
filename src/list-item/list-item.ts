@@ -21,12 +21,17 @@ export class ListItem extends LitElement {
 		container: true,
 		small: false
 	}
+	@state() private imageClasses = {
+		image: true,
+		rounded: false
+	}
 
-	@property({ type: String }) imageSrc: string = ""
-	@property({ type: String }) imageFallbackSrc: string = ""
-	@property({ type: String })
+	@property() imageSrc: string = ""
+	@property() imageFallbackSrc: string = ""
+	@property({ type: Boolean }) imageRounded: boolean = false
+	@property()
 	headline: string = ""
-	@property({ type: String }) subhead: string = ""
+	@property() subhead: string = ""
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToListItemSize(value)
@@ -57,7 +62,7 @@ export class ListItem extends LitElement {
 			return html`
 				<div class="image-container">
 					<dav-blurhash-image
-						class="image"
+						class=${classMap(this.imageClasses)}
 						src=${this.imageSrc}
 						fallbackSrc=${this.imageFallbackSrc}
 						height=${this.containerClasses.small ? 56 : 84}
@@ -89,6 +94,7 @@ export class ListItem extends LitElement {
 
 	render() {
 		this.containerClasses.small = this.size == ListItemSize.small
+		this.imageClasses.rounded = this.imageRounded
 
 		if (this.href.length > 0) {
 			return html`

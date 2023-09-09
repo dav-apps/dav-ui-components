@@ -41,6 +41,10 @@ export const listItemStyles = css`
 		border-radius: 6px;
 	}
 
+	.image.rounded {
+		border-radius: 50%;
+	}
+
 	.body {
 		display: flex;
 		flex-direction: column;
