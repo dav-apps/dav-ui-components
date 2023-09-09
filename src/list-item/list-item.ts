@@ -32,8 +32,7 @@ export class ListItem extends LitElement {
 	@property() imageTitle: string = ""
 	@property() imageAlt: string = ""
 	@property({ type: Boolean }) imageRounded: boolean = false
-	@property()
-	headline: string = ""
+	@property() headline: string = ""
 	@property() subhead: string = ""
 	@property({
 		type: String,
