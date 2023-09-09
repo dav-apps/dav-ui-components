@@ -1,5 +1,32 @@
 module.exports = {
 	name: "Header",
+	properties: [
+		{
+			name: "alignment",
+			type: "String",
+			values: `"start", "center", "end"`
+		},
+		{
+			name: "backButtonVisible",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "addButtonVisible",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "editButtonVisible",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "size",
+			type: "String",
+			values: `"small", "normal", "large"`
+		}
+	],
 	examples: [
 		{
 			title: "Small Header",
