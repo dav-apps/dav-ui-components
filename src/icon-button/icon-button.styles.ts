@@ -11,7 +11,7 @@ export const iconButtonStyles = css`
 
 	.icon-button {
 		position: relative;
-		display: flex;
+		display: inline-flex;
 		justify-content: center;
 		align-items: center;
 		width: 48px;

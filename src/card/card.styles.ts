@@ -2,7 +2,7 @@ import { css } from "@lit/reactive-element"
 
 export const cardStyles = css`
 	.card-container {
-		display: flex;
+		display: inline-flex;
 		flex-direction: column;
 		min-width: 60px;
 		width: inherit;
@@ -16,9 +16,6 @@ export const cardStyles = css`
 
 	.card-container.horizontal {
 		flex-direction: row;
-	}
-
-	.card-container > .card-image-container {
 	}
 
 	.card-container.horizontal > .card-image-container {

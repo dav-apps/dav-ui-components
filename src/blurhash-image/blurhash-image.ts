@@ -129,13 +129,13 @@ export class BlurhashImage extends LitElement {
 		if (this.width > 0) {
 			this.blurhashImageContainerStyles.width = `${this.width}px`
 		} else {
-			this.blurhashImageContainerStyles.width = "unset"
+			this.blurhashImageContainerStyles.width = "inherit"
 		}
 
 		if (this.height > 0) {
 			this.blurhashImageContainerStyles.height = `${this.height}px`
 		} else {
-			this.blurhashImageContainerStyles.height = "unset"
+			this.blurhashImageContainerStyles.height = "inherit"
 		}
 
 		return html`
