@@ -21,6 +21,7 @@ export const headerStyles = css`
 		margin: 0;
 		font-family: Roboto, Arial, sans-serif;
 		font-weight: 400;
+		text-align: center;
 		color: var(--dav-color-on-surface);
 	}
 
