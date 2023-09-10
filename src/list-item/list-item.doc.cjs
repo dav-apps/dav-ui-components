@@ -14,6 +14,10 @@ module.exports = {
 			type: "String"
 		},
 		{
+			name: "imageAspectRatio",
+			type: "String"
+		},
+		{
 			name: "imageTitle",
 			type: "String"
 		},
@@ -56,6 +60,29 @@ module.exports = {
 					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/6366cd03-8cd7-4904-974c-e65ee02800e6"
 					headline="Dombey and Son"
 					subhead="Charles Dickens"
+					aspectRatio="1:1.5"
+				></dav-list-item>
+			`
+		},
+		{
+			title: "Small ListItem",
+			template: `
+				<dav-list-item
+					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/99a5fa11-786b-4d32-9154-4478f6b27a9f"
+					headline="Victor Hugo"
+					imageTitle="Victor Hugo"
+					size="small"
+				></dav-list-item>
+			`
+		},
+		{
+			title: "Large ListItem",
+			template: `
+				<dav-list-item
+					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/99a5fa11-786b-4d32-9154-4478f6b27a9f"
+					headline="Victor Hugo"
+					imageTitle="Victor Hugo"
+					size="large"
 				></dav-list-item>
 			`
 		},
