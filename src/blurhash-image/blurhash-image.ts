@@ -20,14 +20,15 @@ export class BlurhashImage extends LitElement {
 	@state() private loadedBlurhash: string = ""
 	@state() private loadedImage: string = ""
 
-	@property({ type: String }) src: string = ""
+	@property() src: string = ""
 	@property({ type: Number }) width: number = 0
 	@property({ type: Number }) height: number = 0
-	@property({ type: String }) fallbackSrc: string = ""
-	@property({ type: String }) blurhash: string = ""
+	@property() fallbackSrc: string = ""
+	@property() blurhash: string = ""
+	@property() aspectRatio: string = "1:1"
 	@property({ type: Boolean }) loading: boolean = false
-	@property({ type: String }) title: string = ""
-	@property({ type: String }) alt: string = ""
+	@property() title: string = ""
+	@property() alt: string = ""
 
 	private loadBlurhash() {
 		if (
@@ -45,10 +46,39 @@ export class BlurhashImage extends LitElement {
 		this.loadedBlurhash = this.blurhash
 		this.imageSrc = this.fallbackSrc
 
+		let width = this.width
+		let height = this.height
+
+		if (this.aspectRatio) {
+			let aspectRatioParts = this.aspectRatio.split(":")
+
+			if (aspectRatioParts.length == 2) {
+				let xValue = +aspectRatioParts[0]
+				let yValue = +aspectRatioParts[1]
+
+				if (xValue == 1) {
+					if (height == 0) {
+						height = Math.round(width * yValue)
+					} else if (width == 0) {
+						width = Math.round(height / yValue)
+					}
+				} else if (yValue == 1) {
+					if (height == 0) {
+						height = Math.round(width / xValue)
+					} else if (width == 0) {
+						width = Math.round(height * xValue)
+					}
+				}
+			}
+		} else {
+			if (width == 0) width = height
+			if (height == 0) height = width
+		}
+
 		let cacheKey = BlurhashImageCache.GetBlurhashImageCacheKey(
 			this.blurhash,
-			this.width,
-			this.height
+			width,
+			height
 		)
 		let cacheItem = BlurhashImageCache.GetBlurhashImageCacheItem(cacheKey)
 
@@ -57,18 +87,19 @@ export class BlurhashImage extends LitElement {
 		} else {
 			// Generate the blurhash
 			let canvas = document.createElement("canvas")
-			canvas.width = this.width
-			canvas.height = this.height
+
+			canvas.width = width
+			canvas.height = height
 
 			if (
 				canvas.getContext &&
-				Number.isFinite(this.width) &&
-				Number.isFinite(this.height)
+				Number.isFinite(width) &&
+				Number.isFinite(height)
 			) {
 				// Decode the blurhash and set the canvas
 				let ctx = canvas.getContext("2d")
-				let pixels = decode(this.blurhash, this.width, this.height)
-				let imageData = ctx.createImageData(this.width, this.height)
+				let pixels = decode(this.blurhash, width, height)
+				let imageData = ctx.createImageData(width, height)
 				imageData.data.set(pixels)
 				ctx.putImageData(imageData, 0, 0)
 
