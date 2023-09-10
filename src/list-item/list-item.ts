@@ -19,7 +19,8 @@ export class ListItem extends LitElement {
 
 	@state() private containerClasses = {
 		container: true,
-		small: false
+		small: false,
+		large: false
 	}
 	@state() private imageClasses = {
 		image: true,
@@ -29,6 +30,7 @@ export class ListItem extends LitElement {
 	@property() imageSrc: string = ""
 	@property() imageFallbackSrc: string = ""
 	@property() imageBlurhash: string = ""
+	@property() imageAspectRatio: string = ""
 	@property() imageTitle: string = ""
 	@property() imageAlt: string = ""
 	@property({ type: Boolean }) imageRounded: boolean = false
@@ -61,16 +63,25 @@ export class ListItem extends LitElement {
 			(this.imageSrc != null && this.imageSrc.length > 0) ||
 			(this.imageFallbackSrc != null && this.imageFallbackSrc.length > 0)
 		) {
+			let height = 84
+
+			if (this.size == ListItemSize.small) {
+				height = 56
+			} else if (this.size == ListItemSize.large) {
+				height = 140
+			}
+
 			return html`
 				<div class="image-container">
 					<dav-blurhash-image
 						class=${classMap(this.imageClasses)}
 						src=${this.imageSrc}
+						height=${height}
 						fallbackSrc=${this.imageFallbackSrc}
 						blurhash=${this.imageBlurhash}
+						aspectRatio=${this.imageAspectRatio}
 						title=${this.imageTitle}
 						alt=${this.imageAlt}
-						height=${this.containerClasses.small ? 56 : 84}
 					></dav-blurhash-image>
 				</div>
 			`
@@ -98,7 +109,15 @@ export class ListItem extends LitElement {
 	}
 
 	render() {
-		this.containerClasses.small = this.size == ListItemSize.small
+		this.containerClasses.small = false
+		this.containerClasses.large = false
+
+		if (this.size == ListItemSize.small) {
+			this.containerClasses.small = true
+		} else if (this.size == ListItemSize.large) {
+			this.containerClasses.large = true
+		}
+
 		this.imageClasses.rounded = this.imageRounded
 
 		if (this.href.length > 0) {

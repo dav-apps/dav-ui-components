@@ -361,6 +361,8 @@ export function convertStringToListItemSize(value: string): ListItemSize {
 	switch (value) {
 		case "small":
 			return ListItemSize.small
+		case "large":
+			return ListItemSize.large
 		default:
 			return ListItemSize.normal
 	}

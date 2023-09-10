@@ -37,6 +37,11 @@ export const listItemStyles = css`
 		width: 56px;
 	}
 
+	.container.large .image-container {
+		height: 140px;
+		width: 140px;
+	}
+
 	.image {
 		border-radius: 6px;
 	}
@@ -62,6 +67,10 @@ export const listItemStyles = css`
 		font-size: 16px;
 	}
 
+	.container.large .headline {
+		font-size: 20px;
+	}
+
 	.subhead {
 		color: var(--dav-color-on-surface-variant);
 		font-size: 16px;
@@ -70,5 +79,9 @@ export const listItemStyles = css`
 
 	.container.small .subhead {
 		font-size: 14px;
+	}
+
+	.container.large .subhead {
+		font-size: 16px;
 	}
 `

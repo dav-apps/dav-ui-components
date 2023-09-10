@@ -63,7 +63,8 @@ export enum Orientation {
 
 export enum ListItemSize {
 	small = "small",
-	normal = "normal"
+	normal = "normal",
+	large = "large"
 }
 
 export enum MessageBarType {
