@@ -11,6 +11,7 @@ export const listItemStyles = css`
 		cursor: pointer;
 		border: none;
 		border-radius: 12px;
+		box-sizing: border-box;
 	}
 
 	a.container {

@@ -41,6 +41,10 @@ export const dropdownStyles = css`
 		color: var(--dav-color-on-surface);
 	}
 
+	.dropdown-button.disabled span {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
+	}
+
 	.dropdown-button i {
 		padding-top: 1px;
 		font-size: 12px;
@@ -51,6 +55,11 @@ export const dropdownStyles = css`
 		margin-bottom: 8px;
 		font-size: 14px;
 		font-weight: 400;
+		color: var(--dav-color-on-surface);
+	}
+
+	.dropdown-label.disabled {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 
 	.chevron-svg-container {

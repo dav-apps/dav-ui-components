@@ -23,6 +23,10 @@ export class Dropdown extends LitElement {
 	@state() private showItems: boolean = false
 	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
+	@state() private dropdownLabelClasses = {
+		"dropdown-label": true,
+		disabled: false
+	}
 	@state() private dropdownButtonClasses = {
 		"dropdown-button": true,
 		disabled: false,
@@ -107,7 +111,10 @@ export class Dropdown extends LitElement {
 	getLabel() {
 		if (this.label.length > 0) {
 			return html`
-				<label class="dropdown-label" for="dropdown-button">
+				<label
+					class=${classMap(this.dropdownLabelClasses)}
+					for="dropdown-button"
+				>
 					${this.label}
 				</label>
 			`
@@ -138,7 +145,7 @@ export class Dropdown extends LitElement {
 	}
 
 	render() {
-		// Update the UI based on the properties
+		this.dropdownLabelClasses.disabled = this.disabled
 		this.dropdownButtonClasses.disabled = this.disabled
 		this.dropdownButtonClasses.active = this.showItems
 		this.dropdownContentClasses["slide-down-in"] = this.showItems
