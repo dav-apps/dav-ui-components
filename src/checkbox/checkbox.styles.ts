@@ -47,12 +47,12 @@ export const checkboxStyles = css`
 		stroke: var(--dav-color-on-surface);
 		stroke-width: 0px;
 		stroke-dasharray: 32;
-		stroke-dashoffset: 9;
+		stroke-dashoffset: 32;
 		transition: 160ms ease-in-out;
 	}
 
 	.checkbox.checked > svg {
-		stroke-dashoffset: 32;
+		stroke-dashoffset: 9;
 	}
 
 	.checkbox.disabled > svg {
