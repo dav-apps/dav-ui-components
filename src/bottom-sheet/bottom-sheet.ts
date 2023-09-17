@@ -41,7 +41,6 @@ export class BottomSheet extends LitElement {
 		animate: false
 	}
 	@state() private overlayStyles = {
-		//opacity: "0.5"
 		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
 	@state() private contentContainerStyles = {

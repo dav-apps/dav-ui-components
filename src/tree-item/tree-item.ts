@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
@@ -21,11 +22,15 @@ export class TreeItem extends LitElement {
 	@query(".children-container") childrenContainer: HTMLDivElement
 	@query(".icon-container") iconContainer: HTMLDivElement
 
-	@state() private childrenContainerStyles = {
-		display: "none"
+	@state() private containerClasses = {
+		container: true,
+		node: false
 	}
 	@state() private iconContainerStyles = {
 		transform: "rotate(-90deg)"
+	}
+	@state() private childrenContainerStyles = {
+		display: "none"
 	}
 
 	@property() headline: string = ""
@@ -35,10 +40,6 @@ export class TreeItem extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
-
-		this.addEventListener("click", (event: Event) => {
-			event.stopPropagation()
-		})
 	}
 
 	disconnectedCallback() {
@@ -80,6 +81,7 @@ export class TreeItem extends LitElement {
 				<div
 					class="icon-container"
 					style=${styleMap(this.iconContainerStyles)}
+					@click=${this.iconContainerClick}
 				>
 					${chevronDownLightSvg}
 				</div>
@@ -93,6 +95,7 @@ export class TreeItem extends LitElement {
 				<div
 					class="children-container"
 					style=${styleMap(this.childrenContainerStyles)}
+					@click=${this.childrenContainerClick}
 				>
 					<dav-tree>
 						<slot></slot>
@@ -102,10 +105,16 @@ export class TreeItem extends LitElement {
 		}
 	}
 
-	buttonClick() {
+	iconContainerClick(event: Event) {
+		event.stopPropagation()
+
 		if (this.node) {
 			this.open = !this.open
 		}
+	}
+
+	childrenContainerClick(event: Event) {
+		event.stopPropagation()
 	}
 
 	render() {
@@ -114,9 +123,12 @@ export class TreeItem extends LitElement {
 			this.iconContainerStyles.transform = "rotate(0)"
 		}
 
+		this.containerClasses.node = this.node
+
 		return html`
-			<button class="container" @click=${this.buttonClick}>
-				${this.getIconContainer()} ${this.headline}
+			<button class=${classMap(this.containerClasses)}>
+				${this.getIconContainer()}
+				<span>${this.headline}</span>
 			</button>
 
 			${this.getChildrenContainer()}

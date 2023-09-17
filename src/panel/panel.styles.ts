@@ -59,7 +59,7 @@ export const panelStyles = css`
 	}
 
 	.slot-container {
-		margin: 12px 0 0 24px;
+		margin: 12px 24px;
 		overflow-y: auto;
 	}
 `
