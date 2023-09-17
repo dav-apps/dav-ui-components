@@ -10,7 +10,7 @@ export const textareaStyles = css`
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
 		font-weight: 400;
-		margin-bottom: 6px;
+		padding-bottom: 8px;
 		cursor: pointer;
 		color: var(--dav-color-on-surface);
 	}

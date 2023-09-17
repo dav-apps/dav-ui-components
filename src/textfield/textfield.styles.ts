@@ -10,7 +10,7 @@ export const textfieldStyles = css`
 		font-family: Roboto, Arial, sans-serif;
 		font-size: 14px;
 		font-weight: 400;
-		margin-bottom: 6px;
+		padding-bottom: 8px;
 		cursor: pointer;
 		color: var(--dav-color-on-surface);
 	}
@@ -21,7 +21,7 @@ export const textfieldStyles = css`
 	}
 
 	#textfield {
-		margin: 2px 0px;
+		margin: 0;
 		padding: 0px 9px;
 		height: 28px;
 		background: transparent;

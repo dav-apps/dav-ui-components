@@ -72,10 +72,7 @@ export class Textarea extends LitElement {
 	getLabel() {
 		if (this.label != null && this.label.length > 0) {
 			return html`
-				<label
-					class=${classMap(this.textareaLabelClasses)}
-					for="textarea-input"
-				>
+				<label class=${classMap(this.textareaLabelClasses)} for="textarea">
 					${this.label}
 				</label>
 			`
@@ -103,7 +100,7 @@ export class Textarea extends LitElement {
 					id="textarea"
 					style=${styleMap(this.textareaStyles)}
 					class=${classMap(this.textareaClasses)}
-					name="textarea-input"
+					name="textarea"
 					.value=${this.value}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}

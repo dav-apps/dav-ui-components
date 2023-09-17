@@ -67,6 +67,7 @@ export const bottomSheetStyles = css`
 	.content {
 		width: 100%;
 		height: 100%;
-		padding: 0 24px;
+		padding: 0 24px 16px;
+		box-sizing: border-box;
 	}
 `
