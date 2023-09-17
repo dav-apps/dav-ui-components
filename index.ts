@@ -75,6 +75,8 @@ import {
 import { Textarea, textareaTagName } from "./src/textarea/textarea.js"
 import { Textfield, textfieldTagName } from "./src/textfield/textfield.js"
 import { Toggle, toggleTagName } from "./src/toggle/toggle.js"
+import { Tree, treeTagName } from "./src/tree/tree.js"
+import { TreeItem, treeItemTagName } from "./src/tree-item/tree-item.js"
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -112,6 +114,8 @@ declare global {
 		[textareaTagName]: Textarea
 		[textfieldTagName]: Textfield
 		[toggleTagName]: Toggle
+		[treeTagName]: Tree
+		[treeItemTagName]: TreeItem
 	}
 }
 
@@ -161,5 +165,7 @@ export {
 	TabBarItem,
 	Textarea,
 	Textfield,
-	Toggle
+	Toggle,
+	Tree,
+	TreeItem
 }
