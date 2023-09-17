@@ -1,7 +1,8 @@
 import { css } from "@lit/reactive-element"
 
 export const treeItemStyles = css`
-	span {
-		background-color: green;
+	.children-container {
+		position: relative;
+		margin: 6px 0 0 12px;
 	}
 `

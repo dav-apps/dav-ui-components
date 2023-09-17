@@ -101,6 +101,7 @@ module.exports = {
 		"./dist/src/tree/tree.styles.js",
 		"./dist/src/tree-item/tree-item.js",
 		"./dist/src/tree-item/tree-item.styles.js",
+		"./dist/src/tree-item/tree-item.animations.js",
 		"./dist/src/svg/arrow-left-light.js",
 		"./dist/src/svg/chevron-down-light.js",
 		"./dist/src/svg/circle-check-light.js",
