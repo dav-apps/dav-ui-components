@@ -22,7 +22,7 @@ export class BottomSheet extends LitElement {
 
 	private resizeObserverInitialized: boolean = false
 	private draggingInitialized: boolean = false
-	private animatePosition: boolean = false
+	private animatePosition: boolean = true
 	private mouseDown: boolean = false
 
 	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
@@ -48,7 +48,7 @@ export class BottomSheet extends LitElement {
 		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
 	@state() private bottomSheetContainerStyles = {
-		transform: ""
+		transform: "translateY(100%)"
 	}
 	@state() private innerContentContainerStyles = {
 		"max-height": ""
