@@ -72,6 +72,23 @@ export class BottomSheet extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	onMouseDown = (event: MouseEvent) => {
+		event.preventDefault()
+		this.mouseDown = true
+	}
+
+	onMouseMove = (event: MouseEvent) => {
+		if (this.mouseDown) {
+			this.position -= event.movementY
+			this.updateContentContainerTransform()
+		}
+	}
+
+	onMouseUp = () => {
+		this.mouseDown = false
+		this.snap()
+	}
+
 	public snap(position: BottomSheetPosition = "auto") {
 		this.animatePosition = true
 		let newPosition: number = 0
@@ -183,22 +200,9 @@ export class BottomSheet extends LitElement {
 		}
 
 		if (!this.draggingInitialized && this.handleContainer != null) {
-			this.handleContainer.addEventListener("mousedown", (e: MouseEvent) => {
-				e.preventDefault()
-				this.mouseDown = true
-			})
-
-			document.addEventListener("mousemove", (e: MouseEvent) => {
-				if (this.mouseDown) {
-					this.position -= e.movementY
-					this.updateContentContainerTransform()
-				}
-			})
-
-			document.addEventListener("mouseup", () => {
-				this.mouseDown = false
-				this.snap()
-			})
+			this.handleContainer.addEventListener("mousedown", this.onMouseDown)
+			document.addEventListener("mousemove", this.onMouseMove)
+			document.addEventListener("mouseup", this.onMouseUp)
 
 			this.draggingInitialized = true
 		}
