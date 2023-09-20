@@ -21,10 +21,14 @@ export class BottomSheet extends LitElement {
 	static styles = [globalStyles, bottomSheetStyles]
 
 	private resizeObserverInitialized: boolean = false
-	private animatePosition: boolean = true
+	private draggingInitialized: boolean = false
+	private animatePosition: boolean = false
+	private mouseDown: boolean = false
 
-	@query(".content-container") contentContainer: HTMLDivElement
 	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
+	@query(".handle-container") handleContainer: HTMLDivElement
+	@query(".buttons-container") buttonsContainer: HTMLDivElement
+	@query(".inner-content-container") innerContentContainer: HTMLDivElement
 
 	@state() private overlayOpacity: number = 0
 
@@ -43,8 +47,11 @@ export class BottomSheet extends LitElement {
 	@state() private overlayStyles = {
 		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
-	@state() private contentContainerStyles = {
+	@state() private bottomSheetContainerStyles = {
 		transform: ""
+	}
+	@state() private innerContentContainerStyles = {
+		"max-height": ""
 	}
 
 	@property({ type: Boolean }) visible: boolean = false
@@ -66,84 +73,84 @@ export class BottomSheet extends LitElement {
 	}
 
 	public snap(position: BottomSheetPosition = "auto") {
-		if (this.position > window.innerHeight * snapTopWindowHeightFactor) {
-			return
-		}
-
 		this.animatePosition = true
 		let newPosition: number = 0
 
 		if (position == "bottom") {
 			newPosition = minBottomSheetPosition
 		} else if (position == "top") {
-			if (this.bottomSheetContainer.clientHeight > window.innerHeight) {
-				newPosition = window.innerHeight * snapTopWindowHeightFactor
-			} else {
-				newPosition = this.bottomSheetContainer.clientHeight
-			}
+			newPosition = this.bottomSheetContainer.clientHeight
 		} else if (position == "auto") {
-			if (this.bottomSheetContainer.clientHeight > window.innerHeight) {
-				if (this.position > window.innerHeight / 2) {
-					newPosition = window.innerHeight * snapTopWindowHeightFactor
-				} else {
-					newPosition = minBottomSheetPosition
-				}
+			if (
+				this.position > window.innerHeight / 2 ||
+				this.position > this.bottomSheetContainer.clientHeight / 2
+			) {
+				newPosition = this.bottomSheetContainer.clientHeight
 			} else {
-				if (this.position > this.bottomSheetContainer.clientHeight / 2) {
-					newPosition = this.bottomSheetContainer.clientHeight
-				} else {
-					newPosition = minBottomSheetPosition
-				}
+				newPosition = minBottomSheetPosition
 			}
 		}
 
 		this.position = newPosition
+		this.updateContentContainerTransform()
 
 		setTimeout(() => {
 			this.animatePosition = false
 		}, 200)
 	}
 
+	/**
+	 * Updates the vertical position of the bottom sheet
+	 * using transform: translateY, whenever the size of
+	 * the bottom sheet content changes
+	 */
 	private updateContentContainerTransform() {
-		if (this.bottomSheetContainer) {
-			if (this.visible) {
-				if (this.position > this.bottomSheetContainer.clientHeight) {
-					this.position = this.bottomSheetContainer.clientHeight
-				} else if (this.position < minBottomSheetPosition) {
-					this.position = minBottomSheetPosition
-				}
-
-				if (this.position == minBottomSheetPosition) {
-					this.dispatchEvent(new CustomEvent("snapBottom"))
-				} else if (
-					this.position == this.bottomSheetContainer.clientHeight
-				) {
-					this.dispatchEvent(new CustomEvent("snapTop"))
-				}
-
-				this.contentContainerStyles.transform = `translateY(
-					${this.bottomSheetContainer.clientHeight - this.position}px)`
-
-				if (!this.dismissable) {
-					// Calculate the opacity
-					this.overlayOpacity =
-						((100 /
-							(this.bottomSheetContainer.clientHeight -
-								minBottomSheetPosition)) *
-							(this.position - minBottomSheetPosition)) /
-						200
-
-					if (this.position == minBottomSheetPosition) {
-						// Hide the overlay
-						this.overlayClasses.visible = false
-					}
-				}
-			} else {
-				this.contentContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
-			}
-		} else {
-			this.contentContainerStyles.transform = "translateY(100%)"
+		if (this.bottomSheetContainer == null) {
+			this.bottomSheetContainerStyles.transform = "translateY(100%)"
+			return
 		}
+
+		if (!this.visible) {
+			this.bottomSheetContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
+			return
+		}
+
+		this.innerContentContainerStyles["max-height"] = `${
+			window.innerHeight * snapTopWindowHeightFactor -
+			this.buttonsContainer.clientHeight
+		}px`
+
+		if (this.position > this.bottomSheetContainer.clientHeight) {
+			this.position = this.bottomSheetContainer.clientHeight
+		} else if (this.position < minBottomSheetPosition) {
+			this.position = minBottomSheetPosition
+		}
+
+		if (this.position == minBottomSheetPosition) {
+			this.dispatchEvent(new CustomEvent("snapBottom"))
+		} else if (this.position == this.bottomSheetContainer.clientHeight) {
+			this.dispatchEvent(new CustomEvent("snapTop"))
+		}
+
+		this.bottomSheetContainerStyles.transform = `translateY(
+			${this.bottomSheetContainer.clientHeight - this.position}px)`
+
+		if (!this.dismissable) {
+			// Calculate the opacity
+			this.overlayOpacity =
+				((100 /
+					(this.bottomSheetContainer.clientHeight -
+						minBottomSheetPosition)) *
+					(this.position - minBottomSheetPosition)) /
+				200
+
+			if (this.position == minBottomSheetPosition) {
+				// Hide the overlay
+				this.overlayClasses.visible = false
+			}
+		}
+
+		this.requestUpdate()
 	}
 
 	private overlayClick() {
@@ -175,6 +182,27 @@ export class BottomSheet extends LitElement {
 			this.resizeObserverInitialized = true
 		}
 
+		if (!this.draggingInitialized && this.handleContainer != null) {
+			this.handleContainer.addEventListener("mousedown", (e: MouseEvent) => {
+				e.preventDefault()
+				this.mouseDown = true
+			})
+
+			document.addEventListener("mousemove", (e: MouseEvent) => {
+				if (this.mouseDown) {
+					this.position -= e.movementY
+					this.updateContentContainerTransform()
+				}
+			})
+
+			document.addEventListener("mouseup", () => {
+				this.mouseDown = false
+				this.snap()
+			})
+
+			this.draggingInitialized = true
+		}
+
 		this.containerClasses.visible = this.visible
 		this.overlayClasses.visible = this.visible
 		this.bottomSheetContainerClasses.animate = this.animatePosition
@@ -189,7 +217,12 @@ export class BottomSheet extends LitElement {
 			.toPrecision(3)
 			.toString()})`
 
-		this.updateContentContainerTransform()
+		if (
+			this.innerContentContainer &&
+			this.innerContentContainer.scrollTop == 0
+		) {
+			this.updateContentContainerTransform()
+		}
 
 		return html`
 			<div class=${classMap(this.containerClasses)}>
@@ -201,18 +234,29 @@ export class BottomSheet extends LitElement {
 
 				<div
 					class=${classMap(this.bottomSheetContainerClasses)}
-					style=${styleMap(this.contentContainerStyles)}
+					style=${styleMap(this.bottomSheetContainerStyles)}
 				>
 					<div
 						class="bottom-sheet-left-overlay"
 						@click=${this.overlayClick}
 					></div>
 
-					<div class="content-container">
-						<div class="handle"></div>
+					<div class="bottom-sheet">
+						<div class="handle-container">
+							<div class="handle"></div>
+						</div>
 
-						<div class="content">
-							<slot></slot>
+						<div class="content-container">
+							<div class="buttons-container">
+								<slot name="buttons"></slot>
+							</div>
+
+							<div
+								class="inner-content-container"
+								style=${styleMap(this.innerContentContainerStyles)}
+							>
+								<slot></slot>
+							</div>
 						</div>
 					</div>
 

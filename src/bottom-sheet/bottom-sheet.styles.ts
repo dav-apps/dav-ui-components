@@ -47,15 +47,22 @@ export const bottomSheetStyles = css`
 		grid-column: 3;
 	}
 
+	.handle-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 24px;
+		cursor: ns-resize;
+	}
+
 	.handle {
 		width: 32px;
 		height: 4px;
 		background-color: rgb(var(--dav-color-on-surface-variant-rgb), 0.4);
-		margin: 10px auto;
 		border-radius: 2px;
 	}
 
-	.content-container {
+	.bottom-sheet {
 		grid-column: 2;
 		justify-self: stretch;
 		width: 100vw;
@@ -64,10 +71,22 @@ export const bottomSheetStyles = css`
 		background-color: var(--dav-color-surface);
 	}
 
-	.content {
+	.content-container {
 		width: 100%;
 		height: 100%;
-		padding: 0 24px 16px;
 		box-sizing: border-box;
+	}
+
+	.buttons-container {
+		padding: 0 24px;
+	}
+
+	.buttons-container ::slotted(div) {
+		display: flex;
+		gap: 12px;
+	}
+
+	.inner-content-container {
+		overflow-y: auto;
 	}
 `
