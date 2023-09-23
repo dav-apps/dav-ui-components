@@ -18,8 +18,8 @@ export const bottomSheetStyles = css`
 		left: 0;
 		right: 0;
 		width: 0;
+		background-color: rgb(var(--dav-color-scrim-rgb), 0.5);
 		backdrop-filter: blur(4px);
-		transition: 200ms;
 	}
 
 	.overlay.visible {

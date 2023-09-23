@@ -26,12 +26,12 @@ export class BottomSheet extends LitElement {
 	private mouseDown: boolean = false
 
 	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
+	@query(".overlay") overlay: HTMLDivElement
 	@query(".handle-container") handleContainer: HTMLDivElement
 	@query(".buttons-container") buttonsContainer: HTMLDivElement
 	@query(".inner-content-container") innerContentContainer: HTMLDivElement
 
 	@state() public position: number = 0
-	@state() private overlayOpacity: number = 0
 
 	@state() private containerClasses = {
 		container: true,
@@ -40,9 +40,6 @@ export class BottomSheet extends LitElement {
 	@state() private overlayClasses = {
 		overlay: true,
 		visible: false
-	}
-	@state() private overlayStyles = {
-		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
 	@state() private bottomSheetContainerStyles = {
 		visibility: "hidden"
@@ -100,18 +97,21 @@ export class BottomSheet extends LitElement {
 	}
 
 	public async snap(position: BottomSheetPosition = "auto") {
-		let newPosition: number = 0
+		let newPosition = 0
+		let overlayOpacity = 0
 
 		if (position == "bottom") {
 			newPosition = minBottomSheetPosition
 		} else if (position == "top") {
 			newPosition = this.bottomSheetContainer.clientHeight
+			overlayOpacity = 1
 		} else if (position == "auto") {
 			if (
 				this.position > window.innerHeight / 2 ||
 				this.position > this.bottomSheetContainer.clientHeight / 2
 			) {
 				newPosition = this.bottomSheetContainer.clientHeight
+				overlayOpacity = 1
 			} else {
 				newPosition = minBottomSheetPosition
 			}
@@ -119,10 +119,15 @@ export class BottomSheet extends LitElement {
 
 		this.position = newPosition
 
-		await move(
+		let moveAnimations = move(
 			this.bottomSheetContainer,
-			this.bottomSheetContainer.clientHeight - newPosition
-		).finished
+			this.overlay,
+			this.bottomSheetContainer.clientHeight - newPosition,
+			overlayOpacity
+		)
+
+		// Wait for all animations to end
+		await Promise.all(moveAnimations.map(a => a.finished))
 
 		if (this.position == minBottomSheetPosition) {
 			this.dispatchEvent(new CustomEvent("snapBottom"))
@@ -153,7 +158,9 @@ export class BottomSheet extends LitElement {
 		if (this.bottomSheetContainerStyles.visibility == "hidden") {
 			move(
 				this.bottomSheetContainer,
+				this.overlay,
 				this.bottomSheetContainer.clientHeight,
+				0,
 				0
 			)
 
@@ -165,7 +172,9 @@ export class BottomSheet extends LitElement {
 		if (!this.visible) {
 			move(
 				this.bottomSheetContainer,
+				this.overlay,
 				this.bottomSheetContainer.clientHeight,
+				0,
 				0
 			)
 
@@ -183,26 +192,20 @@ export class BottomSheet extends LitElement {
 			this.position = minBottomSheetPosition
 		}
 
+		// Calculate the opacity
+		let overlayOpacity =
+			((100 /
+				(this.bottomSheetContainer.clientHeight - minBottomSheetPosition)) *
+				(this.position - minBottomSheetPosition)) /
+			100
+
 		move(
 			this.bottomSheetContainer,
+			this.overlay,
 			this.bottomSheetContainer.clientHeight - this.position,
+			overlayOpacity,
 			animate ? 200 : 0
 		)
-
-		if (!this.dismissable) {
-			// Calculate the opacity
-			this.overlayOpacity =
-				((100 /
-					(this.bottomSheetContainer.clientHeight -
-						minBottomSheetPosition)) *
-					(this.position - minBottomSheetPosition)) /
-				200
-
-			if (this.position == minBottomSheetPosition) {
-				// Hide the overlay
-				this.overlayClasses.visible = false
-			}
-		}
 
 		this.requestUpdate()
 	}
@@ -233,23 +236,17 @@ export class BottomSheet extends LitElement {
 		}
 
 		this.containerClasses.visible = this.visible
-		this.overlayClasses.visible = this.visible
 
-		if (this.dismissable) {
-			this.overlayOpacity = this.visible ? 0.5 : 0
+		if (!this.dismissable && this.position == minBottomSheetPosition) {
+			this.overlayClasses.visible = false
+		} else {
+			this.overlayClasses.visible = this.visible
 		}
-
-		this.overlayStyles[
-			"background-color"
-		] = `rgb(var(--dav-color-scrim-rgb), ${this.overlayOpacity
-			.toPrecision(3)
-			.toString()})`
 
 		return html`
 			<div class=${classMap(this.containerClasses)}>
 				<div
 					class=${classMap(this.overlayClasses)}
-					style=${styleMap(this.overlayStyles)}
 					@click=${this.overlayClick}
 				></div>
 
