@@ -11,6 +11,7 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { bottomSheetStyles } from "./bottom-sheet.styles.js"
+import { move } from "./bottom-sheet.animations.js"
 
 export const bottomSheetTagName = "dav-bottom-sheet"
 const minBottomSheetPosition = 24
@@ -22,7 +23,6 @@ export class BottomSheet extends LitElement {
 
 	private resizeObserverInitialized: boolean = false
 	private draggingInitialized: boolean = false
-	private animatePosition: boolean = true
 	private mouseDown: boolean = false
 
 	@query(".bottom-sheet-container") bottomSheetContainer: HTMLDivElement
@@ -30,6 +30,7 @@ export class BottomSheet extends LitElement {
 	@query(".buttons-container") buttonsContainer: HTMLDivElement
 	@query(".inner-content-container") innerContentContainer: HTMLDivElement
 
+	@state() public position: number = 0
 	@state() private overlayOpacity: number = 0
 
 	@state() private containerClasses = {
@@ -40,15 +41,11 @@ export class BottomSheet extends LitElement {
 		overlay: true,
 		visible: false
 	}
-	@state() private bottomSheetContainerClasses = {
-		"bottom-sheet-container": true,
-		animate: false
-	}
 	@state() private overlayStyles = {
 		"background-color": "rgb(var(--dav-color-scrim-rgb), 0)"
 	}
 	@state() private bottomSheetContainerStyles = {
-		transform: "translateY(100%)"
+		visibility: "hidden"
 	}
 	@state() private innerContentContainerStyles = {
 		"max-height": ""
@@ -56,16 +53,21 @@ export class BottomSheet extends LitElement {
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) dismissable: boolean = true
-	@property({ type: Number }) position: number = 0
 
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
+
+		document.addEventListener("mousemove", this.onMouseMove)
+		document.addEventListener("mouseup", this.onMouseUp)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
+
+		document.removeEventListener("mousemove", this.onMouseMove)
+		document.removeEventListener("mouseup", this.onMouseUp)
 	}
 
 	settingsChange = (settings: Settings) => {
@@ -80,7 +82,7 @@ export class BottomSheet extends LitElement {
 	onMouseMove = (event: MouseEvent) => {
 		if (this.mouseDown) {
 			this.position -= event.movementY
-			this.updateContentContainerTransform()
+			this.updatePosition()
 		}
 	}
 
@@ -89,8 +91,15 @@ export class BottomSheet extends LitElement {
 		this.snap()
 	}
 
-	public snap(position: BottomSheetPosition = "auto") {
-		this.animatePosition = true
+	private overlayClick() {
+		if (this.dismissable) {
+			this.dispatchEvent(new CustomEvent("dismiss"))
+		} else {
+			this.snap("bottom")
+		}
+	}
+
+	public async snap(position: BottomSheetPosition = "auto") {
 		let newPosition: number = 0
 
 		if (position == "bottom") {
@@ -109,26 +118,57 @@ export class BottomSheet extends LitElement {
 		}
 
 		this.position = newPosition
-		this.updateContentContainerTransform()
 
-		setTimeout(() => {
-			this.animatePosition = false
-		}, 200)
+		await move(
+			this.bottomSheetContainer,
+			this.bottomSheetContainer.clientHeight - newPosition
+		).finished
+
+		if (this.position == minBottomSheetPosition) {
+			this.dispatchEvent(new CustomEvent("snapBottom"))
+		} else if (this.position == this.bottomSheetContainer.clientHeight) {
+			this.dispatchEvent(new CustomEvent("snapTop"))
+		}
 	}
 
-	/**
-	 * Updates the vertical position of the bottom sheet
-	 * using transform: translateY, whenever the size of
-	 * the bottom sheet content changes
-	 */
-	private updateContentContainerTransform() {
-		if (this.bottomSheetContainer == null) {
-			this.bottomSheetContainerStyles.transform = "translateY(100%)"
+	public setPosition(position: number) {
+		if (
+			position == this.position ||
+			this.innerContentContainer.scrollTop != 0
+		) {
 			return
 		}
 
+		this.position = position
+		this.updatePosition()
+	}
+
+	private updatePosition() {
+		if (this.bottomSheetContainer == null) {
+			return
+		}
+
+		let animate = false
+
+		if (this.bottomSheetContainerStyles.visibility == "hidden") {
+			move(
+				this.bottomSheetContainer,
+				this.bottomSheetContainer.clientHeight,
+				0
+			)
+
+			animate = true
+			this.bottomSheetContainerStyles.visibility = "visible"
+			this.requestUpdate()
+		}
+
 		if (!this.visible) {
-			this.bottomSheetContainerStyles.transform = `translateY(${this.bottomSheetContainer.clientHeight}px)`
+			move(
+				this.bottomSheetContainer,
+				this.bottomSheetContainer.clientHeight,
+				0
+			)
+
 			return
 		}
 
@@ -143,14 +183,11 @@ export class BottomSheet extends LitElement {
 			this.position = minBottomSheetPosition
 		}
 
-		if (this.position == minBottomSheetPosition) {
-			this.dispatchEvent(new CustomEvent("snapBottom"))
-		} else if (this.position == this.bottomSheetContainer.clientHeight) {
-			this.dispatchEvent(new CustomEvent("snapTop"))
-		}
-
-		this.bottomSheetContainerStyles.transform = `translateY(
-			${this.bottomSheetContainer.clientHeight - this.position}px)`
+		move(
+			this.bottomSheetContainer,
+			this.bottomSheetContainer.clientHeight - this.position,
+			animate ? 200 : 0
+		)
 
 		if (!this.dismissable) {
 			// Calculate the opacity
@@ -170,14 +207,6 @@ export class BottomSheet extends LitElement {
 		this.requestUpdate()
 	}
 
-	private overlayClick() {
-		if (this.dismissable) {
-			this.dispatchEvent(new CustomEvent("dismiss"))
-		} else {
-			this.snap("bottom")
-		}
-	}
-
 	render() {
 		if (
 			!this.resizeObserverInitialized &&
@@ -191,8 +220,7 @@ export class BottomSheet extends LitElement {
 					return
 				}
 
-				this.updateContentContainerTransform()
-				this.requestUpdate()
+				this.updatePosition()
 			})
 
 			resizeObserver.observe(this.bottomSheetContainer)
@@ -201,15 +229,11 @@ export class BottomSheet extends LitElement {
 
 		if (!this.draggingInitialized && this.handleContainer != null) {
 			this.handleContainer.addEventListener("mousedown", this.onMouseDown)
-			document.addEventListener("mousemove", this.onMouseMove)
-			document.addEventListener("mouseup", this.onMouseUp)
-
 			this.draggingInitialized = true
 		}
 
 		this.containerClasses.visible = this.visible
 		this.overlayClasses.visible = this.visible
-		this.bottomSheetContainerClasses.animate = this.animatePosition
 
 		if (this.dismissable) {
 			this.overlayOpacity = this.visible ? 0.5 : 0
@@ -221,13 +245,6 @@ export class BottomSheet extends LitElement {
 			.toPrecision(3)
 			.toString()})`
 
-		if (
-			this.innerContentContainer &&
-			this.innerContentContainer.scrollTop == 0
-		) {
-			this.updateContentContainerTransform()
-		}
-
 		return html`
 			<div class=${classMap(this.containerClasses)}>
 				<div
@@ -237,7 +254,7 @@ export class BottomSheet extends LitElement {
 				></div>
 
 				<div
-					class=${classMap(this.bottomSheetContainerClasses)}
+					class="bottom-sheet-container"
 					style=${styleMap(this.bottomSheetContainerStyles)}
 				>
 					<div

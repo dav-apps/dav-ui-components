@@ -35,10 +35,6 @@ export const bottomSheetStyles = css`
 		background-color: transparent;
 	}
 
-	.bottom-sheet-container.animate {
-		transition: 200ms;
-	}
-
 	.bottom-sheet-left-overlay {
 		grid-column: 1;
 	}
