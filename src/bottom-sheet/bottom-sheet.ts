@@ -1,7 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
-import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, BottomSheetPosition } from "../types.js"
 import {
@@ -33,13 +32,8 @@ export class BottomSheet extends LitElement {
 
 	@state() public position: number = 0
 
-	@state() private containerClasses = {
-		container: true,
-		visible: false
-	}
-	@state() private overlayClasses = {
-		overlay: true,
-		visible: false
+	@state() private overlayStyles = {
+		display: "none"
 	}
 	@state() private bottomSheetContainerStyles = {
 		visibility: "hidden"
@@ -48,7 +42,6 @@ export class BottomSheet extends LitElement {
 		"max-height": ""
 	}
 
-	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) dismissable: boolean = true
 
 	connectedCallback() {
@@ -84,8 +77,10 @@ export class BottomSheet extends LitElement {
 	}
 
 	onMouseUp = () => {
-		this.mouseDown = false
-		this.snap()
+		if (this.mouseDown) {
+			this.mouseDown = false
+			this.snap()
+		}
 	}
 
 	private overlayClick() {
@@ -112,6 +107,8 @@ export class BottomSheet extends LitElement {
 			) {
 				newPosition = this.bottomSheetContainer.clientHeight
 				overlayOpacity = 1
+			} else if (this.dismissable) {
+				newPosition = 0
 			} else {
 				newPosition = minBottomSheetPosition
 			}
@@ -134,6 +131,21 @@ export class BottomSheet extends LitElement {
 		} else if (this.position == this.bottomSheetContainer.clientHeight) {
 			this.dispatchEvent(new CustomEvent("snapTop"))
 		}
+	}
+
+	public async hide() {
+		if (this.position == 0) return
+		this.position = 0
+
+		let moveAnimations = move(
+			this.bottomSheetContainer,
+			this.overlay,
+			this.bottomSheetContainer.clientHeight,
+			0
+		)
+
+		// Wait for all animations to end
+		await Promise.all(moveAnimations.map(a => a.finished))
 	}
 
 	public setPosition(position: number) {
@@ -167,18 +179,6 @@ export class BottomSheet extends LitElement {
 			animate = true
 			this.bottomSheetContainerStyles.visibility = "visible"
 			this.requestUpdate()
-		}
-
-		if (!this.visible) {
-			move(
-				this.bottomSheetContainer,
-				this.overlay,
-				this.bottomSheetContainer.clientHeight,
-				0,
-				0
-			)
-
-			return
 		}
 
 		this.innerContentContainerStyles["max-height"] = `${
@@ -235,18 +235,17 @@ export class BottomSheet extends LitElement {
 			this.draggingInitialized = true
 		}
 
-		this.containerClasses.visible = this.visible
-
-		if (!this.dismissable && this.position == minBottomSheetPosition) {
-			this.overlayClasses.visible = false
+		if (!this.dismissable && this.position <= minBottomSheetPosition) {
+			this.overlayStyles.display = "none"
 		} else {
-			this.overlayClasses.visible = this.visible
+			this.overlayStyles.display = this.position <= 0 ? "none" : "block"
 		}
 
 		return html`
-			<div class=${classMap(this.containerClasses)}>
+			<div class="container">
 				<div
-					class=${classMap(this.overlayClasses)}
+					class="overlay"
+					style=${styleMap(this.overlayStyles)}
 					@click=${this.overlayClick}
 				></div>
 
@@ -256,6 +255,7 @@ export class BottomSheet extends LitElement {
 				>
 					<div
 						class="bottom-sheet-left-overlay"
+						style=${styleMap(this.overlayStyles)}
 						@click=${this.overlayClick}
 					></div>
 
@@ -280,6 +280,7 @@ export class BottomSheet extends LitElement {
 
 					<div
 						class="bottom-sheet-right-overlay"
+						style=${styleMap(this.overlayStyles)}
 						@click=${this.overlayClick}
 					></div>
 				</div>
