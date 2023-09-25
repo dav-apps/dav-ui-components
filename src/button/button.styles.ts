@@ -8,6 +8,7 @@ export const buttonStyles = css`
 	button {
 		display: flex;
 		align-items: center;
+		gap: 8px;
 		height: 40px;
 		padding: 0 24px;
 		font-size: 14px;
@@ -21,10 +22,18 @@ export const buttonStyles = css`
 		transition: 200ms;
 	}
 
+	button ::slotted(i) {
+		font-size: 16px;
+	}
+
 	button.small {
 		height: 34px;
 		padding: 0 16px;
 		font-size: 13px;
+	}
+
+	button.small ::slotted(i) {
+		font-size: 14px;
 	}
 
 	button.tonal {

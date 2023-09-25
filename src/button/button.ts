@@ -92,7 +92,9 @@ export class Button extends LitElement {
 				?aria-disabled=${this.disabled}
 				@click="${this.buttonClick}"
 			>
+				<slot name="icon-left"></slot>
 				<slot></slot>
+				<slot name="icon-right"></slot>
 			</button>
 		`
 	}
