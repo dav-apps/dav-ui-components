@@ -15,7 +15,7 @@ export const sidenavItemStyles = css`
 		text-decoration: none;
 		cursor: pointer;
 		font-size: 13px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-weight: 400;
 	}
 

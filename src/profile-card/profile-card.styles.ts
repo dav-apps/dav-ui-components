@@ -30,7 +30,7 @@ export const profileCardStyles = css`
 
 	p {
 		margin: 0 12px 0 16px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 16px;
 		font-weight: 400;
 	}

@@ -7,7 +7,7 @@ export const textareaStyles = css`
 	}
 
 	.textarea-label {
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		font-weight: 400;
 		padding-bottom: 8px;
@@ -22,7 +22,7 @@ export const textareaStyles = css`
 
 	#textarea {
 		padding: 6px 8px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);
@@ -54,6 +54,6 @@ export const textareaStyles = css`
 		margin: 4px 0px 0px 4px;
 		color: var(--dav-color-error);
 		font-size: 13px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 	}
 `

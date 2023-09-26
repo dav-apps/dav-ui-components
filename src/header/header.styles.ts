@@ -19,7 +19,7 @@ export const headerStyles = css`
 		display: flex;
 		justify-content: center;
 		margin: 0;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-weight: 400;
 		text-align: center;
 		color: var(--dav-color-on-surface);

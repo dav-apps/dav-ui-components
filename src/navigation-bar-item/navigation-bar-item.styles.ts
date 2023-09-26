@@ -43,7 +43,7 @@ export const navigationBarItemStyles = css`
 
 	.label-container {
 		color: var(--dav-color-on-secondary-container);
-		font-family: Roboto;
+		font-family: var(--dav-font);
 		margin-top: 6px;
 		font-weight: 400;
 		font-size: 15px;

@@ -55,7 +55,7 @@ export const listItemStyles = css`
 		display: flex;
 		flex-direction: column;
 		align-items: start;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 	}
 
 	.headline {

@@ -2,10 +2,12 @@ import { css } from "@lit/reactive-element"
 
 export const globalStyles = css`
 	:host {
+		--dav-font: Roboto, Arial, sans-serif;
+
+		/* Color palette */
 		--black-rgb: 0, 0, 0; /* #000000 */
 		--white-rgb: 255, 255, 255; /* #ffffff */
 
-		/* Color palette */
 		/* primary */
 		--dav-color-palette-primary10-rgb: 0, 25, 68; /* #001944 */
 		--dav-color-palette-primary20-rgb: 0, 45, 110; /* #002d6e */

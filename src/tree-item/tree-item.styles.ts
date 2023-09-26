@@ -12,7 +12,7 @@ export const treeItemStyles = css`
 		cursor: pointer;
 		border: none;
 		border-radius: 12px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		text-align: start;
 	}

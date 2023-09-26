@@ -8,7 +8,7 @@ export const linkButtonStyles = css`
 		padding: 2px 6px;
 		border-radius: 5px;
 		transition: 200ms;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-weight: 400;
 	}
 

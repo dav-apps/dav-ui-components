@@ -74,7 +74,7 @@ module.exports = {
 					<dav-button color="tertiary" text>Hello World</dav-button>
 				</div>
 
-				<div style="display: flex; gap; flex-wrap: wrap: 30px; margin-top: 30px">
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
 					<dav-button size="small" color="tertiary">Hello World</dav-button>
 					<dav-button size="small" color="tertiary" tonal>Hello World</dav-button>
 					<dav-button size="small" color="tertiary" outline>Hello World</dav-button>

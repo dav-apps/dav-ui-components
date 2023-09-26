@@ -27,7 +27,7 @@ export const checkboxStyles = css`
 
 	.checkbox-label {
 		color: var(--dav-color-on-surface);
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		padding-left: 10px;
 		cursor: pointer;

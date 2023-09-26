@@ -25,13 +25,13 @@ export const dialogStyles = css`
 		margin: 0 0 16px 0;
 		font-size: 24px;
 		font-weight: 400;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		color: var(--dav-color-on-surface);
 	}
 
 	.content-container {
 		color: var(--dav-color-on-surface-variant);
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-weight: 400;
 		margin-bottom: 24px;
 	}

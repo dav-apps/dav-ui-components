@@ -12,7 +12,7 @@ export const paginationStyles = css`
 		align-items: center;
 		width: 38px;
 		height: 38px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 16px;
 		padding: 0;
 		margin: 0px 2px;

@@ -15,7 +15,7 @@ export const dropdownStyles = css`
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
 		border-radius: 6px;
 		padding: 5px 10px;
-		font-family: Roboto, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		transition: 200ms;
 		cursor: pointer;
@@ -51,7 +51,7 @@ export const dropdownStyles = css`
 	}
 
 	.dropdown-label {
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		margin-bottom: 8px;
 		font-size: 14px;
 		font-weight: 400;
@@ -81,7 +81,7 @@ export const dropdownStyles = css`
 		z-index: 1;
 		background-color: rgb(var(--dav-color-surface-rgb), 0.75);
 		box-shadow: 0px 8px 16px 0px rgb(var(--dav-color-shadow-rgb), 0.2);
-		font-family: Roboto, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 16px;
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.12);
 		border-radius: 6px;
@@ -107,7 +107,7 @@ export const dropdownStyles = css`
 		width: -moz-available;
 		transition: 200ms;
 		cursor: pointer;
-		font-family: Roboto, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 15px;
 	}
 

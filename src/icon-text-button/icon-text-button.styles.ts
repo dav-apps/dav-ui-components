@@ -31,7 +31,7 @@ export const iconTextButtonStyles = css`
 	}
 
 	.label {
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 12px;
 		margin-top: 10px;
 	}

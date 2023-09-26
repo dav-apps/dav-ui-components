@@ -10,7 +10,7 @@ export const cardStyles = css`
 		color: var(--dav-color-on-surface);
 		border: 1px solid var(--dav-color-outline);
 		border-radius: 12px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		overflow: hidden;
 	}
 

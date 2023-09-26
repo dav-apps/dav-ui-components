@@ -7,7 +7,7 @@ export const textfieldStyles = css`
 	}
 
 	.textfield-label {
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		font-weight: 400;
 		padding-bottom: 8px;
@@ -25,7 +25,7 @@ export const textfieldStyles = css`
 		padding: 0px 9px;
 		height: 28px;
 		background: transparent;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);
@@ -61,6 +61,6 @@ export const textfieldStyles = css`
 		margin: 4px 0px 0px 4px;
 		color: var(--dav-color-error);
 		font-size: 13px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 	}
 `

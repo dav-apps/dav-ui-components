@@ -12,6 +12,7 @@ export const tabStyles = css`
 		width: 100%;
 		height: 100%;
 		font-size: 18px;
+		font-family: var(--dav-font);
 		color: var(--dav-color-on-surface);
 		padding: 0 16px;
 		transition: all 500ms;

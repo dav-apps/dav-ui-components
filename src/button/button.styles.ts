@@ -12,7 +12,7 @@ export const buttonStyles = css`
 		height: 40px;
 		padding: 0 24px;
 		font-size: 14px;
-		font-family: "Roboto Medium";
+		font-family: var(--dav-font);
 		font-weight: 500;
 		border: none;
 		border-radius: 20px;

@@ -14,7 +14,7 @@ export const contextMenuItemStyles = css`
 		margin: 4px;
 		padding: 4px 10px;
 		transition: 200ms;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		cursor: pointer;
 	}
 

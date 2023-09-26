@@ -11,7 +11,7 @@ export const iconCardStyles = css`
 		color: var(--dav-color-on-surface);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.15);
 		border-radius: 12px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-size: 25px;
 		cursor: pointer;
 		transition: 200ms;

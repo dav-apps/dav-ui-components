@@ -13,7 +13,7 @@ export const settingStyles = css`
 		padding: 26px 36px;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
 		border-radius: 12px;
 	}

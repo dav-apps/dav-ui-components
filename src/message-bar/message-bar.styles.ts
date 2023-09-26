@@ -5,7 +5,7 @@ export const messageBarStyles = css`
 		display: flex;
 		align-items: center;
 		font-size: 14px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		background-color: var(--dav-color-primary-container);
 		color: var(--dav-color-on-primary-container);
 		padding: 18px;

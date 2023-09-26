@@ -43,7 +43,7 @@ export const panelStyles = css`
 	.header {
 		color: var(--dav-color-on-surface);
 		font-size: 22px;
-		font-family: Roboto, Arial, sans-serif;
+		font-family: var(--dav-font);
 		font-weight: 500;
 		margin: 0;
 	}
