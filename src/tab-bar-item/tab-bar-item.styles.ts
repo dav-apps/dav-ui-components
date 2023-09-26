@@ -1,6 +1,11 @@
 import { css } from "@lit/reactive-element"
 
 export const tabStyles = css`
+	:host {
+		display: inline-flex;
+		justify-content: center;
+	}
+
 	:host(:hover) {
 		cursor: pointer;
 	}
@@ -13,9 +18,12 @@ export const tabStyles = css`
 		height: 100%;
 		font-size: 18px;
 		font-family: var(--dav-font);
+		background-color: transparent;
 		color: var(--dav-color-on-surface);
+		border: none;
 		padding: 0 16px;
 		transition: all 500ms;
+		cursor: pointer;
 	}
 
 	p {
@@ -26,7 +34,9 @@ export const tabStyles = css`
 		color: var(--dav-color-primary);
 	}
 
-	.container:not(.active):hover > p {
+	.container:not(.active):hover > p,
+	.container:not(.active):focus > p,
+	.container:not(.active):active > p {
 		color: var(--dav-color-on-surface-variant);
 	}
 
@@ -34,15 +44,17 @@ export const tabStyles = css`
 		border-bottom: 3px solid;
 		border-radius: 3px;
 		margin-top: -6px;
-		transition: all 150ms;
+		transition: all 200ms;
 	}
 
 	.container.active > .border {
-		width: 35%;
+		width: 50%;
 	}
 
-	.container.active:hover > .border {
-		width: 28%;
+	.container.active:hover > .border,
+	.container.active:focus > .border,
+	.container.active:active > .border {
+		width: 41%;
 	}
 
 	.container:not(.active) > .border {

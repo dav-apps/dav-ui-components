@@ -41,10 +41,10 @@ export class TabBarItem extends LitElement {
 		this.itemClasses.active = this.active
 
 		return html`
-			<div class=${classMap(this.itemClasses)}>
+			<button class=${classMap(this.itemClasses)}>
 				<p><slot></slot></p>
 				<div class="border"></div>
-			</div>
+			</button>
 		`
 	}
 }
