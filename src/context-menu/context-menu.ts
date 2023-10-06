@@ -32,13 +32,11 @@ export class ContextMenu extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
-		document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
-		document.removeEventListener("click", this.documentClick)
 	}
 
 	settingsChange = (settings: Settings) => {
@@ -67,12 +65,6 @@ export class ContextMenu extends LitElement {
 					: "none"
 				this.requestUpdate()
 			}
-		}
-	}
-
-	documentClick = (event: MouseEvent) => {
-		if (event.target != this) {
-			this.visible = false
 		}
 	}
 

@@ -31,6 +31,12 @@ module.exports = {
 					contextMenu.posY = event.pageY
 					contextMenu.visible = true
 				})
+
+				document.addEventListener("click", event => {
+					if (event.target != contextMenu) {
+						contextMenu.visible = false
+					}
+				})
 			},
 			template: `
 				<div style="display: flex; justify-content: center; align-items: center; width: 300px; height: 100px; background-color: gray; color: white; border-radius: 4px">
