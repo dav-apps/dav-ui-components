@@ -78,9 +78,9 @@ export class Badge extends LitElement {
 			`
 		} else {
 			return html`
-				<div class=${classMap(this.containerClasses)}>
+				<button class=${classMap(this.containerClasses)}>
 					<slot></slot>
-				</div>
+				</button>
 			`
 		}
 	}

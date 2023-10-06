@@ -10,6 +10,7 @@ export const badgeStyles = css`
 		background-color: var(--dav-color-primary);
 		color: var(--dav-color-on-primary);
 		padding: 4px 12px;
+		border: none;
 		border-radius: 14px;
 		font-size: 14px;
 		cursor: pointer;
