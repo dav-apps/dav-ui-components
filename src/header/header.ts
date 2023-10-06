@@ -10,11 +10,11 @@ import {
 	convertStringToAlignment,
 	convertStringToHeaderSize
 } from "../utils.js"
+import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
+import { penLightSvg } from "../../assets/svg/pen-light.js"
+import { plusLightSvg } from "../../assets/svg/plus-light.js"
 import { globalStyles } from "../styles.js"
 import { headerStyles } from "./header.styles.js"
-import { arrowLeftLightSvg } from "../svg/arrow-left-light.js"
-import { penLightSvg } from "../svg/pen-light.js"
-import { plusLightSvg } from "../svg/plus-light.js"
 
 export const headerTagName = "dav-header"
 

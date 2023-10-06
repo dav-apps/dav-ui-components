@@ -1,9 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { circleCheckLightSvg } from "../svg/circle-check-light.js"
-import { circleExclamationLightSvg } from "../svg/circle-exclamation-light.js"
-import { circleInfoLightSvg } from "../svg/circle-info-light.js"
 import { Settings, ThemeColor, MessageBarType } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -12,6 +9,9 @@ import {
 	convertStringToThemeColor,
 	convertStringToMessageBarType
 } from "../utils.js"
+import { circleCheckLightSvg } from "../../assets/svg/circle-check-light.js"
+import { circleExclamationLightSvg } from "../../assets/svg/circle-exclamation-light.js"
+import { circleInfoLightSvg } from "../../assets/svg/circle-info-light.js"
 import { globalStyles } from "../styles.js"
 import { messageBarStyles } from "./message-bar.styles.js"
 

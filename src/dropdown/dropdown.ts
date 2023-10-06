@@ -9,7 +9,7 @@ import {
 	unsubscribeSettingsChange,
 	getSettings
 } from "../utils.js"
-import { chevronDownLightSvg } from "../svg/chevron-down-light.js"
+import { chevronDownLightSvg } from "../../assets/svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
 import { dropdownStyles } from "./dropdown.styles.js"
 

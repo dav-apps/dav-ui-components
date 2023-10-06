@@ -8,7 +8,7 @@ import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
 } from "../utils.js"
-import { chevronDownLightSvg } from "../svg/chevron-down-light.js"
+import { chevronDownLightSvg } from "../../assets/svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
 import { treeItemStyles } from "./tree-item.styles.js"
 import { slideIn, slideOut } from "./tree-item.animations.js"

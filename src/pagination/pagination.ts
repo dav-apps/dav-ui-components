@@ -1,15 +1,15 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, Theme } from "../types.js"
+import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
 } from "../utils.js"
+import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
 import { globalStyles } from "../styles.js"
 import { paginationStyles } from "./pagination.styles.js"
-import { arrowLeftLightSvg } from "../svg/arrow-left-light.js"
 
 export const paginationTagName = "dav-pagination"
 

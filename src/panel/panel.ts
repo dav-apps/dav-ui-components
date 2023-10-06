@@ -7,7 +7,7 @@ import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
 } from "../utils.js"
-import { xmarkLightSvg } from "../svg/xmark-light.js"
+import { xmarkLightSvg } from "../../assets/svg/xmark-light.js"
 import { globalStyles } from "../styles.js"
 import { panelStyles } from "./panel.styles.js"
 import { slideIn, slideOut } from "./panel.animations.js"
