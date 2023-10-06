@@ -79,7 +79,7 @@ export const dropdownStyles = css`
 		position: absolute;
 		overflow: auto;
 		z-index: 1;
-		background-color: rgb(var(--dav-color-surface-rgb), 0.75);
+		background-color: rgb(var(--dav-color-surface-rgb), 0.9);
 		box-shadow: 0px 8px 16px 0px rgb(var(--dav-color-shadow-rgb), 0.2);
 		font-family: var(--dav-font);
 		font-size: 16px;
@@ -122,13 +122,17 @@ export const dropdownStyles = css`
 	}
 
 	.dropdown-divider {
-		background-color: white;
+		background-color: transparent;
 		border: none;
 		margin: 0;
 		padding: 0.5rem;
 	}
 
 	.dropdown-divider hr {
+		border-top: 1px solid rgb(var(--dav-color-outline-rgb), 0.18);
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
 		margin: 0;
 	}
 `

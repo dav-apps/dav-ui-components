@@ -14,6 +14,9 @@ module.exports = {
 						type: 0
 					},
 					{
+						type: 1
+					},
+					{
 						key: "light",
 						value: "Light",
 						type: 0
