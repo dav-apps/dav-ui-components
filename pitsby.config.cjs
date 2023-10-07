@@ -18,7 +18,17 @@ module.exports = {
 		"./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
 		"./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 	],
+	custom: {
+		logo: {
+			filepath: "./assets/dav-logo.png",
+			darkVersionFilepath: "./assets/dav-logo-white.png",
+			width: "125px",
+			height: "50px"
+		}
+	},
 	other: [
+		"./assets/dav-logo.png",
+		"./assets/dav-logo-white.png",
 		"./dist/index.js",
 		"./dist/assets/svg/arrow-left-light.js",
 		"./dist/assets/svg/chevron-down-light.js",
