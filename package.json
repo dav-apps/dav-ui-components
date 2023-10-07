@@ -20,8 +20,8 @@
 	},
 	"devDependencies": {
 		"@glorious/pitsby": "^1.36.1",
-		"concurrently": "^8.2.0",
-		"tslib": "^2.6.1",
-		"typescript": "^5.1.6"
+		"concurrently": "^8.2.1",
+		"tslib": "^2.6.2",
+		"typescript": "^5.2.2"
 	}
 }
