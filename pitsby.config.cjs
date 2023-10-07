@@ -21,7 +21,7 @@ module.exports = {
 	custom: {
 		logo: {
 			filepath: "./assets/dav-logo.png",
-			darkVersionFilepath: "./assets/dav-logo-white.png",
+			darkVersionFilepath: "./external/assets/dav-logo-white.png",
 			width: "125px",
 			height: "50px"
 		}
