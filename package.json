@@ -8,6 +8,7 @@
 	"scripts": {
 		"build": "tsc; rm -rf docs; pitsby build",
 		"dev": "rm -rf docs; concurrently npm:compile:watch npm:docs:watch",
+		"prepare": "npm run build",
 		"compile:watch": "tsc -w",
 		"docs:watch": "pitsby build --watch"
 	},
