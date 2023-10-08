@@ -1,6 +1,6 @@
 {
 	"name": "dav-ui-components",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A collection of UI components used in our web projects",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
