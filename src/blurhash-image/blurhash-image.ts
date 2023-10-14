@@ -12,7 +12,7 @@ export const blurhashImageTagName = "dav-blurhash-image"
 export class BlurhashImage extends LitElement {
 	static styles = [globalStyles, blurhashImageStyles]
 
-	@state() private blurhashImageContainerStyles = {
+	@state() private imageStyles = {
 		width: "100px",
 		height: "100px"
 	}
@@ -158,25 +158,27 @@ export class BlurhashImage extends LitElement {
 		this.loadImage()
 
 		if (this.width > 0) {
-			this.blurhashImageContainerStyles.width = `${this.width}px`
+			this.imageStyles.width = `${this.width}px`
 		} else {
-			this.blurhashImageContainerStyles.width = "inherit"
+			this.imageStyles.width = "inherit"
 		}
 
 		if (this.height > 0) {
-			this.blurhashImageContainerStyles.height = `${this.height}px`
+			this.imageStyles.height = `${this.height}px`
 		} else {
-			this.blurhashImageContainerStyles.height = "inherit"
+			this.imageStyles.height = "inherit"
 		}
 
 		return html`
-			<div
-				class="blurhash-image-container"
-				style=${styleMap(this.blurhashImageContainerStyles)}
-			>
+			<div class="blurhash-image-container">
 				${this.getProgressRing()}
 
-				<img src=${this.imageSrc} title=${this.title} alt=${this.alt} />
+				<img
+					style=${styleMap(this.imageStyles)}
+					src=${this.imageSrc}
+					title=${this.title}
+					alt=${this.alt}
+				/>
 			</div>
 		`
 	}
