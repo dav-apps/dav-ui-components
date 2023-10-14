@@ -58,9 +58,9 @@ module.exports = {
 			template: `
 				<dav-list-item
 					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/6366cd03-8cd7-4904-974c-e65ee02800e6"
+					imageAspectRatio="1:1.5"
 					headline="Dombey and Son"
 					subhead="Charles Dickens"
-					aspectRatio="1:1.5"
 				></dav-list-item>
 			`
 		},
