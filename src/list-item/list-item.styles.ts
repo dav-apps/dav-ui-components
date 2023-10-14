@@ -4,6 +4,7 @@ export const listItemStyles = css`
 	.container {
 		display: flex;
 		align-items: center;
+		gap: 16px;
 		width: 100%;
 		padding: 8px 16px;
 		background-color: var(--dav-color-surface);
@@ -32,7 +33,6 @@ export const listItemStyles = css`
 		justify-content: center;
 		height: 84px;
 		width: 84px;
-		margin-right: 16px;
 	}
 
 	.container.small .image-container {
