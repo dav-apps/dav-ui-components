@@ -33,16 +33,19 @@ export const listItemStyles = css`
 		justify-content: center;
 		height: 84px;
 		width: 84px;
+		min-width: 84px;
 	}
 
 	.container.small .image-container {
 		height: 56px;
 		width: 56px;
+		min-width: 56px;
 	}
 
 	.container.large .image-container {
 		height: 140px;
 		width: 140px;
+		min-width: 140px;
 	}
 
 	.image {
@@ -62,6 +65,7 @@ export const listItemStyles = css`
 
 	.headline {
 		color: var(--dav-color-on-surface);
+		text-align: start;
 		font-size: 18px;
 		margin: 0;
 	}
@@ -76,6 +80,7 @@ export const listItemStyles = css`
 
 	.subhead {
 		color: var(--dav-color-on-surface-variant);
+		text-align: start;
 		font-size: 16px;
 		margin: 0;
 	}
