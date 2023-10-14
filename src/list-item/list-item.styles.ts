@@ -28,6 +28,8 @@ export const listItemStyles = css`
 	}
 
 	.image-container {
+		display: flex;
+		justify-content: center;
 		height: 84px;
 		width: 84px;
 		margin-right: 16px;
