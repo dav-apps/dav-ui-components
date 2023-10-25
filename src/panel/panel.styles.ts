@@ -59,7 +59,8 @@ export const panelStyles = css`
 	}
 
 	.slot-container {
-		margin: 12px 24px;
+		margin: 12px 24px 0;
+		padding-bottom: 12px;
 		overflow-y: auto;
 	}
 `
