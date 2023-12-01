@@ -6,7 +6,7 @@
 	"types": "dist/index.d.ts",
 	"type": "module",
 	"scripts": {
-		"build": "tsc; rm -rf docs; pitsby build",
+		"build": "tsc; rm -rf docs; NODE_ENV=production pitsby build",
 		"dev": "rm -rf docs; concurrently npm:compile:watch npm:docs:watch",
 		"prepare": "npm run build",
 		"compile:watch": "tsc -w",
@@ -20,7 +20,7 @@
 		"lit": "^2.8.0"
 	},
 	"devDependencies": {
-		"@glorious/pitsby": "^1.36.1",
+		"@glorious/pitsby": "^1.37.0",
 		"concurrently": "^8.2.1",
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2"
