@@ -20,7 +20,7 @@ module.exports = {
 	],
 	custom: {
 		favicon: {
-			filepath: "./assets/dav-logo_32x32.png"
+			filepath: "./assets/favicon.ico"
 		},
 		logo: {
 			filepath: "./assets/dav-logo.png",
@@ -28,10 +28,10 @@ module.exports = {
 			width: "125px",
 			height: "50px"
 		},
-		windowTitle: "Dav Components"
+		windowTitle: "dav Components"
 	},
 	other: [
-		"./assets/dav-logo_32x32.png",
+		"./assets/favicon.ico",
 		"./assets/dav-logo.png",
 		"./assets/dav-logo-white.png",
 		"./dist/index.js",
