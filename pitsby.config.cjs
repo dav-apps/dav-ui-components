@@ -19,14 +19,19 @@ module.exports = {
 		"./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 	],
 	custom: {
+		favicon: {
+			filepath: "./assets/dav-logo_32x32.png"
+		},
 		logo: {
 			filepath: "./assets/dav-logo.png",
 			darkVersionFilepath: "./external/assets/dav-logo-white.png",
 			width: "125px",
 			height: "50px"
-		}
+		},
+		windowTitle: "Dav Components"
 	},
 	other: [
+		"./assets/dav-logo_32x32.png",
 		"./assets/dav-logo.png",
 		"./assets/dav-logo-white.png",
 		"./dist/index.js",
