@@ -104,6 +104,7 @@ module.exports = {
 		"./dist/src/progress-bar/progress-bar.styles.js",
 		"./dist/src/progress-ring/progress-ring.js",
 		"./dist/src/progress-ring/progress-ring.styles.js",
+		"./dist/src/search/search.ts",
 		"./dist/src/setting/setting.js",
 		"./dist/src/setting/setting.styles.js",
 		"./dist/src/sidenav/sidenav.js",

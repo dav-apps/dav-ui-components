@@ -61,6 +61,7 @@ import {
 	ProgressRing,
 	progressRingTagName
 } from "./src/progress-ring/progress-ring.js"
+import { Search, searchTagName } from "./src/search/search.js"
 import { Setting, settingTagName } from "./src/setting/setting.js"
 import { Sidenav, sidenavTagName } from "./src/sidenav/sidenav.js"
 import {
@@ -106,6 +107,7 @@ declare global {
 		[profileCardTagName]: ProfileCard
 		[progressBarTagName]: ProgressBar
 		[progressRingTagName]: ProgressRing
+		[searchTagName]: Search
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
 		[sidenavItemTagName]: SidenavItem
@@ -158,6 +160,7 @@ export {
 	ProfileCard,
 	ProgressBar,
 	ProgressRing,
+	Search,
 	Setting,
 	Sidenav,
 	SidenavItem,
