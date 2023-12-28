@@ -1,6 +1,12 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
+import { Settings } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { searchStyles } from "./search.styles.js"
 
@@ -21,6 +27,21 @@ export class Search extends LitElement {
 	}
 
 	@property({ type: Boolean }) visible: boolean = false
+	@property() placeholder: string = ""
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
@@ -38,7 +59,11 @@ export class Search extends LitElement {
 				<div class="overlay" @click=${this.overlayClick}></div>
 
 				<div class="content-container">
-					<h1>Hello World</h1>
+					<input
+						class="search-input"
+						type="search"
+						placeholder=${this.placeholder}
+					/>
 				</div>
 			</div>
 		`

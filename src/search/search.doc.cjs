@@ -19,7 +19,9 @@ module.exports = {
 				Open search
 			</dav-button>
 
-			<dav-search></dav-search>
+			<dav-search
+				placeholder="Search for..."
+			></dav-search>
 		`
 	}]
 }
