@@ -17,7 +17,7 @@ export const bottomSheetStyles = css`
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background-color: rgb(var(--dav-color-scrim-rgb), 0.5);
+		background-color: var(--dav-color-scrim);
 		backdrop-filter: blur(4px);
 	}
 
