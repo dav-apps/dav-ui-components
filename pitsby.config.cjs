@@ -40,6 +40,7 @@ module.exports = {
 		"./dist/assets/svg/circle-check-light.js",
 		"./dist/assets/svg/circle-exclamation-light.js",
 		"./dist/assets/svg/circle-info-light.js",
+		"./dist/assets/svg/magnifying-glass-light.js",
 		"./dist/assets/svg/pen-light.js",
 		"./dist/assets/svg/plus-light.js",
 		"./dist/assets/svg/xmark-light.js",
