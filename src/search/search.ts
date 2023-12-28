@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
+import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
@@ -9,12 +9,16 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { searchStyles } from "./search.styles.js"
+import { slideIn, slideOut } from "./search.animations.js"
 
 export const searchTagName = "dav-search"
 
 @customElement(searchTagName)
 export class Search extends LitElement {
 	static styles = [globalStyles, searchStyles]
+
+	@query(".overlay") overlay: HTMLDivElement
+	@query(".content-container") contentContainer: HTMLDivElement
 
 	@state() private containerStyles = {
 		display: "none",
@@ -43,6 +47,30 @@ export class Search extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	async updated(changedProperties: Map<string, any>) {
+		if (
+			changedProperties.has("visible") &&
+			changedProperties.get("visible") != null
+		) {
+			let newIsVisible = !changedProperties.get("visible") as boolean
+			let animations: Animation[]
+
+			if (newIsVisible) {
+				// Play slide in animation
+				animations = slideIn(this.contentContainer, this.overlay)
+			} else {
+				// Play slide out animation
+				animations = slideOut(this.contentContainer, this.overlay)
+			}
+
+			// Wait for all animations to end
+			await Promise.all(animations.map(a => a.finished))
+
+			this.containerStyles.display = newIsVisible ? "block" : "none"
+			this.requestUpdate()
+		}
+	}
+
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
 	}
@@ -50,8 +78,6 @@ export class Search extends LitElement {
 	render() {
 		if (this.visible) {
 			this.containerStyles.display = "block"
-		} else {
-			this.containerStyles.display = "none"
 		}
 
 		return html`

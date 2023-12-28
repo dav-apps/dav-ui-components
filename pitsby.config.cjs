@@ -106,6 +106,7 @@ module.exports = {
 		"./dist/src/progress-ring/progress-ring.styles.js",
 		"./dist/src/search/search.js",
 		"./dist/src/search/search.styles.js",
+		"./dist/src/search/search.animations.js",
 		"./dist/src/setting/setting.js",
 		"./dist/src/setting/setting.styles.js",
 		"./dist/src/sidenav/sidenav.js",
