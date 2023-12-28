@@ -7,6 +7,7 @@ import {
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
 } from "../utils.js"
+import { magnifyingGlassLightSvg } from "../../assets/svg/magnifying-glass-light.js"
 import { globalStyles } from "../styles.js"
 import { searchStyles } from "./search.styles.js"
 import { slideIn, slideOut } from "./search.animations.js"
@@ -90,11 +91,17 @@ export class Search extends LitElement {
 				<div class="overlay" @click=${this.overlayClick}></div>
 
 				<div class="content-container">
-					<input
-						class="search-input"
-						type="search"
-						placeholder=${this.placeholder}
-					/>
+					<div class="search-input-container">
+						<input
+							class="search-input"
+							type="search"
+							placeholder=${this.placeholder}
+						/>
+
+						<div class="search-icon-container">
+							${magnifyingGlassLightSvg}
+						</div>
+					</div>
 				</div>
 			</div>
 		`
