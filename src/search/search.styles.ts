@@ -12,16 +12,17 @@ export const searchStyles = css`
 	}
 
 	.content-container {
-		display: flex;
-		justify-content: center;
-		position: relative;
-		z-index: 0;
+		position: fixed;
+		top: 20%;
+		left: 0;
+		right: 0;
+		width: 400px;
+		margin: 0 auto;
 	}
 
 	.search-input {
 		height: 38px;
-		width: 400px;
-		margin-top: 20%;
+		width: 100%;
 		padding: 2px 12px;
 		border-radius: 22px;
 		border: none;
