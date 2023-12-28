@@ -81,6 +81,12 @@ export class Search extends LitElement {
 		this.dispatchEvent(new CustomEvent("dismiss"))
 	}
 
+	private keydown(event: KeyboardEvent) {
+		if (event.key == "Escape") {
+			this.dispatchEvent(new CustomEvent("dismiss"))
+		}
+	}
+
 	render() {
 		if (this.visible) {
 			this.containerStyles.display = "block"
@@ -96,6 +102,7 @@ export class Search extends LitElement {
 							class="search-input"
 							type="search"
 							placeholder=${this.placeholder}
+							@keydown=${this.keydown}
 						/>
 
 						<div class="search-icon-container">
