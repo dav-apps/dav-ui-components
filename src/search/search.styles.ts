@@ -18,6 +18,13 @@ export const searchStyles = css`
 		right: 0;
 		width: 400px;
 		margin: 0 auto;
+		background-color: rgba(var(--dav-color-surface-rgb), 0.8);
+		border-radius: 28px;
+	}
+
+	.search-input-container {
+		position: relative;
+		height: 54px;
 	}
 
 	.search-input {
@@ -25,8 +32,7 @@ export const searchStyles = css`
 		padding: 16px 18px 16px 58px;
 		border-radius: 28px;
 		border: none;
-		opacity: 0.8;
-		background-color: var(--dav-color-surface);
+		background-color: transparent;
 		color: var(--dav-color-on-surface);
 		font-size: 18px;
 		font-family: var(--dav-font);
