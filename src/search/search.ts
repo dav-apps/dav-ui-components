@@ -19,6 +19,7 @@ export class Search extends LitElement {
 
 	@query(".overlay") overlay: HTMLDivElement
 	@query(".content-container") contentContainer: HTMLDivElement
+	@query(".search-input") searchInput: HTMLInputElement
 
 	@state() private containerStyles = {
 		display: "none",
@@ -68,6 +69,10 @@ export class Search extends LitElement {
 
 			this.containerStyles.display = newIsVisible ? "block" : "none"
 			this.requestUpdate()
+
+			if (newIsVisible) {
+				this.searchInput.focus()
+			}
 		}
 	}
 
