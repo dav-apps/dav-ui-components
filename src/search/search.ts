@@ -33,6 +33,7 @@ export class Search extends LitElement {
 	}
 
 	@property({ type: Boolean }) visible: boolean = false
+	@property({ type: Boolean }) loading: boolean = false
 	@property() placeholder: string = ""
 
 	connectedCallback() {
@@ -77,8 +78,30 @@ export class Search extends LitElement {
 		}
 	}
 
+	getProgressRing() {
+		if (this.loading) {
+			return html`
+				<div class="progress-ring-container">
+					<dav-progress-ring
+						indeterminate
+						size="24"
+						color="white"
+					></dav-progress-ring>
+				</div>
+			`
+		}
+	}
+
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
+	}
+
+	private input() {
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: { value: this.searchInput.value }
+			})
+		)
 	}
 
 	private keydown(event: KeyboardEvent) {
@@ -102,12 +125,17 @@ export class Search extends LitElement {
 							class="search-input"
 							type="search"
 							placeholder=${this.placeholder}
+							@input=${this.input}
 							@keydown=${this.keydown}
 						/>
 
 						<div class="search-icon-container">
 							${magnifyingGlassLightSvg}
 						</div>
+					</div>
+
+					<div>
+						${this.getProgressRing()}
 					</div>
 				</div>
 			</div>

@@ -13,6 +13,14 @@ module.exports = {
 			search.addEventListener("dismiss", () => {
 				search.visible = false
 			})
+
+			search.addEventListener("change", (event) => {
+				search.loading = true
+
+				setTimeout(() => {
+					search.loading = false
+				}, 2000)
+			})
 		},
 		template: `
 			<dav-button>

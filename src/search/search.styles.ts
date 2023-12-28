@@ -20,6 +20,7 @@ export const searchStyles = css`
 		margin: 0 auto;
 		background-color: rgba(var(--dav-color-surface-rgb), 0.8);
 		border-radius: 28px;
+		transition: 200ms;
 	}
 
 	.search-input-container {
@@ -50,5 +51,11 @@ export const searchStyles = css`
 	.search-icon-container > svg {
 		height: 22px;
 		fill: var(--dav-color-on-surface);
+	}
+
+	.progress-ring-container {
+		display: flex;
+		justify-content: center;
+		padding: 24px 0;
 	}
 `
