@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
@@ -22,6 +23,10 @@ export class Search extends LitElement {
 	@query(".content-container") contentContainer: HTMLDivElement
 	@query(".search-input") searchInput: HTMLInputElement
 
+	@state() private searchResultContainerClasses = {
+		"search-result-container": true,
+		visible: false
+	}
 	@state() private containerStyles = {
 		display: "none",
 		position: "fixed",
@@ -92,6 +97,14 @@ export class Search extends LitElement {
 		}
 	}
 
+	getSlot() {
+		if (!this.loading) {
+			return html`
+				<slot></slot>
+			`
+		}
+	}
+
 	private overlayClick() {
 		this.dispatchEvent(new CustomEvent("dismiss"))
 	}
@@ -115,6 +128,9 @@ export class Search extends LitElement {
 			this.containerStyles.display = "block"
 		}
 
+		this.searchResultContainerClasses.visible =
+			this.searchInput?.value.length > 0
+
 		return html`
 			<div style=${styleMap(this.containerStyles)}>
 				<div class="overlay" @click=${this.overlayClick}></div>
@@ -134,8 +150,8 @@ export class Search extends LitElement {
 						</div>
 					</div>
 
-					<div>
-						${this.getProgressRing()}
+					<div class=${classMap(this.searchResultContainerClasses)}>
+						${this.getProgressRing()} ${this.getSlot()}
 					</div>
 				</div>
 			</div>

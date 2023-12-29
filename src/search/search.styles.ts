@@ -58,4 +58,8 @@ export const searchStyles = css`
 		justify-content: center;
 		padding: 24px 0;
 	}
+
+	.search-result-container.visible {
+		padding: 12px;
+	}
 `
