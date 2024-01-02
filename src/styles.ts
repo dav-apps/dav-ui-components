@@ -198,6 +198,7 @@ const lightColorVariables = css`
 	--dav-color-shadow-light-rgb: var(--black-rgb);
 	--dav-color-surface-tint-light-rgb: var(--dav-color-palette-primary40-rgb);
 	--dav-color-scrim-light-rgb: var(--black-rgb);
+	--dav-color-scrollbar-light-rgb: var(--dav-color-palette-neutral60-rgb);
 
 	/* light states */
 	--dav-color-primary-hover-light-rgb: var(--dav-color-palette-primary35-rgb);
@@ -325,6 +326,7 @@ const darkColorVariables = css`
 	--dav-color-shadow-dark-rgb: var(--black-rgb);
 	--dav-color-surface-tint-dark-rgb: var(--dav-color-palette-primary80-rgb);
 	--dav-color-scrim-dark-rgb: var(--white-rgb);
+	--dav-color-scrollbar-dark-rgb: var(--dav-color-palette-neutral40-rgb);
 
 	/* dark states */
 	--dav-color-primary-hover-dark-rgb: var(--dav-color-palette-primary85-rgb);
@@ -444,6 +446,7 @@ const defaultRgbColorVariables = css`
 	--dav-color-shadow-rgb: var(--dav-color-shadow-light-rgb);
 	--dav-color-surface-tint-rgb: var(--dav-color-surface-tint-light-rgb);
 	--dav-color-scrim-rgb: var(--dav-color-scrim-light-rgb);
+	--dav-color-scrollbar-rgb: var(--dav-color-scrollbar-light-rgb);
 
 	/* default states */
 	--dav-color-primary-hover-rgb: var(--dav-color-primary-hover-light-rgb);
@@ -550,6 +553,7 @@ const defaultColorVariables = css`
 		var(--dav-color-scrim-rgb),
 		var(--dav-color-scrim-opacity)
 	);
+	--dav-color-scrollbar: rgb(var(--dav-color-scrollbar-rgb));
 
 	/* default states */
 	--dav-color-primary-hover: rgb(var(--dav-color-primary-hover-rgb));
@@ -610,34 +614,14 @@ export const globalStyles = css`
 		${defaultColorVariables}
 	}
 
-	.modern-vertical-scrollbar::-webkit-scrollbar {
-		background-color: var(
-			--light-theme-color-primary,
-			var(--default-light-theme-color-primary)
-		);
+	::-webkit-scrollbar {
+		background-color: transparent;
 		width: 5px;
 	}
 
-	.modern-vertical-scrollbar.darkTheme::-webkit-scrollbar {
-		background-color: var(
-			--dark-theme-color-primary,
-			var(--default-dark-theme-color-primary)
-		);
-	}
-
-	.modern-vertical-scrollbar::-webkit-scrollbar-thumb {
-		background-color: var(
-			--light-theme-scrollbar-color,
-			var(--default-light-theme-scrollbar-color)
-		);
+	::-webkit-scrollbar-thumb {
+		background-color: rgb(var(--dav-color-scrollbar-rgb));
 		border-radius: 10px;
-	}
-
-	.modern-vertical-scrollbar.darkTheme::-webkit-scrollbar-thumb {
-		background-color: var(
-			--dark-theme-scrollbar-color,
-			var(--default-dark-theme-scrollbar-color)
-		);
 	}
 
 	.slide-down-in {

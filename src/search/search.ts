@@ -25,7 +25,6 @@ export class Search extends LitElement {
 
 	@state() private searchResultContainerClasses = {
 		"search-result-container": true,
-		"modern-vertical-scrollbar": true,
 		visible: false
 	}
 	@state() private containerStyles = {
