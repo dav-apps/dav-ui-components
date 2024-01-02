@@ -62,4 +62,17 @@ export const searchStyles = css`
 	.search-result-container.visible {
 		padding: 12px;
 	}
+
+	.no-results-container {
+		display: flex;
+		justify-content: center;
+		padding: 12px;
+	}
+
+	.no-results-container > p {
+		margin: 0;
+		font-size: 18px;
+		font-weight: 300;
+		font-style: italic;
+	}
 `

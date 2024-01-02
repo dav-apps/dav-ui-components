@@ -39,7 +39,9 @@ export class Search extends LitElement {
 
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
+	@property({ type: Boolean }) noResults: boolean = false
 	@property() placeholder: string = ""
+	@property() noResultsMessage: string = "No results"
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -83,6 +85,13 @@ export class Search extends LitElement {
 		}
 	}
 
+	public clearSearchQuery() {
+		if (this.searchInput != null) {
+			this.searchInput.value = ""
+			this.input()
+		}
+	}
+
 	getProgressRing() {
 		if (this.loading) {
 			return html`
@@ -92,6 +101,16 @@ export class Search extends LitElement {
 						size="24"
 						color="white"
 					></dav-progress-ring>
+				</div>
+			`
+		}
+	}
+
+	getNoResultsMessage() {
+		if (this.noResults) {
+			return html`
+				<div class="no-results-container">
+					<p>${this.noResultsMessage}</p>
 				</div>
 			`
 		}
@@ -115,6 +134,8 @@ export class Search extends LitElement {
 				detail: { value: this.searchInput.value }
 			})
 		)
+
+		this.requestUpdate()
 	}
 
 	private keydown(event: KeyboardEvent) {
@@ -151,7 +172,8 @@ export class Search extends LitElement {
 					</div>
 
 					<div class=${classMap(this.searchResultContainerClasses)}>
-						${this.getProgressRing()} ${this.getSlot()}
+						${this.getProgressRing()} ${this.getNoResultsMessage()}
+						${this.getSlot()}
 					</div>
 				</div>
 			</div>
