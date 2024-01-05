@@ -32,7 +32,6 @@ export const listItemStyles = css`
 		display: flex;
 		justify-content: center;
 		height: 84px;
-		width: 84px;
 		min-width: 84px;
 	}
 
