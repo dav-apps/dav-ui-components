@@ -47,20 +47,40 @@ export class Card extends LitElement {
 
 	getHeadline() {
 		if (this.headline.length > 0) {
-			return html`<p class="headline">${this.headline}</p>`
+			return html`
+				<p class="headline">${this.headline}</p>
+			`
 		}
 	}
 
 	getSubhead() {
 		if (this.subhead.length > 0) {
-			return html`<p class="subhead">${this.subhead}</p>`
+			return html`
+				<p class="subhead">${this.subhead}</p>
+			`
 		}
 	}
 
 	getImage() {
 		if (this.imageSrc.length > 0) {
-			return html`<img src=${this.imageSrc} />`
+			return html`
+				<img src=${this.imageSrc} />
+			`
 		}
+	}
+
+	getContent() {
+		return html`
+			<div class="card-image-container">${this.getImage()}</div>
+
+			<div class="card-content-container">
+				${this.getHeadline()}
+				<div class="spacer"></div>
+				${this.getSubhead()}
+			</div>
+
+			<slot></slot>
+		`
 	}
 
 	render() {
@@ -68,15 +88,9 @@ export class Card extends LitElement {
 			this.orientation == Orientation.horizontal
 
 		return html`
-			<div class=${classMap(this.cardContainerClasses)}>
-				<div class="card-image-container">${this.getImage()}</div>
-
-				<div class="card-content-container">
-					${this.getHeadline()} ${this.getSubhead()}
-				</div>
-
-				<slot></slot>
-			</div>
+			<button class=${classMap(this.cardContainerClasses)}>
+				${this.getContent()}
+			</button>
 		`
 	}
 }

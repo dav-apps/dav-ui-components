@@ -11,9 +11,11 @@ export const cardStyles = css`
 		color: var(--dav-color-on-surface);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.15);
 		border-radius: 12px;
-		font-family: var(--dav-font);
-		overflow: hidden;
 		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+		font-family: var(--dav-font);
+		padding: 0;
+		text-align: start;
+		overflow: hidden;
 		transition: 200ms;
 		cursor: pointer;
 	}
@@ -29,6 +31,7 @@ export const cardStyles = css`
 	}
 
 	.card-container.horizontal > .card-image-container {
+		display: flex;
 		max-width: 50%;
 	}
 
@@ -39,6 +42,9 @@ export const cardStyles = css`
 	}
 
 	.card-content-container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 		padding: 12px;
 	}
 
@@ -52,5 +58,9 @@ export const cardStyles = css`
 		margin-top: 12px;
 		margin-bottom: 0;
 		font-size: 16px;
+	}
+
+	.spacer {
+		height: 100%;
 	}
 `
