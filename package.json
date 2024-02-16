@@ -1,6 +1,6 @@
 {
 	"name": "dav-ui-components",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A collection of UI components used in our web projects",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -14,15 +14,15 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^6.4.2",
+		"@fortawesome/fontawesome-free": "^6.5.1",
 		"autosize": "^6.0.1",
 		"blurhash": "^2.0.5",
-		"lit": "^2.8.0"
+		"lit": "^3.1.2"
 	},
 	"devDependencies": {
 		"@glorious/pitsby": "^1.37.0",
-		"concurrently": "^8.2.1",
+		"concurrently": "^8.2.2",
 		"tslib": "^2.6.2",
-		"typescript": "^5.2.2"
+		"typescript": "^5.3.3"
 	}
 }
