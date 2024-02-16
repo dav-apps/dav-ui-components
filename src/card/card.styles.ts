@@ -18,6 +18,7 @@ export const cardStyles = css`
 		overflow: hidden;
 		transition: 200ms;
 		cursor: pointer;
+		text-decoration: none;
 	}
 
 	.card-container:hover,

@@ -30,6 +30,8 @@ export class Card extends LitElement {
 		converter: (value: string) => convertStringToOrientation(value)
 	})
 	orientation: Orientation = Orientation.vertical
+	@property({ type: String }) href: string = ""
+	@property({ type: String }) target: string = ""
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -87,10 +89,22 @@ export class Card extends LitElement {
 		this.cardContainerClasses.horizontal =
 			this.orientation == Orientation.horizontal
 
-		return html`
-			<button class=${classMap(this.cardContainerClasses)}>
-				${this.getContent()}
-			</button>
-		`
+		if (this.href.length > 0) {
+			return html`
+				<a
+					class=${classMap(this.cardContainerClasses)}
+					href=${this.href}
+					target=${this.target}
+				>
+					${this.getContent()}
+				</a>
+			`
+		} else {
+			return html`
+				<button class=${classMap(this.cardContainerClasses)}>
+					${this.getContent()}
+				</button>
+			`
+		}
 	}
 }
