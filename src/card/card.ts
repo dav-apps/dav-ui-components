@@ -25,6 +25,7 @@ export class Card extends LitElement {
 	@property({ type: String }) headline: string = ""
 	@property({ type: String }) subhead: string = ""
 	@property({ type: String }) imageSrc: string = ""
+	@property({ type: String }) subheadImageSrc: string = ""
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToOrientation(value)
@@ -58,7 +59,23 @@ export class Card extends LitElement {
 	getSubhead() {
 		if (this.subhead.length > 0) {
 			return html`
-				<p class="subhead">${this.subhead}</p>
+				<div class="subhead-container">
+					${this.getSubheadImage()}
+					<p class="subhead">${this.subhead}</p>
+				</div>
+			`
+		}
+	}
+
+	getSubheadImage() {
+		if (this.subheadImageSrc.length > 0) {
+			return html`
+				<img
+					class="subhead-image"
+					src=${this.subheadImageSrc}
+					width="28"
+					height="28"
+				/>
 			`
 		}
 	}

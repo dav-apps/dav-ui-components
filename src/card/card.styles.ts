@@ -55,10 +55,21 @@ export const cardStyles = css`
 		font-weight: 500;
 	}
 
-	.subhead {
+	.subhead-container {
+		display: flex;
+		align-items: center;
+		gap: 8px;
 		margin-top: 12px;
 		margin-bottom: 0;
 		font-size: 16px;
+	}
+
+	.subhead {
+		margin: 0;
+	}
+
+	.subhead-image {
+		border-radius: 50%;
 	}
 
 	.spacer {
