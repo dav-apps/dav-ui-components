@@ -6,12 +6,22 @@ export const cardStyles = css`
 		flex-direction: column;
 		min-width: 60px;
 		width: inherit;
+		height: inherit;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);
-		border: 1px solid var(--dav-color-outline);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.15);
 		border-radius: 12px;
 		font-family: var(--dav-font);
 		overflow: hidden;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+		transition: 200ms;
+		cursor: pointer;
+	}
+
+	.card-container:hover,
+	.card-container:focus {
+		transform: translateY(-8px);
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
 
 	.card-container.horizontal {
