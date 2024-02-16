@@ -28,6 +28,7 @@ export const tabStyles = css`
 
 	p {
 		transition: all 200ms;
+		text-wrap: nowrap;
 	}
 
 	.container.active {
