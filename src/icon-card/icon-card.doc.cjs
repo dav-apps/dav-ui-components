@@ -18,6 +18,14 @@ module.exports = {
 			`
 		},
 		{
+			title: "IconCard with image and text",
+			template: `
+				<dav-icon-card text="Tagesschau">
+					<img src="https://www.tagesschau.de/resources/assets/image/favicon/apple-icon-152x152.png" />
+				</dav-icon-card>
+			`
+		},
+		{
 			title: "IconCard with link",
 			template: `
 				<dav-icon-card

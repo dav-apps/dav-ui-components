@@ -28,8 +28,15 @@ export const iconCardStyles = css`
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
 
+	.icon-card-container ::slotted(img) {
+		width: 38px;
+		height: 38px;
+		border-radius: 6px;
+	}
+
 	.icon-card-container > p {
 		margin: 0 0 0 24px;
 		font-weight: 400;
+		text-wrap: nowrap;
 	}
 `
