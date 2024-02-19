@@ -16,13 +16,16 @@ export const cardStyles = css`
 		padding: 0;
 		text-align: start;
 		overflow: hidden;
-		transition: 200ms;
-		cursor: pointer;
 		text-decoration: none;
 	}
 
-	.card-container:hover,
-	.card-container:focus {
+	.card-container:not(div) {
+		transition: 200ms;
+		cursor: pointer;
+	}
+
+	.card-container:not(div):hover,
+	.card-container:not(div):focus {
 		transform: translateY(-8px);
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
@@ -47,6 +50,10 @@ export const cardStyles = css`
 		flex-direction: column;
 		height: 100%;
 		padding: 12px;
+	}
+
+	.card-content-container ::slotted(div) {
+		margin-top: 12px;
 	}
 
 	.headline {

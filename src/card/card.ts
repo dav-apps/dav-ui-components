@@ -31,6 +31,7 @@ export class Card extends LitElement {
 		converter: (value: string) => convertStringToOrientation(value)
 	})
 	orientation: Orientation = Orientation.vertical
+	@property({ type: Boolean }) clickable: boolean = false
 	@property({ type: String }) href: string = ""
 	@property({ type: String }) target: string = ""
 
@@ -96,9 +97,8 @@ export class Card extends LitElement {
 				${this.getHeadline()}
 				<div class="spacer"></div>
 				${this.getSubhead()}
+				<slot></slot>
 			</div>
-
-			<slot></slot>
 		`
 	}
 
@@ -116,11 +116,17 @@ export class Card extends LitElement {
 					${this.getContent()}
 				</a>
 			`
-		} else {
+		} else if (this.clickable) {
 			return html`
 				<button class=${classMap(this.cardContainerClasses)}>
 					${this.getContent()}
 				</button>
+			`
+		} else {
+			return html`
+				<div class=${classMap(this.cardContainerClasses)}>
+					${this.getContent()}
+				</div>
 			`
 		}
 	}

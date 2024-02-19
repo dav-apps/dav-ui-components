@@ -57,6 +57,20 @@ module.exports = {
 					style="width: 220px"
 				></dav-card>
 			`
+		},
+		{
+			title: "Card with button",
+			template: `
+				<dav-card
+					headline="A Daughter of the Samurai"
+					subhead="by Etsu Inagaki Sugimoto"
+					style="width: 220px"
+				>
+					<div>
+						<dav-button size="small">Buy now</dav-button
+					</div>
+				</dav-card>
+			`
 		}
 	]
 }
