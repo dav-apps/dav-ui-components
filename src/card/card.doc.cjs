@@ -1,5 +1,45 @@
 module.exports = {
 	name: "Card",
+	properties: [
+		{
+			name: "headline",
+			type: "String"
+		},
+		{
+			name: "subhead",
+			type: "String"
+		},
+		{
+			name: "imageSrc",
+			type: "String"
+		},
+		{
+			name: "altImageSrc",
+			type: "String"
+		},
+		{
+			name: "subheadImageSrc",
+			type: "String"
+		},
+		{
+			name: "orientation",
+			type: "String",
+			values: `"vertical", "horizontal"`
+		},
+		{
+			name: "clickable",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "href",
+			type: "String"
+		},
+		{
+			name: "target",
+			type: "String"
+		}
+	],
 	examples: [
 		{
 			title: "Card with headline and subhead",
