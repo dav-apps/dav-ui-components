@@ -25,6 +25,7 @@ export class Card extends LitElement {
 	@property({ type: String }) headline: string = ""
 	@property({ type: String }) subhead: string = ""
 	@property({ type: String }) imageSrc: string = ""
+	@property({ type: String }) altImageSrc: string = ""
 	@property({ type: String }) subheadImageSrc: string = ""
 	@property({
 		type: String,
@@ -83,8 +84,14 @@ export class Card extends LitElement {
 
 	getImage() {
 		if (this.imageSrc.length > 0) {
+			let onError = ""
+
+			if (this.altImageSrc.length > 0) {
+				onError = `this.onerror=null;this.src='${this.altImageSrc}';`
+			}
+
 			return html`
-				<img src=${this.imageSrc} />
+				<img src=${this.imageSrc} onerror=${onError} />
 			`
 		}
 	}
