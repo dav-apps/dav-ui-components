@@ -70,7 +70,7 @@ export class Card extends LitElement {
 	}
 
 	getSubheadImage() {
-		if (this.subheadImageSrc.length > 0) {
+		if (this.subheadImageSrc) {
 			return html`
 				<img
 					class="subhead-image"
@@ -83,15 +83,22 @@ export class Card extends LitElement {
 	}
 
 	getImage() {
-		if (this.imageSrc.length > 0) {
+		let imageSrc = this.imageSrc
+
+		if (imageSrc == null || imageSrc.length == 0) {
+			imageSrc = this.altImageSrc
+			this.altImageSrc = null
+		}
+
+		if (imageSrc) {
 			let onError = ""
 
-			if (this.altImageSrc.length > 0) {
+			if (this.altImageSrc) {
 				onError = `this.onerror=null;this.src='${this.altImageSrc}';`
 			}
 
 			return html`
-				<img src=${this.imageSrc} onerror=${onError} />
+				<img src=${imageSrc} onerror=${onError} />
 			`
 		}
 	}
