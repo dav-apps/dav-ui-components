@@ -11,6 +11,7 @@ export class Toast extends LitElement {
 	static styles = [globalStyles, toastStyles]
 
 	@property() text: string = ""
+	@property({ type: Number }) duration: number = 4000
 
 	static async show(toast: Toast) {
 		toast.style.position = "absolute"
@@ -27,7 +28,7 @@ export class Toast extends LitElement {
 		await slideInAnimation.finished
 
 		// Wait for the timeout to hide the toast
-		await new Promise(resolve => setTimeout(resolve, 5000))
+		await new Promise(resolve => setTimeout(resolve, toast.duration))
 
 		let slideOutAnimation = slideOut(toast)
 		await slideOutAnimation.finished
