@@ -12,15 +12,14 @@ export class Toast extends LitElement {
 
 	@property() text: string = ""
 	@property({ type: Number }) duration: number = 4000
+	@property({ type: Number }) paddingBottom: number = 0
 
 	static async show(toast: Toast) {
 		toast.style.position = "absolute"
-		toast.style.bottom = "-50px"
 		toast.style.left = "0"
 		toast.style.right = "0"
 		toast.style.width = "fit-content"
 		toast.style.margin = "0 auto"
-		toast.style.opacity = "0"
 
 		document.body.appendChild(toast)
 
