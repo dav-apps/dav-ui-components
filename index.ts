@@ -75,6 +75,7 @@ import {
 } from "./src/tab-bar-item/tab-bar-item.js"
 import { Textarea, textareaTagName } from "./src/textarea/textarea.js"
 import { Textfield, textfieldTagName } from "./src/textfield/textfield.js"
+import { Toast, toastTagName } from "./src/toast/toast.js"
 import { Toggle, toggleTagName } from "./src/toggle/toggle.js"
 import { Tree, treeTagName } from "./src/tree/tree.js"
 import { TreeItem, treeItemTagName } from "./src/tree-item/tree-item.js"
@@ -115,6 +116,7 @@ declare global {
 		[tabBarItemTagName]: TabBarItem
 		[textareaTagName]: Textarea
 		[textfieldTagName]: Textfield
+		[toastTagName]: Toast
 		[toggleTagName]: Toggle
 		[treeTagName]: Tree
 		[treeItemTagName]: TreeItem
@@ -168,6 +170,7 @@ export {
 	TabBarItem,
 	Textarea,
 	Textfield,
+	Toast,
 	Toggle,
 	Tree,
 	TreeItem
