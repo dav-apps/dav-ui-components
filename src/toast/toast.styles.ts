@@ -6,7 +6,7 @@ export const toastStyles = css`
 		align-items: center;
 		background-color: var(--dav-color-primary);
 		color: var(--dav-color-on-primary);
-		max-width: 250px;
+		max-width: 500px;
 		height: 48px;
 		padding: 0 12px;
 		border-radius: 14px;
