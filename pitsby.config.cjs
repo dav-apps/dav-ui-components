@@ -125,6 +125,7 @@ module.exports = {
 		"./dist/src/textfield/textfield.styles.js",
 		"./dist/src/toast/toast.js",
 		"./dist/src/toast/toast.styles.js",
+		"./dist/src/toast/toast.animations.js",
 		"./dist/src/toggle/toggle.js",
 		"./dist/src/toggle/toggle.styles.js",
 		"./dist/src/tree/tree.js",
