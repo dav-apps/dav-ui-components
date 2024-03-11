@@ -17,6 +17,8 @@ export const dialogStyles = css`
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.2);
 		border-radius: 10px;
 		min-width: 280px;
+		max-height: 80vh;
+		overflow: auto;
 		z-index: 0;
 		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 	}
