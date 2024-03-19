@@ -3,6 +3,7 @@ import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, ThemeColor } from "../types.js"
 import {
+	hasWindow,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
@@ -54,18 +55,20 @@ export class Dialog extends LitElement {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
 
-		let screenSegments: any
+		if (hasWindow()) {
+			let screenSegments: any
 
-		if (window["getWindowSegments"]) {
-			screenSegments = window["getWindowSegments"]()
-		} else if (window.visualViewport["segments"]) {
-			screenSegments = window.visualViewport["segments"]
-		}
+			if (window["getWindowSegments"]) {
+				screenSegments = window["getWindowSegments"]()
+			} else if (window.visualViewport["segments"]) {
+				screenSegments = window.visualViewport["segments"]
+			}
 
-		if (screenSegments != null) {
-			this.dualScreenLayout =
-				screenSegments.length > 1 &&
-				screenSegments[0].width == screenSegments[1].width
+			if (screenSegments != null) {
+				this.dualScreenLayout =
+					screenSegments.length > 1 &&
+					screenSegments[0].width == screenSegments[1].width
+			}
 		}
 	}
 

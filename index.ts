@@ -1,4 +1,4 @@
-import { setLocale, setTheme } from "./src/utils.js"
+import { hasWindow, setLocale, setTheme } from "./src/utils.js"
 import { Theme, DropdownOption, DropdownOptionType } from "./src/types.js"
 
 // Components
@@ -123,7 +123,7 @@ declare global {
 	}
 }
 
-if (window) {
+if (hasWindow()) {
 	window["davUIComponents"] = {
 		setLocale,
 		setTheme

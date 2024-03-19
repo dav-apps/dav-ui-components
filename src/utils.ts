@@ -267,6 +267,10 @@ export function setThemeColorVariables(
 	)
 }
 
+export function hasWindow() {
+	return typeof window != "undefined"
+}
+
 //#region Settings functions
 export function subscribeSettingsChange(callback: Function) {
 	settingsChangeCallbacks.push(callback)

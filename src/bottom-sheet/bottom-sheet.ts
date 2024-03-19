@@ -4,6 +4,7 @@ import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, BottomSheetPosition } from "../types.js"
 import {
+	hasWindow,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
@@ -100,7 +101,7 @@ export class BottomSheet extends LitElement {
 		} else if (position == "top") {
 			newPosition = this.bottomSheetContainer.clientHeight
 			overlayOpacity = 1
-		} else if (position == "auto") {
+		} else if (position == "auto" && hasWindow()) {
 			if (
 				this.position > window.innerHeight / 2 ||
 				this.position > this.bottomSheetContainer.clientHeight / 2
@@ -181,10 +182,12 @@ export class BottomSheet extends LitElement {
 			this.requestUpdate()
 		}
 
-		this.innerContentContainerStyles["max-height"] = `${
-			window.innerHeight * snapTopWindowHeightFactor -
-			this.buttonsContainer.clientHeight
-		}px`
+		if (hasWindow()) {
+			this.innerContentContainerStyles[
+				"max-height"
+			] = `${window.innerHeight * snapTopWindowHeightFactor -
+				this.buttonsContainer.clientHeight}px`
+		}
 
 		if (this.position > this.bottomSheetContainer.clientHeight) {
 			this.position = this.bottomSheetContainer.clientHeight
