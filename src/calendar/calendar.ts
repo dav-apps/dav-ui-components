@@ -76,7 +76,7 @@ export class Calendar extends LitElement {
 
 			weeksHtml.push(
 				html`
-					<div>
+					<div class="week-container">
 						${weekHtml}
 					</div>
 				`

@@ -12,6 +12,12 @@ export const calendarStyles = css`
 		justify-content: space-evenly;
 	}
 
+	.bottom-container {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
 	.arrow-right svg {
 		transform: rotate(180deg);
 	}
@@ -19,9 +25,16 @@ export const calendarStyles = css`
 	.weekdays-container {
 		display: flex;
 		gap: 8px;
+		font-weight: 500;
 	}
 
 	.month-container {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.week-container {
 		display: flex;
 		justify-content: space-between;
 	}
@@ -29,5 +42,6 @@ export const calendarStyles = css`
 	.day-container {
 		display: flex;
 		justify-content: center;
+		width: 18px;
 	}
 `
