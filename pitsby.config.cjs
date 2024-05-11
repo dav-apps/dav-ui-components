@@ -58,6 +58,8 @@ module.exports = {
 		"./dist/src/bottom-sheet/bottom-sheet.animations.js",
 		"./dist/src/button/button.js",
 		"./dist/src/button/button.styles.js",
+		"./dist/src/calendar/calendar.js",
+		"./dist/src/calendar/calendar.styles.js",
 		"./dist/src/card/card.js",
 		"./dist/src/card/card.styles.js",
 		"./dist/src/checkbox/checkbox.js",

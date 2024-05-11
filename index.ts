@@ -12,6 +12,7 @@ import {
 	bottomSheetTagName
 } from "./src/bottom-sheet/bottom-sheet.js"
 import { Button, buttonTagName } from "./src/button/button.js"
+import { Calendar, calendarTagName } from "./src/calendar/calendar.js"
 import { Card, cardTagName } from "./src/card/card.js"
 import { Checkbox, checkboxTagName } from "./src/checkbox/checkbox.js"
 import {
@@ -86,6 +87,7 @@ declare global {
 		[blurhashImageTagName]: BlurhashImage
 		[bottomSheetTagName]: BottomSheet
 		[buttonTagName]: Button
+		[calendarTagName]: Calendar
 		[cardTagName]: Card
 		[checkboxTagName]: Checkbox
 		[contextMenuTagName]: ContextMenu
@@ -140,6 +142,7 @@ export {
 	BlurhashImage,
 	BottomSheet,
 	Button,
+	Calendar,
 	Card,
 	Checkbox,
 	ContextMenu,
