@@ -8,4 +8,10 @@ export const calendarTagName = "dav-calendar"
 @customElement(calendarTagName)
 export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
+
+	render() {
+		return html`
+			<p>Hello World</p>
+		`
+	}
 }
