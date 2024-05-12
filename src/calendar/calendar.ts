@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
+import { customElement } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import { DateTime } from "luxon"
 import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
 import { globalStyles } from "../styles.js"
@@ -60,18 +61,36 @@ export class Calendar extends LitElement {
 	}
 
 	getDaysHtml() {
-		let weeks = this.getDays()
 		let weeksHtml = []
+		let currentMonth = DateTime.now().month
+		let currentDay = DateTime.now().day
+		let currentDate = DateTime.now()
+			.startOf("month")
+			.startOf("week")
 
-		for (let week of weeks) {
+		while (currentDate.month <= currentMonth) {
 			let weekHtml = []
 
-			for (let day of week) {
-				weekHtml.push(
-					html`
-						<div class="day-container">${day}</div>
-					`
-				)
+			for (let i = 0; i < 7; i++) {
+				let isCurrentMonth = currentDate.month == currentMonth
+				let isCurrentDay = isCurrentMonth && currentDate.day == currentDay
+
+				let dayButtonClasses = {
+					"day-button": true,
+					"current-month": isCurrentMonth,
+					"current-day": isCurrentDay
+				}
+
+				weekHtml.push(html`
+					<button
+						class=${classMap(dayButtonClasses)}
+						?disabled=${!isCurrentMonth}
+					>
+						${currentDate.day}
+					</button>
+				`)
+
+				currentDate = currentDate.plus({ days: 1 })
 			}
 
 			weeksHtml.push(

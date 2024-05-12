@@ -20,7 +20,7 @@ export const calendarStyles = css`
 	.bottom-container {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
+		gap: 8px;
 	}
 
 	.arrow-right svg {
@@ -29,14 +29,14 @@ export const calendarStyles = css`
 
 	.weekdays-container {
 		display: flex;
-		gap: 8px;
+		gap: 18px;
 		font-weight: 500;
 	}
 
 	.month-container {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
+		gap: 8px;
 	}
 
 	.week-container {
@@ -44,9 +44,28 @@ export const calendarStyles = css`
 		justify-content: space-between;
 	}
 
-	.day-container {
-		display: flex;
-		justify-content: center;
-		width: 18px;
+	.day-button {
+		width: 28px;
+		height: 28px;
+		padding: 0;
+		font-size: 14px;
+		border-radius: 50%;
+		border: none;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
+		background-color: var(--dav-color-surface);
+		transition: 200ms;
+	}
+
+	.day-button.current-month:hover {
+		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
+	}
+
+	.day-button.current-day {
+		background-color: rgb(var(--dav-color-primary-rgb), 0.08);
+	}
+
+	.day-button.current-month {
+		color: var(--dav-color-on-surface);
+		cursor: pointer;
 	}
 `
