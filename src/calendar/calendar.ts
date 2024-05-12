@@ -19,6 +19,7 @@ export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
 
 	@state() private visibleDate: DateTime = DateTime.now().plus({ months: 5 })
+	@state() private selectedDate: DateTime = DateTime.now()
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -32,6 +33,18 @@ export class Calendar extends LitElement {
 
 	settingsChange = (settings: Settings) => {
 		setThemeColorVariables(this.style, settings.theme)
+	}
+
+	previousMonthButtonClick() {
+		this.visibleDate = this.visibleDate.minus({ months: 1 })
+	}
+
+	nextMonthButtonClick() {
+		this.visibleDate = this.visibleDate.plus({ months: 1 })
+	}
+
+	dayButtonClick(date: DateTime) {
+		this.selectedDate = date
 	}
 
 	getWeekdaysHtml() {
@@ -61,6 +74,7 @@ export class Calendar extends LitElement {
 			let weekHtml = []
 
 			for (let i = 0; i < 7; i++) {
+				let date = currentDate
 				let isCurrentMonth = currentDate.month == currentMonth
 				let isCurrentDay =
 					DateTime.now().month == currentMonth &&
@@ -69,13 +83,15 @@ export class Calendar extends LitElement {
 				let dayButtonClasses = {
 					"day-button": true,
 					"current-month": isCurrentMonth,
-					"current-day": isCurrentDay
+					"current-day": isCurrentDay,
+					selected: this.selectedDate.hasSame(date, "day")
 				}
 
 				weekHtml.push(html`
 					<button
 						class=${classMap(dayButtonClasses)}
 						?disabled=${!isCurrentMonth}
+						@click=${() => this.dayButtonClick(date)}
 					>
 						${currentDate.day}
 					</button>
@@ -94,14 +110,6 @@ export class Calendar extends LitElement {
 		}
 
 		return weeksHtml
-	}
-
-	previousMonthButtonClick() {
-		this.visibleDate = this.visibleDate.minus({ months: 1 })
-	}
-
-	nextMonthButtonClick() {
-		this.visibleDate = this.visibleDate.plus({ months: 1 })
 	}
 
 	render() {

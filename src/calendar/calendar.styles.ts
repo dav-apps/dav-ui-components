@@ -73,4 +73,8 @@ export const calendarStyles = css`
 		color: var(--dav-color-on-surface);
 		cursor: pointer;
 	}
+
+	.day-button.selected {
+		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
+	}
 `
