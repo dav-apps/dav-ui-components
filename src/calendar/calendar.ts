@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement } from "lit/decorators.js"
+import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { DateTime } from "luxon"
 import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
@@ -18,6 +18,8 @@ export const calendarTagName = "dav-calendar"
 export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
 
+	@state() private visibleDate: DateTime = DateTime.now().plus({ months: 5 })
+
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
@@ -32,68 +34,37 @@ export class Calendar extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	getWeekdays() {
+	getWeekdaysHtml() {
 		let currentWeekDay = DateTime.now().startOf("week")
-		let weekDays: string[] = []
+		let weekDayHtml = []
 
 		for (let i = 0; i < 7; i++) {
-			weekDays.push(currentWeekDay.weekdayShort)
+			weekDayHtml.push(
+				html`
+					<div>${currentWeekDay.weekdayShort}</div>
+				`
+			)
+
 			currentWeekDay = currentWeekDay.plus({ days: 1 })
 		}
 
-		return weekDays
-	}
-
-	getWeekdaysHtml() {
-		let weekdayHtml = []
-
-		for (let day of this.getWeekdays()) {
-			weekdayHtml.push(
-				html`
-					<div>${day}</div>
-				`
-			)
-		}
-
-		return weekdayHtml
-	}
-
-	getDays() {
-		let weeks: number[][] = []
-
-		let currentMonth = DateTime.now().month
-		let currentDate = DateTime.now()
-			.startOf("month")
-			.startOf("week")
-
-		while (currentDate.month <= currentMonth) {
-			let row: number[] = []
-
-			for (let i = 0; i < 7; i++) {
-				row.push(currentDate.day)
-				currentDate = currentDate.plus({ days: 1 })
-			}
-
-			weeks.push(row)
-		}
-
-		return weeks
+		return weekDayHtml
 	}
 
 	getDaysHtml() {
 		let weeksHtml = []
-		let currentMonth = DateTime.now().month
-		let currentDay = DateTime.now().day
-		let currentDate = DateTime.now()
-			.startOf("month")
-			.startOf("week")
+		let currentMonth = this.visibleDate.month
+		let currentDate = this.visibleDate.startOf("month").startOf("week")
+		let endOfMonth = this.visibleDate.endOf("month").endOf("week")
 
-		while (currentDate.month <= currentMonth) {
+		while (currentDate < endOfMonth) {
 			let weekHtml = []
 
 			for (let i = 0; i < 7; i++) {
 				let isCurrentMonth = currentDate.month == currentMonth
-				let isCurrentDay = isCurrentMonth && currentDate.day == currentDay
+				let isCurrentDay =
+					DateTime.now().month == currentMonth &&
+					currentDate.day == DateTime.now().day
 
 				let dayButtonClasses = {
 					"day-button": true,
@@ -125,20 +96,37 @@ export class Calendar extends LitElement {
 		return weeksHtml
 	}
 
+	previousMonthButtonClick() {
+		this.visibleDate = this.visibleDate.minus({ months: 1 })
+	}
+
+	nextMonthButtonClick() {
+		this.visibleDate = this.visibleDate.plus({ months: 1 })
+	}
+
 	render() {
 		return html`
 			<div class="container">
 				<div class="top-container">
 					<div class="arrow-left">
-						<dav-icon-button size="small">
+						<dav-icon-button
+							size="small"
+							@click=${this.previousMonthButtonClick}
+						>
 							${arrowLeftLightSvg}
 						</dav-icon-button>
 					</div>
 
-					<div class="date-container">May 2024</div>
+					<div class="date-container">
+						${this.visibleDate.toFormat("MMMM")}
+						${this.visibleDate.toFormat("y")}
+					</div>
 
 					<div class="arrow-right">
-						<dav-icon-button size="small">
+						<dav-icon-button
+							size="small"
+							@click=${this.nextMonthButtonClick}
+						>
 							${arrowLeftLightSvg}
 						</dav-icon-button>
 					</div>
