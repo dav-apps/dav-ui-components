@@ -3,6 +3,12 @@ import { customElement } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { DateTime } from "luxon"
 import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
+import { Settings } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { calendarStyles } from "./calendar.styles.js"
 
@@ -11,6 +17,20 @@ export const calendarTagName = "dav-calendar"
 @customElement(calendarTagName)
 export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
+
+	connectedCallback() {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
 
 	getWeekdays() {
 		let currentWeekDay = DateTime.now().startOf("week")
