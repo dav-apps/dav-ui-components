@@ -18,14 +18,20 @@ export const calendarTagName = "dav-calendar"
 export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
 
-	@state() private visibleDate: DateTime = DateTime.now().plus({ months: 5 })
-	@state() private selectedDate: DateTime = DateTime.now()
+	@state() private visibleDate: DateTime = DateTime.now()
+
+	@property({
+		type: String,
+		converter: value => DateTime.fromISO(value)
+	})
+	selectedDate: DateTime = DateTime.now()
 
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
 
 		LuxonSettings.defaultLocale = navigator.language
+		this.visibleDate = this.selectedDate
 	}
 
 	disconnectedCallback() {
@@ -47,6 +53,12 @@ export class Calendar extends LitElement {
 
 	dayButtonClick(date: DateTime) {
 		this.selectedDate = date
+
+		this.dispatchEvent(
+			new CustomEvent("selectedDateChange", {
+				detail: { selectedDate: this.selectedDate }
+			})
+		)
 	}
 
 	getWeekdaysHtml() {
