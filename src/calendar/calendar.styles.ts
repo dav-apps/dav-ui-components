@@ -23,6 +23,11 @@ export const calendarStyles = css`
 		gap: 8px;
 	}
 
+	.arrow-left svg,
+	.arrow-right svg {
+		fill: var(--dav-color-on-surface);
+	}
+
 	.arrow-right svg {
 		transform: rotate(180deg);
 	}
