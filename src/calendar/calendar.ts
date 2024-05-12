@@ -1,7 +1,7 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { DateTime } from "luxon"
+import { Settings as LuxonSettings, DateTime } from "luxon"
 import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
 import { Settings } from "../types.js"
 import {
@@ -24,6 +24,8 @@ export class Calendar extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
+
+		LuxonSettings.defaultLocale = navigator.language
 	}
 
 	disconnectedCallback() {
