@@ -325,10 +325,12 @@ export function convertStringToThemeColor(value: string): ThemeColor {
 
 export function convertStringToButtonSize(value: string): ButtonSize {
 	switch (value) {
-		case "small":
-			return ButtonSize.small
+		case "sm":
+			return ButtonSize.sm
+		case "xs":
+			return ButtonSize.xs
 		default:
-			return ButtonSize.normal
+			return ButtonSize.md
 	}
 }
 

@@ -20,7 +20,8 @@ export class IconButton extends LitElement {
 	@state() private iconButtonClasses = {
 		"icon-button": true,
 		selected: false,
-		small: false
+		sm: false,
+		xs: false
 	}
 
 	@property({ type: String }) href: string = ""
@@ -29,7 +30,7 @@ export class IconButton extends LitElement {
 		type: String,
 		converter: (value: string) => convertStringToButtonSize(value)
 	})
-	size: ButtonSize = ButtonSize.normal
+	size: ButtonSize = ButtonSize.md
 	@property({ type: String }) target: string = ""
 
 	connectedCallback() {
@@ -48,7 +49,8 @@ export class IconButton extends LitElement {
 
 	render() {
 		this.iconButtonClasses.selected = this.selected
-		this.iconButtonClasses.small = this.size == ButtonSize.small
+		this.iconButtonClasses.sm = this.size == ButtonSize.sm
+		this.iconButtonClasses.xs = this.size == ButtonSize.xs
 
 		if (this.href.length > 0) {
 			return html`

@@ -30,8 +30,9 @@ export enum ThemeColor {
 }
 
 export enum ButtonSize {
-	normal = "normal",
-	small = "small"
+	md = "md",
+	sm = "sm",
+	xs = "xs"
 }
 
 export enum DropdownOptionType {

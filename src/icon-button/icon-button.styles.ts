@@ -31,15 +31,26 @@ export const iconButtonStyles = css`
 		height: 24px;
 	}
 
-	.icon-button.small {
+	.icon-button.sm {
 		height: 32px;
 		width: 32px;
 		font-size: 18px;
 	}
 
-	.icon-button.small ::slotted(svg) {
+	.icon-button.sm ::slotted(svg) {
 		width: 18px;
 		height: 18px;
+	}
+
+	.icon-button.xs {
+		height: 26px;
+		width: 26px;
+		font-size: 14px;
+	}
+
+	.icon-button.xs ::slotted(svg) {
+		width: 14px;
+		height: 14px;
 	}
 
 	.icon-button:hover {
