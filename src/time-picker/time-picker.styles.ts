@@ -3,12 +3,33 @@ import { css } from "@lit/reactive-element"
 export const timePickerStyles = css`
 	.container {
 		display: inline-flex;
-		align-items: baseline;
+		align-items: center;
 		gap: 8px;
 	}
 
 	.hour-input-container,
 	.minute-input-container {
-		width: 38px;
+		width: 36px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	span {
+		height: 24px;
+	}
+
+	svg {
+		fill: var(--dav-color-on-surface);
+	}
+
+	.up-button-container,
+	.down-button-container {
+		display: flex;
+		justify-content: center;
+	}
+
+	.up-button-container svg {
+		transform: rotate(180deg);
 	}
 `
