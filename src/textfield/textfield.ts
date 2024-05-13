@@ -24,7 +24,8 @@ export class Textfield extends LitElement {
 		disabled: false
 	}
 	@state() private textfieldInputClasses = {
-		disabled: false
+		disabled: false,
+		"no-arrows": false
 	}
 
 	@property() value: string = ""
@@ -34,6 +35,7 @@ export class Textfield extends LitElement {
 	@property() type: string = "text"
 	@property() autocomplete: string = "on"
 	@property({ type: Boolean }) autofocus: boolean = false
+	@property({ type: Boolean }) noArrows: boolean = false
 	@property({ type: Number }) min: number = 0
 	@property({ type: Number }) max: number = 100
 	@property() errorMessage: string = ""
@@ -92,6 +94,7 @@ export class Textfield extends LitElement {
 	render() {
 		this.textfieldLabelClasses.disabled = this.disabled
 		this.textfieldInputClasses.disabled = this.disabled
+		this.textfieldInputClasses["no-arrows"] = this.noArrows
 
 		return html`
 			<div class="container">

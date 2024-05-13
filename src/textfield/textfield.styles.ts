@@ -56,6 +56,16 @@ export const textfieldStyles = css`
 		color: rgb(var(--dav-color-on-surface-rgb), 0.4);
 	}
 
+	#textfield.no-arrows::-webkit-outer-spin-button,
+	#textfield.no-arrows::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	#textfield.no-arrows {
+		-moz-appearance: textfield;
+	}
+
 	.textfield-error-message {
 		max-width: 200px;
 		margin: 4px 0px 0px 4px;
