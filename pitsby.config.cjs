@@ -125,6 +125,8 @@ module.exports = {
 		"./dist/src/textarea/textarea.styles.js",
 		"./dist/src/textfield/textfield.js",
 		"./dist/src/textfield/textfield.styles.js",
+		"./dist/src/time-picker/time-picker.js",
+		"./dist/src/time-picker/time-picker.styles.js",
 		"./dist/src/toast/toast.js",
 		"./dist/src/toast/toast.styles.js",
 		"./dist/src/toast/toast.animations.js",

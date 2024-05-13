@@ -76,6 +76,7 @@ import {
 } from "./src/tab-bar-item/tab-bar-item.js"
 import { Textarea, textareaTagName } from "./src/textarea/textarea.js"
 import { Textfield, textfieldTagName } from "./src/textfield/textfield.js"
+import { TimePicker, timePickerTagName } from "./src/time-picker/time-picker.js"
 import { Toast, toastTagName } from "./src/toast/toast.js"
 import { Toggle, toggleTagName } from "./src/toggle/toggle.js"
 import { Tree, treeTagName } from "./src/tree/tree.js"
@@ -118,6 +119,7 @@ declare global {
 		[tabBarItemTagName]: TabBarItem
 		[textareaTagName]: Textarea
 		[textfieldTagName]: Textfield
+		[timePickerTagName]: TimePicker
 		[toastTagName]: Toast
 		[toggleTagName]: Toggle
 		[treeTagName]: Tree
@@ -173,6 +175,7 @@ export {
 	TabBarItem,
 	Textarea,
 	Textfield,
+	TimePicker,
 	Toast,
 	Toggle,
 	Tree,
