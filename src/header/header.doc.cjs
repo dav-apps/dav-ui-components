@@ -24,7 +24,7 @@ module.exports = {
 		{
 			name: "size",
 			type: "String",
-			values: `"small", "normal", "large"`
+			values: `"sm", "md", "lg"`
 		}
 	],
 	examples: [
@@ -32,7 +32,7 @@ module.exports = {
 			title: "Small Header",
 			template: `
 				<dav-header
-					size="small"
+					size="sm"
 					backButtonVisible
 					addButtonVisible
 					editButtonVisible
@@ -57,7 +57,7 @@ module.exports = {
 			title: "Large Header",
 			template: `
 				<dav-header
-					size="large"
+					size="lg"
 					backButtonVisible
 					addButtonVisible
 					editButtonVisible

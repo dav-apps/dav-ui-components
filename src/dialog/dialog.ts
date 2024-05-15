@@ -131,7 +131,7 @@ export class Dialog extends LitElement {
 		if (this.defaultButtonText.length > 0) {
 			return html`
 				<dav-button
-					size="small"
+					size="sm"
 					outline
 					?disabled=${this.loading}
 					@click=${this.defaultButtonClick}
@@ -147,7 +147,7 @@ export class Dialog extends LitElement {
 			return html`
 				<dav-button
 					color=${this.primaryButtonColor}
-					size="small"
+					size="sm"
 					?disabled=${this.loading}
 					@click=${this.primaryButtonClick}
 				>

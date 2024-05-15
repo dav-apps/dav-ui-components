@@ -107,7 +107,7 @@ module.exports = {
 					style="width: 220px"
 				>
 					<div>
-						<dav-button size="small">Buy now</dav-button
+						<dav-button size="sm">Buy now</dav-button
 					</div>
 				</dav-card>
 			`

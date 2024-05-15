@@ -43,7 +43,7 @@ export class Header extends LitElement {
 		type: String,
 		converter: (value: string) => convertStringToHeaderSize(value)
 	})
-	size: HeaderSize = HeaderSize.normal
+	size: HeaderSize = HeaderSize.md
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -76,7 +76,7 @@ export class Header extends LitElement {
 			return html`
 				<dav-icon-button
 					class="back-button"
-					size="small"
+					size="sm"
 					@click=${this.backButtonClick}
 				>
 					${arrowLeftLightSvg}
@@ -90,7 +90,7 @@ export class Header extends LitElement {
 			return html`
 				<dav-icon-button
 					class="add-button"
-					size="small"
+					size="sm"
 					@click=${this.addButtonClick}
 				>
 					${plusLightSvg}
@@ -104,7 +104,7 @@ export class Header extends LitElement {
 			return html`
 				<dav-icon-button
 					class="edit-button"
-					size="small"
+					size="sm"
 					@click=${this.editButtonClick}
 				>
 					${penLightSvg}
@@ -130,13 +130,13 @@ export class Header extends LitElement {
 		}
 
 		switch (this.size) {
-			case HeaderSize.large:
+			case HeaderSize.lg:
 				this.headerStyles.fontSize = "40px"
 				break
-			case HeaderSize.normal:
+			case HeaderSize.md:
 				this.headerStyles.fontSize = "32px"
 				break
-			case HeaderSize.small:
+			case HeaderSize.sm:
 				this.headerStyles.fontSize = "28px"
 				break
 		}

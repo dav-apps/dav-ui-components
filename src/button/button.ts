@@ -33,7 +33,7 @@ export class Button extends LitElement {
 		type: String,
 		converter: (value: string) => convertStringToButtonSize(value)
 	})
-	size: ButtonSize = ButtonSize.normal
+	size: ButtonSize = ButtonSize.md
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToThemeColor(value)
@@ -65,7 +65,7 @@ export class Button extends LitElement {
 	}
 
 	render() {
-		this.buttonClasses.small = this.size == ButtonSize.small
+		this.buttonClasses.small = this.size == ButtonSize.sm
 		this.buttonClasses.secondary = false
 		this.buttonClasses.tertiary = false
 		this.buttonClasses.error = false

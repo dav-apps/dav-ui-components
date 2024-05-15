@@ -82,7 +82,7 @@ module.exports = {
 						<h1>Hello World</h1>
 						<dav-button
 							style="margin-bottom: 24px"
-							size="small"
+							size="sm"
 						>Hide</dav-button>
 					</div>
 				</dav-bottom-sheet>

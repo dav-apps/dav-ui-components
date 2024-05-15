@@ -33,7 +33,7 @@ module.exports = {
 				}
 			},
 			template: `
-				<dav-icon-button size="small">
+				<dav-icon-button size="sm">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</dav-icon-button>
 			`
@@ -49,7 +49,7 @@ module.exports = {
 		{
 			title: "Small IconButton with link",
 			template: `
-				<dav-icon-button size="small" href="https://dav-apps.tech" target="blank">
+				<dav-icon-button size="sm" href="https://dav-apps.tech" target="blank">
 					<i class="fa-solid fa-globe"></i>
 				</dav-icon-button>
 			`

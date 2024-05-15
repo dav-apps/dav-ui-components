@@ -132,7 +132,7 @@ export class Calendar extends LitElement {
 				<div class="top-container">
 					<div class="arrow-left">
 						<dav-icon-button
-							size="small"
+							size="sm"
 							@click=${this.previousMonthButtonClick}
 						>
 							${arrowLeftLightSvg}
@@ -146,7 +146,7 @@ export class Calendar extends LitElement {
 
 					<div class="arrow-right">
 						<dav-icon-button
-							size="small"
+							size="sm"
 							@click=${this.nextMonthButtonClick}
 						>
 							${arrowLeftLightSvg}

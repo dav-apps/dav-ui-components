@@ -356,12 +356,12 @@ export function convertStringToAlignment(value: string): Alignment {
 
 export function convertStringToHeaderSize(value: string): HeaderSize {
 	switch (value) {
-		case "large":
-			return HeaderSize.large
-		case "small":
-			return HeaderSize.small
+		case "lg":
+			return HeaderSize.lg
+		case "sm":
+			return HeaderSize.sm
 		default:
-			return HeaderSize.normal
+			return HeaderSize.md
 	}
 }
 
@@ -376,12 +376,12 @@ export function convertStringToOrientation(value: string): Orientation {
 
 export function convertStringToListItemSize(value: string): ListItemSize {
 	switch (value) {
-		case "small":
-			return ListItemSize.small
-		case "large":
-			return ListItemSize.large
+		case "sm":
+			return ListItemSize.sm
+		case "lg":
+			return ListItemSize.lg
 		default:
-			return ListItemSize.normal
+			return ListItemSize.md
 	}
 }
 

@@ -41,7 +41,7 @@ module.exports = {
 		{
 			name: "size",
 			type: "String",
-			values: `"small", "normal"`
+			values: `"sm", "md"`
 		},
 		{
 			name: "href",
@@ -71,7 +71,7 @@ module.exports = {
 					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/99a5fa11-786b-4d32-9154-4478f6b27a9f"
 					headline="Victor Hugo"
 					imageTitle="Victor Hugo"
-					size="small"
+					size="sm"
 				></dav-list-item>
 			`
 		},
@@ -82,7 +82,7 @@ module.exports = {
 					imageSrc="https://dav-backend.fra1.cdn.digitaloceanspaces.com/99a5fa11-786b-4d32-9154-4478f6b27a9f"
 					headline="Victor Hugo"
 					imageTitle="Victor Hugo"
-					size="large"
+					size="lg"
 				></dav-list-item>
 			`
 		},

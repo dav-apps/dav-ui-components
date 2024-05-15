@@ -30,7 +30,7 @@ module.exports = {
 						imageAspectRatio="1:1.5"
 						headline="The Portrait of a Lady"
 						subhead="Henry James"
-						size="small"
+						size="sm"
 					></dav-list-item>
 
 					<dav-list-item
@@ -38,7 +38,7 @@ module.exports = {
 						imageAspectRatio="1:1.5"
 						headline="Dombey and Son"
 						subhead="Charles Dickens"
-						size="small"
+						size="sm"
 					></dav-list-item>
 				</dav-list>
 			`
@@ -52,7 +52,7 @@ module.exports = {
 						imageAspectRatio="1:1.5"
 						headline="The Portrait of a Lady"
 						subhead="Henry James"
-						size="large"
+						size="lg"
 					></dav-list-item>
 
 					<dav-list-item
@@ -60,7 +60,7 @@ module.exports = {
 						imageAspectRatio="1:1.5"
 						headline="Dombey and Son"
 						subhead="Charles Dickens"
-						size="large"
+						size="lg"
 					></dav-list-item>
 				</dav-list>
 			`

@@ -40,7 +40,7 @@ export class ListItem extends LitElement {
 		type: String,
 		converter: (value: string) => convertStringToListItemSize(value)
 	})
-	size: ListItemSize = ListItemSize.normal
+	size: ListItemSize = ListItemSize.md
 	@property() href: string = ""
 	@property() target: string = ""
 
@@ -65,9 +65,9 @@ export class ListItem extends LitElement {
 		) {
 			let height = 84
 
-			if (this.size == ListItemSize.small) {
+			if (this.size == ListItemSize.sm) {
 				height = 56
-			} else if (this.size == ListItemSize.large) {
+			} else if (this.size == ListItemSize.lg) {
 				height = 140
 			}
 
@@ -90,13 +90,17 @@ export class ListItem extends LitElement {
 
 	getHeadline() {
 		if (this.headline != null && this.headline.length > 0) {
-			return html`<p class="headline">${this.headline}</p>`
+			return html`
+				<p class="headline">${this.headline}</p>
+			`
 		}
 	}
 
 	getSubhead() {
 		if (this.subhead != null && this.subhead.length > 0) {
-			return html`<p class="subhead">${this.subhead}</p>`
+			return html`
+				<p class="subhead">${this.subhead}</p>
+			`
 		}
 	}
 
@@ -112,9 +116,9 @@ export class ListItem extends LitElement {
 		this.containerClasses.small = false
 		this.containerClasses.large = false
 
-		if (this.size == ListItemSize.small) {
+		if (this.size == ListItemSize.sm) {
 			this.containerClasses.small = true
-		} else if (this.size == ListItemSize.large) {
+		} else if (this.size == ListItemSize.lg) {
 			this.containerClasses.large = true
 		}
 

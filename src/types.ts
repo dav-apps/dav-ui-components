@@ -30,9 +30,9 @@ export enum ThemeColor {
 }
 
 export enum ButtonSize {
-	md = "md",
+	xs = "xs",
 	sm = "sm",
-	xs = "xs"
+	md = "md"
 }
 
 export enum DropdownOptionType {
@@ -52,9 +52,9 @@ export enum Alignment {
 }
 
 export enum HeaderSize {
-	large = "large",
-	normal = "normal",
-	small = "small"
+	sm = "sm",
+	md = "md",
+	lg = "lg"
 }
 
 export enum Orientation {
@@ -63,9 +63,9 @@ export enum Orientation {
 }
 
 export enum ListItemSize {
-	small = "small",
-	normal = "normal",
-	large = "large"
+	sm = "sm",
+	md = "md",
+	lg = "lg"
 }
 
 export enum MessageBarType {
