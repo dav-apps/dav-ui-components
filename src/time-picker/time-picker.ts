@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, state } from "lit/decorators.js"
+import { customElement, property, state } from "lit/decorators.js"
 import { chevronDownLightSvg } from "../../assets/svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
 import { timePickerStyles } from "./time-picker.styles.js"
@@ -10,18 +10,44 @@ export const timePickerTagName = "dav-time-picker"
 export class TimePicker extends LitElement {
 	static styles = [globalStyles, timePickerStyles]
 
-	@state() private hour: string = "14"
-	@state() private minute: string = "00"
+	@state() private hourStr: string = "14"
+	@state() private minuteStr: string = "00"
+
+	@property({ type: Number }) hour: number = 14
+	@property({ type: Number }) minute: number = 0
+
+	connectedCallback() {
+		super.connectedCallback()
+
+		if (this.hour > 23) this.hour = 23
+		if (this.hour < 0) this.hour = 0
+		if (this.minute > 59) this.minute = 59
+		if (this.minute < 0) this.minute = 0
+
+		if (this.hour < 10 && this.hour >= 0) {
+			this.hourStr = `0${this.hour}`
+		} else {
+			this.hourStr = this.hour.toString()
+		}
+
+		if (this.minute < 10 && this.minute >= 0) {
+			this.minuteStr = `0${this.minute}`
+		} else {
+			this.minuteStr = this.minute.toString()
+		}
+	}
 
 	hourInputChange(event: CustomEvent) {
 		let hour = event.detail.value
 		let numValue = Number(hour)
 
 		if (numValue < 10 && numValue >= 0) {
-			this.hour = `0${numValue}`
+			this.hourStr = `0${numValue}`
 		} else {
-			this.hour = hour
+			this.hourStr = hour
 		}
+
+		this.dispatchChangeEvent()
 	}
 
 	minuteInputChange(event: CustomEvent) {
@@ -29,54 +55,75 @@ export class TimePicker extends LitElement {
 		let numValue = Number(minute)
 
 		if (numValue < 10 && numValue >= 0) {
-			this.minute = `0${numValue}`
+			this.minuteStr = `0${numValue}`
 		} else {
-			this.minute = minute
+			this.minuteStr = minute
 		}
+
+		this.dispatchChangeEvent()
 	}
 
 	increaseHour() {
-		let hour = Number(this.hour) + 1
+		let hour = Number(this.hourStr) + 1
 		if (hour >= 24) return
 
 		if (hour < 10 && hour >= 0) {
-			this.hour = `0${hour}`
+			this.hourStr = `0${hour}`
 		} else {
-			this.hour = hour.toString()
+			this.hourStr = hour.toString()
 		}
+
+		this.dispatchChangeEvent()
 	}
 
 	increaseMinute() {
-		let minute = Number(this.minute) + 5
+		let minute = Number(this.minuteStr) + 5
 		if (minute >= 60) return
 
 		if (minute < 10 && minute >= 0) {
-			this.minute = `0${minute}`
+			this.minuteStr = `0${minute}`
 		} else {
-			this.minute = minute.toString()
+			this.minuteStr = minute.toString()
 		}
+
+		this.dispatchChangeEvent()
 	}
 
 	decreaseHour() {
-		let hour = Number(this.hour) - 1
+		let hour = Number(this.hourStr) - 1
 		if (hour < 0) return
 
 		if (hour < 10 && hour >= 0) {
-			this.hour = `0${hour}`
+			this.hourStr = `0${hour}`
 		} else {
-			this.hour = hour.toString()
+			this.hourStr = hour.toString()
 		}
+
+		this.dispatchChangeEvent()
 	}
 
 	decreaseMinute() {
-		let minute = Number(this.minute) - 5
+		let minute = Number(this.minuteStr) - 5
 		if (minute < 0) return
 
 		if (minute < 10 && minute >= 0) {
-			this.minute = `0${minute}`
+			this.minuteStr = `0${minute}`
 		} else {
-			this.minute = minute.toString()
+			this.minuteStr = minute.toString()
 		}
+
+		this.dispatchChangeEvent()
+	}
+
+	dispatchChangeEvent() {
+		this.dispatchEvent(
+			new CustomEvent("change", {
+				detail: {
+					hour: Number(this.hourStr),
+					minute: Number(this.minuteStr)
+				}
+			})
+		)
 	}
 
 	getHourUpButtonHtml() {
@@ -126,7 +173,7 @@ export class TimePicker extends LitElement {
 					${this.getHourUpButtonHtml()}
 
 					<dav-textfield
-						value=${this.hour}
+						value=${this.hourStr}
 						type="number"
 						min="0"
 						max="23"
@@ -141,7 +188,7 @@ export class TimePicker extends LitElement {
 					${this.getMinuteUpButtonHtml()}
 
 					<dav-textfield
-						value=${this.minute}
+						value=${this.minuteStr}
 						type="number"
 						min="0"
 						max="59"
