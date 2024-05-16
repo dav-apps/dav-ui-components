@@ -135,4 +135,10 @@ export const dropdownStyles = css`
 		border-bottom: none;
 		margin: 0;
 	}
+
+	.dropdown-color {
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+	}
 `

@@ -128,9 +128,30 @@ export class Dropdown extends LitElement {
 					<hr />
 				</div>
 			`
+		} else if (option.type == DropdownOptionType.color) {
+			let classes = {
+				...this.dropdownOptionClasses,
+				selected: selected
+			}
+
+			let styles = {
+				backgroundColor: option.value
+			}
+
+			return html`
+				<button
+					class=${classMap(classes)}
+					key=${option.key}
+					@click=${this.dropdownOptionClick}
+				>
+					<div class="dropdown-color" style=${styleMap(styles)}></div>
+				</button>
+			`
 		} else {
-			let classes = structuredClone(this.dropdownOptionClasses)
-			classes.selected = selected
+			let classes = {
+				...this.dropdownOptionClasses,
+				selected: selected
+			}
 
 			return html`
 				<button

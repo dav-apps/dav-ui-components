@@ -36,8 +36,9 @@ export enum ButtonSize {
 }
 
 export enum DropdownOptionType {
-	option,
-	divider
+	option = "option",
+	divider = "divider",
+	color = "color"
 }
 
 export enum SidenavMode {

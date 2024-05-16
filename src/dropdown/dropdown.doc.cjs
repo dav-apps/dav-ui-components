@@ -11,27 +11,25 @@ module.exports = {
 					{
 						key: "system",
 						value: "System default",
-						type: 0
+						type: "option"
 					},
 					{
-						type: 1
+						type: "divider"
 					},
 					{
 						key: "light",
 						value: "Light",
-						type: 0
+						type: "option"
 					},
 					{
 						key: "dark",
 						value: "Dark",
-						type: 0
+						type: "option"
 					}
 				]
 			},
 			template: `
-				<dav-dropdown
-					label="Theme">
-				</dav-dropdown>
+				<dav-dropdown label="Theme"></dav-dropdown>
 			`
 		},
 		{
@@ -39,8 +37,36 @@ module.exports = {
 			template: `
 				<dav-dropdown
 					label="Theme"
-					disabled>
-				</dav-dropdown>
+					disabled
+				></dav-dropdown>
+			`
+		},
+		{
+			title: "Color Dropdown",
+			controller: function (element) {
+				element.style.height = "200px"
+				let dropdown = element.getElementsByTagName("dav-dropdown")[0]
+
+				dropdown.options = [
+					{
+						key: "green",
+						value: "#008000",
+						type: "color"
+					},
+					{
+						key: "red",
+						value: "#ff0000",
+						type: "color"
+					},
+					{
+						key: "blue",
+						value: "#0000ff",
+						type: "color"
+					}
+				]
+			},
+			template: `
+				<dav-dropdown label="Color" selectedKey="red"></dav-dropdown>
 			`
 		}
 	]
