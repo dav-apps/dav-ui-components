@@ -98,14 +98,6 @@ export class Dropdown extends LitElement {
 		)
 
 		this.showItems = false
-		this.updateDropdownButtonText()
-	}
-
-	updateDropdownButtonText() {
-		// Get the selected item and set the button text
-		let i = this.options.findIndex(option => option.key == this.selectedKey)
-		if (i != -1) this.buttonText = this.options[i].value
-		else this.buttonText = this.locale.defaultDropdownButtonText
 	}
 
 	getLabel() {
@@ -165,6 +157,29 @@ export class Dropdown extends LitElement {
 		}
 	}
 
+	getButtonContent() {
+		// Get the selected item to set the button content
+		let i = this.options.findIndex(option => option.key == this.selectedKey)
+
+		if (i == -1) {
+			return html`
+				<span>${this.locale.defaultDropdownButtonText}</span>
+			`
+		} else if (this.options[i].type == "color") {
+			let styles = {
+				backgroundColor: this.options[i].value
+			}
+
+			return html`
+				<div class="dropdown-color" style=${styleMap(styles)}></div>
+			`
+		} else {
+			return html`
+				<span>${this.options[i].value}</span>
+			`
+		}
+	}
+
 	render() {
 		this.dropdownLabelClasses.disabled = this.disabled
 		this.dropdownButtonClasses.disabled = this.disabled
@@ -174,8 +189,6 @@ export class Dropdown extends LitElement {
 
 		this.dropdownButtonStyles.width = `${this.width}px`
 		this.dropdownContentStyles.width = `${this.width}px`
-
-		this.updateDropdownButtonText()
 
 		return html`
 			<div class="dropdown">
@@ -189,7 +202,7 @@ export class Dropdown extends LitElement {
 						?aria-disabled=${this.disabled}
 						@click=${this.dropdownButtonClick}
 					>
-						<span>${this.buttonText}</span>
+						${this.getButtonContent()}
 
 						<div class="chevron-svg-container">
 							${chevronDownLightSvg}
