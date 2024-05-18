@@ -45,6 +45,7 @@ export const textfieldStyles = css`
 	#textfield.disabled {
 		cursor: not-allowed;
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 		background-color: rgb(var(--dav-color-surface-rgb), 0.6);
 	}
 
