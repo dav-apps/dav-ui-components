@@ -1,5 +1,20 @@
 module.exports = {
 	name: "TimePicker",
+	properties: [
+		{
+			name: "hour",
+			type: "Number"
+		},
+		{
+			name: "minute",
+			type: "Number"
+		},
+		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
+		}
+	],
 	examples: [
 		{
 			title: "Default TimePicker",
