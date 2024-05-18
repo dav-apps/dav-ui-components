@@ -15,6 +15,7 @@ export class TimePicker extends LitElement {
 
 	@property({ type: Number }) hour: number = 14
 	@property({ type: Number }) minute: number = 0
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -129,7 +130,11 @@ export class TimePicker extends LitElement {
 	getHourUpButtonHtml() {
 		return html`
 			<div class="up-button-container">
-				<dav-icon-button size="xs" @click=${this.increaseHour}>
+				<dav-icon-button
+					size="xs"
+					?disabled=${this.disabled}
+					@click=${this.increaseHour}
+				>
 					${chevronDownLightSvg}
 				</dav-icon-button>
 			</div>
@@ -139,7 +144,7 @@ export class TimePicker extends LitElement {
 	getMinuteUpButtonHtml() {
 		return html`
 			<div class="up-button-container" @click=${this.increaseMinute}>
-				<dav-icon-button size="xs">
+				<dav-icon-button size="xs" ?disabled=${this.disabled}>
 					${chevronDownLightSvg}
 				</dav-icon-button>
 			</div>
@@ -149,7 +154,11 @@ export class TimePicker extends LitElement {
 	getHourDownButtonHtml() {
 		return html`
 			<div class="down-button-container">
-				<dav-icon-button size="xs" @click=${this.decreaseHour}>
+				<dav-icon-button
+					size="xs"
+					?disabled=${this.disabled}
+					@click=${this.decreaseHour}
+				>
 					${chevronDownLightSvg}
 				</dav-icon-button>
 			</div>
@@ -159,7 +168,11 @@ export class TimePicker extends LitElement {
 	getMinuteDownButtonHtml() {
 		return html`
 			<div class="down-button-container">
-				<dav-icon-button size="xs" @click=${this.decreaseMinute}>
+				<dav-icon-button
+					size="xs"
+					?disabled=${this.disabled}
+					@click=${this.decreaseMinute}
+				>
 					${chevronDownLightSvg}
 				</dav-icon-button>
 			</div>
@@ -178,6 +191,7 @@ export class TimePicker extends LitElement {
 						min="0"
 						max="23"
 						noArrows
+						?disabled=${this.disabled}
 						@change=${this.hourInputChange}
 					></dav-textfield>
 
@@ -193,6 +207,7 @@ export class TimePicker extends LitElement {
 						min="0"
 						max="59"
 						noArrows
+						?disabled=${this.disabled}
 						@change=${this.minuteInputChange}
 					></dav-textfield>
 

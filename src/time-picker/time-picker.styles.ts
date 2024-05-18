@@ -19,10 +19,6 @@ export const timePickerStyles = css`
 		height: 24px;
 	}
 
-	svg {
-		fill: var(--dav-color-on-surface);
-	}
-
 	.up-button-container,
 	.down-button-container {
 		display: flex;
