@@ -53,6 +53,14 @@ module.exports = {
 					<i class="fa-solid fa-globe"></i>
 				</dav-icon-button>
 			`
+		},
+		{
+			title: "Disabled IconButton",
+			template: `
+				<dav-icon-button disabled>
+					<i class="fa-solid fa-globe"></i>
+				</dav-icon-button>
+			`
 		}
 	]
 }

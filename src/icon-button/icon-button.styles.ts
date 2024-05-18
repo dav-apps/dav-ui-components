@@ -53,12 +53,12 @@ export const iconButtonStyles = css`
 		height: 14px;
 	}
 
-	.icon-button:hover {
+	.icon-button:not(.disabled):hover {
 		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
 	}
 
-	.icon-button:focus,
-	.icon-button:active {
+	.icon-button:not(.disabled):focus,
+	.icon-button:not(.disabled):active {
 		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
 	}
 
@@ -66,12 +66,17 @@ export const iconButtonStyles = css`
 		color: var(--dav-color-primary);
 	}
 
-	.icon-button.selected:hover {
+	.icon-button.selected:not(.disabled):hover {
 		background-color: rgb(var(--dav-color-primary-rgb), 0.08);
 	}
 
-	.icon-button.selected:focus,
-	.icon-button.selected:active {
+	.icon-button.selected:not(.disabled):focus,
+	.icon-button.selected:not(.disabled):active {
 		background-color: rgb(var(--dav-color-primary-rgb), 0.12);
+	}
+
+	.icon-button.disabled {
+		cursor: not-allowed;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 `

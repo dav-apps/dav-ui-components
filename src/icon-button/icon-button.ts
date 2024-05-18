@@ -20,6 +20,7 @@ export class IconButton extends LitElement {
 	@state() private iconButtonClasses = {
 		"icon-button": true,
 		selected: false,
+		disabled: false,
 		sm: false,
 		xs: false
 	}
@@ -32,6 +33,7 @@ export class IconButton extends LitElement {
 	})
 	size: ButtonSize = ButtonSize.md
 	@property({ type: String }) target: string = ""
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -47,12 +49,19 @@ export class IconButton extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	buttonClick(event: PointerEvent) {
+		if (this.disabled) {
+			event.stopPropagation()
+		}
+	}
+
 	render() {
 		this.iconButtonClasses.selected = this.selected
+		this.iconButtonClasses.disabled = this.disabled
 		this.iconButtonClasses.sm = this.size == ButtonSize.sm
 		this.iconButtonClasses.xs = this.size == ButtonSize.xs
 
-		if (this.href.length > 0) {
+		if (this.href.length > 0 && !this.disabled) {
 			return html`
 				<a
 					class=${classMap(this.iconButtonClasses)}
@@ -65,7 +74,11 @@ export class IconButton extends LitElement {
 		}
 
 		return html`
-			<button class=${classMap(this.iconButtonClasses)}>
+			<button
+				class=${classMap(this.iconButtonClasses)}
+				?aria-disabled=${this.disabled}
+				@click="${this.buttonClick}"
+			>
 				<slot></slot>
 			</button>
 		`
