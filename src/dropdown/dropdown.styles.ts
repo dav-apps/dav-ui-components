@@ -1,6 +1,10 @@
 import { css } from "@lit/reactive-element"
 
 export const dropdownStyles = css`
+	:host {
+		display: inline-flex;
+	}
+
 	.dropdown {
 		position: relative;
 		display: inline-flex;
@@ -11,6 +15,7 @@ export const dropdownStyles = css`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		height: 30px;
 		background-color: var(--dav-color-surface);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
 		border-radius: 6px;
