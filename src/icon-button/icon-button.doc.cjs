@@ -5,61 +5,100 @@ module.exports = {
 			name: "selected",
 			type: "Boolean",
 			values: "true / false"
+		},
+		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "size",
+			type: "String",
+			values: `"xs", "sm", "md"`
+		},
+		{
+			name: "href",
+			type: "String"
+		},
+		{
+			name: "target",
+			type: "String"
 		}
 	],
 	examples: [
 		{
 			title: "Default IconButton",
-			controller: function(element) {
-				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
+			controller: function (element) {
+				let xsIconButton = element.getElementsByTagName("dav-icon-button")[0]
+				let smIconButton = element.getElementsByTagName("dav-icon-button")[1]
+				let mdIconButton = element.getElementsByTagName("dav-icon-button")[2]
 
-				iconButton.onclick = () => {
-					iconButton.selected = !iconButton.selected
-				}
+				xsIconButton.onclick = () => xsIconButton.selected = !xsIconButton.selected
+				smIconButton.onclick = () => smIconButton.selected = !smIconButton.selected
+				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
 			},
 			template: `
-				<dav-icon-button>
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</dav-icon-button>
-			`
-		},
-		{
-			title: "Small IconButton",
-			controller: function(element) {
-				let iconButton = element.getElementsByTagName("dav-icon-button")[0]
+				<div style="display: flex; gap: 16px; align-items: center">
+					<dav-icon-button size="xs">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
 
-				iconButton.onclick = () => {
-					iconButton.selected = !iconButton.selected
-				}
-			},
-			template: `
-				<dav-icon-button size="sm">
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</dav-icon-button>
+					<dav-icon-button size="sm">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="md">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+				</div>
 			`
 		},
 		{
 			title: "IconButton with link",
 			template: `
-				<dav-icon-button href="https://dav-apps.tech" target="blank">
-					<i class="fa-solid fa-globe"></i>
-				</dav-icon-button>
-			`
-		},
-		{
-			title: "Small IconButton with link",
-			template: `
-				<dav-icon-button size="sm" href="https://dav-apps.tech" target="blank">
-					<i class="fa-solid fa-globe"></i>
-				</dav-icon-button>
+				<div style="display: flex; gap: 16px; align-items: center">
+					<dav-icon-button
+						size="xs"
+						href="https://dav-apps.tech"
+						target="blank"
+					>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+
+					<dav-icon-button
+						size="sm"
+						href="https://dav-apps.tech"
+						target="blank"
+					>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+
+					<dav-icon-button
+						size="md"
+						href="https://dav-apps.tech"
+						target="blank"
+					>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+				</div>
 			`
 		},
 		{
 			title: "Disabled IconButton",
 			template: `
-				<dav-icon-button disabled>
-					<i class="fa-solid fa-globe"></i>
-				</dav-icon-button>
+				<div style="display: flex; gap: 16px; align-items: center">
+					<dav-icon-button size="xs" disabled>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="sm" disabled>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="md" disabled>
+						<i class="fa-solid fa-globe"></i>
+					</dav-icon-button>
+				</div>
 			`
 		}
 	]

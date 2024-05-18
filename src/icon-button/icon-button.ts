@@ -25,15 +25,15 @@ export class IconButton extends LitElement {
 		xs: false
 	}
 
-	@property({ type: String }) href: string = ""
 	@property({ type: Boolean }) selected: boolean = false
+	@property({ type: Boolean }) disabled: boolean = false
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonSize(value)
 	})
 	size: ButtonSize = ButtonSize.md
+	@property({ type: String }) href: string = ""
 	@property({ type: String }) target: string = ""
-	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
