@@ -29,6 +29,7 @@ export const iconButtonStyles = css`
 	.icon-button ::slotted(svg) {
 		width: 24px;
 		height: 24px;
+		fill: var(--dav-color-on-surface-variant);
 	}
 
 	.icon-button.sm {
@@ -66,6 +67,10 @@ export const iconButtonStyles = css`
 		color: var(--dav-color-primary);
 	}
 
+	.icon-button.selected ::slotted(svg) {
+		fill: var(--dav-color-primary);
+	}
+
 	.icon-button.selected:not(.disabled):hover {
 		background-color: rgb(var(--dav-color-primary-rgb), 0.08);
 	}
@@ -78,5 +83,9 @@ export const iconButtonStyles = css`
 	.icon-button.disabled {
 		cursor: not-allowed;
 		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
+	}
+
+	.icon-button.disabled ::slotted(svg) {
+		fill: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 `
