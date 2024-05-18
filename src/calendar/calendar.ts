@@ -24,14 +24,14 @@ export class Calendar extends LitElement {
 		type: String,
 		converter: value => DateTime.fromISO(value)
 	})
-	selectedDate: DateTime = DateTime.now()
+	date: DateTime = DateTime.now()
 
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
 
 		LuxonSettings.defaultLocale = navigator.language
-		this.visibleDate = this.selectedDate
+		this.visibleDate = this.date
 	}
 
 	disconnectedCallback() {
@@ -52,11 +52,11 @@ export class Calendar extends LitElement {
 	}
 
 	dayButtonClick(date: DateTime) {
-		this.selectedDate = date
+		this.date = date
 
 		this.dispatchEvent(
-			new CustomEvent("selectedDateChange", {
-				detail: { selectedDate: this.selectedDate }
+			new CustomEvent("change", {
+				detail: { date: this.date }
 			})
 		)
 	}
@@ -98,7 +98,7 @@ export class Calendar extends LitElement {
 					"day-button": true,
 					"current-month": isCurrentMonth,
 					"current-day": isCurrentDay,
-					selected: this.selectedDate.hasSame(date, "day")
+					selected: this.date.hasSame(date, "day")
 				}
 
 				weekHtml.push(html`
