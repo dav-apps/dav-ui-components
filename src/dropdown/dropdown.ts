@@ -21,7 +21,6 @@ export class Dropdown extends LitElement {
 
 	@state() private locale = getSettings().locale.dropdown
 	@state() private showItems: boolean = false
-	@state() private buttonText: string = this.locale.defaultDropdownButtonText
 
 	@state() private dropdownLabelClasses = {
 		"dropdown-label": true,
@@ -45,7 +44,11 @@ export class Dropdown extends LitElement {
 		visible: false
 	}
 	@state() private dropdownButtonStyles = {
-		width: "160px"
+		width: "160px",
+		"justify-content": null
+	}
+	@state() private chevronSvgContainerStyles = {
+		display: "block"
 	}
 	@state() private dropdownContentStyles = {
 		width: "160px"
@@ -56,6 +59,7 @@ export class Dropdown extends LitElement {
 	@property() selectedKey: string = ""
 	@property({ type: Number }) width: number = 160
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({ type: Boolean }) compact: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -100,6 +104,15 @@ export class Dropdown extends LitElement {
 		this.showItems = false
 	}
 
+	isCompact(): boolean {
+		return (
+			this.compact &&
+			this.options.every(
+				option => option.type == "divider" || option.type == "color"
+			)
+		)
+	}
+
 	getLabel() {
 		if (this.label.length > 0) {
 			return html`
@@ -136,7 +149,11 @@ export class Dropdown extends LitElement {
 					key=${option.key}
 					@click=${this.dropdownOptionClick}
 				>
-					<div class="dropdown-color" style=${styleMap(styles)}></div>
+					<div
+						class="dropdown-color"
+						style=${styleMap(styles)}
+						key=${option.key}
+					></div>
 				</button>
 			`
 		} else {
@@ -187,8 +204,17 @@ export class Dropdown extends LitElement {
 		this.dropdownContentClasses["slide-down-in"] = this.showItems
 		this.dropdownContentClasses.visible = this.showItems
 
-		this.dropdownButtonStyles.width = `${this.width}px`
-		this.dropdownContentStyles.width = `${this.width}px`
+		if (this.isCompact()) {
+			this.dropdownButtonStyles.width = "50px"
+			this.dropdownContentStyles.width = "50px"
+			this.dropdownButtonStyles["justify-content"] = "center"
+			this.chevronSvgContainerStyles.display = "none"
+		} else {
+			this.dropdownButtonStyles.width = `${this.width}px`
+			this.dropdownContentStyles.width = `${this.width}px`
+			this.dropdownButtonStyles["justify-content"] = null
+			this.chevronSvgContainerStyles.display = "block"
+		}
 
 		return html`
 			<div class="dropdown">
@@ -204,7 +230,10 @@ export class Dropdown extends LitElement {
 					>
 						${this.getButtonContent()}
 
-						<div class="chevron-svg-container">
+						<div
+							class="chevron-svg-container"
+							style=${styleMap(this.chevronSvgContainerStyles)}
+						>
 							${chevronDownLightSvg}
 						</div>
 					</button>
