@@ -19,6 +19,32 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "type",
+			type: "String"
+		},
+		{
+			name: "autocomplete",
+			type: "String"
+		},
+		{
+			name: "autofocus",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "noArrows",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "min",
+			type: "Number"
+		},
+		{
+			name: "max",
+			type: "Number"
+		},
+		{
 			name: "errorMessage",
 			type: "String"
 		}
