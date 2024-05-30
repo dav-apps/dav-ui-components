@@ -90,9 +90,7 @@ export class Calendar extends LitElement {
 			for (let i = 0; i < 7; i++) {
 				let date = currentDate
 				let isCurrentMonth = currentDate.month == currentMonth
-				let isCurrentDay =
-					DateTime.now().month == currentMonth &&
-					currentDate.day == DateTime.now().day
+				let isCurrentDay = currentDate.hasSame(DateTime.now(), "day")
 
 				let dayButtonClasses = {
 					"day-button": true,
