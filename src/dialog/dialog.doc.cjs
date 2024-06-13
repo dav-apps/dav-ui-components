@@ -10,6 +10,11 @@ module.exports = {
 			type: "String"
 		},
 		{
+			name: "primaryButtonColor",
+			type: "String",
+			values: `"primary", "secondary", "tertiary", "error"`
+		},
+		{
 			name: "defaultButtonText",
 			type: "String"
 		},

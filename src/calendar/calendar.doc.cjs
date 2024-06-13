@@ -1,5 +1,16 @@
 module.exports = {
 	name: "Calendar",
+	properties: [
+		{
+			name: "date",
+			type: "String"
+		},
+		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
+		}
+	],
 	examples: [
 		{
 			title: "Default Calendar",
@@ -7,7 +18,11 @@ module.exports = {
 		},
 		{
 			title: "Calendar with selected date",
-			template: `<dav-calendar selectedDate="2024-03-01T21:00:00Z"></dav-calendar>`
+			template: `<dav-calendar date="2020-01-01T21:00:00Z"></dav-calendar>`
+		},
+		{
+			title: "Disabled Calendar",
+			template: `<dav-calendar disabled></dav-calendar>`
 		}
 	]
 }
