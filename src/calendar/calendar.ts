@@ -19,12 +19,21 @@ export class Calendar extends LitElement {
 	static styles = [globalStyles, calendarStyles]
 
 	@state() private visibleDate: DateTime = DateTime.now()
+	@state() private dateContainerClasses = {
+		"date-container": true,
+		disabled: false
+	}
+	@state() private weekdaysContainerClasses = {
+		"weekdays-container": true,
+		disabled: false
+	}
 
 	@property({
 		type: String,
 		converter: value => DateTime.fromISO(value)
 	})
 	date: DateTime = DateTime.now()
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -52,6 +61,8 @@ export class Calendar extends LitElement {
 	}
 
 	dayButtonClick(date: DateTime) {
+		if (this.disabled) return
+
 		this.date = date
 
 		this.dispatchEvent(
@@ -96,7 +107,8 @@ export class Calendar extends LitElement {
 					"day-button": true,
 					"current-month": isCurrentMonth,
 					"current-day": isCurrentDay,
-					selected: this.date.hasSame(date, "day")
+					selected: this.date.hasSame(date, "day"),
+					disabled: this.disabled
 				}
 
 				weekHtml.push(html`
@@ -125,19 +137,23 @@ export class Calendar extends LitElement {
 	}
 
 	render() {
+		this.weekdaysContainerClasses.disabled = this.disabled
+		this.dateContainerClasses.disabled = this.disabled
+
 		return html`
 			<div class="container">
 				<div class="top-container">
 					<div class="arrow-left">
 						<dav-icon-button
 							size="sm"
+							?disabled=${this.disabled}
 							@click=${this.previousMonthButtonClick}
 						>
 							${arrowLeftLightSvg}
 						</dav-icon-button>
 					</div>
 
-					<div class="date-container">
+					<div class=${classMap(this.dateContainerClasses)}>
 						${this.visibleDate.toFormat("MMMM")}
 						${this.visibleDate.toFormat("y")}
 					</div>
@@ -145,6 +161,7 @@ export class Calendar extends LitElement {
 					<div class="arrow-right">
 						<dav-icon-button
 							size="sm"
+							?disabled=${this.disabled}
 							@click=${this.nextMonthButtonClick}
 						>
 							${arrowLeftLightSvg}
@@ -152,7 +169,7 @@ export class Calendar extends LitElement {
 					</div>
 				</div>
 				<div class="bottom-container">
-					<div class="weekdays-container">
+					<div class=${classMap(this.weekdaysContainerClasses)}>
 						${this.getWeekdaysHtml()}
 					</div>
 					<div class="month-container">

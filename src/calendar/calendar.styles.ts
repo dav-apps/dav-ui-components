@@ -17,15 +17,14 @@ export const calendarStyles = css`
 		margin-bottom: 6px;
 	}
 
+	.date-container.disabled {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
+	}
+
 	.bottom-container {
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
-	}
-
-	.arrow-left svg,
-	.arrow-right svg {
-		fill: var(--dav-color-on-surface);
 	}
 
 	.arrow-right svg {
@@ -36,6 +35,10 @@ export const calendarStyles = css`
 		display: flex;
 		gap: 18px;
 		font-weight: 500;
+	}
+
+	.weekdays-container.disabled {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 
 	.month-container {
@@ -61,7 +64,7 @@ export const calendarStyles = css`
 		transition: 200ms;
 	}
 
-	.day-button.current-month:hover {
+	.day-button.current-month:not(.disabled):hover {
 		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
 	}
 
@@ -76,5 +79,10 @@ export const calendarStyles = css`
 
 	.day-button.selected {
 		background-color: rgb(var(--dav-color-surface-variant-focus-rgb), 0.4);
+	}
+
+	.day-button.disabled {
+		cursor: not-allowed;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 `
