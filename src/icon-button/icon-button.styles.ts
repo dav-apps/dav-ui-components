@@ -3,6 +3,8 @@ import { css } from "@lit/reactive-element"
 export const iconButtonStyles = css`
 	:host {
 		display: inline-block;
+		width: 48px;
+		height: 48px;
 	}
 
 	::slotted(*) {
@@ -14,8 +16,8 @@ export const iconButtonStyles = css`
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		width: 48px;
-		height: 48px;
+		width: inherit;
+		height: inherit;
 		font-size: 24px;
 		color: var(--dav-color-on-surface-variant);
 		background-color: transparent;
