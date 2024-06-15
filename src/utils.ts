@@ -3,6 +3,7 @@ import {
 	Theme,
 	ThemeColor,
 	ButtonSize,
+	IconButtonShape,
 	SidenavMode,
 	Settings,
 	Alignment,
@@ -331,6 +332,15 @@ export function convertStringToButtonSize(value: string): ButtonSize {
 			return ButtonSize.xs
 		default:
 			return ButtonSize.md
+	}
+}
+
+export function convertStringToIconButtonShape(value: string): IconButtonShape {
+	switch (value) {
+		case "square":
+			return IconButtonShape.square
+		default:
+			return IconButtonShape.round
 	}
 }
 

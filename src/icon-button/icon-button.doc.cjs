@@ -17,6 +17,11 @@ module.exports = {
 			values: `"xs", "sm", "md"`
 		},
 		{
+			name: "shape",
+			type: "String",
+			value: `"round", "square"`
+		},
+		{
 			name: "href",
 			type: "String"
 		},
@@ -48,6 +53,33 @@ module.exports = {
 					</dav-icon-button>
 
 					<dav-icon-button size="md">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+				</div>
+			`
+		},
+		{
+			title: "Square IconButton",
+			controller: function (element) {
+				let xsIconButton = element.getElementsByTagName("dav-icon-button")[0]
+				let smIconButton = element.getElementsByTagName("dav-icon-button")[1]
+				let mdIconButton = element.getElementsByTagName("dav-icon-button")[2]
+
+				xsIconButton.onclick = () => xsIconButton.selected = !xsIconButton.selected
+				smIconButton.onclick = () => smIconButton.selected = !smIconButton.selected
+				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
+			},
+			template: `
+				<div style="display: flex; gap: 16px; align-items: center">
+					<dav-icon-button size="xs" shape="square">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="sm" shape="square">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="md" shape="square">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</dav-icon-button>
 				</div>

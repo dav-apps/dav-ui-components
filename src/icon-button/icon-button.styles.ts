@@ -51,6 +51,10 @@ export const iconButtonStyles = css`
 		font-size: 14px;
 	}
 
+	.icon-button.square {
+		border-radius: 8px;
+	}
+
 	.icon-button.xs ::slotted(svg) {
 		width: 14px;
 		height: 14px;

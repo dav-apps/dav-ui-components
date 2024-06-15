@@ -35,6 +35,11 @@ export enum ButtonSize {
 	md = "md"
 }
 
+export enum IconButtonShape {
+	round = "round",
+	square = "square"
+}
+
 export enum DropdownOptionType {
 	option = "option",
 	divider = "divider",

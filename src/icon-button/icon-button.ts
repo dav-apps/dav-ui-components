@@ -1,12 +1,13 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, ButtonSize } from "../types.js"
+import { Settings, ButtonSize, IconButtonShape } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	convertStringToButtonSize
+	convertStringToButtonSize,
+	convertStringToIconButtonShape
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { iconButtonStyles } from "./icon-button.styles.js"
@@ -22,7 +23,8 @@ export class IconButton extends LitElement {
 		selected: false,
 		disabled: false,
 		sm: false,
-		xs: false
+		xs: false,
+		square: false
 	}
 
 	@property({ type: Boolean }) selected: boolean = false
@@ -32,6 +34,11 @@ export class IconButton extends LitElement {
 		converter: (value: string) => convertStringToButtonSize(value)
 	})
 	size: ButtonSize = ButtonSize.md
+	@property({
+		type: String,
+		converter: value => convertStringToIconButtonShape(value)
+	})
+	shape: IconButtonShape = IconButtonShape.round
 	@property({ type: String }) href: string = ""
 	@property({ type: String }) target: string = ""
 
@@ -60,6 +67,7 @@ export class IconButton extends LitElement {
 		this.iconButtonClasses.disabled = this.disabled
 		this.iconButtonClasses.sm = this.size == ButtonSize.sm
 		this.iconButtonClasses.xs = this.size == ButtonSize.xs
+		this.iconButtonClasses.square = this.shape == IconButtonShape.square
 
 		if (this.href.length > 0 && !this.disabled) {
 			return html`
