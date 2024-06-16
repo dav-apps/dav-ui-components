@@ -11,6 +11,16 @@ export const iconButtonStyles = css`
 		position: relative;
 	}
 
+	:host([size="sm"]) {
+		height: 32px;
+		width: 32px;
+	}
+
+	:host([size="xs"]) {
+		height: 26px;
+		width: 26px;
+	}
+
 	.icon-button {
 		position: relative;
 		display: inline-flex;
