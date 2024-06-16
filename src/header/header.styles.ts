@@ -26,27 +26,13 @@ export const headerStyles = css`
 	}
 
 	.right-button-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
 		margin-left: 10px;
-	}
-
-	dav-icon-button {
-		width: 36px;
-		height: 36px;
-	}
-
-	dav-icon-button svg {
-		fill: var(--dav-color-on-surface);
 	}
 
 	.back-button {
 		margin-right: 12px;
-	}
-
-	.add-button {
-		margin: 0 2px;
-	}
-
-	.edit-button {
-		margin: 0 2px;
 	}
 `
