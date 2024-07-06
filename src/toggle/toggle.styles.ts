@@ -1,6 +1,12 @@
 import { css } from "@lit/reactive-element"
 
 export const toggleStyles = css`
+	.container {
+		display: inline-flex;
+		align-items: center;
+		cursor: pointer;
+	}
+
 	.switch {
 		position: relative;
 		display: inline-block;
@@ -17,7 +23,6 @@ export const toggleStyles = css`
 	.slider {
 		position: absolute;
 		display: flex;
-		cursor: pointer;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -26,6 +31,7 @@ export const toggleStyles = css`
 		border: 1px solid var(--dav-color-outline);
 		border-radius: 34px;
 		transition: 200ms;
+		cursor: pointer;
 	}
 
 	.slider:hover {
@@ -91,5 +97,11 @@ export const toggleStyles = css`
 	.switch.checked .slider:before {
 		background-color: var(--dav-color-on-primary);
 		transform: translateX(18px);
+	}
+
+	.label {
+		color: var(--dav-color-on-surface);
+		margin-left: 12px;
+		font-family: var(--dav-font);
 	}
 `

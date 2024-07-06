@@ -21,6 +21,7 @@ export class Toggle extends LitElement {
 		checked: false
 	}
 
+	@property({ type: String }) label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
 
 	connectedCallback() {
@@ -53,14 +54,14 @@ export class Toggle extends LitElement {
 		this.inputClasses.checked = this.checked
 
 		return html`
-			<label class=${classMap(this.inputClasses)}>
-				<input
-					type="checkbox"
-					?checked=${this.checked}
-					@click=${this.checkboxClicked}
-				/>
-				<span class="slider"></span>
-			</label>
+			<div class="container" @click=${this.checkboxClicked}>
+				<label class=${classMap(this.inputClasses)}>
+					<input type="checkbox" ?checked=${this.checked} />
+					<span class="slider"></span>
+				</label>
+
+				<span class="label">${this.label}</span>
+			</div>
 		`
 	}
 }
