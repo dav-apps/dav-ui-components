@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Alignment, HeaderSize, Settings } from "../types.js"
@@ -22,7 +23,10 @@ export const headerTagName = "dav-header"
 export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
-	@state() private containerClasses = {
+	@query(".add-button") addButton: HTMLButtonElement
+
+	@state()
+	private containerClasses = {
 		container: true,
 		start: false,
 		end: false
@@ -64,7 +68,18 @@ export class Header extends LitElement {
 	}
 
 	addButtonClick() {
-		this.dispatchEvent(new CustomEvent("addButtonClick"))
+		let rect = this.addButton.getBoundingClientRect()
+
+		this.dispatchEvent(
+			new CustomEvent("addButtonClick", {
+				detail: {
+					contextMenuPosition: {
+						x: rect.x,
+						y: rect.y + this.addButton.clientHeight + 4
+					}
+				}
+			})
+		)
 	}
 
 	editButtonClick() {
