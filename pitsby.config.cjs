@@ -43,6 +43,7 @@ module.exports = {
 		"./dist/assets/svg/magnifying-glass-light.js",
 		"./dist/assets/svg/pen-light.js",
 		"./dist/assets/svg/plus-light.js",
+		"./dist/assets/svg/trash-light.js",
 		"./dist/assets/svg/xmark-light.js",
 		"./dist/src/locale.js",
 		"./dist/src/styles.js",
