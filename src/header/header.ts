@@ -14,6 +14,7 @@ import {
 import { arrowLeftLightSvg } from "../../assets/svg/arrow-left-light.js"
 import { penLightSvg } from "../../assets/svg/pen-light.js"
 import { plusLightSvg } from "../../assets/svg/plus-light.js"
+import { trashLightSvg } from "../../assets/svg/trash-light.js"
 import { globalStyles } from "../styles.js"
 import { headerStyles } from "./header.styles.js"
 
@@ -43,6 +44,7 @@ export class Header extends LitElement {
 	@property({ type: Boolean }) backButtonVisible: boolean = false
 	@property({ type: Boolean }) addButtonVisible: boolean = false
 	@property({ type: Boolean }) editButtonVisible: boolean = false
+	@property({ type: Boolean }) deleteButtonVisible: boolean = false
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToHeaderSize(value)
@@ -84,6 +86,10 @@ export class Header extends LitElement {
 
 	editButtonClick() {
 		this.dispatchEvent(new CustomEvent("editButtonClick"))
+	}
+
+	deleteButtonClick() {
+		this.dispatchEvent(new CustomEvent("deleteButtonClick"))
 	}
 
 	getBackButton() {
@@ -128,6 +134,20 @@ export class Header extends LitElement {
 		}
 	}
 
+	getDeleteButton() {
+		if (this.deleteButtonVisible) {
+			return html`
+				<dav-icon-button
+					class="delete-button"
+					size="sm"
+					@click=${this.editButtonClick}
+				>
+					${trashLightSvg}
+				</dav-icon-button>
+			`
+		}
+	}
+
 	render() {
 		switch (this.alignment) {
 			case Alignment.start:
@@ -166,6 +186,7 @@ export class Header extends LitElement {
 
 				<div class="right-button-container">
 					${this.getAddButton()} ${this.getEditButton()}
+					${this.getDeleteButton()}
 				</div>
 			</div>
 		`

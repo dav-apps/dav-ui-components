@@ -22,6 +22,11 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "deleteButtonVisible",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "size",
 			type: "String",
 			values: `"sm", "md", "lg"`
@@ -36,6 +41,7 @@ module.exports = {
 					backButtonVisible
 					addButtonVisible
 					editButtonVisible
+					deleteButtonVisible
 				>
 					Hello World
 				</dav-header>
@@ -48,6 +54,7 @@ module.exports = {
 					backButtonVisible
 					addButtonVisible
 					editButtonVisible
+					deleteButtonVisible
 				>
 					Hello World
 				</dav-header>
@@ -61,6 +68,7 @@ module.exports = {
 					backButtonVisible
 					addButtonVisible
 					editButtonVisible
+					deleteButtonVisible
 				>
 					Hello World
 				</dav-header>
