@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings, ButtonSize, IconButtonShape } from "../types.js"
 import {
@@ -17,6 +18,8 @@ export const iconButtonTagName = "dav-icon-button"
 @customElement(iconButtonTagName)
 export class IconButton extends LitElement {
 	static styles = [globalStyles, iconButtonStyles]
+
+	@query("button.icon-button") button: HTMLButtonElement
 
 	@state() private iconButtonClasses = {
 		"icon-button": true,
@@ -57,9 +60,22 @@ export class IconButton extends LitElement {
 	}
 
 	buttonClick(event: PointerEvent) {
-		if (this.disabled) {
-			event.stopPropagation()
-		}
+		event.stopPropagation()
+		if (this.disabled) return
+
+		let rect = this.button.getBoundingClientRect()
+
+		this.dispatchEvent(
+			new CustomEvent("click", {
+				detail: {
+					originalEvent: event,
+					contextMenuPosition: {
+						x: rect.x,
+						y: rect.y + this.button.clientHeight + 4
+					}
+				}
+			})
+		)
 	}
 
 	render() {

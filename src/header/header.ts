@@ -65,31 +65,36 @@ export class Header extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	backButtonClick() {
-		this.dispatchEvent(new CustomEvent("backButtonClick"))
-	}
-
-	addButtonClick() {
-		let rect = this.addButton.getBoundingClientRect()
-
+	backButtonClick(event: CustomEvent) {
 		this.dispatchEvent(
-			new CustomEvent("addButtonClick", {
-				detail: {
-					contextMenuPosition: {
-						x: rect.x,
-						y: rect.y + this.addButton.clientHeight + 4
-					}
-				}
+			new CustomEvent("backButtonClick", {
+				detail: event.detail
 			})
 		)
 	}
 
-	editButtonClick() {
-		this.dispatchEvent(new CustomEvent("editButtonClick"))
+	addButtonClick(event: CustomEvent) {
+		this.dispatchEvent(
+			new CustomEvent("addButtonClick", {
+				detail: event.detail
+			})
+		)
 	}
 
-	deleteButtonClick() {
-		this.dispatchEvent(new CustomEvent("deleteButtonClick"))
+	editButtonClick(event: CustomEvent) {
+		this.dispatchEvent(
+			new CustomEvent("editButtonClick", {
+				detail: event.detail
+			})
+		)
+	}
+
+	deleteButtonClick(event: CustomEvent) {
+		this.dispatchEvent(
+			new CustomEvent("deleteButtonClick", {
+				detail: event.detail
+			})
+		)
 	}
 
 	getBackButton() {
@@ -140,7 +145,7 @@ export class Header extends LitElement {
 				<dav-icon-button
 					class="delete-button"
 					size="sm"
-					@click=${this.editButtonClick}
+					@click=${this.deleteButtonClick}
 				>
 					${trashLightSvg}
 				</dav-icon-button>

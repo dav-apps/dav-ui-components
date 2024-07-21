@@ -19,7 +19,7 @@ module.exports = {
 		{
 			name: "shape",
 			type: "String",
-			value: `"round", "square"`
+			values: `"round", "square"`
 		},
 		{
 			name: "href",
