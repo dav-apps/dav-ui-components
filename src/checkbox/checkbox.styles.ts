@@ -2,6 +2,7 @@ import { css } from "@lit/reactive-element"
 
 export const checkboxStyles = css`
 	:host {
+		--strike: 0;
 		display: flex;
 		align-items: center;
 		margin: 4px 0px;
@@ -29,8 +30,14 @@ export const checkboxStyles = css`
 		color: var(--dav-color-on-surface);
 		font-family: var(--dav-font);
 		font-size: 14px;
-		padding-left: 10px;
+		margin-left: 8px;
+		padding: 0 2px;
 		cursor: pointer;
+
+		/* Strike through styles */
+		background: linear-gradient(90deg, transparent, currentColor 0) no-repeat
+			right center / calc(var(--strike) * 100%) 1px;
+		transition: background-size 0.4s ease;
 	}
 
 	.checkbox-label.empty {
@@ -40,6 +47,11 @@ export const checkboxStyles = css`
 	.checkbox-label.disabled {
 		color: rgb(var(--dav-color-on-surface-rgb), 0.5);
 		cursor: not-allowed;
+	}
+
+	.checkbox-label.strike-through {
+		--strike: 1; /* "1" means "true" (show the strike line) */
+		background-position-x: left;
 	}
 
 	svg {

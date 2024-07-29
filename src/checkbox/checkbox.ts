@@ -25,6 +25,7 @@ export class Checkbox extends LitElement {
 		"checkbox-label": true,
 		disabled: false,
 		empty: false,
+		"strike-through": false,
 		"visually-hidden": false
 	}
 
@@ -32,6 +33,7 @@ export class Checkbox extends LitElement {
 	@property({ type: Boolean }) checked: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Boolean }) labelHidden: boolean = false
+	@property({ type: Boolean }) strikeThrough: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -76,6 +78,8 @@ export class Checkbox extends LitElement {
 		this.checkboxClasses.disabled = this.disabled
 		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkboxLabelClasses.empty = this.label.length == 0
+		this.checkboxLabelClasses["strike-through"] =
+			this.strikeThrough && this.checked
 		this.checkboxLabelClasses["visually-hidden"] = this.labelHidden
 
 		return html`
