@@ -5,6 +5,7 @@ export const iconButtonStyles = css`
 		display: inline-block;
 		width: 48px;
 		height: 48px;
+		border-radius: 50%;
 	}
 
 	::slotted(*) {
@@ -21,6 +22,10 @@ export const iconButtonStyles = css`
 		width: 26px;
 	}
 
+	:host([shape="square"]) {
+		border-radius: 8px;
+	}
+
 	.icon-button {
 		position: relative;
 		display: inline-flex;
@@ -32,7 +37,7 @@ export const iconButtonStyles = css`
 		color: var(--dav-color-on-surface-variant);
 		background-color: transparent;
 		border: none;
-		border-radius: 50%;
+		border-radius: inherit;
 		cursor: pointer;
 		transition: 200ms;
 		text-decoration: none;
@@ -59,10 +64,6 @@ export const iconButtonStyles = css`
 		height: 26px;
 		width: 26px;
 		font-size: 14px;
-	}
-
-	.icon-button.square {
-		border-radius: 8px;
 	}
 
 	.icon-button.xs ::slotted(svg) {
