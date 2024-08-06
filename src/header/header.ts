@@ -65,9 +65,7 @@ export class Header extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	backButtonClick(event: CustomEvent | PointerEvent) {
-		if (event instanceof PointerEvent) return
-
+	backButtonClick(event: CustomEvent) {
 		this.dispatchEvent(
 			new CustomEvent("backButtonClick", {
 				detail: event.detail
@@ -75,9 +73,7 @@ export class Header extends LitElement {
 		)
 	}
 
-	addButtonClick(event: CustomEvent | PointerEvent) {
-		if (event instanceof PointerEvent) return
-
+	addButtonClick(event: CustomEvent) {
 		this.dispatchEvent(
 			new CustomEvent("addButtonClick", {
 				detail: event.detail
@@ -85,9 +81,7 @@ export class Header extends LitElement {
 		)
 	}
 
-	editButtonClick(event: CustomEvent | PointerEvent) {
-		if (event instanceof PointerEvent) return
-
+	editButtonClick(event: CustomEvent) {
 		this.dispatchEvent(
 			new CustomEvent("editButtonClick", {
 				detail: event.detail
@@ -95,9 +89,7 @@ export class Header extends LitElement {
 		)
 	}
 
-	deleteButtonClick(event: CustomEvent | PointerEvent) {
-		if (event instanceof PointerEvent) return
-
+	deleteButtonClick(event: CustomEvent) {
 		this.dispatchEvent(
 			new CustomEvent("deleteButtonClick", {
 				detail: event.detail
