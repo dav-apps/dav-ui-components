@@ -272,6 +272,37 @@ export function hasWindow() {
 	return typeof window != "undefined"
 }
 
+export function getPositionOfElement(element: Element) {
+	let rect = element.getBoundingClientRect()
+
+	// Get the total scroll top of all parents
+	let currentElement = element
+	let scrollTop = 0
+	let scrollLeft = 0
+
+	while (getParentElement(currentElement) != null) {
+		scrollTop += currentElement.scrollTop
+		scrollLeft += currentElement.scrollLeft
+
+		currentElement = getParentElement(currentElement) as Element
+	}
+
+	return {
+		x: rect.x + window.scrollX + scrollLeft,
+		y: rect.y + window.scrollY + scrollTop
+	}
+}
+
+function getParentElement(element: Element) {
+	let parent = element.getRootNode()
+
+	if (parent == document) {
+		return element.parentElement
+	}
+
+	return (parent as ShadowRoot).host
+}
+
 //#region Settings functions
 export function subscribeSettingsChange(callback: Function) {
 	settingsChangeCallbacks.push(callback)

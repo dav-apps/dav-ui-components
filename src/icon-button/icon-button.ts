@@ -4,6 +4,7 @@ import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings, ButtonSize, IconButtonShape } from "../types.js"
 import {
+	getPositionOfElement,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
@@ -63,15 +64,15 @@ export class IconButton extends LitElement {
 		event.stopPropagation()
 		if (this.disabled) return
 
-		let rect = this.button.getBoundingClientRect()
+		let pos = getPositionOfElement(this.shadowRoot.host)
 
 		this.dispatchEvent(
 			new CustomEvent("click", {
 				detail: {
 					originalEvent: event,
 					contextMenuPosition: {
-						x: rect.x,
-						y: rect.y + this.button.clientHeight + 4
+						x: pos.x,
+						y: pos.y + this.button.clientHeight + 4
 					}
 				}
 			})
