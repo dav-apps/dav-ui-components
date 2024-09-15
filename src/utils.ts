@@ -2,6 +2,7 @@ import { en, de } from "./locale.js"
 import {
 	Theme,
 	ThemeColor,
+	BadgeSize,
 	ButtonSize,
 	IconButtonShape,
 	SidenavMode,
@@ -352,6 +353,15 @@ export function convertStringToThemeColor(value: string): ThemeColor {
 			return ThemeColor.error
 		default:
 			return ThemeColor.primary
+	}
+}
+
+export function convertStringToBadgeSize(value: string): BadgeSize {
+	switch (value) {
+		case "sm":
+			return BadgeSize.sm
+		default:
+			return BadgeSize.md
 	}
 }
 

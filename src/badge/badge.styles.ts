@@ -27,6 +27,11 @@ export const badgeStyles = css`
 		box-shadow: 0px 4px 8px 0px rgb(var(--dav-color-shadow-rgb), 0.1);
 	}
 
+	.container.small {
+		padding: 2px 10px;
+		font-size: 12px;
+	}
+
 	.container.tonal {
 		background-color: var(--dav-color-primary-container);
 		color: var(--dav-color-on-primary-container);

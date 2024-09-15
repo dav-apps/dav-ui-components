@@ -1,12 +1,13 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { Settings, ThemeColor } from "../types.js"
+import { Settings, ThemeColor, BadgeSize } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	convertStringToThemeColor
+	convertStringToThemeColor,
+	convertStringToBadgeSize
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { badgeStyles } from "./badge.styles.js"
@@ -19,12 +20,18 @@ export class Badge extends LitElement {
 
 	@state() private containerClasses = {
 		container: true,
+		small: false,
 		secondary: false,
 		tertiary: false,
 		error: false,
 		tonal: false
 	}
 
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToBadgeSize(value)
+	})
+	size: string = ""
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToThemeColor(value)
@@ -49,6 +56,7 @@ export class Badge extends LitElement {
 	}
 
 	render() {
+		this.containerClasses.small = this.size == BadgeSize.sm
 		this.containerClasses.secondary = false
 		this.containerClasses.tertiary = false
 		this.containerClasses.error = false

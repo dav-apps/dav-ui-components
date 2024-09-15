@@ -29,6 +29,11 @@ export enum ThemeColor {
 	error = "error"
 }
 
+export enum BadgeSize {
+	sm = "sm",
+	md = "md"
+}
+
 export enum ButtonSize {
 	xs = "xs",
 	sm = "sm",
