@@ -14,17 +14,17 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^6.5.1",
+		"@fortawesome/fontawesome-free": "^6.6.0",
 		"autosize": "^6.0.1",
 		"blurhash": "^2.0.5",
-		"lit": "^3.1.2",
-		"luxon": "^3.4.4"
+		"lit": "^3.2.0",
+		"luxon": "^3.5.0"
 	},
 	"devDependencies": {
-		"@glorious/pitsby": "^1.37.0",
+		"@glorious/pitsby": "^1.37.2",
 		"@types/luxon": "^3.4.2",
-		"concurrently": "^8.2.2",
-		"tslib": "^2.6.2",
-		"typescript": "^5.3.3"
+		"concurrently": "^9.0.1",
+		"tslib": "^2.7.0",
+		"typescript": "^5.6.2"
 	}
 }
