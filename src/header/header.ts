@@ -192,6 +192,7 @@ export class Header extends LitElement {
 				<div class="right-button-container">
 					${this.getAddButton()} ${this.getEditButton()}
 					${this.getDeleteButton()}
+					<slot name="icons"></slot>
 				</div>
 			</div>
 		`
