@@ -52,6 +52,12 @@ export class Calendar extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	updated(changedProperties: Map<string, any>) {
+		if (changedProperties.has("date")) {
+			this.visibleDate = this.date
+		}
+	}
+
 	previousMonthButtonClick() {
 		this.visibleDate = this.visibleDate.minus({ months: 1 })
 	}
