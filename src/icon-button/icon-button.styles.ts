@@ -41,6 +41,7 @@ export const iconButtonStyles = css`
 		cursor: pointer;
 		transition: 200ms;
 		text-decoration: none;
+		padding-inline: 0;
 	}
 
 	.icon-button ::slotted(svg) {
