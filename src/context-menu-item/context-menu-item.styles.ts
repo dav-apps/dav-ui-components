@@ -34,5 +34,6 @@ export const contextMenuItemStyles = css`
 
 	.label {
 		margin-left: 12px;
+		text-align: start;
 	}
 `
