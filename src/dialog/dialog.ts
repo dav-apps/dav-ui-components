@@ -54,6 +54,7 @@ export class Dialog extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
+		document.addEventListener("keydown", this.onKeyDown)
 
 		if (hasWindow()) {
 			let screenSegments: any
@@ -75,6 +76,8 @@ export class Dialog extends LitElement {
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
+
+		document.removeEventListener("keydown", this.onKeyDown)
 	}
 
 	settingsChange = (settings: Settings) => {
@@ -102,6 +105,12 @@ export class Dialog extends LitElement {
 
 			this.containerStyles.display = newIsVisible ? "flex" : "none"
 			this.requestUpdate()
+		}
+	}
+
+	onKeyDown = (event: KeyboardEvent) => {
+		if (event.key == "Escape" && !this.loading) {
+			this.dispatchEvent(new CustomEvent("dismiss"))
 		}
 	}
 
