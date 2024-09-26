@@ -33,6 +33,41 @@ module.exports = {
 			`
 		},
 		{
+			title: "Dropdown with position top",
+			controller: function (element) {
+				let dropdown = element.getElementsByTagName("dav-dropdown")[0]
+
+				dropdown.options = [
+					{
+						key: "system",
+						value: "System default",
+						type: "option"
+					},
+					{
+						type: "divider"
+					},
+					{
+						key: "light",
+						value: "Light",
+						type: "option"
+					},
+					{
+						key: "dark",
+						value: "Dark",
+						type: "option"
+					}
+				]
+			},
+			template: `
+				<div style="margin-top: 100px;">
+					<dav-dropdown
+						label="Theme"
+						position="top"
+					></dav-dropdown>
+				</div>
+			`
+		},
+		{
 			title: "Disabled Dropdown",
 			template: `
 				<dav-dropdown

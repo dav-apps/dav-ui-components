@@ -5,6 +5,7 @@ import {
 	BadgeSize,
 	ButtonSize,
 	IconButtonShape,
+	DropdownPosition,
 	SidenavMode,
 	Settings,
 	Alignment,
@@ -382,6 +383,17 @@ export function convertStringToIconButtonShape(value: string): IconButtonShape {
 			return IconButtonShape.square
 		default:
 			return IconButtonShape.round
+	}
+}
+
+export function convertStringToDropdownPosition(
+	value: string
+): DropdownPosition {
+	switch (value) {
+		case "top":
+			return DropdownPosition.top
+		default:
+			return DropdownPosition.bottom
 	}
 }
 

@@ -74,9 +74,18 @@ export const dropdownStyles = css`
 		transition: 200ms;
 	}
 
+	.chevron-svg-container.top {
+		transform: rotate(180deg);
+	}
+
 	.dropdown-button:active .chevron-svg-container,
 	.dropdown-button.active .chevron-svg-container {
 		transform: translateY(2px);
+	}
+
+	.dropdown-button:active .chevron-svg-container.top,
+	.dropdown-button.active .chevron-svg-container.top {
+		transform: rotate(180deg) translateY(2px);
 	}
 
 	.dropdown-content {
@@ -91,6 +100,10 @@ export const dropdownStyles = css`
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.12);
 		border-radius: 6px;
 		backdrop-filter: blur(4px);
+	}
+
+	.dropdown-content.top {
+		bottom: 30px;
 	}
 
 	.dropdown-content.visible {

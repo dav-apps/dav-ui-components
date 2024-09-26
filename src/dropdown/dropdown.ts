@@ -2,12 +2,18 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { DropdownOption, DropdownOptionType, Settings } from "../types.js"
+import {
+	DropdownOption,
+	DropdownOptionType,
+	DropdownPosition,
+	Settings
+} from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	getSettings
+	getSettings,
+	convertStringToDropdownPosition
 } from "../utils.js"
 import { chevronDownLightSvg } from "../../assets/svg/chevron-down-light.js"
 import { globalStyles } from "../styles.js"
@@ -31,6 +37,10 @@ export class Dropdown extends LitElement {
 		disabled: false,
 		active: false
 	}
+	@state() private chevronSvgContainerClasses = {
+		"chevron-svg-container": true,
+		top: false
+	}
 	@state() private dropdownOptionClasses = {
 		"dropdown-option": true,
 		selected: false
@@ -41,6 +51,8 @@ export class Dropdown extends LitElement {
 	@state() private dropdownContentClasses = {
 		"dropdown-content": true,
 		"slide-down-in": false,
+		"slide-up-in": false,
+		top: false,
 		visible: false
 	}
 	@state() private dropdownButtonStyles = {
@@ -57,6 +69,11 @@ export class Dropdown extends LitElement {
 	@property() label: string = ""
 	@property({ type: Array }) options: DropdownOption[] = []
 	@property() selectedKey: string = ""
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToDropdownPosition(value)
+	})
+	position: DropdownPosition = DropdownPosition.bottom
 	@property({ type: Number }) width: number = 160
 	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Boolean }) compact: boolean = false
@@ -201,8 +218,14 @@ export class Dropdown extends LitElement {
 		this.dropdownLabelClasses.disabled = this.disabled
 		this.dropdownButtonClasses.disabled = this.disabled
 		this.dropdownButtonClasses.active = this.showItems
-		this.dropdownContentClasses["slide-down-in"] = this.showItems
+		this.dropdownContentClasses["slide-down-in"] =
+			this.position == DropdownPosition.bottom && this.showItems
+		this.dropdownContentClasses["slide-up-in"] =
+			this.position == DropdownPosition.top && this.showItems
 		this.dropdownContentClasses.visible = this.showItems
+		this.dropdownContentClasses.top = this.position == DropdownPosition.top
+		this.chevronSvgContainerClasses.top =
+			this.position == DropdownPosition.top
 
 		if (this.isCompact()) {
 			this.dropdownButtonStyles.width = "50px"
@@ -231,7 +254,7 @@ export class Dropdown extends LitElement {
 						${this.getButtonContent()}
 
 						<div
-							class="chevron-svg-container"
+							class=${classMap(this.chevronSvgContainerClasses)}
 							style=${styleMap(this.chevronSvgContainerStyles)}
 						>
 							${chevronDownLightSvg}

@@ -51,6 +51,11 @@ export enum DropdownOptionType {
 	color = "color"
 }
 
+export enum DropdownPosition {
+	top = "top",
+	bottom = "bottom"
+}
+
 export enum SidenavMode {
 	side = "side",
 	over = "over"
