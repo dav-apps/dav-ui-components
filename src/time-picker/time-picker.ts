@@ -83,8 +83,12 @@ export class TimePicker extends LitElement {
 
 	getMinuteUpButtonHtml() {
 		return html`
-			<div class="up-button-container" @click=${this.increaseMinute}>
-				<dav-icon-button size="xs" ?disabled=${this.disabled}>
+			<div class="up-button-container">
+				<dav-icon-button
+					size="xs"
+					?disabled=${this.disabled}
+					@click=${this.increaseMinute}
+				>
 					${chevronDownLightSvg}
 				</dav-icon-button>
 			</div>
