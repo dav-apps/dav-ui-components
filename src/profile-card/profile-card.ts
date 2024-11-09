@@ -36,17 +36,25 @@ export class ProfileCard extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	getImage() {
+		if (this.imageSrc) {
+			return html`
+				<dav-blurhash-image
+					src=${this.imageSrc}
+					fallbackSrc=${this.imageFallbackSrc}
+					imageBlurhash=${this.imageBlurhash}
+					title=${this.name}
+					alt=${this.name}
+					width="36"
+					height="36"
+				></dav-blurhash-image>
+			`
+		}
+	}
+
 	getContainerContent() {
 		return html`
-			<dav-blurhash-image
-				src=${this.imageSrc}
-				fallbackSrc=${this.imageFallbackSrc}
-				imageBlurhash=${this.imageBlurhash}
-				title=${this.name}
-				alt=${this.name}
-				width="36"
-				height="36"
-			></dav-blurhash-image>
+			${this.getImage()}
 
 			<p>${this.name}</p>
 		`
