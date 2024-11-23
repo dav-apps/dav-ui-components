@@ -3,10 +3,11 @@ import { css } from "@lit/reactive-element"
 export const listItemStyles = css`
 	.container {
 		display: flex;
+		flex-direction: row;
 		align-items: center;
-		gap: 16px;
+		justify-content: space-between;
 		width: 100%;
-		padding: 8px 16px;
+		padding: 10px;
 		background-color: var(--dav-color-surface);
 		transition: 200ms;
 		cursor: pointer;
@@ -45,6 +46,12 @@ export const listItemStyles = css`
 		height: 140px;
 		width: 140px;
 		min-width: 140px;
+	}
+
+	.container-content {
+		display: flex;
+		align-items: center;
+		gap: 16px;
 	}
 
 	.image {

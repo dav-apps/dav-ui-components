@@ -8,6 +8,7 @@ import {
 	unsubscribeSettingsChange,
 	convertStringToListItemSize
 } from "../utils.js"
+import { xmarkLightSvg } from "../../assets/svg/xmark-light.js"
 import { globalStyles } from "../styles.js"
 import { listItemStyles } from "./list-item.styles.js"
 
@@ -41,6 +42,7 @@ export class ListItem extends LitElement {
 		converter: (value: string) => convertStringToListItemSize(value)
 	})
 	size: ListItemSize = ListItemSize.md
+	@property({ type: Boolean }) closeButtonVisible: boolean = false
 	@property() href: string = ""
 	@property() target: string = ""
 
@@ -56,6 +58,10 @@ export class ListItem extends LitElement {
 
 	settingsChange = (settings: Settings) => {
 		setThemeColorVariables(this.style, settings.theme)
+	}
+
+	closeButtonClick() {
+		this.dispatchEvent(new CustomEvent("closeButtonClick"))
 	}
 
 	getImage() {
@@ -104,11 +110,25 @@ export class ListItem extends LitElement {
 		}
 	}
 
+	getCloseButton() {
+		if (this.closeButtonVisible) {
+			return html`
+				<dav-icon-button size=${this.size} @click=${this.closeButtonClick}>
+					${xmarkLightSvg}
+				</dav-icon-button>
+			`
+		}
+	}
+
 	getContainerContent() {
 		return html`
-			${this.getImage()}
+			<div class="container-content">
+				${this.getImage()}
 
-			<div class="body">${this.getHeadline()} ${this.getSubhead()}</div>
+				<div class="body">${this.getHeadline()} ${this.getSubhead()}</div>
+			</div>
+
+			${this.getCloseButton()}
 		`
 	}
 

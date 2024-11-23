@@ -44,6 +44,11 @@ module.exports = {
 			values: `"sm", "md"`
 		},
 		{
+			name: "closeButtonVisible",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "href",
 			type: "String"
 		},
@@ -96,6 +101,28 @@ module.exports = {
 					imageRounded
 				></dav-list-item>
 			`
-		}
+		},
+		{
+			title: "Small ListItem with close button",
+			controller: function (element) {
+				let listItem = element.getElementsByTagName("dav-list-item")[0]
+
+				listItem.addEventListener("click", () => {
+					console.log("ListItem click")
+				})
+
+				listItem.addEventListener("closeButtonClick", () => {
+					console.log("Close button click")
+				})
+			},
+			template: `
+				<dav-list-item
+					headline="Victor Hugo"
+					imageTitle="Victor Hugo"
+					size="sm"
+					closeButtonVisible
+				></dav-list-item>
+			`
+		},
 	]
 }
