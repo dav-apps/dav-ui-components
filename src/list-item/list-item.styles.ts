@@ -11,7 +11,7 @@ export const listItemStyles = css`
 		background-color: var(--dav-color-surface);
 		transition: 200ms;
 		cursor: pointer;
-		border: none;
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.15);
 		border-radius: 12px;
 		box-sizing: border-box;
 	}
