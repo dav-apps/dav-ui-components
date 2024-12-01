@@ -10,6 +10,8 @@ export const blurhashImageStyles = css`
 		position: relative;
 		border-radius: inherit;
 		box-shadow: inherit;
+		max-width: inherit;
+		max-height: inherit;
 	}
 
 	.progress-ring-container {
@@ -26,6 +28,8 @@ export const blurhashImageStyles = css`
 	img {
 		width: 100%;
 		height: 100%;
+		max-width: inherit;
+		max-height: inherit;
 		border-radius: inherit;
 		box-shadow: inherit;
 	}
