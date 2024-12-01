@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
+import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { decode } from "blurhash"
 import { globalStyles } from "../styles.js"
@@ -11,6 +12,8 @@ export const blurhashImageTagName = "dav-blurhash-image"
 @customElement(blurhashImageTagName)
 export class BlurhashImage extends LitElement {
 	static styles = [globalStyles, blurhashImageStyles]
+
+	@query(".image") image: HTMLImageElement
 
 	@state() private imageStyles = {
 		width: "100px",
@@ -143,6 +146,14 @@ export class BlurhashImage extends LitElement {
 		intersectionObserver.observe(this)
 	}
 
+	imageLoaded() {
+		this.dispatchEvent(
+			new CustomEvent("imageLoaded", {
+				detail: { image: this.image }
+			})
+		)
+	}
+
 	getProgressRing() {
 		if (this.loading) {
 			return html`
@@ -174,10 +185,12 @@ export class BlurhashImage extends LitElement {
 				${this.getProgressRing()}
 
 				<img
+					class="image"
 					style=${styleMap(this.imageStyles)}
 					src=${this.imageSrc}
 					title=${this.title}
 					alt=${this.alt}
+					@load=${this.imageLoaded}
 				/>
 			</div>
 		`
