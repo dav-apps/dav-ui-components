@@ -9,6 +9,11 @@ module.exports = {
 			name: "expandable",
 			type: "Boolean",
 			values: "true / false"
+		},
+		{
+			name: "open",
+			type: "Boolean",
+			value: "true / false"
 		}
 	],
 	examples: [
@@ -23,8 +28,8 @@ module.exports = {
 		{
 			title: "Expandable Setting",
 			template: `
-				<dav-setting header="Hello World" expandable="true">
-					<div><p>Hello World</p></div>
+				<dav-setting header="Hello World" expandable>
+					<div><p style="margin: 0">Hello World</p></div>
 				</dav-setting>
 			`
 		}

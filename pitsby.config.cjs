@@ -113,6 +113,7 @@ module.exports = {
 		"./dist/src/search/search.animations.js",
 		"./dist/src/setting/setting.js",
 		"./dist/src/setting/setting.styles.js",
+		"./dist/src/setting/setting.animations.js",
 		"./dist/src/sidenav/sidenav.js",
 		"./dist/src/sidenav/sidenav.animations.js",
 		"./dist/src/sidenav/sidenav.styles.js",

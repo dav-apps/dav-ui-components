@@ -20,32 +20,24 @@ export const settingStyles = css`
 		box-sizing: border-box;
 	}
 
-	.setting-container.expandable {
-		flex-direction: column;
-		padding: 0;
-	}
-
-	.setting-content-container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		border: none;
+	button.setting-container {
 		background-color: transparent;
-		gap: 16px;
-		width: 100%;
-		padding: 26px 36px;
-		border-radius: 12px;
 		transition: 200ms;
 		cursor: pointer;
 	}
 
-	.setting-content-container:hover {
+	button.setting-container:hover {
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	.setting-content-container:focus,
-	.setting-content-container:active {
+	button.setting-container:focus,
+	button.setting-container:active {
 		background-color: var(--dav-color-surface-focus);
+	}
+
+	.setting-container.expanded {
+		border-bottom: 1px solid rgb(var(--dav-color-outline-rgb), 0.3);
+		border-radius: 12px 12px 0 0;
 	}
 
 	.setting-header {
@@ -63,5 +55,9 @@ export const settingStyles = css`
 	}
 
 	.expanded-container {
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
+		border-top: none;
+		border-radius: 0 0 12px 12px;
+		padding: 26px 36px;
 	}
 `
