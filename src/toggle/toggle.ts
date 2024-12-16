@@ -50,6 +50,14 @@ export class Toggle extends LitElement {
 		)
 	}
 
+	getLabel() {
+		if (this.label.length > 0) {
+			return html`
+				<span class="label">${this.label}</span>
+			`
+		}
+	}
+
 	render() {
 		this.inputClasses.checked = this.checked
 
@@ -60,7 +68,7 @@ export class Toggle extends LitElement {
 					<span class="slider"></span>
 				</label>
 
-				<span class="label">${this.label}</span>
+				${this.getLabel()}
 			</div>
 		`
 	}
