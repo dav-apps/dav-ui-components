@@ -1,5 +1,19 @@
 module.exports = {
 	name: "IconCard",
+	properties: [
+		{
+			name: "text",
+			type: "String"
+		},
+		{
+			name: "href",
+			type: "String"
+		},
+		{
+			name: "target",
+			type: "String"
+		}
+	],
 	examples: [
 		{
 			title: "Default IconCard",
