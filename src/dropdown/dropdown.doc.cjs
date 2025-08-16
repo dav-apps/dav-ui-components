@@ -1,5 +1,38 @@
 module.exports = {
 	name: "Dropdown",
+	properties: [
+		{
+			name: "label",
+			type: "String"
+		},
+		{
+			name: "options",
+			type: "Array<{ key: string, value: string, type: 'option' | 'divider' | 'color' }>"
+		},
+		{
+			name: "selectedKey",
+			type: "String"
+		},
+		{
+			name: "position",
+			type: "String",
+			values: `"top", "bottom"`
+		},
+		{
+			name: "width",
+			type: "Number"
+		},
+		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "compact",
+			type: "Boolean",
+			values: "true / false"
+		}
+	],
 	examples: [
 		{
 			title: "Default Dropdown",
