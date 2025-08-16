@@ -5,6 +5,7 @@ export const iconCardStyles = css`
 		display: inline-flex;
 		align-items: center;
 		min-width: 64px;
+		width: inherit;
 		padding: 26px 40px;
 		text-align: center;
 		background-color: var(--dav-color-surface);
@@ -16,6 +17,7 @@ export const iconCardStyles = css`
 		cursor: pointer;
 		transition: 200ms;
 		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+		box-sizing: border-box;
 	}
 
 	a.icon-card-container {
