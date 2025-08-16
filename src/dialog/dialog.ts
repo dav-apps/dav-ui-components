@@ -46,6 +46,7 @@ export class Dialog extends LitElement {
 		converter: (value: string) => convertStringToThemeColor(value)
 	})
 	primaryButtonColor: ThemeColor = ThemeColor.primary
+	@property({ type: Boolean }) primaryButtonDisabled: boolean = false
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
@@ -157,7 +158,7 @@ export class Dialog extends LitElement {
 				<dav-button
 					color=${this.primaryButtonColor}
 					size="sm"
-					?disabled=${this.loading}
+					?disabled=${this.loading || this.primaryButtonDisabled}
 					@click=${this.primaryButtonClick}
 				>
 					${this.primaryButtonText}

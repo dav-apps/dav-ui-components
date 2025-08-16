@@ -15,6 +15,11 @@ module.exports = {
 			values: `"primary", "secondary", "tertiary", "error"`
 		},
 		{
+			name: "primaryButtonDisabled",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "defaultButtonText",
 			type: "String"
 		},
