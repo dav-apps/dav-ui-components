@@ -24,7 +24,8 @@ export class TreeItem extends LitElement {
 
 	@state() private containerClasses = {
 		container: true,
-		node: false
+		node: false,
+		active: false
 	}
 	@state() private iconContainerStyles = {
 		transform: "rotate(-90deg)"
@@ -36,6 +37,7 @@ export class TreeItem extends LitElement {
 	@property() headline: string = ""
 	@property({ type: Boolean }) node: boolean = false
 	@property({ type: Boolean }) open: boolean = false
+	@property({ type: Boolean }) active: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -117,6 +119,14 @@ export class TreeItem extends LitElement {
 		event.stopPropagation()
 	}
 
+	containerDblclick(event: Event) {
+		event.stopPropagation()
+
+		if (this.node) {
+			this.open = !this.open
+		}
+	}
+
 	render() {
 		if (this.open) {
 			this.childrenContainerStyles.display = "block"
@@ -124,9 +134,13 @@ export class TreeItem extends LitElement {
 		}
 
 		this.containerClasses.node = this.node
+		this.containerClasses.active = this.active
 
 		return html`
-			<button class=${classMap(this.containerClasses)}>
+			<button
+				class=${classMap(this.containerClasses)}
+				@dblclick=${this.containerDblclick}
+			>
 				${this.getIconContainer()}
 				<span>${this.headline}</span>
 			</button>

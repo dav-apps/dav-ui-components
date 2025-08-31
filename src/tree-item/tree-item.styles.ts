@@ -17,6 +17,10 @@ export const treeItemStyles = css`
 		text-align: start;
 	}
 
+	.container.active {
+		background-color: var(--dav-color-surface-focus);
+	}
+
 	.container:hover {
 		background-color: var(--dav-color-surface-hover);
 	}
