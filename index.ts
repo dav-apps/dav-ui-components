@@ -69,6 +69,7 @@ import {
 	SidenavItem,
 	sidenavItemTagName
 } from "./src/sidenav-item/sidenav-item.js"
+import { Skeleton, skeletonTagName } from "./src/skeleton/skeleton.js"
 import { TabBar, tabBarTagName } from "./src/tab-bar/tab-bar.js"
 import {
 	TabBarItem,
@@ -115,6 +116,7 @@ declare global {
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
 		[sidenavItemTagName]: SidenavItem
+		[skeletonTagName]: Skeleton
 		[tabBarTagName]: TabBar
 		[tabBarItemTagName]: TabBarItem
 		[textareaTagName]: Textarea
@@ -171,6 +173,7 @@ export {
 	Setting,
 	Sidenav,
 	SidenavItem,
+	Skeleton,
 	TabBar,
 	TabBarItem,
 	Textarea,

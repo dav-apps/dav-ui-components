@@ -119,6 +119,8 @@ module.exports = {
 		"./dist/src/sidenav/sidenav.styles.js",
 		"./dist/src/sidenav-item/sidenav-item.js",
 		"./dist/src/sidenav-item/sidenav-item.styles.js",
+		"./dist/src/skeleton/skeleton.js",
+		"./dist/src/skeleton/skeleton.styles.js",
 		"./dist/src/tab-bar/tab-bar.js",
 		"./dist/src/tab-bar/tab-bar.styles.js",
 		"./dist/src/tab-bar-item/tab-bar-item.js",
