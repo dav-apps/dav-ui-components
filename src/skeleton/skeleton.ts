@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
+import { customElement } from "lit/decorators.js"
 import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -14,9 +14,6 @@ export const skeletonTagName = "dav-skeleton"
 @customElement(skeletonTagName)
 export class Skeleton extends LitElement {
 	static styles = [globalStyles, skeletonStyles]
-
-	@property({ type: String }) width: string = "100%"
-	@property({ type: String }) height: string = "20px"
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -34,7 +31,7 @@ export class Skeleton extends LitElement {
 
 	render() {
 		return html`
-			<div style="width: ${this.width}; height: ${this.height};"></div>
+			<div class="skeleton"></div>
 		`
 	}
 }

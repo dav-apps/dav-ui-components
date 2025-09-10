@@ -1,11 +1,18 @@
 import { css } from "@lit/reactive-element"
 
 export const skeletonStyles = css`
-	div {
-		display: inline-block;
-		background-color: var(--dav-color-skeleton);
+	:host {
 		border-radius: 4px;
+		width: 100%;
+		height: 20px;
+	}
+
+	.skeleton {
+		background-color: var(--dav-color-skeleton);
 		animation: pulse 2s infinite;
+		border-radius: inherit;
+		width: inherit;
+		height: inherit;
 	}
 
 	@keyframes pulse {
