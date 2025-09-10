@@ -3,9 +3,9 @@ import { css } from "@lit/reactive-element"
 export const skeletonStyles = css`
 	div {
 		display: inline-block;
-		background-color: var(--dav-color-surface);
+		background-color: var(--dav-color-skeleton);
 		border-radius: 4px;
-		animation: pulse 1.5s infinite;
+		animation: pulse 2s infinite;
 	}
 
 	@keyframes pulse {

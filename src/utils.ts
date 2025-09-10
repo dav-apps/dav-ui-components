@@ -186,6 +186,10 @@ export function setThemeColorVariables(
 		"--dav-color-scrollbar-rgb",
 		`var(--dav-color-scrollbar-${theme}-rgb)`
 	)
+	style.setProperty(
+		"--dav-color-skeleton-rgb",
+		`var(--dav-color-skeleton-${theme}-rgb)`
+	)
 
 	// State variables
 	style.setProperty(

@@ -199,6 +199,7 @@ const lightColorVariables = css`
 	--dav-color-surface-tint-light-rgb: var(--dav-color-palette-primary40-rgb);
 	--dav-color-scrim-light-rgb: var(--black-rgb);
 	--dav-color-scrollbar-light-rgb: var(--dav-color-palette-neutral60-rgb);
+	--dav-color-skeleton-light-rgb: var(--dav-color-palette-neutral90-rgb);
 
 	/* light states */
 	--dav-color-primary-hover-light-rgb: var(--dav-color-palette-primary35-rgb);
@@ -327,6 +328,7 @@ const darkColorVariables = css`
 	--dav-color-surface-tint-dark-rgb: var(--dav-color-palette-primary80-rgb);
 	--dav-color-scrim-dark-rgb: var(--white-rgb);
 	--dav-color-scrollbar-dark-rgb: var(--dav-color-palette-neutral40-rgb);
+	--dav-color-skeleton-dark-rgb: var(--dav-color-palette-neutral10-rgb);
 
 	/* dark states */
 	--dav-color-primary-hover-dark-rgb: var(--dav-color-palette-primary85-rgb);
@@ -447,6 +449,7 @@ const defaultRgbColorVariables = css`
 	--dav-color-surface-tint-rgb: var(--dav-color-surface-tint-light-rgb);
 	--dav-color-scrim-rgb: var(--dav-color-scrim-light-rgb);
 	--dav-color-scrollbar-rgb: var(--dav-color-scrollbar-light-rgb);
+	--dav-color-skeleton-rgb: var(--dav-color-skeleton-light-rgb);
 
 	/* default states */
 	--dav-color-primary-hover-rgb: var(--dav-color-primary-hover-light-rgb);
@@ -554,6 +557,7 @@ const defaultColorVariables = css`
 		var(--dav-color-scrim-opacity)
 	);
 	--dav-color-scrollbar: rgb(var(--dav-color-scrollbar-rgb));
+	--dav-color-skeleton: rgb(var(--dav-color-skeleton-rgb));
 
 	/* default states */
 	--dav-color-primary-hover: rgb(var(--dav-color-primary-hover-rgb));

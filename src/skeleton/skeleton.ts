@@ -34,7 +34,7 @@ export class Skeleton extends LitElement {
 
 	render() {
 		return html`
-			<p>Hello</p>
+			<div style="width: ${this.width}; height: ${this.height};"></div>
 		`
 	}
 }
