@@ -8,8 +8,10 @@ export const buttonStyles = css`
 	button {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		gap: 8px;
 		height: 40px;
+		width: inherit;
 		padding: 0 24px;
 		font-size: 14px;
 		font-family: var(--dav-font);
