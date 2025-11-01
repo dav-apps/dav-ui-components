@@ -53,12 +53,16 @@ export const iconButtonStyles = css`
 	.icon-button.sm {
 		height: 32px;
 		width: 32px;
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	.icon-button.sm ::slotted(svg) {
-		width: 18px;
-		height: 18px;
+		width: 16px;
+		height: 16px;
+	}
+
+	.icon-button.sm ::slotted(fa-icon) {
+		font-size: 16px;
 	}
 
 	.icon-button.xs {
@@ -70,6 +74,10 @@ export const iconButtonStyles = css`
 	.icon-button.xs ::slotted(svg) {
 		width: 14px;
 		height: 14px;
+	}
+
+	.icon-button.xs ::slotted(fa-icon) {
+		font-size: 14px;
 	}
 
 	.icon-button:not(.disabled):hover {
