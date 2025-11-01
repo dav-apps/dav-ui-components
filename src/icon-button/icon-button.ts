@@ -148,6 +148,16 @@ export class IconButton extends LitElement {
 		)
 	}
 
+	getTooltip() {
+		return html`
+			<div class=${classMap(this.tooltipOverlayClasses)}>
+				<div class="tooltip" style=${styleMap(this.tooltipStyles)}>
+					<p>${this.tooltip}</p>
+				</div>
+			</div>
+		`
+	}
+
 	render() {
 		this.iconButtonClasses.selected = this.selected
 		this.iconButtonClasses.disabled = this.disabled
@@ -169,6 +179,8 @@ export class IconButton extends LitElement {
 				>
 					<slot></slot>
 				</a>
+
+				${this.getTooltip()}
 			`
 		}
 
@@ -185,11 +197,7 @@ export class IconButton extends LitElement {
 				<slot></slot>
 			</button>
 
-			<div class=${classMap(this.tooltipOverlayClasses)}>
-				<div class="tooltip" style=${styleMap(this.tooltipStyles)}>
-					<p>${this.tooltip}</p>
-				</div>
-			</div>
+			${this.getTooltip()}
 		`
 	}
 }
