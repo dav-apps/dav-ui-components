@@ -114,4 +114,39 @@ export const iconButtonStyles = css`
 	.icon-button.disabled ::slotted(svg) {
 		fill: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
+
+	.tooltip-overlay {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		pointer-events: none;
+		background-color: transparent;
+		z-index: 100;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 160ms ease-in-out, visibility 160ms ease-in-out;
+	}
+
+	.tooltip-overlay.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.tooltip {
+		position: absolute;
+		transform: translateX(-50%);
+		background: var(--dav-color-inverse-surface);
+		color: var(--dav-color-inverse-on-surface);
+		padding: 6px 10px;
+		border-radius: 4px;
+		white-space: nowrap;
+		pointer-events: none;
+	}
+
+	.tooltip p {
+		margin: 0;
+		font-size: 12px;
+	}
 `

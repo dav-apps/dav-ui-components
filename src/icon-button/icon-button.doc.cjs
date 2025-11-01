@@ -132,6 +132,24 @@ module.exports = {
 					</dav-icon-button>
 				</div>
 			`
+		},
+		{
+			title: "IconButton with tooltip",
+			template: `
+				<div style="display: flex; gap: 16px; align-items: center">
+					<dav-icon-button size="xs" tooltip="Search">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="sm" tooltip="Search">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+
+					<dav-icon-button size="md" tooltip="Search">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-button>
+				</div>
+			`
 		}
 	]
 }
