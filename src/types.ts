@@ -15,6 +15,12 @@ export interface Locale {
 	dropdown: {
 		defaultDropdownButtonText: string
 	}
+	header: {
+		back: string
+		add: string
+		edit: string
+		delete: string
+	}
 }
 
 export enum Theme {

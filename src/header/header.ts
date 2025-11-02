@@ -8,6 +8,7 @@ import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
+	getSettings,
 	convertStringToAlignment,
 	convertStringToHeaderSize
 } from "../utils.js"
@@ -25,6 +26,8 @@ export class Header extends LitElement {
 	static styles = [globalStyles, headerStyles]
 
 	@query(".add-button") addButton: HTMLButtonElement
+
+	@state() private locale = getSettings().locale.header
 
 	@state()
 	private containerClasses = {
@@ -62,6 +65,7 @@ export class Header extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
+		this.locale = settings.locale.header
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
@@ -103,6 +107,7 @@ export class Header extends LitElement {
 				<dav-icon-button
 					class="back-button"
 					size="sm"
+					tooltip=${this.locale.back}
 					@click=${this.backButtonClick}
 				>
 					${arrowLeftLightSvg}
@@ -117,6 +122,7 @@ export class Header extends LitElement {
 				<dav-icon-button
 					class="add-button"
 					size="sm"
+					tooltip=${this.locale.add}
 					@click=${this.addButtonClick}
 				>
 					${plusLightSvg}
@@ -131,6 +137,7 @@ export class Header extends LitElement {
 				<dav-icon-button
 					class="edit-button"
 					size="sm"
+					tooltip=${this.locale.edit}
 					@click=${this.editButtonClick}
 				>
 					${penLightSvg}
@@ -145,6 +152,7 @@ export class Header extends LitElement {
 				<dav-icon-button
 					class="delete-button"
 					size="sm"
+					tooltip=${this.locale.delete}
 					@click=${this.deleteButtonClick}
 				>
 					${trashLightSvg}
