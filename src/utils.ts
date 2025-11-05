@@ -4,6 +4,7 @@ import {
 	ThemeColor,
 	BadgeSize,
 	ButtonSize,
+	IconCardSize,
 	IconButtonShape,
 	DropdownPosition,
 	SidenavMode,
@@ -378,6 +379,17 @@ export function convertStringToButtonSize(value: string): ButtonSize {
 			return ButtonSize.xs
 		default:
 			return ButtonSize.md
+	}
+}
+
+export function convertStringToIconCardSize(value: string): IconCardSize {
+	switch (value) {
+		case "sm":
+			return IconCardSize.sm
+		case "lg":
+			return IconCardSize.lg
+		default:
+			return IconCardSize.md
 	}
 }
 

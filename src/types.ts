@@ -46,6 +46,12 @@ export enum ButtonSize {
 	md = "md"
 }
 
+export enum IconCardSize {
+	sm = "sm",
+	md = "md",
+	lg = "lg"
+}
+
 export enum IconButtonShape {
 	round = "round",
 	square = "square"

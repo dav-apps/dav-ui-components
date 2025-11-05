@@ -2,6 +2,11 @@ module.exports = {
 	name: "IconCard",
 	properties: [
 		{
+			name: "size",
+			type: "String",
+			values: `"lg", "md", "sm"`
+		},
+		{
 			name: "text",
 			type: "String"
 		},
@@ -18,37 +23,88 @@ module.exports = {
 		{
 			title: "Default IconCard",
 			template: `
-				<dav-icon-card>
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</dav-icon-card>
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<dav-icon-card size="sm">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card size="md">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card size="lg">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+				</div>
 			`
 		},
 		{
 			title: "IconCard with text",
 			template: `
-				<dav-icon-card text="Hello World">
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</dav-icon-card>
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<dav-icon-card text="Hello World" size="sm">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card text="Hello World" size="md">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card text="Hello World" size="lg">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+				</div>
 			`
 		},
 		{
 			title: "IconCard with image and text",
 			template: `
-				<dav-icon-card text="Tagesschau">
-					<img src="https://www.tagesschau.de/resources/assets/image/favicon/apple-icon-152x152.png" />
-				</dav-icon-card>
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<dav-icon-card text="Tagesschau" size="sm">
+						<img src="https://www.tagesschau.de/resources/assets/image/favicon/apple-icon-152x152.png" />
+					</dav-icon-card>
+
+					<dav-icon-card text="Tagesschau" size="md">
+						<img src="https://www.tagesschau.de/resources/assets/image/favicon/apple-icon-152x152.png" />
+					</dav-icon-card>
+
+					<dav-icon-card text="Tagesschau" size="lg">
+						<img src="https://www.tagesschau.de/resources/assets/image/favicon/apple-icon-152x152.png" />
+					</dav-icon-card>
+				</div>
 			`
 		},
 		{
 			title: "IconCard with link",
 			template: `
-				<dav-icon-card
-					text="Hello World"
-					href="https://dav-apps.tech"
-					target="blank"
-				>
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</dav-icon-card>
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<dav-icon-card
+						text="Hello World"
+						href="https://dav-apps.tech"
+						target="blank"
+						size="sm"
+					>
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card
+						text="Hello World"
+						href="https://dav-apps.tech"
+						target="blank"
+						size="md"
+					>
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+
+					<dav-icon-card
+						text="Hello World"
+						href="https://dav-apps.tech"
+						target="blank"
+						size="lg"
+					>
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</dav-icon-card>
+				</div>
 			`
 		}
 	]

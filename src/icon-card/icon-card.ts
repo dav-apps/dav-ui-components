@@ -1,7 +1,9 @@
 import { LitElement, html } from "lit"
-import { customElement, property } from "lit/decorators.js"
-import { Settings } from "../types.js"
+import { customElement, state, property } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
+import { IconCardSize, Settings } from "../types.js"
 import {
+	convertStringToIconCardSize,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
@@ -15,7 +17,19 @@ export const iconCardTagName = "dav-icon-card"
 export class IconCard extends LitElement {
 	static styles = [globalStyles, iconCardStyles]
 
-	@property({ type: String }) text: string = ""
+	@state() private iconCardContainerClasses = {
+		"icon-card-container": true,
+		sm: false,
+		lg: false
+	}
+
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToIconCardSize(value)
+	})
+	size: IconCardSize = IconCardSize.md
+	@property({ type: String })
+	text: string = ""
 	@property() href: string = ""
 	@property() target: string = ""
 
@@ -35,15 +49,20 @@ export class IconCard extends LitElement {
 
 	getText() {
 		if (this.text.length > 0) {
-			return html`<p>${this.text}</p>`
+			return html`
+				<p>${this.text}</p>
+			`
 		}
 	}
 
 	render() {
+		this.iconCardContainerClasses.sm = this.size === IconCardSize.sm
+		this.iconCardContainerClasses.lg = this.size === IconCardSize.lg
+
 		if (this.href.length > 0) {
 			return html`
 				<a
-					class="icon-card-container"
+					class=${classMap(this.iconCardContainerClasses)}
 					href=${this.href}
 					target=${this.target}
 				>
@@ -54,7 +73,7 @@ export class IconCard extends LitElement {
 			`
 		} else {
 			return html`
-				<button class="icon-card-container">
+				<button class=${classMap(this.iconCardContainerClasses)}>
 					<slot></slot>
 
 					${this.getText()}
