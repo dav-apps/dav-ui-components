@@ -191,8 +191,8 @@ module.exports = {
 		"./node_modules/lit-html/directives/style-map.js.map",
 		"./node_modules/lit-element/lit-element.js",
 		"./node_modules/lit-element/lit-element.js.map",
-		"./node_modules/luxon/build/es6/luxon.js",
-		"./node_modules/luxon/build/es6/luxon.js.map",
+		"./node_modules/luxon/build/es6/luxon.mjs",
+		"./node_modules/luxon/build/es6/luxon.mjs.map",
 		"./node_modules/autosize/dist/autosize.esm.js",
 		"./node_modules/blurhash/dist/esm/index.js",
 		"./node_modules/@fortawesome/fontawesome-free/webfonts/"
