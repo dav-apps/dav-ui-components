@@ -66,6 +66,7 @@ import {
 	RadioButton,
 	radioButtonTagName
 } from "./src/radio-button/radio-button.js"
+import { RadioGroup, radioGroupTagName } from "./src/radio-group/radio-group.js"
 import { Search, searchTagName } from "./src/search/search.js"
 import { Setting, settingTagName } from "./src/setting/setting.js"
 import { Sidenav, sidenavTagName } from "./src/sidenav/sidenav.js"
@@ -117,6 +118,7 @@ declare global {
 		[progressBarTagName]: ProgressBar
 		[progressRingTagName]: ProgressRing
 		[radioButtonTagName]: RadioButton
+		[radioGroupTagName]: RadioGroup
 		[searchTagName]: Search
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
@@ -175,6 +177,7 @@ export {
 	ProgressBar,
 	ProgressRing,
 	RadioButton,
+	RadioGroup,
 	Search,
 	Setting,
 	Sidenav,
