@@ -108,6 +108,8 @@ module.exports = {
 		"./dist/src/progress-bar/progress-bar.styles.js",
 		"./dist/src/progress-ring/progress-ring.js",
 		"./dist/src/progress-ring/progress-ring.styles.js",
+		"./dist/src/radio-button/radio-button.js",
+		"./dist/src/radio-button/radio-button.styles.js",
 		"./dist/src/search/search.js",
 		"./dist/src/search/search.styles.js",
 		"./dist/src/search/search.animations.js",

@@ -62,6 +62,10 @@ import {
 	ProgressRing,
 	progressRingTagName
 } from "./src/progress-ring/progress-ring.js"
+import {
+	RadioButton,
+	radioButtonTagName
+} from "./src/radio-button/radio-button.js"
 import { Search, searchTagName } from "./src/search/search.js"
 import { Setting, settingTagName } from "./src/setting/setting.js"
 import { Sidenav, sidenavTagName } from "./src/sidenav/sidenav.js"
@@ -112,6 +116,7 @@ declare global {
 		[profileCardTagName]: ProfileCard
 		[progressBarTagName]: ProgressBar
 		[progressRingTagName]: ProgressRing
+		[radioButtonTagName]: RadioButton
 		[searchTagName]: Search
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
@@ -169,6 +174,7 @@ export {
 	ProfileCard,
 	ProgressBar,
 	ProgressRing,
+	RadioButton,
 	Search,
 	Setting,
 	Sidenav,
