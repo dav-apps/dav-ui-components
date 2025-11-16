@@ -1,6 +1,12 @@
 import { LitElement, PropertyValues, html } from "lit"
 import { customElement, property, query, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
+import { Settings } from "../types.js"
+import {
+	setThemeColorVariables,
+	subscribeSettingsChange,
+	unsubscribeSettingsChange
+} from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { radioButtonStyles } from "./radio-button.styles.js"
 
@@ -24,6 +30,26 @@ export class RadioButton extends LitElement {
 
 	private inputId = `input-${crypto.randomUUID()}`
 
+	connectedCallback(): void {
+		super.connectedCallback()
+		subscribeSettingsChange(this.settingsChange)
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback()
+		unsubscribeSettingsChange(this.settingsChange)
+	}
+
+	settingsChange = (settings: Settings) => {
+		setThemeColorVariables(this.style, settings.theme)
+	}
+
+	protected updated(_changedProperties: PropertyValues): void {
+		if (_changedProperties.has("checked") && this.inputElement) {
+			this.inputElement.checked = this.checked
+		}
+	}
+
 	inputClick() {
 		this.checked = true
 
@@ -32,12 +58,6 @@ export class RadioButton extends LitElement {
 				detail: { checked: this.checked }
 			})
 		)
-	}
-
-	protected updated(_changedProperties: PropertyValues): void {
-		if (_changedProperties.has("checked") && this.inputElement) {
-			this.inputElement.checked = this.checked
-		}
 	}
 
 	render() {
