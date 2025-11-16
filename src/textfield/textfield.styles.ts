@@ -31,7 +31,8 @@ export const textfieldStyles = css`
 		color: var(--dav-color-on-surface);
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.5);
 		border-radius: 6px;
-		transition: 200ms;
+		transition-duration: 200ms;
+		transition-property: background-color, border;
 	}
 
 	#textfield:not(.disabled):hover,
