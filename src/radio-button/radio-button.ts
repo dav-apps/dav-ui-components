@@ -1,5 +1,6 @@
 import { LitElement, PropertyValues, html } from "lit"
-import { customElement, property, query } from "lit/decorators.js"
+import { customElement, property, query, state } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import { globalStyles } from "../styles.js"
 import { radioButtonStyles } from "./radio-button.styles.js"
 
@@ -10,6 +11,11 @@ export class RadioButton extends LitElement {
 	static styles = [globalStyles, radioButtonStyles]
 
 	@query("input") inputElement: HTMLInputElement
+
+	@state() private backgroundClasses = {
+		background: true,
+		checked: false
+	}
 
 	@property() label: string = ""
 	@property() name: string = "radio-group"
@@ -35,8 +41,14 @@ export class RadioButton extends LitElement {
 	}
 
 	render() {
+		this.backgroundClasses.checked = this.checked
+
 		return html`
-			<div>
+			<div class="container">
+				<div class=${classMap(this.backgroundClasses)}>
+					<div class="inner-circle"></div>
+				</div>
+
 				<input
 					id=${this.inputId}
 					type="radio"
