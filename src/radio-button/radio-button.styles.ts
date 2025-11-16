@@ -2,7 +2,7 @@ import { css } from "@lit/reactive-element"
 
 export const radioButtonStyles = css`
 	.container {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 	}
 
@@ -36,6 +36,15 @@ export const radioButtonStyles = css`
 
 	.background.checked {
 		border-color: var(--dav-color-primary);
+	}
+
+	.container:hover .background:not(.checked) {
+		border-color: rgb(var(--dav-color-primary-rgb), 0.5);
+	}
+
+	.container:hover .background:not(.checked) .inner-circle {
+		transform: translate(-50%, -50%) scale(1, 1);
+		background-color: rgb(var(--dav-color-primary-rgb), 0.5);
 	}
 
 	.inner-circle {
