@@ -115,6 +115,8 @@ module.exports = {
 		"./dist/src/search/search.js",
 		"./dist/src/search/search.styles.js",
 		"./dist/src/search/search.animations.js",
+		"./dist/src/search-textfield/search-textfield.js",
+		"./dist/src/search-textfield/search-textfield.styles.js",
 		"./dist/src/setting/setting.js",
 		"./dist/src/setting/setting.styles.js",
 		"./dist/src/setting/setting.animations.js",

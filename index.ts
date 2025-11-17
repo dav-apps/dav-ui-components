@@ -68,6 +68,10 @@ import {
 } from "./src/radio-button/radio-button.js"
 import { RadioGroup, radioGroupTagName } from "./src/radio-group/radio-group.js"
 import { Search, searchTagName } from "./src/search/search.js"
+import {
+	SearchTextfield,
+	searchTextfieldTagName
+} from "./src/search-textfield/search-textfield.js"
 import { Setting, settingTagName } from "./src/setting/setting.js"
 import { Sidenav, sidenavTagName } from "./src/sidenav/sidenav.js"
 import {
@@ -120,6 +124,7 @@ declare global {
 		[radioButtonTagName]: RadioButton
 		[radioGroupTagName]: RadioGroup
 		[searchTagName]: Search
+		[searchTextfieldTagName]: SearchTextfield
 		[settingTagName]: Setting
 		[sidenavTagName]: Sidenav
 		[sidenavItemTagName]: SidenavItem
@@ -179,6 +184,7 @@ export {
 	RadioButton,
 	RadioGroup,
 	Search,
+	SearchTextfield,
 	Setting,
 	Sidenav,
 	SidenavItem,
