@@ -54,7 +54,7 @@ export class Textfield extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
-	input() {
+	onInput() {
 		this.value = this.textfieldInput.value
 
 		this.dispatchEvent(
@@ -64,10 +64,16 @@ export class Textfield extends LitElement {
 		)
 	}
 
-	keydown(event: KeyboardEvent) {
-		if (event.key == "Enter") {
+	onKeydown(event: KeyboardEvent) {
+		if (event.key === "Enter") {
 			this.dispatchEvent(new CustomEvent("enter"))
+		} else if (event.key === "Escape") {
+			this.dispatchEvent(new CustomEvent("escape"))
 		}
+	}
+
+	onFocus(event: FocusEvent) {
+		this.dispatchEvent(new FocusEvent("focus", event))
 	}
 
 	getLabel() {
@@ -113,8 +119,9 @@ export class Textfield extends LitElement {
 					autocomplete=${this.autocomplete}
 					min=${this.min}
 					max=${this.max}
-					@input=${this.input}
-					@keydown=${this.keydown}
+					@input=${this.onInput}
+					@keydown=${this.onKeydown}
+					@focus=${this.onFocus}
 				/>
 
 				${this.getErrorMessage()}

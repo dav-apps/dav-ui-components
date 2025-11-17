@@ -111,7 +111,7 @@ export const dropdownStyles = css`
 	}
 
 	.dropdown-option {
-		margin: 0px;
+		margin: 4px;
 		padding: 6px 10px;
 		display: block;
 		border: none;
@@ -120,7 +120,6 @@ export const dropdownStyles = css`
 		background-color: transparent;
 		color: var(--dav-color-on-surface);
 		border-radius: 6px;
-		margin: 4px;
 		width: -webkit-fill-available;
 		width: -moz-available;
 		transition: 200ms;
