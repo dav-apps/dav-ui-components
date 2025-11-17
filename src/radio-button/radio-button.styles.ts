@@ -50,22 +50,25 @@ export const radioButtonStyles = css`
 		opacity: 0;
 	}
 
-	.container:hover .background::before {
-		transform: scale(2);
-		opacity: 1;
-	}
+	.container:hover,
+	.container:focus-within {
+		.background::before {
+			transform: scale(2);
+			opacity: 1;
+		}
 
-	.container:hover .background.checked::before {
-		background-color: rgb(var(--dav-color-primary-rgb), 0.1);
-	}
+		.background.checked::before {
+			background-color: rgb(var(--dav-color-primary-rgb), 0.1);
+		}
 
-	.container:hover .background:not(.checked) {
-		border-color: rgb(var(--dav-color-primary-rgb), 0.5);
-	}
+		.background:not(.checked) {
+			border-color: rgb(var(--dav-color-primary-rgb), 0.5);
+		}
 
-	.container:hover .background:not(.checked) .inner-circle {
-		transform: translate(-50%, -50%) scale(1, 1);
-		background-color: rgb(var(--dav-color-primary-rgb), 0.5);
+		.background:not(.checked) .inner-circle {
+			transform: translate(-50%, -50%) scale(1, 1);
+			background-color: rgb(var(--dav-color-primary-rgb), 0.5);
+		}
 	}
 
 	.inner-circle {

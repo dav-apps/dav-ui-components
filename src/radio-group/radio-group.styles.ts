@@ -6,4 +6,10 @@ export const radioGroupStyles = css`
 		flex-direction: column;
 		gap: 8px;
 	}
+
+	.container {
+		display: inherit;
+		flex-direction: inherit;
+		gap: inherit;
+	}
 `

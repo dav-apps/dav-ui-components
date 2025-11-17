@@ -47,7 +47,16 @@ export class RadioButton extends LitElement {
 	protected updated(_changedProperties: PropertyValues): void {
 		if (_changedProperties.has("checked") && this.inputElement) {
 			this.inputElement.checked = this.checked
+			// Keep only the checked radio in the tab order so the group
+			// can manage single-tab focus like native radios.
+			this.inputElement.tabIndex = this.checked ? 0 : -1
 		}
+	}
+
+	// Allow external callers (RadioGroup) to forward focus into the
+	// actual native input element inside this shadow root.
+	public focus(options?: FocusOptions) {
+		this.inputElement?.focus(options)
 	}
 
 	inputClick() {
