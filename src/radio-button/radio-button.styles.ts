@@ -38,6 +38,27 @@ export const radioButtonStyles = css`
 		border-color: var(--dav-color-primary);
 	}
 
+	.container .background::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: rgb(var(--dav-color-shadow-rgb), 0.04);
+		transition: 200ms;
+		transform: scale(1);
+		opacity: 0;
+	}
+
+	.container:hover .background::before {
+		transform: scale(2);
+		opacity: 1;
+	}
+
+	.container:hover .background.checked::before {
+		background-color: rgb(var(--dav-color-primary-rgb), 0.1);
+	}
+
 	.container:hover .background:not(.checked) {
 		border-color: rgb(var(--dav-color-primary-rgb), 0.5);
 	}
