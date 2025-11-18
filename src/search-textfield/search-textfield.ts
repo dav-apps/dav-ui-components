@@ -76,6 +76,8 @@ export class SearchTextfield extends LitElement {
 				detail: { result }
 			})
 		)
+
+		this.showSearchResults = false
 	}
 
 	render() {
