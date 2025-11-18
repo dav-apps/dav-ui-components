@@ -37,9 +37,8 @@ export class RadioGroup extends LitElement {
 		const radioButtons = this.querySelectorAll("dav-radio-button")
 
 		for (const radioButton of radioButtons) {
-			radioButton.addEventListener("change", () =>
-				this.onRadioButtonChange(radioButton)
-			)
+			radioButton.removeEventListener("change", this.onRadioButtonChange)
+			radioButton.addEventListener("change", this.onRadioButtonChange)
 
 			// Ensure only the checked radio is in tab order — RadioButton
 			// will set the input's tabIndex when its `checked` property
@@ -105,7 +104,9 @@ export class RadioGroup extends LitElement {
 		}
 	}
 
-	private onRadioButtonChange(radioButton: RadioButton) {
+	onRadioButtonChange = (event: Event) => {
+		const radioButton = event.currentTarget as RadioButton
+
 		// Uncheck all other radio buttons
 		for (const rb of this.radioButtons) {
 			if (rb !== radioButton) {
