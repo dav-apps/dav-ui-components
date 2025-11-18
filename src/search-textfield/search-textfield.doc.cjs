@@ -1,5 +1,19 @@
 module.exports = {
 	name: "SearchTextfield",
+	properties: [
+		{
+			name: "value",
+			type: "String"
+		},
+		{
+			name: "label",
+			type: "String"
+		},
+		{
+			name: "searchResults",
+			type: "Array<{ key: string, value: string }>"
+		}
+	],
 	examples: [
 		{
 			title: "Default SearchTextfield",
