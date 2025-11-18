@@ -26,7 +26,10 @@ export class SearchTextfield extends LitElement {
 
 	@property() value: string = ""
 	@property() label: string = ""
-	@property({ type: Array }) searchResults: string[] = []
+	@property({ type: Array }) searchResults: {
+		key: string
+		value: string
+	}[] = []
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -70,7 +73,7 @@ export class SearchTextfield extends LitElement {
 		}
 	}
 
-	onSearchResultItemClick(result: string) {
+	onSearchResultItemClick(result: { key: string; value: string }) {
 		this.dispatchEvent(
 			new CustomEvent("select", {
 				detail: { result }
@@ -104,7 +107,7 @@ export class SearchTextfield extends LitElement {
 									class="search-result-item"
 									@click=${() => this.onSearchResultItemClick(result)}
 								>
-									${result}
+									${result.value}
 								</button>
 							`
 					)}

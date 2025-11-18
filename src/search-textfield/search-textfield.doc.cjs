@@ -4,7 +4,36 @@ module.exports = {
 		{
 			title: "Default SearchTextfield",
 			controller: function (element) {
-				const searchResults = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"]
+				const searchResults = [
+					{
+						key: "apple",
+						value: "Apple"
+					},
+					{
+						key: "banana",
+						value: "Banana"
+					},
+					{
+						key: "cherry",
+						value: "Cherry"
+					},
+					{
+						key: "date",
+						value: "Date"
+					},
+					{
+						key: "elderberry",
+						value: "Elderberry"
+					},
+					{
+						key: "fig",
+						value: "Fig"
+					},
+					{
+						key: "grape",
+						value: "Grape"
+					}
+				]
 
 				element.style.height = "200px"
 				const searchTextfield = element.getElementsByTagName("dav-search-textfield")[0]
@@ -19,14 +48,14 @@ module.exports = {
 					}
 
 					const filteredResults = searchResults.filter((item) =>
-						item.toLowerCase().includes(value.toLowerCase())
+						item.value.toLowerCase().includes(value.toLowerCase())
 					)
 
 					searchTextfield.searchResults = filteredResults
 				})
 
 				searchTextfield.addEventListener("select", (event) => {
-					searchTextfield.value = event.detail.result
+					searchTextfield.value = event.detail.result.value
 					searchTextfield.searchResults = []
 				})
 			},
