@@ -36,7 +36,11 @@ export class Dialog extends LitElement {
 		zIndex: "100"
 	}
 	@state() private dialogStyles = {
+		padding: "24px",
 		maxWidth: "600px"
+	}
+	@state() private contentContainerStyles = {
+		marginBottom: "24px"
 	}
 
 	@property() headline: string = ""
@@ -129,6 +133,14 @@ export class Dialog extends LitElement {
 		this.dispatchEvent(new CustomEvent("defaultButtonClick"))
 	}
 
+	getHeadline() {
+		if (this.headline.length > 0) {
+			return html`
+				<h4 class="headline">${this.headline}</h4>
+			`
+		}
+	}
+
 	getProgressRing() {
 		if (this.loading) {
 			return html`
@@ -172,8 +184,19 @@ export class Dialog extends LitElement {
 			this.containerStyles.display = "flex"
 		}
 
+		this.dialogStyles.padding =
+			this.headline.length === 0 &&
+			this.primaryButtonText.length === 0 &&
+			this.defaultButtonText.length === 0
+				? "0"
+				: "24px"
 		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
+		this.contentContainerStyles.marginBottom =
+			this.primaryButtonText.length === 0 &&
+			this.defaultButtonText.length === 0
+				? "0"
+				: "24px"
 
 		return html`
 			<div style=${styleMap(this.containerStyles)}>
@@ -187,9 +210,12 @@ export class Dialog extends LitElement {
 					aria-live="assertive"
 					aria-labelledby="headline"
 				>
-					<h4 class="headline">${this.headline}</h4>
+					${this.getHeadline()}
 
-					<div class="content-container">
+					<div
+						class="content-container"
+						style=${styleMap(this.contentContainerStyles)}
+					>
 						<slot></slot>
 					</div>
 

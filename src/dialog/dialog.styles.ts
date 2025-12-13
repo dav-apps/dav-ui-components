@@ -13,7 +13,6 @@ export const dialogStyles = css`
 
 	.dialog {
 		background-color: var(--dav-color-surface);
-		padding: 24px;
 		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.2);
 		border-radius: 10px;
 		min-width: 280px;
