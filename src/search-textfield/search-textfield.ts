@@ -26,6 +26,7 @@ export class SearchTextfield extends LitElement {
 
 	@property() value: string = ""
 	@property() label: string = ""
+	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Array }) searchResults: {
 		key: string
 		value: string
@@ -94,6 +95,7 @@ export class SearchTextfield extends LitElement {
 				<dav-textfield
 					.label=${this.label}
 					.value=${this.value}
+					?disabled=${this.disabled}
 					@change=${this.onTextfieldChange}
 					@focus=${this.onTextfieldFocus}
 					@escape=${() => (this.showSearchResults = false)}
