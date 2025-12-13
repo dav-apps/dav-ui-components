@@ -32,6 +32,11 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "selected",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "href",
 			type: "String"
 		},

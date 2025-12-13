@@ -39,6 +39,10 @@ export const cardStyles = css`
 		max-width: 50%;
 	}
 
+	.card-container.selected {
+		background-color: var(--dav-color-surface-focus);
+	}
+
 	.card-container > .card-image-container > img {
 		width: 100%;
 		height: 100%;

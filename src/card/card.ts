@@ -19,7 +19,8 @@ export class Card extends LitElement {
 
 	@state() private cardContainerClasses = {
 		"card-container": true,
-		horizontal: false
+		horizontal: false,
+		selected: false
 	}
 
 	@property({ type: String }) headline: string = ""
@@ -33,6 +34,7 @@ export class Card extends LitElement {
 	})
 	orientation: Orientation = Orientation.vertical
 	@property({ type: Boolean }) clickable: boolean = false
+	@property({ type: Boolean }) selected: boolean = false
 	@property({ type: String }) href: string = ""
 	@property({ type: String }) target: string = ""
 
@@ -119,6 +121,7 @@ export class Card extends LitElement {
 	render() {
 		this.cardContainerClasses.horizontal =
 			this.orientation == Orientation.horizontal
+		this.cardContainerClasses.selected = this.selected
 
 		if (this.href.length > 0) {
 			return html`
