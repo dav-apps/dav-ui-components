@@ -603,11 +603,13 @@ const defaultColorVariables = css`
 `
 
 export const globalStyles = css`
+	body {
+		${colorPaletteVariables}
+	}
+
 	:host {
 		/* Other variables */
 		--dav-font: Roboto, Arial, sans-serif;
-
-		${colorPaletteVariables}
 
 		/* RGB color variables */
 		${lightColorVariables}
