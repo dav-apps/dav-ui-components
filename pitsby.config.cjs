@@ -16,7 +16,8 @@ module.exports = {
 	],
 	styles: [
 		"./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
-		"./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+		"./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+		"./src/pitsby.css"
 	],
 	custom: {
 		favicon: {
