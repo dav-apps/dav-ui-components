@@ -36,6 +36,16 @@ module.exports = {
 		{
 			name: "maxWidth",
 			type: "Number"
+		},
+		{
+			name: "hideBehindOverlay",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "child",
+			type: "Boolean",
+			values: "true / false"
 		}
 	],
 	examples: [

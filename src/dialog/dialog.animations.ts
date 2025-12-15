@@ -1,10 +1,7 @@
-export function slideIn(
-	dialog: HTMLDivElement,
-	overlay: HTMLDivElement
-): Animation[] {
-	const duration = 180
+const duration = 180
 
-	let dialogAnimation = dialog.animate(
+export function slideInDialog(dialog: HTMLDivElement): Animation {
+	return dialog.animate(
 		[
 			{
 				transform: "translateY(10px)",
@@ -21,8 +18,10 @@ export function slideIn(
 			fill: "forwards"
 		}
 	)
+}
 
-	let overlayAnimation = overlay.animate(
+export function slideInOverlay(overlay: HTMLDivElement): Animation {
+	return overlay.animate(
 		[
 			{
 				opacity: 0
@@ -36,17 +35,10 @@ export function slideIn(
 			fill: "forwards"
 		}
 	)
-
-	return [dialogAnimation, overlayAnimation]
 }
 
-export function slideOut(
-	dialog: HTMLDivElement,
-	overlay: HTMLDivElement
-): Animation[] {
-	const duration = 150
-
-	let dialogAnimation = dialog.animate(
+export function slideOutDialog(dialog: HTMLDivElement): Animation {
+	return dialog.animate(
 		[
 			{
 				transform: "scale(1)",
@@ -63,8 +55,10 @@ export function slideOut(
 			fill: "forwards"
 		}
 	)
+}
 
-	let overlayAnimation = overlay.animate(
+export function slideOutOverlay(overlay: HTMLDivElement): Animation {
+	return overlay.animate(
 		[
 			{
 				opacity: 1
@@ -78,6 +72,4 @@ export function slideOut(
 			fill: "forwards"
 		}
 	)
-
-	return [dialogAnimation, overlayAnimation]
 }

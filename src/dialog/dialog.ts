@@ -11,7 +11,12 @@ import {
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { dialogStyles } from "./dialog.styles.js"
-import { slideIn, slideOut } from "./dialog.animations.js"
+import {
+	slideInDialog,
+	slideOutDialog,
+	slideInOverlay,
+	slideOutOverlay
+} from "./dialog.animations.js"
 
 export const dialogTagName = "dav-dialog"
 
@@ -35,6 +40,10 @@ export class Dialog extends LitElement {
 		right: "0",
 		zIndex: "100"
 	}
+	@state() private overlayStyles = {
+		opacity: "1",
+		zIndex: "0"
+	}
 	@state() private dialogStyles = {
 		padding: "24px",
 		maxWidth: "600px"
@@ -55,6 +64,8 @@ export class Dialog extends LitElement {
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
 	@property({ type: Number }) maxWidth: number = 600
+	@property({ type: Boolean }) hideBehindOverlay: boolean = false
+	@property({ type: Boolean }) child: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -95,14 +106,22 @@ export class Dialog extends LitElement {
 			changedProperties.get("visible") != null
 		) {
 			let newIsVisible = !changedProperties.get("visible") as boolean
-			let animations: Animation[]
+			let animations: Animation[] = []
 
 			if (newIsVisible) {
 				// Play slide in animation
-				animations = slideIn(this.dialog, this.overlay)
+				animations.push(slideInDialog(this.dialog))
+
+				if (!this.child) {
+					animations.push(slideInOverlay(this.overlay))
+				}
 			} else {
 				// Play slide out animation
-				animations = slideOut(this.dialog, this.overlay)
+				animations.push(slideOutDialog(this.dialog))
+
+				if (!this.child) {
+					animations.push(slideOutOverlay(this.overlay))
+				}
 			}
 
 			// Wait for all animations to end
@@ -184,13 +203,16 @@ export class Dialog extends LitElement {
 			this.containerStyles.display = "flex"
 		}
 
+		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
+		this.containerStyles.zIndex = this.child ? "101" : "100"
+		this.overlayStyles.opacity = this.child ? "0" : "1"
+		this.overlayStyles.zIndex = this.hideBehindOverlay ? "1" : "0"
 		this.dialogStyles.padding =
 			this.headline.length === 0 &&
 			this.primaryButtonText.length === 0 &&
 			this.defaultButtonText.length === 0
 				? "0"
 				: "24px"
-		this.containerStyles.left = this.dualScreenLayout ? "50%" : "0"
 		this.dialogStyles.maxWidth = `${this.maxWidth}px`
 		this.contentContainerStyles.marginBottom =
 			this.primaryButtonText.length === 0 &&
@@ -200,7 +222,11 @@ export class Dialog extends LitElement {
 
 		return html`
 			<div style=${styleMap(this.containerStyles)}>
-				<div class="overlay" @click=${this.overlayClick}></div>
+				<div
+					class="overlay"
+					style=${styleMap(this.overlayStyles)}
+					@click=${this.overlayClick}
+				></div>
 
 				<div
 					class="dialog"
