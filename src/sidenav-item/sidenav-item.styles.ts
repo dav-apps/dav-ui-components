@@ -10,7 +10,7 @@ export const sidenavItemStyles = css`
 		border-radius: 20px;
 		background-color: transparent;
 		color: var(--dav-color-on-surface);
-		padding: 0px 16px;
+		padding: 0 16px;
 		transition: 200ms;
 		text-decoration: none;
 		cursor: pointer;
@@ -24,21 +24,27 @@ export const sidenavItemStyles = css`
 		color: var(--dav-color-on-primary);
 	}
 
-	.sidenav-item:hover {
+	.sidenav-item.disabled {
+		cursor: not-allowed;
+		background-color: rgb(var(--dav-color-on-surface-rgb), 0.12);
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
+	}
+
+	.sidenav-item:not(.disabled):hover {
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	.sidenav-item:focus,
-	.sidenav-item:active {
+	.sidenav-item:not(.disabled):focus,
+	.sidenav-item:not(.disabled):active {
 		background-color: var(--dav-color-surface-focus);
 	}
 
-	.sidenav-item.active:hover {
+	.sidenav-item.active:not(.disabled):hover {
 		background-color: var(--dav-color-primary-hover);
 	}
 
-	.sidenav-item.active:focus,
-	.sidenav-item.active:active {
+	.sidenav-item.active:not(.disabled):focus,
+	.sidenav-item.active:not(.disabled):active {
 		background-color: var(--dav-color-primary-focus);
 	}
 `

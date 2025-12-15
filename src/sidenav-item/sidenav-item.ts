@@ -18,11 +18,13 @@ export class SidenavItem extends LitElement {
 
 	@state() sidenavItemClasses = {
 		"sidenav-item": true,
-		active: false
+		active: false,
+		disabled: false
 	}
 
 	@property() value: string = ""
 	@property({ type: Boolean }) active: boolean = false
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -38,11 +40,21 @@ export class SidenavItem extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	buttonClick(event: PointerEvent) {
+		if (this.disabled) {
+			event.stopPropagation()
+		}
+	}
+
 	render() {
 		this.sidenavItemClasses.active = this.active
+		this.sidenavItemClasses.disabled = this.disabled
 
 		return html`
-			<button class=${classMap(this.sidenavItemClasses)}>
+			<button
+				class=${classMap(this.sidenavItemClasses)}
+				@click="${this.buttonClick}"
+			>
 				<span>${this.value}</span>
 			</button>
 		`

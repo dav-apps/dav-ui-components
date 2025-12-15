@@ -33,6 +33,7 @@ module.exports = {
 
 					<dav-sidenav-item
 						value="Sachbücher"
+						disabled
 					></dav-sidenav-item>
 
 					<dav-sidenav-item
@@ -87,6 +88,7 @@ module.exports = {
 
 					<dav-sidenav-item
 						value="Sachbücher"
+						disabled
 					></dav-sidenav-item>
 
 					<dav-sidenav-item
