@@ -21,6 +21,7 @@ export class FilterGroup extends LitElement {
 	private selectedFilterButtonIndex: number = 0
 
 	@state() private activeIndicatorStyles = {
+		display: "block",
 		transform: "translateX(0)"
 	}
 
@@ -54,11 +55,16 @@ export class FilterGroup extends LitElement {
 
 	onFilterButtonClick = (event: Event) => {
 		const filterButton = event.currentTarget as FilterButton
-		this.selectedFilterButtonIndex = this.filterButtons.findIndex(
-			fb => fb === filterButton
-		)
 
-		if (this.selectedFilterButtonIndex === -1) return
+		if (filterButton.selected) {
+			this.selectedFilterButtonIndex = -1
+		} else {
+			this.selectedFilterButtonIndex = this.filterButtons.findIndex(
+				fb => fb === filterButton
+			)
+
+			if (this.selectedFilterButtonIndex === -1) return
+		}
 
 		this.selectFilterButton()
 		this.requestUpdate()
@@ -71,6 +77,8 @@ export class FilterGroup extends LitElement {
 	}
 
 	render() {
+		this.activeIndicatorStyles.display =
+			this.selectedFilterButtonIndex === -1 ? "none" : "block"
 		this.activeIndicatorStyles.transform = `translateX(${this
 			.selectedFilterButtonIndex * 34}px)`
 
