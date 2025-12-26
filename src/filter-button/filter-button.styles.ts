@@ -16,7 +16,7 @@ export const filterButtonStyles = css`
 		width: inherit;
 		height: inherit;
 		font-size: 16px;
-		color: var(--dav-color-on-primary-container);
+		color: var(--dav-color-on-secondary-container);
 		background-color: transparent;
 		border: none;
 		border-radius: inherit;
@@ -25,15 +25,15 @@ export const filterButtonStyles = css`
 	}
 
 	.filter-button:not(.selected):hover {
-		background-color: var(--dav-color-primary-container-hover);
+		background-color: var(--dav-color-secondary-container-hover);
 	}
 
 	.filter-button:not(.selected):focus,
 	.filter-button:not(.selected):active {
-		background-color: var(--dav-color-primary-container-focus);
+		background-color: var(--dav-color-secondary-container-focus);
 	}
 
 	.filter-button.selected {
-		color: var(--dav-color-on-primary);
+		color: var(--dav-color-on-secondary);
 	}
 `

@@ -3,7 +3,7 @@ import { css } from "@lit/reactive-element"
 export const filterGroupStyles = css`
 	.filter-group-container {
 		display: inline-flex;
-		background-color: var(--dav-color-primary-container);
+		background-color: var(--dav-color-secondary-container);
 		padding: 4px;
 		border-radius: 50px;
 		gap: 2px;
@@ -11,7 +11,7 @@ export const filterGroupStyles = css`
 
 	.active-indicator {
 		position: absolute;
-		background-color: var(--dav-color-primary);
+		background-color: var(--dav-color-secondary);
 		width: 32px;
 		height: 32px;
 		border-radius: 50%;

@@ -18,7 +18,7 @@ export class FilterGroup extends LitElement {
 	static styles = [globalStyles, filterGroupStyles]
 
 	private filterButtons: FilterButton[] = []
-	private selectedFilterButtonIndex: number = 0
+	private selectedFilterButtonIndex: number = -1
 
 	@state() private activeIndicatorStyles = {
 		display: "block",
@@ -58,12 +58,23 @@ export class FilterGroup extends LitElement {
 
 		if (filterButton.selected) {
 			this.selectedFilterButtonIndex = -1
+			this.dispatchEvent(
+				new CustomEvent("change", {
+					detail: { filter: null }
+				})
+			)
 		} else {
 			this.selectedFilterButtonIndex = this.filterButtons.findIndex(
 				fb => fb === filterButton
 			)
 
 			if (this.selectedFilterButtonIndex === -1) return
+
+			this.dispatchEvent(
+				new CustomEvent("change", {
+					detail: { filter: filterButton.name }
+				})
+			)
 		}
 
 		this.selectFilterButton()

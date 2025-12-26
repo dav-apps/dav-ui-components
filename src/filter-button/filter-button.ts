@@ -22,6 +22,7 @@ export class FilterButton extends LitElement {
 	}
 
 	@property({ type: Boolean }) selected: boolean = false
+	@property() name: string = ""
 
 	connectedCallback(): void {
 		super.connectedCallback()
