@@ -29,6 +29,14 @@ import {
 } from "./src/context-menu-item/context-menu-item.js"
 import { Dialog, dialogTagName } from "./src/dialog/dialog.js"
 import { Dropdown, dropdownTagName } from "./src/dropdown/dropdown.js"
+import {
+	FilterButton,
+	filterButtonTagName
+} from "./src/filter-button/filter-button.js"
+import {
+	FilterGroup,
+	filterGroupTagName
+} from "./src/filter-group/filter-group.js"
 import { Header, headerTagName } from "./src/header/header.js"
 import { IconButton, iconButtonTagName } from "./src/icon-button/icon-button.js"
 import { IconCard, iconCardTagName } from "./src/icon-card/icon-card.js"
@@ -106,6 +114,8 @@ declare global {
 		[contextMenuItemTagName]: ContextMenuItem
 		[dialogTagName]: Dialog
 		[dropdownTagName]: Dropdown
+		[filterButtonTagName]: FilterButton
+		[filterGroupTagName]: FilterGroup
 		[headerTagName]: Header
 		[iconButtonTagName]: IconButton
 		[iconCardTagName]: IconCard
@@ -166,6 +176,8 @@ export {
 	ContextMenuItem,
 	Dialog,
 	Dropdown,
+	FilterButton,
+	FilterGroup,
 	Header,
 	IconButton,
 	IconCard,
