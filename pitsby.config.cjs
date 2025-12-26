@@ -81,6 +81,7 @@ module.exports = {
 		"./dist/src/filter-button/filter-button.js",
 		"./dist/src/filter-button/filter-button.styles.js",
 		"./dist/src/filter-group/filter-group.js",
+		"./dist/src/filter-group/filter-group.styles.js",
 		"./dist/src/header/header.js",
 		"./dist/src/header/header.styles.js",
 		"./dist/src/icon-button/icon-button.js",
