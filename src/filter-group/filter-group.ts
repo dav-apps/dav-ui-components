@@ -39,6 +39,13 @@ export class FilterGroup extends LitElement {
 		this.selectedFilterButtonIndex = this.filterButtons.findIndex(
 			fb => fb === filterButton
 		)
+
+		if (this.selectedFilterButtonIndex === -1) return
+
+		for (let i = 0; i < this.filterButtons.length; i++) {
+			this.filterButtons[i].selected = i === this.selectedFilterButtonIndex
+		}
+
 		this.requestUpdate()
 	}
 

@@ -27,4 +27,8 @@ export const filterButtonStyles = css`
 	.filter-button:hover {
 		background-color: rgb(var(--dav-color-surface-variant-hover-rgb), 0.4);
 	}
+
+	.filter-button.selected {
+		color: var(--dav-color-on-primary);
+	}
 `

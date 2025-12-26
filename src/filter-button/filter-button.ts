@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement, state } from "lit/decorators.js"
+import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings } from "../types.js"
 import {
@@ -21,6 +21,8 @@ export class FilterButton extends LitElement {
 		selected: false
 	}
 
+	@property({ type: Boolean }) selected: boolean = false
+
 	connectedCallback(): void {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
@@ -36,6 +38,8 @@ export class FilterButton extends LitElement {
 	}
 
 	render() {
+		this.filterButtonClasses.selected = this.selected
+
 		return html`
 			<button class=${classMap(this.filterButtonClasses)}>
 				<slot></slot>
