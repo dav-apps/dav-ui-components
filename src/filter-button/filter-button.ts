@@ -23,6 +23,7 @@ export class FilterButton extends LitElement {
 
 	@property({ type: Boolean }) selected: boolean = false
 	@property() name: string = ""
+	@property() label: string = ""
 
 	connectedCallback(): void {
 		super.connectedCallback()
@@ -38,12 +39,22 @@ export class FilterButton extends LitElement {
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
+	getLabel() {
+		if (this.label) {
+			return html`
+				<p class="label">${this.label}</p>
+			`
+		}
+	}
+
 	render() {
 		this.filterButtonClasses.selected = this.selected
 
 		return html`
 			<button class=${classMap(this.filterButtonClasses)}>
 				<slot></slot>
+
+				${this.getLabel()}
 			</button>
 		`
 	}

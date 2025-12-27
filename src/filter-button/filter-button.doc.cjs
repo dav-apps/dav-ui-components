@@ -14,6 +14,14 @@ module.exports = {
                <i class="fa-solid fa-star"></i>
             </dav-filter-button>
          `
+      },
+      {
+         title: "FilterButton with label",
+         template: `
+            <dav-filter-button name="example" label="Example Label">
+               <i class="fa-solid fa-star"></i>
+            </dav-filter-button>
+         `
       }
    ]
 }

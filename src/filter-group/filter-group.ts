@@ -12,6 +12,7 @@ import { filterGroupStyles } from "./filter-group.styles.js"
 import { FilterButton } from "../filter-button/filter-button.js"
 
 export const filterGroupTagName = "dav-filter-group"
+const FILTER_BUTTON_GAP = 2
 
 @customElement(filterGroupTagName)
 export class FilterGroup extends LitElement {
@@ -19,10 +20,12 @@ export class FilterGroup extends LitElement {
 
 	private filterButtons: FilterButton[] = []
 	private selectedFilterButtonIndex: number = -1
+	private selectedFilterButtonWidth: number = 0
 
 	@state() private activeIndicatorStyles = {
 		display: "block",
-		transform: "translateX(0)"
+		transform: "translateX(0)",
+		width: "32px"
 	}
 
 	connectedCallback(): void {
@@ -67,6 +70,7 @@ export class FilterGroup extends LitElement {
 			this.selectedFilterButtonIndex = this.filterButtons.findIndex(
 				fb => fb === filterButton
 			)
+			this.selectedFilterButtonWidth = filterButton.getBoundingClientRect().width
 
 			if (this.selectedFilterButtonIndex === -1) return
 
@@ -88,10 +92,19 @@ export class FilterGroup extends LitElement {
 	}
 
 	render() {
+		// Calculate the transform for the active indicator
+		let positionLeft = 0
+
+		for (let i = 0; i < this.selectedFilterButtonIndex; i++) {
+			positionLeft +=
+				this.filterButtons[i].getBoundingClientRect().width +
+				FILTER_BUTTON_GAP
+		}
+
 		this.activeIndicatorStyles.display =
 			this.selectedFilterButtonIndex === -1 ? "none" : "block"
-		this.activeIndicatorStyles.transform = `translateX(${this
-			.selectedFilterButtonIndex * 34}px)`
+		this.activeIndicatorStyles.transform = `translateX(${positionLeft}px)`
+		this.activeIndicatorStyles.width = `${this.selectedFilterButtonWidth}px`
 
 		return html`
 			<div class="filter-group-container">

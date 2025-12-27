@@ -1,25 +1,18 @@
 import { css } from "@lit/reactive-element"
 
 export const filterButtonStyles = css`
-	:host {
-		display: inline-block;
-		width: 32px;
-		height: 32px;
-		border-radius: 50%;
-	}
-
 	.filter-button {
 		position: relative;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
-		width: inherit;
-		height: inherit;
+		gap: 8px;
+		height: 32px;
 		font-size: 16px;
 		color: var(--dav-color-on-secondary-container);
 		background-color: transparent;
 		border: none;
-		border-radius: inherit;
+		border-radius: 999px;
 		cursor: pointer;
 		transition: 200ms;
 	}
@@ -35,5 +28,11 @@ export const filterButtonStyles = css`
 
 	.filter-button.selected {
 		color: var(--dav-color-on-secondary);
+	}
+
+	.label {
+		margin: 0;
+		font-family: var(--dav-font);
+		font-size: 14px;
 	}
 `

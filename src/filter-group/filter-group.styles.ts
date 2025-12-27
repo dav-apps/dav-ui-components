@@ -12,9 +12,8 @@ export const filterGroupStyles = css`
 	.active-indicator {
 		position: absolute;
 		background-color: var(--dav-color-secondary);
-		width: 32px;
 		height: 32px;
-		border-radius: 50%;
+		border-radius: 999px;
 		transition: 200ms;
 	}
 `
