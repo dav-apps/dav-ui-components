@@ -8,6 +8,7 @@ export const calendarStyles = css`
 		border-radius: 12px;
 		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 		padding: 6px 12px 12px;
+		font-family: var(--dav-font);
 	}
 
 	.top-container {
@@ -15,6 +16,10 @@ export const calendarStyles = css`
 		align-items: center;
 		justify-content: space-evenly;
 		margin-bottom: 6px;
+	}
+
+	.date-container {
+		color: var(--dav-color-on-surface);
 	}
 
 	.date-container.disabled {
@@ -35,6 +40,7 @@ export const calendarStyles = css`
 		display: flex;
 		gap: 18px;
 		font-weight: 500;
+		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
 	.weekdays-container.disabled {
@@ -62,6 +68,7 @@ export const calendarStyles = css`
 		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 		background-color: var(--dav-color-surface);
 		transition: 200ms;
+		font-family: var(--dav-font);
 	}
 
 	.day-button.current-month:not(.disabled):hover {
