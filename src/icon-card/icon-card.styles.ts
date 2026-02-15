@@ -59,7 +59,8 @@ export const iconCardStyles = css`
 	.icon-card-container > p {
 		margin: 0 0 0 18px;
 		font-weight: 400;
-		text-wrap: nowrap;
+		text-wrap: auto;
+		text-align: start;
 	}
 
 	.icon-card-container.sm > p {
