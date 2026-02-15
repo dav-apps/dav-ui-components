@@ -1,6 +1,6 @@
 {
 	"name": "dav-ui-components",
-	"version": "1.12.0",
+	"version": "1.12.1",
 	"description": "A collection of UI components used in our web projects",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^7.1.0",
+		"@fortawesome/fontawesome-free": "^7.2.0",
 		"autosize": "^6.0.1",
 		"blurhash": "^2.0.5",
 		"lit": "^3.3.2",
