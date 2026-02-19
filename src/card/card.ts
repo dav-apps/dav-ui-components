@@ -1,6 +1,7 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
 import { Settings, Orientation } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -21,6 +22,9 @@ export class Card extends LitElement {
 		"card-container": true,
 		horizontal: false,
 		selected: false
+	}
+	@state() private cardImageContainerStyles = {
+		display: "flex"
 	}
 
 	@property({ type: String }) headline: string = ""
@@ -99,15 +103,24 @@ export class Card extends LitElement {
 				onError = `this.onerror=null;this.src='${this.altImageSrc}';`
 			}
 
+			this.cardImageContainerStyles.display = "flex"
+
 			return html`
 				<img src=${imageSrc} onerror=${onError} />
 			`
+		} else {
+			this.cardImageContainerStyles.display = "none"
 		}
 	}
 
 	getContent() {
 		return html`
-			<div class="card-image-container">${this.getImage()}</div>
+			<div
+				class="card-image-container"
+				style=${styleMap(this.cardImageContainerStyles)}
+			>
+				${this.getImage()}
+			</div>
 
 			<div class="card-content-container">
 				${this.getHeadline()}
