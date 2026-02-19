@@ -282,32 +282,12 @@ export function hasWindow() {
 export function getPositionOfElement(element: Element) {
 	let rect = element.getBoundingClientRect()
 
-	// Get the total scroll top of all parents
-	let currentElement = element
-	let scrollTop = 0
-	let scrollLeft = 0
-
-	while (getParentElement(currentElement) != null) {
-		scrollTop += currentElement.scrollTop
-		scrollLeft += currentElement.scrollLeft
-
-		currentElement = getParentElement(currentElement) as Element
-	}
-
+	// getBoundingClientRect() already accounts for all scrolling in parent elements
+	// We only need to add the main document scroll position
 	return {
-		x: rect.x + window.scrollX + scrollLeft,
-		y: rect.y + window.scrollY + scrollTop
+		x: rect.x + window.scrollX,
+		y: rect.y + window.scrollY
 	}
-}
-
-function getParentElement(element: Element) {
-	let parent = element.getRootNode()
-
-	if (parent == document) {
-		return element.parentElement
-	}
-
-	return (parent as ShadowRoot).host
 }
 
 //#region Settings functions
