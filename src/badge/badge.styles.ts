@@ -12,6 +12,7 @@ export const badgeStyles = css`
 		padding: 4px 12px;
 		border: none;
 		border-radius: 14px;
+		font-family: var(--dav-font);
 		font-size: 14px;
 		cursor: pointer;
 		transition: 200ms;
