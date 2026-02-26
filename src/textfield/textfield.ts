@@ -36,8 +36,9 @@ export class Textfield extends LitElement {
 	@property() autocomplete: string = "on"
 	@property({ type: Boolean }) autofocus: boolean = false
 	@property({ type: Boolean }) noArrows: boolean = false
-	@property({ type: Number }) min: number = 0
-	@property({ type: Number }) max: number = 100
+	@property({ type: Number }) min: number = null
+	@property({ type: Number }) max: number = null
+	@property({ type: Number }) step: number = null
 	@property() errorMessage: string = ""
 
 	connectedCallback() {
@@ -117,6 +118,7 @@ export class Textfield extends LitElement {
 					type=${this.type}
 					placeholder=${this.placeholder}
 					autocomplete=${this.autocomplete}
+					step=${this.step}
 					min=${this.min}
 					max=${this.max}
 					@input=${this.onInput}
