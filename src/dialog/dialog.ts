@@ -63,7 +63,7 @@ export class Dialog extends LitElement {
 	@property() defaultButtonText: string = ""
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
-	@property({ type: Number }) maxWidth: number = 600
+	@property({ type: Number }) maxWidth: number = 400
 	@property({ type: Boolean }) hideBehindOverlay: boolean = false
 	@property({ type: Boolean }) child: boolean = false
 
