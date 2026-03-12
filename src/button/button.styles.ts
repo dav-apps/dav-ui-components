@@ -28,14 +28,24 @@ export const buttonStyles = css`
 		font-size: 16px;
 	}
 
-	button.small {
+	button.sm {
 		height: 34px;
 		padding: 0 16px;
 		font-size: 13px;
 	}
 
-	button.small ::slotted(i) {
+	button.sm ::slotted(i) {
 		font-size: 14px;
+	}
+
+	button.xs {
+		height: 28px;
+		padding: 0 12px;
+		font-size: 12px;
+	}
+
+	button.xs ::slotted(i) {
+		font-size: 12px;
 	}
 
 	button.tonal {

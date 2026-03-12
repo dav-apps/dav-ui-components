@@ -4,7 +4,7 @@ module.exports = {
 		{
 			name: "size",
 			type: "String",
-			values: `"md", "sm"`
+			values: `"xs", "sm", "md"`
 		},
 		{
 			name: "color",
@@ -44,6 +44,13 @@ module.exports = {
 					<dav-button size="sm" outline>Hello World</dav-button>
 					<dav-button size="sm" text>Hello World</dav-button>
 				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs">Hello World</dav-button>
+					<dav-button size="xs" tonal>Hello World</dav-button>
+					<dav-button size="xs" outline>Hello World</dav-button>
+					<dav-button size="xs" text>Hello World</dav-button>
+				</div>
 			`
 		},
 		{
@@ -61,6 +68,13 @@ module.exports = {
 					<dav-button size="sm" color="secondary" tonal>Hello World</dav-button>
 					<dav-button size="sm" color="secondary" outline>Hello World</dav-button>
 					<dav-button size="sm" color="secondary" text>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs" color="secondary">Hello World</dav-button>
+					<dav-button size="xs" color="secondary" tonal>Hello World</dav-button>
+					<dav-button size="xs" color="secondary" outline>Hello World</dav-button>
+					<dav-button size="xs" color="secondary" text>Hello World</dav-button>
 				</div>
 			`
 		},
@@ -80,6 +94,13 @@ module.exports = {
 					<dav-button size="sm" color="tertiary" outline>Hello World</dav-button>
 					<dav-button size="sm" color="tertiary" text>Hello World</dav-button>
 				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs" color="tertiary">Hello World</dav-button>
+					<dav-button size="xs" color="tertiary" tonal>Hello World</dav-button>
+					<dav-button size="xs" color="tertiary" outline>Hello World</dav-button>
+					<dav-button size="xs" color="tertiary" text>Hello World</dav-button>
+				</div>
 			`
 		},
 		{
@@ -98,6 +119,13 @@ module.exports = {
 					<dav-button size="sm" color="error" outline>Hello World</dav-button>
 					<dav-button size="sm" color="error" text>Hello World</dav-button>
 				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs" color="error">Hello World</dav-button>
+					<dav-button size="xs" color="error" tonal>Hello World</dav-button>
+					<dav-button size="xs" color="error" outline>Hello World</dav-button>
+					<dav-button size="xs" color="error" text>Hello World</dav-button>
+				</div>
 			`
 		},
 		{
@@ -115,6 +143,13 @@ module.exports = {
 					<dav-button size="sm" tonal disabled>Hello World</dav-button>
 					<dav-button size="sm" outline disabled>Hello World</dav-button>
 					<dav-button size="sm" text disabled>Hello World</dav-button>
+				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs" disabled>Hello World</dav-button>
+					<dav-button size="xs" tonal disabled>Hello World</dav-button>
+					<dav-button size="xs" outline disabled>Hello World</dav-button>
+					<dav-button size="xs" text disabled>Hello World</dav-button>
 				</div>
 			`
 		},
@@ -196,6 +231,44 @@ module.exports = {
 						Hello World
 					</dav-button>
 				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs">
+						<i
+							slot="icon-left"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" tonal>
+						<i
+							slot="icon-left"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" outline>
+						<i
+							slot="icon-left"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" text>
+						<i
+							slot="icon-left"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+				</div>
 			`
 		},
 		{
@@ -268,6 +341,44 @@ module.exports = {
 					</dav-button>
 
 					<dav-button size="sm" text>
+						<i
+							slot="icon-right"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+				</div>
+
+				<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 30px">
+					<dav-button size="xs">
+						<i
+							slot="icon-right"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" tonal>
+						<i
+							slot="icon-right"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" outline>
+						<i
+							slot="icon-right"
+							class="fa-solid fa-magnifying-glass"
+						></i>
+
+						Hello World
+					</dav-button>
+
+					<dav-button size="xs" text>
 						<i
 							slot="icon-right"
 							class="fa-solid fa-magnifying-glass"

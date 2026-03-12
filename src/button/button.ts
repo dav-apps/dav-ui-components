@@ -19,7 +19,8 @@ export class Button extends LitElement {
 	static styles = [globalStyles, buttonStyles]
 
 	@state() private buttonClasses = {
-		small: false,
+		xs: false,
+		sm: false,
 		secondary: false,
 		tertiary: false,
 		error: false,
@@ -65,7 +66,8 @@ export class Button extends LitElement {
 	}
 
 	render() {
-		this.buttonClasses.small = this.size == ButtonSize.sm
+		this.buttonClasses.xs = this.size === ButtonSize.xs
+		this.buttonClasses.sm = this.size === ButtonSize.sm
 		this.buttonClasses.secondary = false
 		this.buttonClasses.tertiary = false
 		this.buttonClasses.error = false
