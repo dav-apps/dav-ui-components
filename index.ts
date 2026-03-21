@@ -1,5 +1,10 @@
 import { hasWindow, setLocale, setTheme } from "./src/utils.js"
-import { Theme, DropdownOption, DropdownOptionType } from "./src/types.js"
+import {
+	Theme,
+	DropdownOption,
+	DropdownOptionType,
+	SidenavMode
+} from "./src/types.js"
 
 // Components
 import { Badge, badgeTagName } from "./src/badge/badge.js"
@@ -164,6 +169,7 @@ export {
 	Theme,
 	DropdownOption,
 	DropdownOptionType,
+	SidenavMode,
 	Badge,
 	BlurhashImage,
 	BottomSheet,

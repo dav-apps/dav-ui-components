@@ -70,6 +70,7 @@ export enum DropdownPosition {
 
 export enum SidenavMode {
 	side = "side",
+	top = "top",
 	over = "over"
 }
 

@@ -397,6 +397,8 @@ export function convertStringToSidenavMode(value: string): SidenavMode {
 	switch (value) {
 		case "over":
 			return SidenavMode.over
+		case "top":
+			return SidenavMode.top
 		default:
 			return SidenavMode.side
 	}
