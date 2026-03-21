@@ -1,10 +1,14 @@
 import { css } from "@lit/reactive-element"
 
 export const sidenavItemStyles = css`
+	:host {
+		width: 100%;
+	}
+
 	.sidenav-item {
 		display: flex;
 		align-items: center;
-		width: 100%;
+		width: inherit;
 		height: 34px;
 		border: none;
 		border-radius: 20px;
