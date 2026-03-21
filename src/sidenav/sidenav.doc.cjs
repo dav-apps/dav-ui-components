@@ -1,5 +1,17 @@
 module.exports = {
 	name: "Sidenav",
+	properties: [
+		{
+			name: "mode",
+			type: "String",
+			values: `"side", "top", "over"`
+		},
+		{
+			name: "open",
+			type: "Boolean",
+			values: "true / false"
+		}
+	],
 	examples: [
 		{
 			title: "Sidenav (inline)",

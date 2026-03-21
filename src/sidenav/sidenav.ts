@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
+import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { SidenavMode, Settings } from "../types.js"
 import {
@@ -21,6 +22,10 @@ export class Sidenav extends LitElement {
 	@query(".container-over-content") containerOverContent: HTMLDivElement
 	@query(".overlay") overlay: HTMLDivElement
 
+	@state() private containerInlineClasses = {
+		"container-inline": true,
+		horizontal: false
+	}
 	@state() private containerOverContentStyles = {
 		display: "none"
 	}
@@ -80,9 +85,11 @@ export class Sidenav extends LitElement {
 			this.containerOverContentStyles.display = "flex"
 		}
 
-		if (this.mode == SidenavMode.side) {
+		this.containerInlineClasses.horizontal = this.mode === SidenavMode.top
+
+		if (this.mode === SidenavMode.side || this.mode === SidenavMode.top) {
 			return html`
-				<div class="container-inline">
+				<div class=${classMap(this.containerInlineClasses)}>
 					<slot></slot>
 				</div>
 			`

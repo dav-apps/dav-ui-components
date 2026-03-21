@@ -9,6 +9,16 @@ export const sidenavStyles = css`
 		background-color: var(--dav-color-surface);
 	}
 
+	.container-inline.horizontal {
+		flex-direction: row;
+		width: 100%;
+		overflow-x: scroll;
+	}
+
+	.container-inline.horizontal ::slotted(dav-sidenav-item) {
+		width: max-content;
+	}
+
 	.container-over {
 		position: fixed;
 		top: 0;
