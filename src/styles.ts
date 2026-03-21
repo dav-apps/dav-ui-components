@@ -620,12 +620,12 @@ export const globalStyles = css`
 		${defaultColorVariables}
 	}
 
-	::-webkit-scrollbar {
+	* ::-webkit-scrollbar {
 		background-color: transparent;
 		width: 5px;
 	}
 
-	::-webkit-scrollbar-thumb {
+	* ::-webkit-scrollbar-thumb {
 		background-color: rgb(var(--dav-color-scrollbar-rgb));
 		border-radius: 10px;
 	}
