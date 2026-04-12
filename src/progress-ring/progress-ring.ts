@@ -1,6 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
-import { styleMap } from "lit/directives/style-map.js"
+import { StyleInfo, styleMap } from "lit/directives/style-map.js"
 import { globalStyles } from "../styles.js"
 import { progressRingStyles } from "./progress-ring.styles.js"
 
@@ -14,7 +14,7 @@ export class ProgressRing extends LitElement {
 		width: "24px",
 		height: "24px"
 	}
-	@state() private circleStyles = {
+	@state() private circleStyles: StyleInfo = {
 		stroke: null
 	}
 

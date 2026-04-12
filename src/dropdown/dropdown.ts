@@ -1,7 +1,7 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
-import { styleMap } from "lit/directives/style-map.js"
+import { StyleInfo, styleMap } from "lit/directives/style-map.js"
 import {
 	DropdownOption,
 	DropdownOptionType,
@@ -55,7 +55,7 @@ export class Dropdown extends LitElement {
 		top: false,
 		visible: false
 	}
-	@state() private dropdownButtonStyles = {
+	@state() private dropdownButtonStyles: StyleInfo = {
 		width: "160px",
 		"justify-content": null
 	}

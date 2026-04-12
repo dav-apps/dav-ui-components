@@ -157,7 +157,7 @@ declare global {
 }
 
 if (hasWindow()) {
-	window["davUIComponents"] = {
+	window.davUIComponents = {
 		setLocale,
 		setTheme
 	}
