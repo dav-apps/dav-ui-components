@@ -3,7 +3,9 @@ import {
 	Theme,
 	DropdownOption,
 	DropdownOptionType,
-	SidenavMode
+	SidenavMode,
+	HeaderSize,
+	IconCardSize
 } from "./src/types.js"
 
 // Components
@@ -170,6 +172,8 @@ export {
 	DropdownOption,
 	DropdownOptionType,
 	SidenavMode,
+	HeaderSize,
+	IconCardSize,
 	Badge,
 	BlurhashImage,
 	BottomSheet,
