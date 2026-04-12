@@ -73,12 +73,12 @@ export class Dialog extends LitElement {
 		document.addEventListener("keydown", this.onKeyDown)
 
 		if (hasWindow()) {
-			let screenSegments: any
+			let screenSegments: DOMRect[] | null = null
 
-			if (window["getWindowSegments"]) {
-				screenSegments = window["getWindowSegments"]()
-			} else if (window.visualViewport["segments"]) {
-				screenSegments = window.visualViewport["segments"]
+			if (window.getWindowSegments) {
+				screenSegments = window.getWindowSegments()
+			} else if (window.visualViewport?.segments) {
+				screenSegments = window.visualViewport.segments
 			}
 
 			if (screenSegments != null) {
