@@ -34,12 +34,17 @@ export const toggleStyles = css`
 		cursor: pointer;
 	}
 
-	.slider:hover {
+	.switch.disabled .slider {
+		background-color: rgb(var(--dav-color-surface-rgb), 0.38);
+		border: 1px solid rgb(var(--dav-color-outline-rgb), 0.38);
+	}
+
+	.switch:not(.disabled) .slider:hover {
 		background-color: var(--dav-color-surface-hover);
 	}
 
-	input:focus + .slider,
-	input:active + .slider {
+	.switch:not(.disabled) input:focus + .slider,
+	.switch:not(.disabled) input:active + .slider {
 		background-color: var(--dav-color-surface-focus);
 	}
 
@@ -55,39 +60,48 @@ export const toggleStyles = css`
 		border-radius: 10px;
 	}
 
-	.switch:hover .slider:before {
+	.switch.disabled .slider:before {
+		background-color: rgb(var(--dav-color-on-surface-variant-rgb), 0.38);
+	}
+
+	.switch:not(.disabled):hover .slider:before {
 		height: 14px;
 		width: 14px;
 		margin-left: 3px;
 	}
 
-	input:focus + .slider:before {
+	.switch:not(.disabled) input:focus + .slider:before {
 		height: 14px;
 		width: 14px;
 		margin-left: 3px;
 	}
 
-	.switch:active .slider:before {
+	.switch:not(.disabled):active .slider:before {
 		height: 14px;
 		width: 17px;
 	}
 
-	.switch.checked:active .slider:before {
+	.switch.checked:not(.disabled):active .slider:before {
 		margin-left: -0.5px;
 	}
 
-	.switch.checked:hover .slider {
+	.switch:not(.disabled).checked:hover .slider {
 		background-color: var(--dav-color-primary-hover);
 	}
 
-	.switch.checked input:focus + .slider,
-	.switch.checked input:active + .slider {
+	.switch:not(.disabled).checked input:focus + .slider,
+	.switch:not(.disabled).checked input:active + .slider {
 		background-color: var(--dav-color-primary-focus);
 	}
 
 	.switch.checked .slider {
 		background-color: var(--dav-color-primary);
 		border: 1px solid var(--dav-color-primary);
+	}
+
+	.switch.checked.disabled .slider {
+		background-color: rgb(var(--dav-color-primary-rgb), 0.38);
+		border: none;
 	}
 
 	.switch .slider:before {
@@ -103,5 +117,9 @@ export const toggleStyles = css`
 		color: var(--dav-color-on-surface);
 		margin-left: 12px;
 		font-family: var(--dav-font);
+	}
+
+	.label.disabled {
+		color: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
 `

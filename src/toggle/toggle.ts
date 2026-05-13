@@ -18,11 +18,17 @@ export class Toggle extends LitElement {
 
 	@state() private inputClasses = {
 		switch: true,
-		checked: false
+		checked: false,
+		disabled: false
+	}
+	@state() private labelClasses = {
+		label: true,
+		disabled: false
 	}
 
 	@property({ type: String }) label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
+	@property({ type: Boolean }) disabled: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -41,6 +47,7 @@ export class Toggle extends LitElement {
 	private checkboxClicked(event: PointerEvent) {
 		event.preventDefault()
 
+		if (this.disabled) return
 		this.checked = !this.checked
 
 		this.dispatchEvent(
@@ -53,13 +60,15 @@ export class Toggle extends LitElement {
 	getLabel() {
 		if (this.label.length > 0) {
 			return html`
-				<span class="label">${this.label}</span>
+				<span class=${classMap(this.labelClasses)}>${this.label}</span>
 			`
 		}
 	}
 
 	render() {
 		this.inputClasses.checked = this.checked
+		this.inputClasses.disabled = this.disabled
+		this.labelClasses.disabled = this.disabled
 
 		return html`
 			<div class="container" @click=${this.checkboxClicked}>

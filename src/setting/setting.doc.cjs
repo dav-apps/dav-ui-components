@@ -14,6 +14,11 @@ module.exports = {
 			name: "open",
 			type: "Boolean",
 			value: "true / false"
+		},
+		{
+			name: "subItem",
+			type: "Boolean",
+			value: "true / false"
 		}
 	],
 	examples: [

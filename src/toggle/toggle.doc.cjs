@@ -9,6 +9,11 @@ module.exports = {
 			name: "checked",
 			type: "Boolean",
 			values: "true / false"
+		},
+		{
+			name: "disabled",
+			type: "Boolean",
+			values: "true / false"
 		}
 	],
 	examples: [
@@ -19,6 +24,23 @@ module.exports = {
 		{
 			title: "Toggle with label",
 			template: `<dav-toggle label="Hello World"></dav-toggle>`
+		},
+		{
+			title: "Disabled Toggle with label",
+			template: `
+				<div style="display: flex; flex-direction: column; gap: 8px;">
+					<dav-toggle
+						label="Hello World"
+						disabled
+					></dav-toggle>
+
+					<dav-toggle
+						label="Hello World"
+						checked
+						disabled
+					></dav-toggle>
+				</div>
+			`
 		}
 	]
 }
