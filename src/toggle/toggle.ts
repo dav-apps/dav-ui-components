@@ -16,6 +16,10 @@ export const toggleTagName = "dav-toggle"
 export class Toggle extends LitElement {
 	static styles = [globalStyles, toggleStyles]
 
+	@state() private containerClasses = {
+		container: true,
+		disabled: false
+	}
 	@state() private inputClasses = {
 		switch: true,
 		checked: false,
@@ -66,12 +70,16 @@ export class Toggle extends LitElement {
 	}
 
 	render() {
+		this.containerClasses.disabled = this.disabled
 		this.inputClasses.checked = this.checked
 		this.inputClasses.disabled = this.disabled
 		this.labelClasses.disabled = this.disabled
 
 		return html`
-			<div class="container" @click=${this.checkboxClicked}>
+			<div
+				class=${classMap(this.containerClasses)}
+				@click=${this.checkboxClicked}
+			>
 				<label class=${classMap(this.inputClasses)}>
 					<input type="checkbox" ?checked=${this.checked} />
 					<span class="slider"></span>

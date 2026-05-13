@@ -4,6 +4,9 @@ export const toggleStyles = css`
 	.container {
 		display: inline-flex;
 		align-items: center;
+	}
+
+	.container:not(.disabled) {
 		cursor: pointer;
 	}
 
@@ -31,6 +34,9 @@ export const toggleStyles = css`
 		border: 1px solid var(--dav-color-outline);
 		border-radius: 34px;
 		transition: 200ms;
+	}
+
+	.switch:not(.disabled) {
 		cursor: pointer;
 	}
 
