@@ -20,7 +20,7 @@ export class Toggle extends LitElement {
 		container: true,
 		disabled: false
 	}
-	@state() private inputClasses = {
+	@state() private switchClasses = {
 		switch: true,
 		checked: false,
 		disabled: false
@@ -71,8 +71,8 @@ export class Toggle extends LitElement {
 
 	render() {
 		this.containerClasses.disabled = this.disabled
-		this.inputClasses.checked = this.checked
-		this.inputClasses.disabled = this.disabled
+		this.switchClasses.checked = this.checked
+		this.switchClasses.disabled = this.disabled
 		this.labelClasses.disabled = this.disabled
 
 		return html`
@@ -80,7 +80,7 @@ export class Toggle extends LitElement {
 				class=${classMap(this.containerClasses)}
 				@click=${this.checkboxClicked}
 			>
-				<label class=${classMap(this.inputClasses)}>
+				<label class=${classMap(this.switchClasses)}>
 					<input type="checkbox" ?checked=${this.checked} />
 					<span class="slider"></span>
 				</label>
