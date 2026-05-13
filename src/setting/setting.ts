@@ -24,6 +24,10 @@ export class Setting extends LitElement {
 
 	@state() private settingContainerClasses = {
 		"setting-container": true,
+		subItem: false
+	}
+	@state() private expandableSettingContainerClasses = {
+		"setting-container": true,
 		expanded: false
 	}
 	@state() private expandedContainerStyles = {
@@ -36,6 +40,7 @@ export class Setting extends LitElement {
 	@property() header: string = ""
 	@property({ type: Boolean }) expandable: boolean = false
 	@property({ type: Boolean }) open: boolean = false
+	@property({ type: Boolean }) subItem: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -86,7 +91,8 @@ export class Setting extends LitElement {
 	}
 
 	render() {
-		this.settingContainerClasses.expanded = this.open
+		this.expandableSettingContainerClasses.expanded = this.open
+		this.settingContainerClasses.subItem = this.subItem
 
 		if (this.open) {
 			this.expandedContainerStyles.display = "block"
@@ -96,7 +102,7 @@ export class Setting extends LitElement {
 		if (this.expandable) {
 			return html`
 				<button
-					class=${classMap(this.settingContainerClasses)}
+					class=${classMap(this.expandableSettingContainerClasses)}
 					@click=${this.settingContentContainerClick}
 				>
 					<p class="setting-header">${this.header}</p>
@@ -118,7 +124,7 @@ export class Setting extends LitElement {
 			`
 		} else {
 			return html`
-				<div class="setting-container">
+				<div class=${classMap(this.settingContainerClasses)}>
 					<p class="setting-header">${this.header}</p>
 
 					<div>

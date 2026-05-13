@@ -40,6 +40,17 @@ export const settingStyles = css`
 		border-radius: 12px 12px 0 0;
 	}
 
+	.setting-container.subItem {
+		padding: 16px 12px;
+		border: none;
+		transition: 200ms;
+		border-radius: 4px;
+	}
+
+	.setting-container.subItem:hover {
+		background-color: rgba(var(--dav-color-surface-hover-rgb), 0.6);
+	}
+
 	.setting-header {
 		margin: 0;
 		color: var(--dav-color-on-surface);
