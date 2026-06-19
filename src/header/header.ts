@@ -35,8 +35,13 @@ export class Header extends LitElement {
 		start: false,
 		end: false
 	}
+
 	@state() private headerStyles = {
 		fontSize: "40px"
+	}
+	@state() private skeletonStyles = {
+		height: "34px",
+		width: "200px"
 	}
 
 	@property({
@@ -53,6 +58,7 @@ export class Header extends LitElement {
 		converter: (value: string) => convertStringToHeaderSize(value)
 	})
 	size: HeaderSize = HeaderSize.md
+	@property({ type: Boolean }) loading: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -108,6 +114,7 @@ export class Header extends LitElement {
 					class="back-button"
 					size="sm"
 					tooltip=${this.locale.back}
+					?loading=${this.loading}
 					@click=${this.backButtonClick}
 				>
 					${arrowLeftLightSvg}
@@ -123,6 +130,7 @@ export class Header extends LitElement {
 					class="add-button"
 					size="sm"
 					tooltip=${this.locale.add}
+					?loading=${this.loading}
 					@click=${this.addButtonClick}
 				>
 					${plusLightSvg}
@@ -138,6 +146,7 @@ export class Header extends LitElement {
 					class="edit-button"
 					size="sm"
 					tooltip=${this.locale.edit}
+					?loading=${this.loading}
 					@click=${this.editButtonClick}
 				>
 					${penLightSvg}
@@ -153,12 +162,27 @@ export class Header extends LitElement {
 					class="delete-button"
 					size="sm"
 					tooltip=${this.locale.delete}
+					?loading=${this.loading}
 					@click=${this.deleteButtonClick}
 				>
 					${trashLightSvg}
 				</dav-icon-button>
 			`
 		}
+	}
+
+	getHeader() {
+		if (this.loading) {
+			return html`
+				<dav-skeleton style=${styleMap(this.skeletonStyles)}></dav-skeleton>
+			`
+		}
+
+		return html`
+			<h1 class="header" style=${styleMap(this.headerStyles)}>
+				<slot></slot>
+			</h1>
+		`
 	}
 
 	render() {
@@ -180,22 +204,24 @@ export class Header extends LitElement {
 		switch (this.size) {
 			case HeaderSize.lg:
 				this.headerStyles.fontSize = "40px"
+				this.skeletonStyles.height = "49px"
+				this.skeletonStyles.width = "300px"
 				break
 			case HeaderSize.md:
 				this.headerStyles.fontSize = "32px"
+				this.skeletonStyles.height = "39px"
+				this.skeletonStyles.width = "250px"
 				break
 			case HeaderSize.sm:
 				this.headerStyles.fontSize = "28px"
+				this.skeletonStyles.height = "34px"
+				this.skeletonStyles.width = "200px"
 				break
 		}
 
 		return html`
 			<div class=${classMap(this.containerClasses)}>
-				${this.getBackButton()}
-
-				<h1 class="header" style=${styleMap(this.headerStyles)}>
-					<slot></slot>
-				</h1>
+				${this.getBackButton()} ${this.getHeader()}
 
 				<div class="right-button-container">
 					${this.getAddButton()} ${this.getEditButton()}
