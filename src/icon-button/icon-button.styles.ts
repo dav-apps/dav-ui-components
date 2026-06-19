@@ -114,4 +114,10 @@ export const iconButtonStyles = css`
 	.icon-button.disabled ::slotted(svg) {
 		fill: rgb(var(--dav-color-on-surface-rgb), 0.38);
 	}
+
+	.icon-button-skeleton {
+		width: inherit;
+		height: inherit;
+		border-radius: inherit;
+	}
 `

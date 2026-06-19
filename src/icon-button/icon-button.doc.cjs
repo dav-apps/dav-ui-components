@@ -12,6 +12,11 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "loading",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "size",
 			type: "String",
 			values: `"xs", "sm", "md"`
@@ -43,18 +48,34 @@ module.exports = {
 				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
 			},
 			template: `
-				<div style="display: flex; gap: 16px; align-items: center">
-					<dav-icon-button size="xs">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+				<div style="display: flex; flex-direction: column; gap: 16px">
+					<div style="display: flex; gap: 16px; align-items: center">
+						<dav-icon-button size="xs">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
 
-					<dav-icon-button size="sm">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+						<dav-icon-button size="sm">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
 
-					<dav-icon-button size="md">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+						<dav-icon-button size="md">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+					</div>
+
+					<div style="display: flex; gap: 16px; align-items: center">
+						<dav-icon-button size="xs" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+
+						<dav-icon-button size="sm" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+
+						<dav-icon-button size="md" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+					</div>
 				</div>
 			`
 		},
@@ -70,18 +91,34 @@ module.exports = {
 				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
 			},
 			template: `
-				<div style="display: flex; gap: 16px; align-items: center">
-					<dav-icon-button size="xs" shape="square">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+				<div style="display: flex; flex-direction: column; gap: 16px">
+					<div style="display: flex; gap: 16px; align-items: center">
+						<dav-icon-button size="xs" shape="square">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
 
-					<dav-icon-button size="sm" shape="square">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+						<dav-icon-button size="sm" shape="square">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
 
-					<dav-icon-button size="md" shape="square">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</dav-icon-button>
+						<dav-icon-button size="md" shape="square">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+					</div>
+
+					<div style="display: flex; gap: 16px; align-items: center">
+						<dav-icon-button size="xs" shape="square" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+
+						<dav-icon-button size="sm" shape="square" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+
+						<dav-icon-button size="md" shape="square" loading>
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</dav-icon-button>
+					</div>
 				</div>
 			`
 		},

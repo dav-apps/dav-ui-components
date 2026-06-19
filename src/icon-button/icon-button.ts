@@ -35,12 +35,6 @@ export class IconButton extends LitElement {
 		show: false
 	}
 
-	@state() private tooltipStyles = {
-		top: "0px",
-		left: "0px",
-		transform: "translate(-50%, 0)"
-	}
-
 	@state() private tooltipVisible: boolean = false
 	private tooltipTimer: number | null = null
 
@@ -50,6 +44,7 @@ export class IconButton extends LitElement {
 
 	@property({ type: Boolean }) selected: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({ type: Boolean }) loading: boolean = false
 	@property({
 		type: String,
 		converter: (value: string) => convertStringToButtonSize(value)
@@ -248,6 +243,13 @@ export class IconButton extends LitElement {
 		this.iconButtonClasses.xs = this.size == ButtonSize.xs
 		this.iconButtonClasses.square = this.shape == IconButtonShape.square
 		this.tooltipOverlayClasses.show = this.tooltipVisible
+		console.log(this.loading)
+
+		if (this.loading) {
+			return html`
+				<dav-skeleton class="icon-button-skeleton"></dav-skeleton>
+			`
+		}
 
 		if (this.href.length > 0 && !this.disabled) {
 			return html`
