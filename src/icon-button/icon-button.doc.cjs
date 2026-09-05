@@ -2,6 +2,17 @@ module.exports = {
 	name: "IconButton",
 	properties: [
 		{
+			name: "aria-label",
+			type: "String",
+			values:
+				"Accessible name forwarded to the button or link; defaults to tooltip"
+		},
+		{
+			name: "aria-expanded",
+			type: "String",
+			values: '"true" / "false"; omitted by default'
+		},
+		{
 			name: "selected",
 			type: "Boolean",
 			values: "true / false"
@@ -39,13 +50,19 @@ module.exports = {
 		{
 			title: "Default IconButton",
 			controller: function (element) {
-				let xsIconButton = element.getElementsByTagName("dav-icon-button")[0]
-				let smIconButton = element.getElementsByTagName("dav-icon-button")[1]
-				let mdIconButton = element.getElementsByTagName("dav-icon-button")[2]
+				let xsIconButton =
+					element.getElementsByTagName("dav-icon-button")[0]
+				let smIconButton =
+					element.getElementsByTagName("dav-icon-button")[1]
+				let mdIconButton =
+					element.getElementsByTagName("dav-icon-button")[2]
 
-				xsIconButton.onclick = () => xsIconButton.selected = !xsIconButton.selected
-				smIconButton.onclick = () => smIconButton.selected = !smIconButton.selected
-				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
+				xsIconButton.onclick = () =>
+					(xsIconButton.selected = !xsIconButton.selected)
+				smIconButton.onclick = () =>
+					(smIconButton.selected = !smIconButton.selected)
+				mdIconButton.onclick = () =>
+					(mdIconButton.selected = !mdIconButton.selected)
 			},
 			template: `
 				<div style="display: flex; flex-direction: column; gap: 16px">
@@ -82,13 +99,19 @@ module.exports = {
 		{
 			title: "Square IconButton",
 			controller: function (element) {
-				let xsIconButton = element.getElementsByTagName("dav-icon-button")[0]
-				let smIconButton = element.getElementsByTagName("dav-icon-button")[1]
-				let mdIconButton = element.getElementsByTagName("dav-icon-button")[2]
+				let xsIconButton =
+					element.getElementsByTagName("dav-icon-button")[0]
+				let smIconButton =
+					element.getElementsByTagName("dav-icon-button")[1]
+				let mdIconButton =
+					element.getElementsByTagName("dav-icon-button")[2]
 
-				xsIconButton.onclick = () => xsIconButton.selected = !xsIconButton.selected
-				smIconButton.onclick = () => smIconButton.selected = !smIconButton.selected
-				mdIconButton.onclick = () => mdIconButton.selected = !mdIconButton.selected
+				xsIconButton.onclick = () =>
+					(xsIconButton.selected = !xsIconButton.selected)
+				smIconButton.onclick = () =>
+					(smIconButton.selected = !smIconButton.selected)
+				mdIconButton.onclick = () =>
+					(mdIconButton.selected = !mdIconButton.selected)
 			},
 			template: `
 				<div style="display: flex; flex-direction: column; gap: 16px">

@@ -2,6 +2,7 @@ import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
+import { ifDefined } from "lit/directives/if-defined.js"
 import { Settings, ButtonSize, IconButtonShape } from "../types.js"
 import {
 	getPositionOfElement,
@@ -56,6 +57,8 @@ export class IconButton extends LitElement {
 	})
 	shape: IconButtonShape = IconButtonShape.round
 	@property({ type: String }) tooltip: string = ""
+	@property({ attribute: "aria-label" }) accessibleLabel: string | null = null
+	@property({ attribute: "aria-expanded" }) expanded: string | null = null
 	@property({ type: String }) href: string = ""
 	@property({ type: String }) target: string = ""
 
@@ -257,6 +260,10 @@ export class IconButton extends LitElement {
 					class=${classMap(this.iconButtonClasses)}
 					href=${this.href}
 					target=${this.target}
+					aria-label=${ifDefined(
+						this.accessibleLabel ?? (this.tooltip || undefined)
+					)}
+					aria-expanded=${ifDefined(this.expanded ?? undefined)}
 					@mouseenter=${this.handleMouseEnter}
 					@mouseleave=${this.handleMouseLeave}
 					@focus=${this.handleFocus}
@@ -270,6 +277,10 @@ export class IconButton extends LitElement {
 		return html`
 			<button
 				class=${classMap(this.iconButtonClasses)}
+				aria-label=${ifDefined(
+					this.accessibleLabel ?? (this.tooltip || undefined)
+				)}
+				aria-expanded=${ifDefined(this.expanded ?? undefined)}
 				?aria-disabled=${this.disabled}
 				@click="${this.buttonClick}"
 				@mouseenter=${this.handleMouseEnter}
