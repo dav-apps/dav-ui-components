@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
@@ -67,7 +67,7 @@ export class IconButton extends LitElement {
 		subscribeSettingsChange(this.settingsChange)
 
 		// create overlay in the document body so the tooltip isn't clipped by parent stacking contexts
-		this.createTooltipOverlay()
+		if (!isServer) this.createTooltipOverlay()
 	}
 
 	disconnectedCallback() {

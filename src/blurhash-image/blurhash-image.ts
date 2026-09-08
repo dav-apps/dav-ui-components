@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
@@ -34,6 +34,8 @@ export class BlurhashImage extends LitElement {
 	@property() alt: string = ""
 
 	private loadBlurhash() {
+		if (isServer) return
+
 		if (
 			this.blurhash == this.loadedBlurhash ||
 			this.blurhash == null ||
@@ -118,6 +120,14 @@ export class BlurhashImage extends LitElement {
 	}
 
 	private loadImage() {
+		if (isServer) {
+			// There is nothing to lazy load into in server rendered HTML, and
+			// IntersectionObserver does not exist there. Render the real image
+			// right away so that it ends up in the initial HTML.
+			if (this.src?.length > 0) this.imageSrc = this.src
+			return
+		}
+
 		if (
 			this.src == this.loadedImage ||
 			this.src == null ||
