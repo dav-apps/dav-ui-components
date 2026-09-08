@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings } from "../types.js"
@@ -35,13 +35,13 @@ export class SearchTextfield extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
-		document.addEventListener("click", this.documentClick)
+		if (!isServer) document.addEventListener("click", this.documentClick)
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
-		document.removeEventListener("click", this.documentClick)
+		if (!isServer) document.removeEventListener("click", this.documentClick)
 	}
 
 	settingsChange = (settings: Settings) => {

@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
@@ -149,8 +149,10 @@ export class Search extends LitElement {
 			this.containerStyles.display = "block"
 		}
 
+		// The @query getter reaches into renderRoot, which has no querySelector
+		// on the server - and a server rendered search field is always empty
 		this.searchResultContainerClasses.visible =
-			this.searchInput?.value.length > 0
+			!isServer && this.searchInput?.value.length > 0
 
 		return html`
 			<div style=${styleMap(this.containerStyles)}>

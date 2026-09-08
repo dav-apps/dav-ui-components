@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
@@ -49,16 +49,20 @@ export class BottomSheet extends LitElement {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
 
-		document.addEventListener("mousemove", this.onMouseMove)
-		document.addEventListener("mouseup", this.onMouseUp)
+		if (!isServer) {
+			document.addEventListener("mousemove", this.onMouseMove)
+			document.addEventListener("mouseup", this.onMouseUp)
+		}
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
 
-		document.removeEventListener("mousemove", this.onMouseMove)
-		document.removeEventListener("mouseup", this.onMouseUp)
+		if (!isServer) {
+			document.removeEventListener("mousemove", this.onMouseMove)
+			document.removeEventListener("mouseup", this.onMouseUp)
+		}
 	}
 
 	settingsChange = (settings: Settings) => {

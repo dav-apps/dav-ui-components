@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit"
+import { LitElement, html, isServer } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { Settings, ThemeColor } from "../types.js"
@@ -70,7 +70,9 @@ export class Dialog extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
-		document.addEventListener("keydown", this.onKeyDown)
+		if (!isServer) {
+			document.addEventListener("keydown", this.onKeyDown)
+		}
 
 		if (hasWindow()) {
 			let screenSegments: DOMRect[] | null = null
@@ -93,7 +95,9 @@ export class Dialog extends LitElement {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
 
-		document.removeEventListener("keydown", this.onKeyDown)
+		if (!isServer) {
+			document.removeEventListener("keydown", this.onKeyDown)
+		}
 	}
 
 	settingsChange = (settings: Settings) => {
