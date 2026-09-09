@@ -7,6 +7,11 @@ import { globalStyles } from "../styles.js"
 import { blurhashImageStyles } from "./blurhash-image.styles.js"
 import { BlurhashImageCache } from "./blurhash-image-cache.js"
 
+/** Treats an empty or whitespace only string like a missing value */
+function notBlank(value?: string): string | null {
+	return value != null && value.trim().length > 0 ? value : null
+}
+
 export const blurhashImageTagName = "dav-blurhash-image"
 
 @customElement(blurhashImageTagName)
@@ -122,9 +127,11 @@ export class BlurhashImage extends LitElement {
 	private loadImage() {
 		if (isServer) {
 			// There is nothing to lazy load into in server rendered HTML, and
-			// IntersectionObserver does not exist there. Render the real image
-			// right away so that it ends up in the initial HTML.
-			if (this.src?.length > 0) this.imageSrc = this.src
+			// IntersectionObserver does not exist there, so the image is set
+			// right away. Consumers that only have the real src once the browser
+			// has fetched it still get the fallback rather than src="", which is
+			// invalid and makes some browsers request the page again.
+			this.imageSrc = notBlank(this.src) ?? notBlank(this.fallbackSrc) ?? ""
 			return
 		}
 
