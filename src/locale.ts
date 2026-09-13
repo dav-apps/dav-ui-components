@@ -1,6 +1,9 @@
 import { Locale } from "./types.js"
 
 export const en: Locale = {
+	textfield: {
+		required: "Required"
+	},
 	dropdown: {
 		defaultDropdownButtonText: "Select an option"
 	},
@@ -13,6 +16,9 @@ export const en: Locale = {
 }
 
 export const de: Locale = {
+	textfield: {
+		required: "Pflichtfeld"
+	},
 	dropdown: {
 		defaultDropdownButtonText: "Wähle eine Option"
 	},

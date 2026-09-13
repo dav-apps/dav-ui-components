@@ -4,6 +4,7 @@ import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings } from "../types.js"
 import {
+	getSettings,
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange
@@ -19,6 +20,8 @@ export class Textfield extends LitElement {
 
 	@query("#textfield") textfieldInput: HTMLInputElement
 
+	@state() private locale = getSettings().locale.textfield
+
 	@state() private textfieldLabelClasses = {
 		"textfield-label": true,
 		disabled: false
@@ -32,6 +35,7 @@ export class Textfield extends LitElement {
 	@property() label: string = ""
 	@property() placeholder: string = ""
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({ type: Boolean }) required: boolean = false
 	@property() type: string = "text"
 	@property() autocomplete: string = "on"
 	@property({ type: Boolean }) autofocus: boolean = false
@@ -52,6 +56,7 @@ export class Textfield extends LitElement {
 	}
 
 	settingsChange = (settings: Settings) => {
+		this.locale = settings.locale.textfield
 		setThemeColorVariables(this.style, settings.theme)
 	}
 
@@ -85,6 +90,13 @@ export class Textfield extends LitElement {
 					for="textfield"
 				>
 					${this.label}
+					${this.required
+						? html`<span
+								class="textfield-required"
+								title=${this.locale.required}
+								aria-hidden="true"
+							>*</span>`
+						: null}
 				</label>
 			`
 		}
@@ -114,6 +126,7 @@ export class Textfield extends LitElement {
 					.value=${this.value}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
+					?required=${this.required}
 					?autofocus=${this.autofocus}
 					type=${this.type}
 					placeholder=${this.placeholder}

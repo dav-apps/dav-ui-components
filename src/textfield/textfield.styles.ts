@@ -20,6 +20,15 @@ export const textfieldStyles = css`
 		color: rgb(var(--dav-color-on-surface-rgb), 0.6);
 	}
 
+	.textfield-required {
+		color: var(--dav-color-error);
+		font-weight: 600;
+	}
+
+	.textfield-label.disabled .textfield-required {
+		color: inherit;
+	}
+
 	#textfield {
 		margin: 0;
 		padding: 0px 9px;

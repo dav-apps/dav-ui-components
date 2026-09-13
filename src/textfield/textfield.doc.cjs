@@ -19,6 +19,11 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "required",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "type",
 			type: "String"
 		},
@@ -58,6 +63,28 @@ module.exports = {
 					label="Name"
 					placeholder="Your name"
 					autocomplete="given-name"
+				></dav-textfield>
+			`
+		},
+		{
+			title: "Required Textfield",
+			template: `
+				<dav-textfield
+					label="Name"
+					placeholder="Your name"
+					autocomplete="given-name"
+					required
+				></dav-textfield>
+			`
+		},
+		{
+			title: "Disabled required Textfield",
+			template: `
+				<dav-textfield
+					value="Monty"
+					label="Name"
+					required
+					disabled
 				></dav-textfield>
 			`
 		},

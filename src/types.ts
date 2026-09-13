@@ -12,6 +12,9 @@ export interface Settings {
 }
 
 export interface Locale {
+	textfield: {
+		required: string
+	}
 	dropdown: {
 		defaultDropdownButtonText: string
 	}
