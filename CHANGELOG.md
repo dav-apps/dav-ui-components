@@ -2,6 +2,17 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.18
+
+### Added
+
+- **Textfield**: add a `required` property with a red asterisk next to the label,
+  dimmed when disabled. The native input receives the `required` attribute.
+- **Textfield**: localize the required indicator tooltip as "Required" in English
+  and "Pflichtfeld" in German, including updates when the language changes.
+- **Textfield**: document the `required` property and add required and disabled
+  required examples.
+
 ## v1.17.1
 
 ### Fixed
