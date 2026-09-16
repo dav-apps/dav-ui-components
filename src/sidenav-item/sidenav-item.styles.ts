@@ -2,13 +2,14 @@ import { css } from "@lit/reactive-element"
 
 export const sidenavItemStyles = css`
 	:host {
+		display: block;
 		width: 100%;
 	}
 
 	.sidenav-item {
 		display: flex;
 		align-items: center;
-		width: inherit;
+		width: 100%;
 		height: 34px;
 		border: none;
 		border-radius: 20px;
@@ -21,6 +22,34 @@ export const sidenavItemStyles = css`
 		font-size: 13px;
 		font-family: var(--dav-font);
 		font-weight: 400;
+	}
+
+	.sidenav-item.node {
+		padding-left: 0;
+	}
+
+	.icon-container {
+		display: flex;
+		padding: 8px 12px;
+		transform: rotate(-90deg);
+	}
+
+	.icon-container > svg {
+		width: 12px;
+		height: 12px;
+		fill: currentColor;
+	}
+
+	.children-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		margin: 4px 0 0 12px;
+	}
+
+	.children-container[hidden] {
+		display: none;
 	}
 
 	.sidenav-item.active {

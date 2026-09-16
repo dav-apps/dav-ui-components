@@ -14,7 +14,7 @@ module.exports = {
 	],
 	examples: [
 		{
-			title: "Sidenav (inline)",
+			title: "Sidenav (inline) with subitems",
 			controller: function (element) {
 				let sidenavItems = element.getElementsByTagName("dav-sidenav-item")
 
@@ -29,24 +29,29 @@ module.exports = {
 				}
 			},
 			template: `
+				<p>Use node to enable subitems and open to expand them initially.
+					Click the arrow or double-click the label to expand or collapse.</p>
 				<dav-sidenav>
 					<dav-sidenav-item
 						value="Startseite"
 					></dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Abenteuer"
-						active
-					></dav-sidenav-item>
+					<dav-sidenav-item value="Bücher" node open>
+						<dav-sidenav-item
+							value="Abenteuer"
+							active
+						></dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Fiktion"
-					></dav-sidenav-item>
+						<dav-sidenav-item value="Fiktion" node>
+							<dav-sidenav-item value="Fantasy"></dav-sidenav-item>
+							<dav-sidenav-item value="Science-Fiction"></dav-sidenav-item>
+						</dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Sachbücher"
-						disabled
-					></dav-sidenav-item>
+						<dav-sidenav-item
+							value="Sachbücher"
+							disabled
+						></dav-sidenav-item>
+					</dav-sidenav-item>
 
 					<dav-sidenav-item
 						value="Poesie"
@@ -55,7 +60,7 @@ module.exports = {
 			`
 		},
 		{
-			title: "Sidenav (over)",
+			title: "Sidenav (over) with subitems",
 			controller: function (element) {
 				let sidenav = element.getElementsByTagName("dav-sidenav")[0]
 				let sidenavItems = element.getElementsByTagName("dav-sidenav-item")
@@ -80,6 +85,8 @@ module.exports = {
 				}
 			},
 			template: `
+				<p>Use node to enable subitems and open to expand them initially.
+					Click the arrow or double-click the label to expand or collapse.</p>
 				<dav-button>
 					Open sidenav
 				</dav-button>
@@ -89,19 +96,22 @@ module.exports = {
 						value="Startseite"
 					></dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Abenteuer"
-						active
-					></dav-sidenav-item>
+					<dav-sidenav-item value="Bücher" node open>
+						<dav-sidenav-item
+							value="Abenteuer"
+							active
+						></dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Fiktion"
-					></dav-sidenav-item>
+						<dav-sidenav-item value="Fiktion" node>
+							<dav-sidenav-item value="Fantasy"></dav-sidenav-item>
+							<dav-sidenav-item value="Science-Fiction"></dav-sidenav-item>
+						</dav-sidenav-item>
 
-					<dav-sidenav-item
-						value="Sachbücher"
-						disabled
-					></dav-sidenav-item>
+						<dav-sidenav-item
+							value="Sachbücher"
+							disabled
+						></dav-sidenav-item>
+					</dav-sidenav-item>
 
 					<dav-sidenav-item
 						value="Poesie"
