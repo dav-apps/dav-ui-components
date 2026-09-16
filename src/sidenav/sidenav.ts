@@ -80,6 +80,15 @@ export class Sidenav extends LitElement {
 		this.dispatchEvent(new CustomEvent("dismiss"))
 	}
 
+	private itemSelect(event: Event) {
+		event.stopPropagation()
+
+		if (this.mode === SidenavMode.over && this.open) {
+			this.open = false
+			this.dispatchEvent(new CustomEvent("dismiss"))
+		}
+	}
+
 	render() {
 		if (this.open) {
 			this.containerOverContentStyles.display = "flex"
@@ -90,7 +99,7 @@ export class Sidenav extends LitElement {
 		if (this.mode === SidenavMode.side || this.mode === SidenavMode.top) {
 			return html`
 				<div class=${classMap(this.containerInlineClasses)}>
-					<slot></slot>
+					<slot @sidenav-item-select=${this.itemSelect}></slot>
 				</div>
 			`
 		} else {
@@ -102,7 +111,7 @@ export class Sidenav extends LitElement {
 					<div class="overlay" @click=${this.overlayClick}></div>
 
 					<div class="container-over-content">
-						<slot></slot>
+						<slot @sidenav-item-select=${this.itemSelect}></slot>
 					</div>
 				</div>
 			`

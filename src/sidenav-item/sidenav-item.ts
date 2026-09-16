@@ -55,7 +55,15 @@ export class SidenavItem extends LitElement {
 	buttonClick(event: PointerEvent) {
 		if (this.disabled) {
 			event.stopPropagation()
+			return
 		}
+
+		this.dispatchEvent(
+			new CustomEvent("sidenav-item-select", {
+				bubbles: true,
+				composed: true
+			})
+		)
 	}
 
 	async updated(changedProperties: Map<string, any>) {
