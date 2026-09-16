@@ -2,6 +2,24 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.19
+
+### Added
+
+- **SidenavItem**: add nested subitems with `node` and `open` properties,
+  including arrow clicks, double-clicks and expand/collapse animations like TreeItem.
+- **SidenavItem**: add component documentation with active, disabled and nested examples.
+- **Sidenav**: add inline and overlay examples with multiple levels of subitems.
+
+### Changed
+
+- **Sidenav**: close the overlay when an item or subitem is selected and emit
+  `dismiss`. Arrow clicks and disabled items keep it open.
+
+### Fixed
+
+- **IconButton**: remove debug logging of the loading state during rendering.
+
 ## v1.18
 
 ### Added
