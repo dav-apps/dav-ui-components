@@ -246,7 +246,6 @@ export class IconButton extends LitElement {
 		this.iconButtonClasses.xs = this.size == ButtonSize.xs
 		this.iconButtonClasses.square = this.shape == IconButtonShape.square
 		this.tooltipOverlayClasses.show = this.tooltipVisible
-		console.log(this.loading)
 
 		if (this.loading) {
 			return html`
