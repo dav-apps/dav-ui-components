@@ -10,9 +10,11 @@ export const buttonStyles = css`
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
-		height: 40px;
+		min-height: 40px;
 		width: inherit;
 		padding: 0 24px;
+		text-align: center;
+		overflow-wrap: anywhere;
 		font-size: 14px;
 		font-family: var(--dav-font);
 		font-weight: 500;
@@ -29,7 +31,7 @@ export const buttonStyles = css`
 	}
 
 	button.sm {
-		height: 34px;
+		min-height: 34px;
 		padding: 0 16px;
 		font-size: 13px;
 	}
@@ -39,7 +41,7 @@ export const buttonStyles = css`
 	}
 
 	button.xs {
-		height: 28px;
+		min-height: 28px;
 		padding: 0 12px;
 		font-size: 12px;
 	}

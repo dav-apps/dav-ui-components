@@ -10,12 +10,14 @@ export const sidenavItemStyles = css`
 		display: flex;
 		align-items: center;
 		width: 100%;
-		height: 34px;
+		min-height: 34px;
 		border: none;
 		border-radius: 20px;
 		background-color: transparent;
 		color: var(--dav-color-on-surface);
 		padding: 0 16px;
+		text-align: left;
+		overflow-wrap: anywhere;
 		transition: 200ms;
 		text-decoration: none;
 		cursor: pointer;

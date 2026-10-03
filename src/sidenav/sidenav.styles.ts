@@ -6,6 +6,7 @@ export const sidenavStyles = css`
 		flex-direction: column;
 		gap: 4px;
 		width: max-content;
+		max-width: 100%;
 		background-color: var(--dav-color-surface);
 	}
 
