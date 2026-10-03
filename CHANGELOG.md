@@ -2,6 +2,15 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.19.1
+
+### Fixed
+
+- **Button**: allow long labels to wrap on narrow widths by using `min-height`
+  instead of a fixed height, with centered text.
+- **SidenavItem**: allow long labels to wrap by using `min-height` instead of a fixed height.
+- **Sidenav**: limit the width to its container with `max-width: 100%`.
+
 ## v1.19
 
 ### Added
