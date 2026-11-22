@@ -23,6 +23,15 @@ module.exports = {
 			type: "Number"
 		},
 		{
+			name: "fullWidth",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
+			name: "maxListHeight",
+			type: "Number"
+		},
+		{
 			name: "disabled",
 			type: "Boolean",
 			values: "true / false"

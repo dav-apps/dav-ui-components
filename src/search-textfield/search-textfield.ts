@@ -1,6 +1,7 @@
 import { LitElement, html, isServer } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
+import { styleMap } from "lit/directives/style-map.js"
 import { Settings } from "../types.js"
 import {
 	setThemeColorVariables,
@@ -27,6 +28,7 @@ export class SearchTextfield extends LitElement {
 	@property() value: string = ""
 	@property() label: string = ""
 	@property({ type: Boolean }) disabled: boolean = false
+	@property({ type: Number }) maxListHeight: number = 0
 	@property({ type: Array }) searchResults: {
 		key: string
 		value: string
@@ -101,7 +103,13 @@ export class SearchTextfield extends LitElement {
 					@escape=${() => (this.showSearchResults = false)}
 				></dav-textfield>
 
-				<div class=${classMap(this.searchResultsContainerClasses)}>
+				<div
+					class=${classMap(this.searchResultsContainerClasses)}
+					style=${styleMap({
+						"max-height":
+							this.maxListHeight > 0 ? `${this.maxListHeight}px` : null
+					})}
+				>
 					${this.searchResults.map(
 						result =>
 							html`

@@ -62,8 +62,9 @@ export class Dropdown extends LitElement {
 	@state() private chevronSvgContainerStyles = {
 		display: "block"
 	}
-	@state() private dropdownContentStyles = {
-		width: "160px"
+	@state() private dropdownContentStyles: StyleInfo = {
+		width: "160px",
+		"max-height": null
 	}
 
 	@property() label: string = ""
@@ -75,6 +76,8 @@ export class Dropdown extends LitElement {
 	})
 	position: DropdownPosition = DropdownPosition.bottom
 	@property({ type: Number }) width: number = 160
+	@property({ type: Boolean, reflect: true }) fullWidth: boolean = false
+	@property({ type: Number }) maxListHeight: number = 0
 	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Boolean }) compact: boolean = false
 
@@ -233,11 +236,15 @@ export class Dropdown extends LitElement {
 			this.dropdownButtonStyles["justify-content"] = "center"
 			this.chevronSvgContainerStyles.display = "none"
 		} else {
-			this.dropdownButtonStyles.width = `${this.width}px`
-			this.dropdownContentStyles.width = `${this.width}px`
+			const width = this.fullWidth ? "100%" : `${this.width}px`
+			this.dropdownButtonStyles.width = width
+			this.dropdownContentStyles.width = width
 			this.dropdownButtonStyles["justify-content"] = null
 			this.chevronSvgContainerStyles.display = "block"
 		}
+
+		this.dropdownContentStyles["max-height"] =
+			this.maxListHeight > 0 ? `${this.maxListHeight}px` : null
 
 		return html`
 			<div class="dropdown">

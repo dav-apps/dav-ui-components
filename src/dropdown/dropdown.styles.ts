@@ -5,10 +5,19 @@ export const dropdownStyles = css`
 		display: inline-flex;
 	}
 
+	:host([fullwidth]) {
+		display: flex;
+		width: 100%;
+	}
+
 	.dropdown {
 		position: relative;
 		display: inline-flex;
 		flex-direction: column;
+	}
+
+	:host([fullwidth]) .dropdown {
+		width: 100%;
 	}
 
 	.dropdown-button {
@@ -23,6 +32,7 @@ export const dropdownStyles = css`
 		font-family: var(--dav-font);
 		font-size: 14px;
 		transition: 200ms;
+		transition-property: background-color, border-color;
 		cursor: pointer;
 	}
 

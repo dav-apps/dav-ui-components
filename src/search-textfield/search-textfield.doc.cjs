@@ -12,6 +12,10 @@ module.exports = {
 		{
 			name: "searchResults",
 			type: "Array<{ key: string, value: string }>"
+		},
+		{
+			name: "maxListHeight",
+			type: "Number"
 		}
 	],
 	examples: [
