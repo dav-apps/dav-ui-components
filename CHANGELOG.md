@@ -2,6 +2,20 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.20
+
+### Added
+
+- **Dropdown**: add `fullWidth` to fill the width of the parent instead of a
+  fixed `width` in pixels.
+- **Dropdown**, **SearchTextfield**: add `maxListHeight` to limit the height of
+  the opened list in pixels; it scrolls beyond that.
+
+### Fixed
+
+- **Dropdown**: only animate the colors of the button, so a changed width no
+  longer grows visibly.
+
 ## v1.19.1
 
 ### Fixed
