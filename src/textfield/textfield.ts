@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
+import { live } from "lit/directives/live.js"
 import { query } from "lit/decorators/query.js"
 import { classMap } from "lit/directives/class-map.js"
 import { Settings } from "../types.js"
@@ -123,7 +124,7 @@ export class Textfield extends LitElement {
 					id="textfield"
 					class=${classMap(this.textfieldInputClasses)}
 					name="textfield"
-					.value=${this.value}
+					.value=${live(this.value)}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
 					?required=${this.required}

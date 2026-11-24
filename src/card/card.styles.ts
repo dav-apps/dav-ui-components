@@ -6,6 +6,7 @@ export const cardStyles = css`
 		flex-direction: column;
 		min-width: 60px;
 		width: inherit;
+		box-sizing: border-box;
 		height: inherit;
 		background-color: var(--dav-color-surface);
 		color: var(--dav-color-on-surface);

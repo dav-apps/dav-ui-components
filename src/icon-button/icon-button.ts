@@ -20,6 +20,10 @@ export const iconButtonTagName = "dav-icon-button"
 @customElement(iconButtonTagName)
 export class IconButton extends LitElement {
 	static styles = [globalStyles, iconButtonStyles]
+	static shadowRootOptions = {
+		...LitElement.shadowRootOptions,
+		delegatesFocus: true
+	}
 
 	@query(".icon-button") button: HTMLElement
 

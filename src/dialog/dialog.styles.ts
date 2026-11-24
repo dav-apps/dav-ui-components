@@ -1,6 +1,29 @@
 import { css } from "@lit/reactive-element"
 
 export const dialogStyles = css`
+	.modal {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0;
+		border: none;
+		background: transparent;
+		overflow: visible;
+		color: inherit;
+	}
+
+	.modal::backdrop {
+		background: transparent;
+	}
+
+	.modal:focus {
+		outline: none;
+	}
+
 	.overlay {
 		position: fixed;
 		top: 0;

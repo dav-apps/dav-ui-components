@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit"
 import { customElement, property, state } from "lit/decorators.js"
+import { live } from "lit/directives/live.js"
 import { query } from "lit/decorators/query.js"
 import { styleMap } from "lit/directives/style-map.js"
 import { classMap } from "lit/directives/class-map.js"
@@ -101,7 +102,7 @@ export class Textarea extends LitElement {
 					style=${styleMap(this.textareaStyles)}
 					class=${classMap(this.textareaClasses)}
 					name="textarea"
-					.value=${this.value}
+					.value=${live(this.value)}
 					?aria-disabled=${this.disabled}
 					?readonly=${this.disabled}
 					placeholder=${this.placeholder}

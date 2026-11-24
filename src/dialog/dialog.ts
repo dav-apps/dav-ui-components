@@ -1,6 +1,7 @@
-import { LitElement, html, isServer } from "lit"
+import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
 import { styleMap } from "lit/directives/style-map.js"
+import { ifDefined } from "lit/directives/if-defined.js"
 import { Settings, ThemeColor } from "../types.js"
 import {
 	hasWindow,
@@ -24,6 +25,7 @@ export const dialogTagName = "dav-dialog"
 export class Dialog extends LitElement {
 	static styles = [globalStyles, dialogStyles]
 
+	@query(".modal") modal: HTMLDialogElement
 	@query(".overlay") overlay: HTMLDivElement
 	@query(".dialog") dialog: HTMLDivElement
 
@@ -70,9 +72,6 @@ export class Dialog extends LitElement {
 	connectedCallback() {
 		super.connectedCallback()
 		subscribeSettingsChange(this.settingsChange)
-		if (!isServer) {
-			document.addEventListener("keydown", this.onKeyDown)
-		}
 
 		if (hasWindow()) {
 			let screenSegments: DOMRect[] | null = null
@@ -94,10 +93,10 @@ export class Dialog extends LitElement {
 	disconnectedCallback() {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
+	}
 
-		if (!isServer) {
-			document.removeEventListener("keydown", this.onKeyDown)
-		}
+	firstUpdated() {
+		if (this.visible) this.openModal()
 	}
 
 	settingsChange = (settings: Settings) => {
@@ -113,6 +112,8 @@ export class Dialog extends LitElement {
 			let animations: Animation[] = []
 
 			if (newIsVisible) {
+				this.openModal()
+
 				// Play slide in animation
 				animations.push(slideInDialog(this.dialog))
 
@@ -132,14 +133,37 @@ export class Dialog extends LitElement {
 			await Promise.all(animations.map(a => a.finished))
 
 			this.containerStyles.display = newIsVisible ? "flex" : "none"
+			if (!this.visible && this.modal.open) this.modal.close()
 			this.requestUpdate()
 		}
 	}
 
-	onKeyDown = (event: KeyboardEvent) => {
-		if (event.key == "Escape" && !this.loading) {
-			this.dispatchEvent(new CustomEvent("dismiss"))
-		}
+	// In the top layer no transformed or clipping ancestor can cut the dialog off
+	private openModal() {
+		if (this.modal.open || !this.isConnected) return
+		this.modal.showModal()
+	}
+
+	// Only the topmost open dialog gets the key, a nested one handles it first
+	private onKeyDown(event: KeyboardEvent) {
+		if (event.key != "Escape" || event.defaultPrevented) return
+
+		event.preventDefault()
+		if (!this.loading) this.dispatchEvent(new CustomEvent("dismiss"))
+	}
+
+	private onCancel(event: Event) {
+		event.preventDefault()
+		if (!this.loading) this.dispatchEvent(new CustomEvent("dismiss"))
+	}
+
+	// The browser may close the dialog itself, e.g. on a repeated Escape
+	private onClose() {
+		if (!this.visible) return
+		if (!this.loading) this.dispatchEvent(new CustomEvent("dismiss"))
+		this.updateComplete.then(() => {
+			if (this.visible) this.openModal()
+		})
 	}
 
 	private overlayClick() {
@@ -159,7 +183,7 @@ export class Dialog extends LitElement {
 	getHeadline() {
 		if (this.headline.length > 0) {
 			return html`
-				<h4 class="headline">${this.headline}</h4>
+				<h4 class="headline" id="headline">${this.headline}</h4>
 			`
 		}
 	}
@@ -225,36 +249,41 @@ export class Dialog extends LitElement {
 				: "24px"
 
 		return html`
-			<div style=${styleMap(this.containerStyles)}>
-				<div
-					class="overlay"
-					style=${styleMap(this.overlayStyles)}
-					@click=${this.overlayClick}
-				></div>
-
-				<div
-					class="dialog"
-					style=${styleMap(this.dialogStyles)}
-					role="dialog"
-					aria-modal="true"
-					aria-live="assertive"
-					aria-labelledby="headline"
-				>
-					${this.getHeadline()}
-
+			<dialog
+				class="modal"
+				autofocus
+				aria-live="assertive"
+				aria-labelledby=${ifDefined(
+					this.headline.length > 0 ? "headline" : undefined
+				)}
+				@keydown=${this.onKeyDown}
+				@cancel=${this.onCancel}
+				@close=${this.onClose}
+			>
+				<div style=${styleMap(this.containerStyles)}>
 					<div
-						class="content-container"
-						style=${styleMap(this.contentContainerStyles)}
-					>
-						<slot></slot>
-					</div>
+						class="overlay"
+						style=${styleMap(this.overlayStyles)}
+						@click=${this.overlayClick}
+					></div>
 
-					<div class="button-container">
-						${this.getProgressRing()} ${this.getDefaultButton()}
-						${this.getPrimaryButton()}
+					<div class="dialog" style=${styleMap(this.dialogStyles)}>
+						${this.getHeadline()}
+
+						<div
+							class="content-container"
+							style=${styleMap(this.contentContainerStyles)}
+						>
+							<slot></slot>
+						</div>
+
+						<div class="button-container">
+							${this.getProgressRing()} ${this.getDefaultButton()}
+							${this.getPrimaryButton()}
+						</div>
 					</div>
 				</div>
-			</div>
+			</dialog>
 		`
 	}
 }

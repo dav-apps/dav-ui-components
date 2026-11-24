@@ -116,6 +116,14 @@ export const dropdownStyles = css`
 		bottom: 30px;
 	}
 
+	.dropdown-content[popover] {
+		position: fixed;
+		inset: auto;
+		margin: 0;
+		padding: 0;
+		color: inherit;
+	}
+
 	.dropdown-content.visible {
 		display: block;
 	}

@@ -6,6 +6,18 @@ Releases before v1.17 are not documented here.
 
 ### Fixed
 
+- **Card**: include the border in the width, so a card with `width: 100%` no
+  longer overflows its parent by 2px.
+- **Textfield**, **Textarea**: show a value set right after an input even when
+  it equals the value rendered before, e.g. when a value below the minimum is
+  reset.
+- **IconButton**, **ContextMenuItem**: `focus()` focuses the inner button.
+- **Dialog**: open in the top layer with the native `<dialog>`, so transformed
+  or clipping ancestors no longer cut it off and it no longer has to be moved to
+  `document.body`. Focus stays in the open dialog and returns on close; Escape
+  only dismisses the topmost open dialog.
+- **Dropdown**: open the list in the top layer, so a card, dialog or other
+  `overflow` no longer clips it.
 - **FilterGroup**: pick up filter buttons that are added or removed after the
   group was connected, e.g. when a framework renders the buttons after their
   group; a selected button stays selected.

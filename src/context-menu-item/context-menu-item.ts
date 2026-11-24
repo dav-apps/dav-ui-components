@@ -14,6 +14,10 @@ export const contextMenuItemTagName = "dav-context-menu-item"
 @customElement(contextMenuItemTagName)
 export class ContextMenuItem extends LitElement {
 	static styles = [globalStyles, contextMenuItemStyles]
+	static shadowRootOptions = {
+		...LitElement.shadowRootOptions,
+		delegatesFocus: true
+	}
 
 	@property() value: string = ""
 

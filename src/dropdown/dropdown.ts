@@ -1,5 +1,5 @@
 import { LitElement, html, isServer } from "lit"
-import { customElement, property, state } from "lit/decorators.js"
+import { customElement, property, state, query } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { StyleInfo, styleMap } from "lit/directives/style-map.js"
 import {
@@ -20,10 +20,16 @@ import { globalStyles } from "../styles.js"
 import { dropdownStyles } from "./dropdown.styles.js"
 
 export const dropdownTagName = "dav-dropdown"
+// In the top layer the list is not clipped by a card, dialog or other overflow
+const supportsPopover =
+	!isServer && typeof HTMLElement.prototype.showPopover === "function"
 
 @customElement(dropdownTagName)
 export class Dropdown extends LitElement {
 	static styles = [globalStyles, dropdownStyles]
+
+	@query(".dropdown-button") private dropdownButton: HTMLButtonElement
+	@query(".dropdown-content") private dropdownContent: HTMLDivElement
 
 	@state() private locale = getSettings().locale.dropdown
 	@state() private showItems: boolean = false
@@ -91,6 +97,54 @@ export class Dropdown extends LitElement {
 		super.disconnectedCallback()
 		unsubscribeSettingsChange(this.settingsChange)
 		if (!isServer) document.removeEventListener("click", this.documentClick)
+		this.followButton(false)
+	}
+
+	// Set here and not in the template, a server rendered list hydrates without it
+	firstUpdated() {
+		if (supportsPopover)
+			this.dropdownContent.setAttribute("popover", "manual")
+	}
+
+	updated(changedProperties: Map<string, any>) {
+		if (!supportsPopover || !changedProperties.has("showItems")) return
+
+		if (this.showItems) {
+			this.dropdownContent.showPopover()
+			this.positionList()
+		} else if (this.dropdownContent.matches(":popover-open")) {
+			this.dropdownContent.hidePopover()
+		}
+
+		this.followButton(this.showItems)
+	}
+
+	private followButton(follow: boolean) {
+		if (isServer) return
+
+		if (follow) {
+			window.addEventListener("scroll", this.positionList, true)
+			window.addEventListener("resize", this.positionList)
+		} else {
+			window.removeEventListener("scroll", this.positionList, true)
+			window.removeEventListener("resize", this.positionList)
+		}
+	}
+
+	// The list sits fixed at the button, above it for position top
+	private positionList = () => {
+		const rect = this.dropdownButton.getBoundingClientRect()
+		const style = this.dropdownContent.style
+		style.left = `${rect.left}px`
+		style.width = `${rect.width}px`
+
+		if (this.position == DropdownPosition.top) {
+			style.top = "auto"
+			style.bottom = `${window.innerHeight - rect.top}px`
+		} else {
+			style.top = `${rect.bottom}px`
+			style.bottom = "auto"
+		}
 	}
 
 	settingsChange = (settings: Settings) => {
@@ -232,13 +286,13 @@ export class Dropdown extends LitElement {
 
 		if (this.isCompact()) {
 			this.dropdownButtonStyles.width = "50px"
-			this.dropdownContentStyles.width = "50px"
+			this.dropdownContentStyles.width = supportsPopover ? null : "50px"
 			this.dropdownButtonStyles["justify-content"] = "center"
 			this.chevronSvgContainerStyles.display = "none"
 		} else {
 			const width = this.fullWidth ? "100%" : `${this.width}px`
 			this.dropdownButtonStyles.width = width
-			this.dropdownContentStyles.width = width
+			this.dropdownContentStyles.width = supportsPopover ? null : width
 			this.dropdownButtonStyles["justify-content"] = null
 			this.chevronSvgContainerStyles.display = "block"
 		}
