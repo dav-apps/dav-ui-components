@@ -2,6 +2,14 @@
 
 Releases before v1.17 are not documented here.
 
+## Unreleased
+
+### Fixed
+
+- **FilterGroup**: pick up filter buttons that are added or removed after the
+  group was connected, e.g. when a framework renders the buttons after their
+  group; a selected button stays selected.
+
 ## v1.20
 
 ### Added

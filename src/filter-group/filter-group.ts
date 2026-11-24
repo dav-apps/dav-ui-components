@@ -44,6 +44,9 @@ export class FilterGroup extends LitElement {
 	}
 
 	updateFilterButtons() {
+		// Buttons can be added or removed, the selection stays with its button
+		const selectedFilterButton =
+			this.filterButtons[this.selectedFilterButtonIndex]
 		this.filterButtons = []
 		const filterButtons = this.querySelectorAll("dav-filter-button")
 
@@ -53,7 +56,12 @@ export class FilterGroup extends LitElement {
 			this.filterButtons.push(filterButton)
 		}
 
+		this.selectedFilterButtonIndex =
+			selectedFilterButton == null
+				? -1
+				: this.filterButtons.indexOf(selectedFilterButton)
 		this.selectFilterButton()
+		this.requestUpdate()
 	}
 
 	onFilterButtonClick = (event: Event) => {
@@ -113,7 +121,7 @@ export class FilterGroup extends LitElement {
 					style=${styleMap(this.activeIndicatorStyles)}
 				></div>
 
-				<slot></slot>
+				<slot @slotchange=${() => this.updateFilterButtons()}></slot>
 			</div>
 		`
 	}
