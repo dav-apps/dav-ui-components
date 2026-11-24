@@ -4,6 +4,7 @@ import {
 	DropdownOption,
 	DropdownOptionType,
 	SidenavMode,
+	SidenavPosition,
 	HeaderSize,
 	IconCardSize
 } from "./src/types.js"
@@ -172,6 +173,7 @@ export {
 	DropdownOption,
 	DropdownOptionType,
 	SidenavMode,
+	SidenavPosition,
 	HeaderSize,
 	IconCardSize,
 	Badge,

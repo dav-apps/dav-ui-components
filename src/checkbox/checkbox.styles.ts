@@ -58,13 +58,32 @@ export const checkboxStyles = css`
 		fill: transparent;
 		stroke: var(--dav-color-on-surface);
 		stroke-width: 0px;
-		stroke-dasharray: 32;
-		stroke-dashoffset: 32;
+	}
+
+	svg path {
 		transition: 160ms ease-in-out;
 	}
 
-	.checkbox.checked > svg {
+	.check {
+		stroke-dasharray: 32;
+		stroke-dashoffset: 32;
+	}
+
+	.dash {
+		stroke-dasharray: 12;
+		stroke-dashoffset: 12;
+	}
+
+	.checkbox.checked > svg .check {
 		stroke-dashoffset: 9;
+	}
+
+	.checkbox.indeterminate > svg .check {
+		stroke-dashoffset: 32;
+	}
+
+	.checkbox.indeterminate > svg .dash {
+		stroke-dashoffset: 0;
 	}
 
 	.checkbox.disabled > svg {

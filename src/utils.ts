@@ -8,6 +8,7 @@ import {
 	IconButtonShape,
 	DropdownPosition,
 	SidenavMode,
+	SidenavPosition,
 	Settings,
 	Alignment,
 	HeaderSize,
@@ -402,6 +403,10 @@ export function convertStringToSidenavMode(value: string): SidenavMode {
 		default:
 			return SidenavMode.side
 	}
+}
+
+export function convertStringToSidenavPosition(value: string): SidenavPosition {
+	return value == "right" ? SidenavPosition.right : SidenavPosition.left
 }
 
 export function convertStringToAlignment(value: string): Alignment {

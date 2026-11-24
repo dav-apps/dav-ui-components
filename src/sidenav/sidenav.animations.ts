@@ -1,17 +1,18 @@
 export function slideIn(
 	content: HTMLDivElement,
-	overlay: HTMLDivElement
+	overlay: HTMLDivElement,
+	side: "left" | "right" = "left"
 ): Animation[] {
 	const duration = 160
 
 	let contentAnimation = content.animate(
 		[
 			{
-				left: "-20px",
+				[side]: "-20px",
 				opacity: 0
 			},
 			{
-				left: "0",
+				[side]: "0",
 				opacity: 1
 			}
 		],
@@ -42,18 +43,19 @@ export function slideIn(
 
 export function slideOut(
 	content: HTMLDivElement,
-	overlay: HTMLDivElement
+	overlay: HTMLDivElement,
+	side: "left" | "right" = "left"
 ): Animation[] {
 	const duration = 160
 
 	let contentAnimation = content.animate(
 		[
 			{
-				left: "0",
+				[side]: "0",
 				opacity: 1
 			},
 			{
-				left: "-20px",
+				[side]: "-20px",
 				opacity: 0
 			}
 		],

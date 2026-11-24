@@ -10,6 +10,11 @@ module.exports = {
 			name: "open",
 			type: "Boolean",
 			values: "true / false"
+		},
+		{
+			name: "position",
+			type: "String",
+			values: `"left", "right"`
 		}
 	],
 	examples: [
@@ -115,6 +120,52 @@ module.exports = {
 
 					<dav-sidenav-item
 						value="Poesie"
+					></dav-sidenav-item>
+				</dav-sidenav>
+			`
+		},
+		{
+			title: "Sidenav (over) on the right",
+			controller: function (element) {
+				let sidenav = element.getElementsByTagName("dav-sidenav")[0]
+				let sidenavItems = element.getElementsByTagName("dav-sidenav-item")
+				let button = element.getElementsByTagName("dav-button")[0]
+
+				sidenav.addEventListener("dismiss", () => {
+					sidenav.open = false
+				})
+
+				for (let sidenavItem of sidenavItems) {
+					sidenavItem.addEventListener("click", () => {
+						for (let item of sidenavItems) {
+							item.active = false
+						}
+
+						sidenavItem.active = true
+					})
+				}
+
+				button.onclick = () => {
+					sidenav.open = true
+				}
+			},
+			template: `
+				<dav-button>
+					Open sidenav
+				</dav-button>
+
+				<dav-sidenav mode="over" position="right">
+					<dav-sidenav-item
+						value="Gastraum"
+						active
+					></dav-sidenav-item>
+
+					<dav-sidenav-item
+						value="Terrasse"
+					></dav-sidenav-item>
+
+					<dav-sidenav-item
+						value="Wintergarten"
 					></dav-sidenav-item>
 				</dav-sidenav>
 			`

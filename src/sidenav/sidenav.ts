@@ -2,12 +2,13 @@ import { LitElement, html } from "lit"
 import { customElement, property, state, query } from "lit/decorators.js"
 import { classMap } from "lit/directives/class-map.js"
 import { styleMap } from "lit/directives/style-map.js"
-import { SidenavMode, Settings } from "../types.js"
+import { SidenavMode, SidenavPosition, Settings } from "../types.js"
 import {
 	setThemeColorVariables,
 	subscribeSettingsChange,
 	unsubscribeSettingsChange,
-	convertStringToSidenavMode
+	convertStringToSidenavMode,
+	convertStringToSidenavPosition
 } from "../utils.js"
 import { globalStyles } from "../styles.js"
 import { sidenavStyles } from "./sidenav.styles.js"
@@ -36,6 +37,11 @@ export class Sidenav extends LitElement {
 		converter: (value: string) => convertStringToSidenavMode(value)
 	})
 	mode: SidenavMode = SidenavMode.side
+	@property({
+		type: String,
+		converter: (value: string) => convertStringToSidenavPosition(value)
+	})
+	position: SidenavPosition = SidenavPosition.left
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -60,12 +66,14 @@ export class Sidenav extends LitElement {
 			let newIsOpen = !changedProperties.get("open") as boolean
 			let animations: Animation[] = []
 
+			const side = this.position == SidenavPosition.right ? "right" : "left"
+
 			if (newIsOpen) {
 				// Play slide in animation
-				animations = slideIn(this.containerOverContent, this.overlay)
+				animations = slideIn(this.containerOverContent, this.overlay, side)
 			} else {
 				// Play slide out animation
-				animations = slideOut(this.containerOverContent, this.overlay)
+				animations = slideOut(this.containerOverContent, this.overlay, side)
 			}
 
 			// Wait for all animations to end
@@ -103,9 +111,14 @@ export class Sidenav extends LitElement {
 				</div>
 			`
 		} else {
+			const containerOverClasses = {
+				"container-over": true,
+				right: this.position == SidenavPosition.right
+			}
+
 			return html`
 				<div
-					class="container-over"
+					class=${classMap(containerOverClasses)}
 					style=${styleMap(this.containerOverContentStyles)}
 				>
 					<div class="overlay" @click=${this.overlayClick}></div>

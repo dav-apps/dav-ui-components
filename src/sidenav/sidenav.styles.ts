@@ -52,4 +52,10 @@ export const sidenavStyles = css`
 		border-radius: 0 20px 20px 0;
 		padding: 6px;
 	}
+
+	.container-over.right .container-over-content {
+		left: auto;
+		right: 0;
+		border-radius: 20px 0 0 20px;
+	}
 `

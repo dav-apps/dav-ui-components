@@ -19,6 +19,7 @@ export class Checkbox extends LitElement {
 	@state() private checkboxClasses = {
 		checkbox: true,
 		checked: false,
+		indeterminate: false,
 		disabled: false
 	}
 	@state() private checkboxLabelClasses = {
@@ -31,6 +32,8 @@ export class Checkbox extends LitElement {
 
 	@property() label: string = ""
 	@property({ type: Boolean }) checked: boolean = false
+	// Shown instead of checked, e.g. when only some items of a group are chosen
+	@property({ type: Boolean }) indeterminate: boolean = false
 	@property({ type: Boolean }) disabled: boolean = false
 	@property({ type: Boolean }) labelHidden: boolean = false
 	@property({ type: Boolean }) strikeThrough: boolean = false
@@ -64,6 +67,7 @@ export class Checkbox extends LitElement {
 	toggleCheckbox() {
 		if (this.disabled) return
 
+		this.indeterminate = false
 		this.checked = !this.checked
 
 		this.dispatchEvent(
@@ -75,6 +79,7 @@ export class Checkbox extends LitElement {
 
 	render() {
 		this.checkboxClasses.checked = this.checked
+		this.checkboxClasses.indeterminate = this.indeterminate
 		this.checkboxClasses.disabled = this.disabled
 		this.checkboxLabelClasses.disabled = this.disabled
 		this.checkboxLabelClasses.empty = this.label.length == 0
@@ -87,18 +92,29 @@ export class Checkbox extends LitElement {
 				class=${classMap(this.checkboxClasses)}
 				tabindex="0"
 				role="checkbox"
-				?aria-checked=${this.checked}
-				?aria-disabled=${this.disabled}
+				aria-checked=${this.indeterminate
+					? "mixed"
+					: this.checked
+					? "true"
+					: "false"}
+				aria-disabled=${this.disabled ? "true" : "false"}
 				aria-labelledby="checkbox-label"
 				@click=${this.checkboxClick}
 				@keydown=${this.checkboxKeydown}
 			>
 				<svg viewBox="0 0 24 24" width="18" height="18">
 					<path
+						class="check"
 						d="M4 12.6111L8.92308 17.5L20 6.5"
 						stroke-width="2"
 						stroke-linecap="round"
 						stroke-linejoin="round"
+					/>
+					<path
+						class="dash"
+						d="M6 12H18"
+						stroke-width="2"
+						stroke-linecap="round"
 					/>
 				</svg>
 			</div>

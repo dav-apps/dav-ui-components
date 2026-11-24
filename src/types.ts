@@ -77,6 +77,11 @@ export enum SidenavMode {
 	over = "over"
 }
 
+export enum SidenavPosition {
+	left = "left",
+	right = "right"
+}
+
 export enum Alignment {
 	start = "start",
 	center = "center",

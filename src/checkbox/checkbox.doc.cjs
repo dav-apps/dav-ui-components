@@ -11,6 +11,11 @@ module.exports = {
 			values: "true / false"
 		},
 		{
+			name: "indeterminate",
+			type: "Boolean",
+			values: "true / false"
+		},
+		{
 			name: "disabled",
 			type: "Boolean",
 			values: "true / false"
@@ -29,6 +34,10 @@ module.exports = {
 		{
 			title: "Strike through Checkbox",
 			template: `<dav-checkbox label="Hello World" checked strikeThrough></dav-checkbox>`
+		},
+		{
+			title: "Indeterminate Checkbox",
+			template: `<dav-checkbox label="Some items" indeterminate></dav-checkbox>`
 		},
 		{
 			title: "Disabled Checkbox",

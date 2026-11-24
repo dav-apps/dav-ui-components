@@ -4,8 +4,17 @@ Releases before v1.17 are not documented here.
 
 ## Unreleased
 
+### Added
+
+- **Sidenav**: add `position` (`"left"`, `"right"`) to open the "over" mode
+  from either side.
+- **Checkbox**: add `indeterminate` to show a dash, e.g. when only some items
+  of a group are chosen; a click clears it and toggles `checked`.
+
 ### Fixed
 
+- **Checkbox**: set `aria-checked` and `aria-disabled` to `"true"`/`"false"`
+  (and `"mixed"` while indeterminate) instead of an empty attribute.
 - **Card**: include the border in the width, so a card with `width: 100%` no
   longer overflows its parent by 2px.
 - **Textfield**, **Textarea**: show a value set right after an input even when
