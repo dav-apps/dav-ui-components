@@ -66,6 +66,7 @@ export class Dialog extends LitElement {
 	@property({ type: Boolean }) visible: boolean = false
 	@property({ type: Boolean }) loading: boolean = false
 	@property({ type: Number }) maxWidth: number = 400
+	@property({ attribute: "content-height" }) contentHeight: string = ""
 	@property({ type: Boolean }) hideBehindOverlay: boolean = false
 	@property({ type: Boolean }) child: boolean = false
 
@@ -274,7 +275,17 @@ export class Dialog extends LitElement {
 							class="content-container"
 							style=${styleMap(this.contentContainerStyles)}
 						>
-							<slot></slot>
+							<slot name="header"></slot>
+							${this.contentHeight
+								? html`
+										<div
+											class="scrollable-content"
+											style=${styleMap({ height: this.contentHeight })}
+										>
+											<slot></slot>
+										</div>
+									`
+								: html`<slot></slot>`}
 						</div>
 
 						<div class="button-container">

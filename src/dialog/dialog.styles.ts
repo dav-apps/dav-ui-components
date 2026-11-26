@@ -61,6 +61,17 @@ export const dialogStyles = css`
 		margin-bottom: 24px;
 	}
 
+	::slotted([slot="header"]) {
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	.scrollable-content {
+		box-sizing: border-box;
+		overflow-y: auto;
+		padding: 2px 8px 2px 2px;
+	}
+
 	.button-container {
 		display: flex;
 		gap: 16px;

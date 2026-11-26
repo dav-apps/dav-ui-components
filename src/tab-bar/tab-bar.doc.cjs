@@ -1,5 +1,13 @@
 module.exports = {
 	name: "TabBar",
+	properties: [
+		{
+			name: "scrollable",
+			type: "Boolean",
+			values: "true / false",
+			description: "Allow horizontal scrolling when the tabs exceed the available width."
+		}
+	],
 	examples: [
 		{
 			title: "Default TabBar",
@@ -34,6 +42,27 @@ module.exports = {
                <dav-tab-bar-item id="item3">Item 3</dav-tab-bar-item>
             </dav-tab-bar>
          `
+		},
+		{
+			title: "Scrollable TabBar",
+			controller: function (element) {
+				const tabs = element.querySelectorAll("dav-tab-bar-item")
+
+				for (const tab of tabs) {
+					tab.onclick = () => {
+						for (const item of tabs) item.active = item === tab
+					}
+				}
+			},
+			template: `
+				<div style="width: 240px">
+					<dav-tab-bar scrollable>
+						<dav-tab-bar-item active>Overview</dav-tab-bar-item>
+						<dav-tab-bar-item>Availability</dav-tab-bar-item>
+						<dav-tab-bar-item>Settings</dav-tab-bar-item>
+					</dav-tab-bar>
+				</div>
+			`
 		}
 	]
 }

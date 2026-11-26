@@ -1,5 +1,5 @@
 import { LitElement, html } from "lit"
-import { customElement } from "lit/decorators.js"
+import { customElement, property } from "lit/decorators.js"
 import { globalStyles } from "../styles.js"
 import { radioGroupStyles } from "./radio-group.styles.js"
 import { RadioButton } from "../radio-button/radio-button.js"
@@ -13,6 +13,8 @@ export class RadioGroup extends LitElement {
 	private radioButtons: RadioButton[] = []
 	private onFocusBound = this.onFocus.bind(this)
 	private onKeyDownBound = this.onKeyDown.bind(this)
+
+	@property({ type: Boolean, reflect: true }) horizontal: boolean = false
 
 	connectedCallback() {
 		super.connectedCallback()

@@ -7,9 +7,16 @@ export const radioGroupStyles = css`
 		gap: 8px;
 	}
 
+	:host([horizontal]) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: var(--dav-radio-group-gap, 12px 20px);
+	}
+
 	.container {
 		display: inherit;
 		flex-direction: inherit;
+		flex-wrap: inherit;
 		gap: inherit;
 	}
 `
