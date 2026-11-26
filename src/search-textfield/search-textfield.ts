@@ -59,21 +59,17 @@ export class SearchTextfield extends LitElement {
 	onTextfieldChange(event: CustomEvent) {
 		const value = event.detail.value as string
 
+		// Consumers may supply results after this event, for example through a binding.
+		this.showSearchResults = true
 		this.dispatchEvent(
 			new CustomEvent("change", {
 				detail: { value }
 			})
 		)
-
-		if (this.searchResults.length > 0) {
-			this.showSearchResults = true
-		}
 	}
 
 	onTextfieldFocus() {
-		if (this.searchResults.length > 0) {
-			this.showSearchResults = true
-		}
+		this.showSearchResults = true
 	}
 
 	onSearchResultItemClick(result: { key: string; value: string }) {
