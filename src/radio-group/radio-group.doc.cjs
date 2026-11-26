@@ -5,7 +5,7 @@ module.exports = {
 			name: "horizontal",
 			type: "Boolean",
 			values: "true / false",
-			description: "Lay out options in a row that wraps in narrow containers. Set --dav-radio-group-gap to customize the spacing."
+			description: "Lay out options in a row that wraps in narrow containers."
 		}
 	],
 	examples: [

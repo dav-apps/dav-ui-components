@@ -10,7 +10,7 @@ export const radioGroupStyles = css`
 	:host([horizontal]) {
 		flex-direction: row;
 		flex-wrap: wrap;
-		gap: var(--dav-radio-group-gap, 12px 20px);
+		gap: 12px 20px;
 	}
 
 	.container {
