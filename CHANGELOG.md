@@ -2,6 +2,18 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.22.1
+
+### Fixed
+
+- **SearchTextfield**: open the results list when matches arrive after focus or
+  an input event, including updates through a binding.
+
+### Changed
+
+- **RadioGroup**: use fixed spacing for horizontal options, with 12px between
+  rows and 20px between columns.
+
 ## v1.22
 
 ### Added
