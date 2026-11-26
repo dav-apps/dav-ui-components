@@ -2,6 +2,18 @@
 
 Releases before v1.17 are not documented here.
 
+## v1.22
+
+### Added
+
+- **RadioGroup**: add `horizontal` to arrange options side by side and wrap
+  them in narrow containers. Customize spacing with `--dav-radio-group-gap`.
+- **TabBar**: add `scrollable` to scroll horizontally when the tabs exceed
+  the available width.
+- **Dialog**: add `contentHeight` (`content-height` in HTML) to keep the
+  content area at a set height and scroll it independently. Place tabs or
+  other header content above the scroll area with the `header` slot.
+
 ## v1.21
 
 ### Added
